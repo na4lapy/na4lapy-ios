@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Na4Łapy
 //
-//  Created by scoot on 05.06.2016.
+//  Created by Andrzej Butkiewicz on 05.06.2016.
 //  Copyright © 2016 Koduj dla Polski. All rights reserved.
 //
 
