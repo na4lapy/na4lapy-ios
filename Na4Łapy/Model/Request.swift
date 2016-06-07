@@ -21,6 +21,7 @@ class Request {
      - Parameter failure: Informacje o błędzie
     */
     class func get(page page: Int, size: Int = PAGESIZE, success: APISuccessClosure, failure: APIFailureClosure) {
-        
+        // TODO: pobierz dane z API
+        // TODO: zbuduj obiekty Animal i Photo
     }
 }

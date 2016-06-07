@@ -10,6 +10,9 @@ import Foundation
 
 let log = Logger.sharedInstance
 
+/**
+ Prosty Logger komunikatów na konsolę
+*/
 class Logger {
     static let sharedInstance = Logger()
     
