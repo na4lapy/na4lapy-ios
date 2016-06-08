@@ -15,6 +15,14 @@
 		5C6821831D07469C00FA7781 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821821D07469C00FA7781 /* Logger.swift */; };
 		5C6821861D077E5900FA7781 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821851D077E5900FA7781 /* Constants.swift */; };
 		5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821871D08C14500FA7781 /* ErrorString.swift */; };
+		5C6821891D08C74D00FA7781 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821721D061B5C00FA7781 /* Animal.swift */; };
+		5C68218A1D08C76600FA7781 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821851D077E5900FA7781 /* Constants.swift */; };
+		5C68218B1D08C76A00FA7781 /* ErrorString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821871D08C14500FA7781 /* ErrorString.swift */; };
+		5C68218C1D08C76E00FA7781 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821801D0729EB00FA7781 /* Request.swift */; };
+		5C68218D1D08C77100FA7781 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C68217E1D07295100FA7781 /* UserPreferences.swift */; };
+		5C68218E1D08C77500FA7781 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821771D06200B00FA7781 /* Photo.swift */; };
+		5C68218F1D08C77900FA7781 /* Shelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821751D061C5F00FA7781 /* Shelter.swift */; };
+		5C6821901D08C79300FA7781 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821821D07469C00FA7781 /* Logger.swift */; };
 		5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */; };
 		5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* ViewController.swift */; };
 		5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B21D04C6E600D2D672 /* Main.storyboard */; };
@@ -322,7 +330,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C68218E1D08C77500FA7781 /* Photo.swift in Sources */,
 				5CCD46C41D04C6E600D2D672 /* Na4_apyTests.swift in Sources */,
+				5C68218D1D08C77100FA7781 /* UserPreferences.swift in Sources */,
+				5C68218B1D08C76A00FA7781 /* ErrorString.swift in Sources */,
+				5C6821901D08C79300FA7781 /* Logger.swift in Sources */,
+				5C68218C1D08C76E00FA7781 /* Request.swift in Sources */,
+				5C6821891D08C74D00FA7781 /* Animal.swift in Sources */,
+				5C68218A1D08C76600FA7781 /* Constants.swift in Sources */,
+				5C68218F1D08C77900FA7781 /* Shelter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

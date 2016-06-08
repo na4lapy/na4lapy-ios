@@ -9,6 +9,11 @@
 import Foundation
 
 class Request {
+    enum JsonError: ErrorType {
+        case ParseError
+        case NoData
+    }
+
     /**
      Metoda realizuje pobieranie danych z API zgodnie z parametrami:
      
@@ -20,33 +25,34 @@ class Request {
     */
     class func getAnimal(page page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: APISuccessClosure, failure: APIFailureClosure) {
         Request.httpGET(BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)", success: { (json) in
-            guard let json = json[JsonAttr.Data] as? NSArray else {
-                let error = NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 0, userInfo: nil)
-                failure(error)
+            guard let json = json[JsonAttr.Data] as? [[String:AnyObject]] else {
+                failure(NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 1, userInfo: nil))
                 return
             }
-            var animals = [Animal]()
-            for item in json {
-                guard let item = item as? [String:AnyObject] else {
-                    let error = NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 0, userInfo: nil)
-                    failure(error)
-                    return
-                }
-                if let animal = Animal(dictionary: item) {
-                    animals.append(animal)
-                }
-            }
-            success(animals)
+            success(Request.animalConstructor(json))
         }, failure: { (error) in
             failure(error)
         })
     }
     
+    //
+    // MARK: private
+    //
+    
     /**
-     Metoda realizuje pobieranie danych z API zgodnie z parametrami:
+     Tworzenie obiektów Animal na podstawie JSON
+ 
+     - Parameter json: Struktura JSON
+     - Returns: Tablica obiektów Animal
     */
-    class func getShelter() {
-        // TODO:
+    private class func animalConstructor(json: [[String:AnyObject]]) -> [Animal] {
+        var animals = [Animal]()
+        for item in json {
+            if let animal = Animal(dictionary: item) {
+                animals.append(animal)
+            }
+        }
+        return animals
     }
     
     /**
@@ -56,10 +62,9 @@ class Request {
      - Parameter success: Closure w przypadku sukcesu
      - Parameter failure: Closure w przypadku błędu
     */
-    private class func httpGET(url: String, success: (NSDictionary) -> Void, failure: (NSError) -> Void) {
+    private class func httpGET(url: String, success: ([String:AnyObject]) -> Void, failure: (NSError) -> Void) {
         guard let endpoint = NSURL(string: url) else {
-            let error = NSError(domain: ErrorString.WRONG_URL, code: 0, userInfo: nil)
-            failure(error)
+            failure(NSError(domain: ErrorString.WRONG_URL, code: 1, userInfo: nil))
             return
         }
         
@@ -70,20 +75,45 @@ class Request {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            if let error = error {
-                failure(error)
-                return
+            do {
+                guard let data = data else {
+                    throw JsonError.NoData
+                }
+                let json = try Request.parseJSON(data)
+                success(json)
             }
-            guard
-                let data = data,
-                let json = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary
-            else {
-                let error = NSError(domain: ErrorString.JSON_PARSE_ERROR_OR_NO_DATA, code: 0, userInfo: nil)
+            catch let error as NSError {
                 failure(error)
-                return
             }
-            success(json)
+            catch JsonError.NoData {
+                failure(NSError(domain: ErrorString.JSON_NO_DATA, code: 1, userInfo: nil))
+            }
+            catch JsonError.ParseError {
+                failure(NSError(domain: ErrorString.JSON_PARSE_ERROR, code: 1, userInfo: nil))
+            }
         }
         task.resume()
     }
+    
+    /**
+     Parsowanie JSON
+ 
+     - Parameter data: Obiekt NSData
+     - Returns: Dictionary<String:AnyObject>
+    */
+    private class func parseJSON(data: NSData) throws -> [String:AnyObject] {
+        guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject] else {
+            throw JsonError.ParseError
+        }
+        return json
+    }
+    
+    /**
+     Metoda realizuje pobieranie danych z API zgodnie z parametrami:
+     */
+    class func getShelter() {
+        // TODO:
+    }
+    
+
 }

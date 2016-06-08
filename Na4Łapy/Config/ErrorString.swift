@@ -11,7 +11,8 @@ import Foundation
 struct ErrorString {
     static let NO_ID_OR_NAME = "Brak 'id' lub 'name' w parametrach kontruktora klasy"
     static let WRONG_JSON_KEY = "Błędny klucz JSON"
-    static let JSON_PARSE_ERROR_OR_NO_DATA = "Błąd parsowania JSON lub brak danych"
+    static let JSON_PARSE_ERROR = "Błąd parsowania JSON"
+    static let JSON_NO_DATA = "Brak danych JSON"
     static let WRONG_URL = "Błędny URL"
     static let WRONG_JSON_STRUCT = "Nieprawidłowa struktura JSON"
 }
