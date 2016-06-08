@@ -21,7 +21,7 @@ class Photo {
             let urlstring = dictionary[JsonAttr.URL] as? String,
             let url = NSURL(string: urlstring)
         else {
-            log.error("Brak 'id' lub 'url' w parametrach konstruktora klasy")
+            log.error(ErrorString.NO_ID_OR_NAME)
             return nil
         }
         

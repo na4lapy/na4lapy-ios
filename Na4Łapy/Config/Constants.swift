@@ -6,6 +6,8 @@
 //  Copyright © 2016 Koduj dla Polski. All rights reserved.
 //
 
+import Foundation
+
 // MARK: Stałe pobierane z API dla klasy Animal
 
 enum Sterilization: String {
@@ -76,9 +78,24 @@ struct JsonAttr  {
     static let Author = "author"
     static let Status = "status"
     static let Total = "total"
+    static let Data = "data"
 }
 
 // MARK: Rozmiary pobieranej strony (liczba elementów)
 
-let PAGESIZE = 10
+let PAGESIZE = 3
+
+// MARK: Closure
+
+typealias APISuccessClosure = ([Animal]) -> Void
+typealias APIFailureClosure = (NSError) -> Void
+
+// MARK: URL
+
+let BaseUrl = "http://na4lapy.kodujdlapolski.pl"
+struct EndPoint {
+    static let animals = "/api/animals"
+    static let shelter = "/api/shelter"
+}
+
 

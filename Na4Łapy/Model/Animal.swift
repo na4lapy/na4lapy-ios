@@ -31,7 +31,7 @@ class Animal {
             let id = dictionary[JsonAttr.Id] as? Int,
             let name = dictionary[JsonAttr.Name] as? String
         else {
-            log.error("Brak 'id' lub 'name' w parametrach konstruktora klasy")
+            log.error(ErrorString.NO_ID_OR_NAME)
             return nil
         }
         
@@ -104,8 +104,12 @@ class Animal {
                     // TODO: sprawdzić czy na pewno pierwszy obrazek jest zawsze głównym??
                     self.photos?.first?.download()
                 }
+            case JsonAttr.Name:
+                break
+            case JsonAttr.Id:
+                break
             default:
-                log.error("Błędny klucz JSON: \(key)")
+                log.error(ErrorString.WRONG_JSON_KEY+" \(key)")
 
             }
         }

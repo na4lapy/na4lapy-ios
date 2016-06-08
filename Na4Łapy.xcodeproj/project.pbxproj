@@ -14,6 +14,7 @@
 		5C6821811D0729EB00FA7781 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821801D0729EB00FA7781 /* Request.swift */; };
 		5C6821831D07469C00FA7781 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821821D07469C00FA7781 /* Logger.swift */; };
 		5C6821861D077E5900FA7781 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821851D077E5900FA7781 /* Constants.swift */; };
+		5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821871D08C14500FA7781 /* ErrorString.swift */; };
 		5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */; };
 		5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* ViewController.swift */; };
 		5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B21D04C6E600D2D672 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		5C6821801D0729EB00FA7781 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Model/Request.swift; sourceTree = "<group>"; };
 		5C6821821D07469C00FA7781 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Logger/Logger.swift; sourceTree = "<group>"; };
 		5C6821851D077E5900FA7781 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Config/Constants.swift; sourceTree = "<group>"; };
+		5C6821871D08C14500FA7781 /* ErrorString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorString.swift; path = Config/ErrorString.swift; sourceTree = "<group>"; };
 		5CCD46AB1D04C6E600D2D672 /* Na4Łapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Na4Łapy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CCD46B01D04C6E600D2D672 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6821851D077E5900FA7781 /* Constants.swift */,
+				5C6821871D08C14500FA7781 /* ErrorString.swift */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C68217F1D07295100FA7781 /* UserPreferences.swift in Sources */,
+				5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */,
 				5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */,
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,

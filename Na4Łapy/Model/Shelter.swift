@@ -19,4 +19,8 @@ class Shelter {
     private var website: String?
     private var accountNumber: String?
     private var adoptionRules: String?
+    
+    func get() {
+        Request.getShelter()
+    }
 }
