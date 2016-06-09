@@ -10,8 +10,8 @@ import Foundation
 
 class Request {
     enum JsonError: ErrorType {
-        case ParseError
-        case NoData
+        case parseError
+        case noData
     }
 
     /**
@@ -24,15 +24,18 @@ class Request {
      - Parameter failure: Informacje o błędzie
     */
     class func getAnimal(page page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: APISuccessClosure, failure: APIFailureClosure) {
-        Request.httpGET(BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)", success: { (json) in
-            guard let json = json[JsonAttr.Data] as? [[String:AnyObject]] else {
-                failure(NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 1, userInfo: nil))
-                return
+        Request.httpGET(BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)",
+            success: { (json) in
+                guard let json = json[JsonAttr.data] as? [[String: AnyObject]] else {
+                    failure(NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 1, userInfo: nil))
+                    return
+                }
+                success(Request.animalConstructor(json))
+            },
+            failure: { (error) in
+                failure(error)
             }
-            success(Request.animalConstructor(json))
-        }, failure: { (error) in
-            failure(error)
-        })
+        )
     }
     
     //
@@ -45,7 +48,7 @@ class Request {
      - Parameter json: Struktura JSON
      - Returns: Tablica obiektów Animal
     */
-    private class func animalConstructor(json: [[String:AnyObject]]) -> [Animal] {
+    private class func animalConstructor(json: [[String: AnyObject]]) -> [Animal] {
         var animals = [Animal]()
         for item in json {
             if let animal = Animal(dictionary: item) {
@@ -62,7 +65,7 @@ class Request {
      - Parameter success: Closure w przypadku sukcesu
      - Parameter failure: Closure w przypadku błędu
     */
-    private class func httpGET(url: String, success: ([String:AnyObject]) -> Void, failure: (NSError) -> Void) {
+    private class func httpGET(url: String, success: ([String: AnyObject]) -> Void, failure: (NSError) -> Void) {
         guard let endpoint = NSURL(string: url) else {
             failure(NSError(domain: ErrorString.WRONG_URL, code: 1, userInfo: nil))
             return
@@ -77,7 +80,7 @@ class Request {
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             do {
                 guard let data = data else {
-                    throw JsonError.NoData
+                    throw JsonError.noData
                 }
                 let json = try Request.parseJSON(data)
                 success(json)
@@ -85,10 +88,10 @@ class Request {
             catch let error as NSError {
                 failure(error)
             }
-            catch JsonError.NoData {
+            catch JsonError.noData {
                 failure(NSError(domain: ErrorString.JSON_NO_DATA, code: 1, userInfo: nil))
             }
-            catch JsonError.ParseError {
+            catch JsonError.parseError {
                 failure(NSError(domain: ErrorString.JSON_PARSE_ERROR, code: 1, userInfo: nil))
             }
         }
@@ -103,7 +106,7 @@ class Request {
     */
     private class func parseJSON(data: NSData) throws -> [String:AnyObject] {
         guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject] else {
-            throw JsonError.ParseError
+            throw JsonError.parseError
         }
         return json
     }

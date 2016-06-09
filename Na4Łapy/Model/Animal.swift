@@ -28,8 +28,8 @@ class Animal {
     
     init?(dictionary: [String:AnyObject]) {
         guard
-            let id = dictionary[JsonAttr.Id] as? Int,
-            let name = dictionary[JsonAttr.Name] as? String
+            let id = dictionary[JsonAttr.id] as? Int,
+            let name = dictionary[JsonAttr.name] as? String
         else {
             log.error(ErrorString.NO_ID_OR_NAME)
             return nil
@@ -40,60 +40,60 @@ class Animal {
         
         for (key, value) in dictionary {
             switch key {
-            case JsonAttr.Race:
+            case JsonAttr.race:
                 if let race = value as? String {
                     self.race = race
                 }
-            case JsonAttr.Description:
+            case JsonAttr.description:
                 if let description = value as? String {
                     self.description = description
                 }
-            case JsonAttr.BirthDate:
+            case JsonAttr.birthDate:
                 if let birthDate = value as? String {
                     // TODO: konwersja do NSDate
                 }
-            case JsonAttr.AdmittanceDate:
+            case JsonAttr.admittanceDate:
                 if let admittanceDate = value as? String {
                     // TODO: konwersja do NSDate
                 }
-            case JsonAttr.ChipId:
+            case JsonAttr.chipId:
                 if let chipId = value as? String {
                     self.chipId = chipId
                 }
-            case JsonAttr.Sterilization:
+            case JsonAttr.sterilization:
                 if let value = value as? String, let sterilization = Sterilization(rawValue: value) {
                     self.sterilization = sterilization
                 }
-            case JsonAttr.Species:
+            case JsonAttr.species:
                 if let value = value as? String, let species = Species(rawValue: value) {
                     self.species = species
                 }
-            case JsonAttr.Gender:
+            case JsonAttr.gender:
                 if let value = value as? String, let gender = Gender(rawValue: value) {
                     self.gender = gender
                 }
-            case JsonAttr.Size:
+            case JsonAttr.size:
                 if let value = value as? String, let size = Size(rawValue: value) {
                     self.size = size
                 }
-            case JsonAttr.Activity:
+            case JsonAttr.activity:
                 if let value = value as? String, let activity = Activity(rawValue: value) {
                     self.activity = activity
                 }
-            case JsonAttr.Training:
+            case JsonAttr.training:
                 if let value = value as? String, let training = Training(rawValue: value) {
                     self.training = training
                 }
-            case JsonAttr.Vaccination:
+            case JsonAttr.vaccination:
                 if let value = value as? String, let vaccination = Vaccination(rawValue: value) {
                     self.vaccination = vaccination
                 }
-            case JsonAttr.Status:
+            case JsonAttr.status:
                 if let value = value as? String, let status = Status(rawValue: value) {
                     self.status = status
                 }
-            case JsonAttr.Photos:
-                if let value = value as? [[String:AnyObject]] {
+            case JsonAttr.photos:
+                if let value = value as? [[String: AnyObject]] {
                     self.photos = []
                     for item in value {
                         if let photo = Photo(dictionary: item) {
@@ -104,9 +104,9 @@ class Animal {
                     // TODO: sprawdzić czy na pewno pierwszy obrazek jest zawsze głównym??
                     self.photos?.first?.download()
                 }
-            case JsonAttr.Name:
+            case JsonAttr.name:
                 break
-            case JsonAttr.Id:
+            case JsonAttr.id:
                 break
             default:
                 log.error(ErrorString.WRONG_JSON_KEY+" \(key)")

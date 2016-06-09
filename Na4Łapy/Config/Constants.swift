@@ -15,70 +15,70 @@ enum Sterilization: String {
 }
 
 enum Gender: String {
-    case Male = "MALE"
-    case Female = "FEMALE"
-    case Unknown = "UNKNOWN"
+    case male = "MALE"
+    case female = "FEMALE"
+    case unknown = "UNKNOWN"
 }
 
 enum Size: String {
-    case Small = "SMALL"
-    case Medium = "MEDIUM"
-    case Large = "LARGE"
+    case small = "SMALL"
+    case medium = "MEDIUM"
+    case large = "LARGE"
 }
 
 enum Activity: String {
-    case Low = "LOW"
-    case High = "HIGH"
-    case Unknown = "UNKNOWN"
+    case low = "LOW"
+    case high = "HIGH"
+    case unknown = "UNKNOWN"
 }
 
 enum Training: String {
-    case None = "NONE"
-    case Basic = "BASIC"
-    case Advanced = "ADVANCED"
-    case Unknown = "UNKNOWN"
+    case none = "NONE"
+    case basic = "BASIC"
+    case advanced = "ADVANCED"
+    case unknown = "UNKNOWN"
 }
 
 enum Vaccination: String {
-    case Basic = "BASIC"
-    case Extended = "EXTENDED"
-    case None = "NONE"
-    case Unknown = "UNKNOWN"
+    case basic = "BASIC"
+    case extended = "EXTENDED"
+    case none = "NONE"
+    case unknown = "UNKNOWN"
 }
 
 enum Status: String {
-    case ForAdoption = "FOR_ADOPTION"
+    case forAdoption = "FOR_ADOPTION"
 }
 
 enum Species: String {
-    case Dog = "DOG"
-    case Cat = "CAT"
-    case Other = "OTHER"
+    case dog = "DOG"
+    case cat = "CAT"
+    case other = "OTHER"
 }
 
 // MARK: Klucze JSON
 
 struct JsonAttr  {
-    static let Id = "id"
-    static let Name = "name"
-    static let Race = "race"
-    static let Description = "description"
-    static let BirthDate = "birthDate"
-    static let AdmittanceDate = "admittanceDate"
-    static let ChipId = "chipId"
-    static let Sterilization = "sterilization"
-    static let Species = "species"
-    static let Gender = "gender"
-    static let Size = "size"
-    static let Activity = "activity"
-    static let Training = "training"
-    static let Vaccination = "vaccination"
-    static let Photos = "photos"
-    static let URL = "url"
-    static let Author = "author"
-    static let Status = "status"
-    static let Total = "total"
-    static let Data = "data"
+    static let id = "id"
+    static let name = "name"
+    static let race = "race"
+    static let description = "description"
+    static let birthDate = "birthDate"
+    static let admittanceDate = "admittanceDate"
+    static let chipId = "chipId"
+    static let sterilization = "sterilization"
+    static let species = "species"
+    static let gender = "gender"
+    static let size = "size"
+    static let activity = "activity"
+    static let training = "training"
+    static let vaccination = "vaccination"
+    static let photos = "photos"
+    static let url = "url"
+    static let author = "author"
+    static let status = "status"
+    static let total = "total"
+    static let data = "data"
 }
 
 // MARK: Rozmiary pobieranej strony (liczba elementów)

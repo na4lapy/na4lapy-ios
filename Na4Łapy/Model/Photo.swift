@@ -17,8 +17,8 @@ class Photo {
     
     init?(dictionary: [String:AnyObject]) {
         guard
-            let id = dictionary[JsonAttr.Id] as? Int,
-            let urlstring = dictionary[JsonAttr.URL] as? String,
+            let id = dictionary[JsonAttr.id] as? Int,
+            let urlstring = dictionary[JsonAttr.url] as? String,
             let url = NSURL(string: urlstring)
         else {
             log.error(ErrorString.NO_ID_OR_NAME)
@@ -28,7 +28,7 @@ class Photo {
         self.id = id
         self.url = url
         
-        if let author = dictionary[JsonAttr.Author] as? String {
+        if let author = dictionary[JsonAttr.author] as? String {
             self.author = author
         }
     }
