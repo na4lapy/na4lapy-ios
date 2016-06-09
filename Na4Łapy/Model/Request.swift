@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Request {
     enum JsonError: ErrorType {
@@ -24,19 +25,55 @@ class Request {
      - Parameter failure: Informacje o błędzie
     */
     class func getAnimal(page page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: APISuccessClosure, failure: APIFailureClosure) {
-        Request.httpGET(BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)",
-            success: { (json) in
-                guard let json = json[JsonAttr.data] as? [[String: AnyObject]] else {
-                    failure(NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 1, userInfo: nil))
-                    return
+        let urlstring = BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
+        guard let endpoint = NSURL(string: urlstring) else {
+            failure(NSError(domain: ErrorString.WRONG_URL, code: 1, userInfo: nil))
+            return
+        }
+        Request.httpGET(endpoint,
+            success: { (data) in
+                do {
+                    let json = try self.parseJSON(data)
+                    guard let jsondata = json[JsonAttr.data] as? [[String: AnyObject]] else {
+                        throw JsonError.parseError
+                    }
+                    success(Request.animalConstructor(jsondata))
                 }
-                success(Request.animalConstructor(json))
+                catch let error as NSError {
+                    failure(error)
+                }
+                catch JsonError.parseError {
+                    failure(NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 1, userInfo: nil))
+                }
             },
             failure: { (error) in
                 failure(error)
             }
         )
     }
+    
+    /**
+     Pobranie danych obrazka ze wskazanego urla
+ 
+     - Parameter url: URL
+     - Parameter success: Przekazanie UIImage
+     - Parameter failure: Przekazanie błędu
+    */
+    class func getImageData(url: NSURL, success: (UIImage) -> Void, failure: (NSError) -> Void) {
+        Request.httpGET(url,
+            success: { (data) in
+                guard let image = UIImage(data: data) else {
+                    failure(NSError(domain: ErrorString.NO_IMAGE_DATA, code: 1, userInfo: nil))
+                    return
+                }
+                success(image)
+            },
+            failure: { (error) in
+                failure(error)
+            }
+        )
+    }
+    
     
     //
     // MARK: private
@@ -65,35 +102,19 @@ class Request {
      - Parameter success: Closure w przypadku sukcesu
      - Parameter failure: Closure w przypadku błędu
     */
-    private class func httpGET(url: String, success: ([String: AnyObject]) -> Void, failure: (NSError) -> Void) {
-        guard let endpoint = NSURL(string: url) else {
-            failure(NSError(domain: ErrorString.WRONG_URL, code: 1, userInfo: nil))
-            return
-        }
-        
+    private class func httpGET(url: NSURL, success: (NSData) -> Void, failure: (NSError) -> Void) {
         let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: endpoint)
+        let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            do {
                 guard let data = data else {
-                    throw JsonError.noData
+                    failure(NSError(domain: ErrorString.NO_DATA, code: 1, userInfo: nil))
+                    return
                 }
-                let json = try Request.parseJSON(data)
-                success(json)
-            }
-            catch let error as NSError {
-                failure(error)
-            }
-            catch JsonError.noData {
-                failure(NSError(domain: ErrorString.JSON_NO_DATA, code: 1, userInfo: nil))
-            }
-            catch JsonError.parseError {
-                failure(NSError(domain: ErrorString.JSON_PARSE_ERROR, code: 1, userInfo: nil))
-            }
+                success(data)
         }
         task.resume()
     }
@@ -117,6 +138,5 @@ class Request {
     class func getShelter() {
         // TODO:
     }
-    
-
 }
+

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G7a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,44 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AwI-c8-tVD">
+                                <rect key="frame" x="20" y="45" width="560" height="458"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjt-0P-vTE">
+                                <rect key="frame" x="517" y="532" width="63" height="30"/>
+                                <state key="normal" title="następny"/>
+                                <connections>
+                                    <action selector="next:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n9E-Rh-gE9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgP-i4-LGm">
+                                <rect key="frame" x="20" y="532" width="69" height="30"/>
+                                <state key="normal" title="poprzedni"/>
+                                <connections>
+                                    <action selector="prev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iMp-2M-zvJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AwI-c8-tVD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="3xq-sD-Dgh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IgP-i4-LGm" secondAttribute="bottom" constant="38" id="6bB-8S-b2Z"/>
+                            <constraint firstItem="AwI-c8-tVD" firstAttribute="leading" secondItem="IgP-i4-LGm" secondAttribute="leading" id="Cnd-dC-OmL"/>
+                            <constraint firstItem="AwI-c8-tVD" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="GDt-eU-5Ig"/>
+                            <constraint firstItem="AwI-c8-tVD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VnG-B5-SAa"/>
+                            <constraint firstItem="AwI-c8-tVD" firstAttribute="trailing" secondItem="rjt-0P-vTE" secondAttribute="trailing" id="czp-Vf-gVx"/>
+                            <constraint firstItem="IgP-i4-LGm" firstAttribute="baseline" secondItem="rjt-0P-vTE" secondAttribute="baseline" id="dIk-zb-Q5g"/>
+                            <constraint firstItem="IgP-i4-LGm" firstAttribute="top" secondItem="AwI-c8-tVD" secondAttribute="bottom" constant="29" id="gYe-dy-VvV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainphoto" destination="AwI-c8-tVD" id="MIm-YV-GOE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="565" y="459"/>
         </scene>
     </scenes>
 </document>

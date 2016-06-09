@@ -37,6 +37,14 @@ class Photo {
     Asynchroniczne pobieranie obrazka
     */
     func download() {
-    
+        log.debug("Start downloading... \(self.url.absoluteString)")
+        Request.getImageData(self.url,
+            success: { (image) in
+                self.image = image
+            },
+            failure: { (error) in
+                log.error("Błąd podczas pobierania obrazka dla urla: \(self.url.absoluteString), error: \(error.description)")
+            }
+        )
     }
 }

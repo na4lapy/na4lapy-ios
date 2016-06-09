@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Animal {
     private var id: Int
@@ -25,6 +26,13 @@ class Animal {
     private var vaccination: Vaccination?
     private var status: Status?
     private var photos: [Photo]?
+    
+    func getFirstPhoto() -> UIImage? {
+        guard let image = self.photos?.first?.image else {
+            return nil
+        }
+        return image
+    }
     
     init?(dictionary: [String:AnyObject]) {
         guard
