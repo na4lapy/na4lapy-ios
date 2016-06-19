@@ -23,11 +23,18 @@ class Logger {
     }
     
     func error(msg: String, file: String = #file, function: String = #function) {
-        self.out("\(file) \(function) : \(msg)")
+        var filename: String = file
+        if let lastPathElement = file.componentsSeparatedByString("/").last {
+            filename = lastPathElement
+        }
+        self.out("ERROR/\(filename)/\(function): \(msg)")
     }
     
     func debug(msg: String, file: String = #file, function: String = #function) {
-        self.out("\(file) \(function) : \(msg)")
+        var filename: String = file
+        if let lastPathElement = file.componentsSeparatedByString("/").last {
+            filename = lastPathElement
+        }
+        self.out("DEBUG/\(filename)/\(function): \(msg)")
     }
-    
 }
