@@ -25,13 +25,13 @@ class Animal {
     private(set) var training: Training?
     private(set) var vaccination: Vaccination?
     private(set) var status: Status?
-    private var photos: [Photo]?
+    private var images: [Photo]?
     
     /**
      Pobieranie pierwszego (głównego) zdjęcia zwierzaka
     */
-    func getFirstPhoto() -> UIImage? {
-        guard let image = self.photos?.first?.image else {
+    func getFirstImage() -> UIImage? {
+        guard let image = self.images?.first?.image else {
             return nil
         }
         return image
@@ -40,15 +40,15 @@ class Animal {
     /**
      Pobieranie wszystkich zdjęć zwierzaka
     */
-    func getAllPhotos() -> [Photo]? {
-        guard let photos = self.photos where !photos.isEmpty else {
+    func getAllImages() -> [Photo]? {
+        guard let images = self.images where !images.isEmpty else {
             return nil
         }
-        log.debug("\(self.name): liczba zdjęć: \(self.photos?.count)")
-        for photo in photos {
-            photo.download()
+        log.debug("\(self.name): liczba zdjęć: \(self.images?.count)")
+        for image in images {
+            image.download()
         }
-        return photos
+        return images
     }
     
     init?(dictionary: [String:AnyObject]) {
@@ -125,15 +125,15 @@ class Animal {
                 }
             case JsonAttr.photos:
                 if let value = value as? [[String: AnyObject]] {
-                    self.photos = []
+                    self.images = []
                     for item in value {
                         if let photo = Photo(dictionary: item) {
-                            self.photos?.append(photo)
+                            self.images?.append(photo)
                         }
                     }
                     // Pobranie danych głównego obrazka
                     // TODO: sprawdzić czy na pewno pierwszy obrazek jest zawsze głównym??
-                    self.photos?.first?.download()
+                    self.images?.first?.download()
                 }
             case JsonAttr.name:
                 break

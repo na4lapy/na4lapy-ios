@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     }
 
     private func showMainPhoto() {
-        guard let image = self.animals?[self.index].getFirstPhoto() else {
+        guard let image = self.animals?[self.index].getFirstImage() else {
             log.error("Brak głównego zdjęcia")
             return
         }
