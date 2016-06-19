@@ -1,0 +1,15 @@
+PODS:
+  - Koloda (3.1.1):
+    - pop (~> 1.0)
+  - pop (1.0.9)
+
+DEPENDENCIES:
+  - Koloda (~> 3.1.1)
+
+SPEC CHECKSUMS:
+  Koloda: 782e61549cafec9fd69fc70c4a8b54bce997894d
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+
+PODFILE CHECKSUM: 74583768162c044d7ca5262bb719d7598e30a01f
+
+COCOAPODS: 1.0.1
