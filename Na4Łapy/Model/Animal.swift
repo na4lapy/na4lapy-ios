@@ -58,11 +58,17 @@ class Animal {
                 }
             case JsonAttr.birthDate:
                 if let birthDate = value as? String {
-                    // TODO: konwersja do NSDate
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.timeZone = NSTimeZone(name: JsonAttr.birthDateTimeZone)
+                    dateFormatter.dateFormat = JsonAttr.birthDateFormat
+                    self.birthDate = dateFormatter.dateFromString(birthDate)
                 }
             case JsonAttr.admittanceDate:
                 if let admittanceDate = value as? String {
-                    // TODO: konwersja do NSDate
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.timeZone = NSTimeZone(name: JsonAttr.admittanceDateTimeZone)
+                    dateFormatter.dateFormat = JsonAttr.admittanceDateFormat
+                    self.admittanceDate = dateFormatter.dateFromString(admittanceDate)
                 }
             case JsonAttr.chipId:
                 if let chipId = value as? String {
