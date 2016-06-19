@@ -27,7 +27,7 @@ class Request {
     class func getAnimal(page page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: APISuccessClosure, failure: APIFailureClosure) {
         let urlstring = BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
         guard let endpoint = NSURL(string: urlstring) else {
-            failure(NSError(domain: ErrorString.WRONG_URL, code: 1, userInfo: nil))
+            failure(Error.WrongURL.err())
             return
         }
         Request.httpGET(endpoint,
@@ -43,7 +43,7 @@ class Request {
                     failure(error)
                 }
                 catch JsonError.parseError {
-                    failure(NSError(domain: ErrorString.WRONG_JSON_STRUCT, code: 1, userInfo: nil))
+                    failure(Error.WrongJsonStruct.err())
                 }
             },
             failure: { (error) in
@@ -63,7 +63,7 @@ class Request {
         Request.httpGET(url,
             success: { (data) in
                 guard let image = UIImage(data: data) else {
-                    failure(NSError(domain: ErrorString.NO_IMAGE_DATA, code: 1, userInfo: nil))
+                    failure(Error.NoImageData.err())
                     return
                 }
                 success(image)
@@ -73,7 +73,6 @@ class Request {
             }
         )
     }
-    
     
     //
     // MARK: private
@@ -110,11 +109,15 @@ class Request {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-                guard let data = data else {
-                    failure(NSError(domain: ErrorString.NO_DATA, code: 1, userInfo: nil))
-                    return
-                }
-                success(data)
+            if error != nil {
+                failure(error!)
+                return
+            }
+            guard let data = data else {
+                failure(Error.NoData.err())
+                return
+            }
+            success(data)
         }
         task.resume()
     }

@@ -7,13 +7,34 @@
 //
 
 import Foundation
+import UIKit
 
-struct ErrorString {
-    static let NO_ID_OR_NAME = "Brak 'id' lub 'name' w parametrach kontruktora klasy"
-    static let WRONG_JSON_KEY = "Błędny klucz JSON"
-    static let JSON_PARSE_ERROR = "Błąd parsowania JSON"
-    static let NO_DATA = "Brak danych"
-    static let WRONG_URL = "Błędny URL"
-    static let WRONG_JSON_STRUCT = "Nieprawidłowa struktura JSON"
-    static let NO_IMAGE_DATA = "Brak zdjęcia"
+enum Error: Int {
+    case NoIdOrName = 1, WrongJsonKey, JsonParseError, NoData, WrongURL, WrongJsonStruct, NoImageData
+
+    func desc() -> String {
+        switch self {
+        case NoIdOrName:
+            return "Brak 'id' lub 'name' w parametrach kontruktora klasy"
+        case WrongJsonKey:
+            return "Błędny klucz JSON"
+        case JsonParseError:
+            return "Błąd parsowania JSON"
+        case NoData:
+            return "Brak danych"
+        case WrongURL:
+            return "Błędny URL"
+        case WrongJsonStruct:
+            return "Nieprawidłowa struktura JSON"
+        case NoImageData:
+            return "Brak zdjęcia"
+        }
+    }
+    
+    func err() -> NSError {
+        let error = NSError(domain: ErrorDomain, code: self.rawValue, userInfo: [NSLocalizedDescriptionKey: self.desc()])
+        return error
+    }
 }
+
+

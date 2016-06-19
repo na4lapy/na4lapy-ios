@@ -21,7 +21,7 @@ class Photo {
             let urlstring = dictionary[JsonAttr.url] as? String,
             let url = NSURL(string: urlstring)
         else {
-            log.error(ErrorString.NO_ID_OR_NAME)
+            log.error(Error.NoIdOrName.desc())
             return nil
         }
         
@@ -47,7 +47,7 @@ class Photo {
                 self.image = image
             },
             failure: { (error) in
-                log.error("Błąd podczas pobierania obrazka dla urla: \(self.url.absoluteString), error: \(error.description)")
+                log.error("Błąd: \(error.localizedDescription) dla urla: \(self.url.absoluteString)")
             }
         )
     }

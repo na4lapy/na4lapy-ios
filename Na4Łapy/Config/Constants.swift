@@ -102,4 +102,5 @@ struct EndPoint {
     static let shelter = "/api/shelter"
 }
 
-
+// MARK: ErrorDomain dla NSError
+let ErrorDomain = "Na4Łapy"

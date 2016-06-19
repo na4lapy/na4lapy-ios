@@ -25,7 +25,7 @@ class ViewController: UIViewController {
                 strongSelf.animals = animals
             },
             failure: { (error) in
-                log.error(error.description)
+                log.error(error.localizedDescription)
             }
         )
     }

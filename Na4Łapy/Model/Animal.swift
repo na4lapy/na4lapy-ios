@@ -56,7 +56,7 @@ class Animal {
             let id = dictionary[JsonAttr.id] as? Int,
             let name = dictionary[JsonAttr.name] as? String
         else {
-            log.error(ErrorString.NO_ID_OR_NAME)
+            log.error(Error.NoIdOrName.desc())
             return nil
         }
         
@@ -140,8 +140,7 @@ class Animal {
             case JsonAttr.id:
                 break
             default:
-                log.error(ErrorString.WRONG_JSON_KEY+" \(key)")
-
+                log.error(Error.WrongJsonKey.desc()+" \(key)")
             }
         }
     }
