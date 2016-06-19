@@ -10,21 +10,21 @@ import Foundation
 import UIKit
 
 class Animal {
-    private var id: Int
-    private var name: String
-    private var race: String?
-    private var description: String?
-    private var birthDate: NSDate?
-    private var admittanceDate: NSDate?
-    private var chipId: String?
-    private var sterilization: Sterilization?
-    private var species: Species?
-    private var gender: Gender?
-    private var size: Size?
-    private var activity: Activity?
-    private var training: Training?
-    private var vaccination: Vaccination?
-    private var status: Status?
+    private(set) var id: Int
+    private(set) var name: String
+    private(set) var race: String?
+    private(set) var description: String?
+    private(set) var birthDate: NSDate?
+    private(set) var admittanceDate: NSDate?
+    private(set) var chipId: String?
+    private(set) var sterilization: Sterilization?
+    private(set) var species: Species?
+    private(set) var gender: Gender?
+    private(set) var size: Size?
+    private(set) var activity: Activity?
+    private(set) var training: Training?
+    private(set) var vaccination: Vaccination?
+    private(set) var status: Status?
     private var photos: [Photo]?
     
     func getFirstPhoto() -> UIImage? {
