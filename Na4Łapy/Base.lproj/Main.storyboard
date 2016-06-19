@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kFK-qQ-zwH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Dostępne zwierzęta-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Dostępne zwierzęta" id="BYZ-38-t0r" customClass="ViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,21 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AwI-c8-tVD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AwI-c8-tVD">
                                 <rect key="frame" x="20" y="45" width="560" height="458"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjt-0P-vTE">
-                                <rect key="frame" x="517" y="532" width="63" height="30"/>
-                                <state key="normal" title="następny"/>
-                                <connections>
-                                    <action selector="next:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n9E-Rh-gE9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgP-i4-LGm">
-                                <rect key="frame" x="20" y="532" width="69" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgP-i4-LGm">
+                                <rect key="frame" x="20" y="521" width="69" height="30"/>
                                 <state key="normal" title="poprzedni"/>
                                 <connections>
                                     <action selector="prev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iMp-2M-zvJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4S-kQ-DmY">
+                                <rect key="frame" x="20" y="453" width="560" height="50"/>
+                                <color key="backgroundColor" red="0.3411764706" green="0.63921568630000003" blue="0.69411764710000001" alpha="0.70342133620689651" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjt-0P-vTE">
+                                <rect key="frame" x="517" y="521" width="63" height="30"/>
+                                <state key="normal" title="następny"/>
+                                <connections>
+                                    <action selector="next:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n9E-Rh-gE9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,18 +58,39 @@
                             <constraint firstItem="AwI-c8-tVD" firstAttribute="leading" secondItem="IgP-i4-LGm" secondAttribute="leading" id="Cnd-dC-OmL"/>
                             <constraint firstItem="AwI-c8-tVD" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="GDt-eU-5Ig"/>
                             <constraint firstItem="AwI-c8-tVD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VnG-B5-SAa"/>
+                            <constraint firstItem="x4S-kQ-DmY" firstAttribute="bottom" secondItem="AwI-c8-tVD" secondAttribute="bottom" id="a1i-E7-Lj7"/>
                             <constraint firstItem="AwI-c8-tVD" firstAttribute="trailing" secondItem="rjt-0P-vTE" secondAttribute="trailing" id="czp-Vf-gVx"/>
                             <constraint firstItem="IgP-i4-LGm" firstAttribute="baseline" secondItem="rjt-0P-vTE" secondAttribute="baseline" id="dIk-zb-Q5g"/>
                             <constraint firstItem="IgP-i4-LGm" firstAttribute="top" secondItem="AwI-c8-tVD" secondAttribute="bottom" constant="29" id="gYe-dy-VvV"/>
+                            <constraint firstItem="AwI-c8-tVD" firstAttribute="width" secondItem="x4S-kQ-DmY" secondAttribute="width" id="lyH-Jn-Gy9"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Zwierzęta" id="nDQ-C0-7yI"/>
                     <connections>
                         <outlet property="mainphoto" destination="AwI-c8-tVD" id="MIm-YV-GOE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1377" y="459"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ddN-Hi-yf8">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kFK-qQ-zwH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="NmO-P7-rPj">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="F3U-5q-aSU"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BV5-ll-vE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="565" y="459"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
