@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160C383AEB2DE13890E4B522 /* Pods_Na4_apyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C061135007B55B707E06C3 /* Pods_Na4_apyTests.framework */; };
+		0D8BA6A1D4CC3B586AEB695A /* Pods_Na4_apyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */; };
 		5C6821731D061B5C00FA7781 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821721D061B5C00FA7781 /* Animal.swift */; };
 		5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821751D061C5F00FA7781 /* Shelter.swift */; };
 		5C6821781D06200B00FA7781 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821771D06200B00FA7781 /* Photo.swift */; };
@@ -31,8 +31,8 @@
 		5CCD46B91D04C6E600D2D672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B71D04C6E600D2D672 /* LaunchScreen.storyboard */; };
 		5CCD46C41D04C6E600D2D672 /* Na4_apyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46C31D04C6E600D2D672 /* Na4_apyTests.swift */; };
 		5CCD46CF1D04C6E600D2D672 /* Na4_apyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46CE1D04C6E600D2D672 /* Na4_apyUITests.swift */; };
-		97DF9DE0C5833A8AEBB7F57A /* Pods_Na4_apy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DAA6DB646A0A94BC89B0DD /* Pods_Na4_apy.framework */; };
-		D2F85AC7B461BDA7E29D5E63 /* Pods_Na4_apyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFBA5524DC43056CF8E04898 /* Pods_Na4_apyUITests.framework */; };
+		6FAFA5AA4D783B7B0881C547 /* Pods_Na4_apyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EE99D39CE35B1899BDCDE5B /* Pods_Na4_apyTests.framework */; };
+		89166A708B522BCFBA3BA06F /* Pods_Na4_apy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E840672C406BA1344B0FF4ED /* Pods_Na4_apy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		19C061135007B55B707E06C3 /* Pods_Na4_apyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47329DF26D6B2A34E4B5AD55 /* Pods-Na4ŁapyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C6821721D061B5C00FA7781 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animal.swift; path = Model/Animal.swift; sourceTree = "<group>"; };
 		5C6821751D061C5F00FA7781 /* Shelter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shelter.swift; path = Model/Shelter.swift; sourceTree = "<group>"; };
@@ -76,13 +75,14 @@
 		5CCD46CA1D04C6E600D2D672 /* Na4ŁapyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Na4ŁapyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCD46CE1D04C6E600D2D672 /* Na4_apyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Na4_apyUITests.swift; sourceTree = "<group>"; };
 		5CCD46D01D04C6E600D2D672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EE99D39CE35B1899BDCDE5B /* Pods_Na4_apyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B95E7E3D537B3D602D612B /* Pods-Na4Łapy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4Łapy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Na4Łapy/Pods-Na4Łapy.release.xcconfig"; sourceTree = "<group>"; };
 		A4B2DFC64AA3F1BAC67298C3 /* Pods-Na4ŁapyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.release.xcconfig"; sourceTree = "<group>"; };
-		A5DAA6DB646A0A94BC89B0DD /* Pods_Na4_apy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58F094A766A3A49618A8110 /* Pods-Na4ŁapyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyUITests/Pods-Na4ŁapyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B864BB45FF53EC48343D3FFC /* Pods-Na4ŁapyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyUITests/Pods-Na4ŁapyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C0085FB30658EB415E5825F5 /* Pods-Na4Łapy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4Łapy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4Łapy/Pods-Na4Łapy.debug.xcconfig"; sourceTree = "<group>"; };
-		DFBA5524DC43056CF8E04898 /* Pods_Na4_apyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E840672C406BA1344B0FF4ED /* Pods_Na4_apy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97DF9DE0C5833A8AEBB7F57A /* Pods_Na4_apy.framework in Frameworks */,
+				89166A708B522BCFBA3BA06F /* Pods_Na4_apy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				160C383AEB2DE13890E4B522 /* Pods_Na4_apyTests.framework in Frameworks */,
+				6FAFA5AA4D783B7B0881C547 /* Pods_Na4_apyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2F85AC7B461BDA7E29D5E63 /* Pods_Na4_apyUITests.framework in Frameworks */,
+				0D8BA6A1D4CC3B586AEB695A /* Pods_Na4_apyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,9 +116,9 @@
 		1606DC6D1AA1EC5C21F1CE22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5DAA6DB646A0A94BC89B0DD /* Pods_Na4_apy.framework */,
-				19C061135007B55B707E06C3 /* Pods_Na4_apyTests.framework */,
-				DFBA5524DC43056CF8E04898 /* Pods_Na4_apyUITests.framework */,
+				E840672C406BA1344B0FF4ED /* Pods_Na4_apy.framework */,
+				5EE99D39CE35B1899BDCDE5B /* Pods_Na4_apyTests.framework */,
+				E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -648,10 +648,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = "Na4Łapy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kodujdlapolski.Na4-apy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodujdlapolski.Na4Lapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -664,10 +666,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = "Na4Łapy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kodujdlapolski.Na4-apy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodujdlapolski.Na4Lapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
