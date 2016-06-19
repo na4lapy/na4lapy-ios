@@ -37,7 +37,11 @@ class Photo {
     Asynchroniczne pobieranie obrazka
     */
     func download() {
-        log.debug("Start downloading... \(self.url.absoluteString)")
+        if self.image != nil {
+            log.debug("Zdjęcie zostało już wcześniej pobrane.")
+            return
+        }
+        log.debug("Pobieram zdjęcie... \(self.url.absoluteString)")
         Request.getImageData(self.url,
             success: { (image) in
                 self.image = image

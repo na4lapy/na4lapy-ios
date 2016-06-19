@@ -27,11 +27,28 @@ class Animal {
     private(set) var status: Status?
     private var photos: [Photo]?
     
+    /**
+     Pobieranie pierwszego (głównego) zdjęcia zwierzaka
+    */
     func getFirstPhoto() -> UIImage? {
         guard let image = self.photos?.first?.image else {
             return nil
         }
         return image
+    }
+    
+    /**
+     Pobieranie wszystkich zdjęć zwierzaka
+    */
+    func getAllPhotos() -> [Photo]? {
+        guard let photos = self.photos where !photos.isEmpty else {
+            return nil
+        }
+        log.debug("\(self.name): liczba zdjęć: \(self.photos?.count)")
+        for photo in photos {
+            photo.download()
+        }
+        return photos
     }
     
     init?(dictionary: [String:AnyObject]) {
