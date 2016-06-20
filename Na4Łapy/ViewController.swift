@@ -9,56 +9,33 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var animals : [Animal]?
-    var index = 0
-
     @IBOutlet weak var mainphoto: UIImageView!
+    var listingController: Listing?
     
+    @IBAction func prev(sender: UIButton) {
+        guard let animal = self.listingController?.prev() as? Animal else {
+            return
+        }
+        self.mainphoto.image = animal.getFirstImage()
+    }
+    
+    @IBAction func next(sender: UIButton) {
+        guard let animal = self.listingController?.next() as? Animal else {
+            return
+        }
+        self.mainphoto.image = animal.getFirstImage()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Request.getAnimal(page: 1, size: 10,
-            success: { [weak self] (animals) in
-                guard let strongSelf = self else { return }
-                print(animals.count)
-                strongSelf.animals = animals
-            },
-            failure: { (error) in
-                log.error(error.localizedDescription)
-            }
-        )
-    }
-    
-    @IBAction func prev(sender: UIButton) {
-        if self.index-1 < 0 {
-            return
-        }
-        self.index -= 1
-        self.showMainPhoto()
-    
-    }
-    @IBAction func next(sender: UIButton) {
-        if index+1 >= self.animals?.count {
-            return
-        }
-        self.index += 1
-        self.showMainPhoto()
-    }
-
-    private func showMainPhoto() {
-        guard let image = self.animals?[self.index].getFirstImage() else {
-            log.error("Brak głównego zdjęcia")
-            return
-        }
-        self.mainphoto.image = image
+        self.listingController = Listing(listingType: Animal.self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

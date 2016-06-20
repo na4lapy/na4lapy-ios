@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class Animal {
-    private(set) var id: Int
-    private(set) var name: String
+class Animal: APIObject {
     private(set) var race: String?
     private(set) var description: String?
     private(set) var birthDate: NSDate?
@@ -27,6 +25,40 @@ class Animal {
     private(set) var status: Status?
     private var images: [Photo]?
     
+    //
+    // MARK: init()
+    //
+    required init?(dictionary: [String:AnyObject]) {
+        super.init(dictionary: dictionary)
+        initializeWithDictionary(dictionary)
+    }
+    
+    /**
+     Metoda realizuje pobieranie danych z API zgodnie z parametrami:
+     
+     - Parameter page: Index strony do pobrania
+     - Parameter size: Liczba zwróconych elementów (domyślnie PAGESIZE)
+     - Parameter preferences: Zestaw preferencji użytkownika do sortowania
+     - Parameter success: Tablica zwróconych obiektów
+     - Parameter failure: Informacje o błędzie
+     */
+    override class func get(page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: ([AnyObject]) -> Void, failure: (NSError) -> Void) {
+        let urlstring = BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
+        guard let endpoint = NSURL(string: urlstring) else {
+            failure(Error.WrongURL.err())
+            return
+        }
+        Request.getJSONData(endpoint,
+            success: { (json) in
+                let animals = Animal.jsonToObj(json)
+                success(animals)
+            },
+            failure: { (error) in
+                failure(error)
+            }
+        )
+    }
+
     /**
      Pobieranie pierwszego (głównego) zdjęcia zwierzaka
     */
@@ -51,18 +83,12 @@ class Animal {
         return images
     }
     
-    init?(dictionary: [String:AnyObject]) {
-        guard
-            let id = dictionary[JsonAttr.id] as? Int,
-            let name = dictionary[JsonAttr.name] as? String
-        else {
-            log.error(Error.NoIdOrName.desc())
-            return nil
-        }
-        
-        self.id = id
-        self.name = name
-        
+    /**
+     Wypełnienie właściwości obiektu na podstawie struktury JSON
+ 
+     - Parameter dictionary: Struktura JSON
+    */
+    private func initializeWithDictionary(dictionary: [String: AnyObject]) {
         for (key, value) in dictionary {
             switch key {
             case JsonAttr.race:

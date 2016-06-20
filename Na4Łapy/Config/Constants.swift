@@ -87,12 +87,7 @@ struct JsonAttr  {
 
 // MARK: Rozmiary pobieranej strony (liczba elementów)
 
-let PAGESIZE = 3
-
-// MARK: Closure
-
-typealias APISuccessClosure = ([Animal]) -> Void
-typealias APIFailureClosure = (NSError) -> Void
+let PAGESIZE = 10
 
 // MARK: URL
 

@@ -37,4 +37,10 @@ enum Error: Int {
     }
 }
 
+enum JsonError: ErrorType {
+    case parseError
+    case noData
+}
+
+
 

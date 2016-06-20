@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D8BA6A1D4CC3B586AEB695A /* Pods_Na4_apyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */; };
+		5C3C71301D1737B700ED5C3A /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C712F1D1737B700ED5C3A /* Listing.swift */; };
 		5C6821731D061B5C00FA7781 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821721D061B5C00FA7781 /* Animal.swift */; };
 		5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821751D061C5F00FA7781 /* Shelter.swift */; };
 		5C6821781D06200B00FA7781 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821771D06200B00FA7781 /* Photo.swift */; };
@@ -24,6 +25,9 @@
 		5C68218E1D08C77500FA7781 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821771D06200B00FA7781 /* Photo.swift */; };
 		5C68218F1D08C77900FA7781 /* Shelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821751D061C5F00FA7781 /* Shelter.swift */; };
 		5C6821901D08C79300FA7781 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821821D07469C00FA7781 /* Logger.swift */; };
+		5C6A40021D1890DF00241067 /* APIObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A40011D1890DF00241067 /* APIObject.swift */; };
+		5C6A40031D189FC100241067 /* APIObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A40011D1890DF00241067 /* APIObject.swift */; };
+		5C6A40041D189FCB00241067 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C712F1D1737B700ED5C3A /* Listing.swift */; };
 		5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */; };
 		5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* ViewController.swift */; };
 		5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B21D04C6E600D2D672 /* Main.storyboard */; };
@@ -54,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		47329DF26D6B2A34E4B5AD55 /* Pods-Na4ŁapyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5C3C712F1D1737B700ED5C3A /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listing.swift; path = Model/Listing.swift; sourceTree = "<group>"; };
 		5C6821721D061B5C00FA7781 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animal.swift; path = Model/Animal.swift; sourceTree = "<group>"; };
 		5C6821751D061C5F00FA7781 /* Shelter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shelter.swift; path = Model/Shelter.swift; sourceTree = "<group>"; };
 		5C6821771D06200B00FA7781 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = Model/Photo.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 		5C6821821D07469C00FA7781 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Logger/Logger.swift; sourceTree = "<group>"; };
 		5C6821851D077E5900FA7781 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Config/Constants.swift; sourceTree = "<group>"; };
 		5C6821871D08C14500FA7781 /* ErrorString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorString.swift; path = Config/ErrorString.swift; sourceTree = "<group>"; };
+		5C6A40011D1890DF00241067 /* APIObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIObject.swift; path = Model/APIObject.swift; sourceTree = "<group>"; };
 		5CCD46AB1D04C6E600D2D672 /* Na4Łapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Na4Łapy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CCD46B01D04C6E600D2D672 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,11 +132,13 @@
 		5C6821741D061B6F00FA7781 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5C6821801D0729EB00FA7781 /* Request.swift */,
+				5C3C712F1D1737B700ED5C3A /* Listing.swift */,
+				5C6A40011D1890DF00241067 /* APIObject.swift */,
 				5C6821721D061B5C00FA7781 /* Animal.swift */,
+				5C6821751D061C5F00FA7781 /* Shelter.swift */,
+				5C6821801D0729EB00FA7781 /* Request.swift */,
 				5C68217E1D07295100FA7781 /* UserPreferences.swift */,
 				5C6821771D06200B00FA7781 /* Photo.swift */,
-				5C6821751D061C5F00FA7781 /* Shelter.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -487,9 +495,11 @@
 				5C68217F1D07295100FA7781 /* UserPreferences.swift in Sources */,
 				5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */,
 				5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */,
+				5C3C71301D1737B700ED5C3A /* Listing.swift in Sources */,
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
+				5C6A40021D1890DF00241067 /* APIObject.swift in Sources */,
 				5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */,
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
@@ -504,12 +514,14 @@
 				5C68218E1D08C77500FA7781 /* Photo.swift in Sources */,
 				5CCD46C41D04C6E600D2D672 /* Na4_apyTests.swift in Sources */,
 				5C68218D1D08C77100FA7781 /* UserPreferences.swift in Sources */,
+				5C6A40041D189FCB00241067 /* Listing.swift in Sources */,
 				5C68218B1D08C76A00FA7781 /* ErrorString.swift in Sources */,
 				5C6821901D08C79300FA7781 /* Logger.swift in Sources */,
 				5C68218C1D08C76E00FA7781 /* Request.swift in Sources */,
 				5C6821891D08C74D00FA7781 /* Animal.swift in Sources */,
 				5C68218A1D08C76600FA7781 /* Constants.swift in Sources */,
 				5C68218F1D08C77900FA7781 /* Shelter.swift in Sources */,
+				5C6A40031D189FC100241067 /* APIObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
