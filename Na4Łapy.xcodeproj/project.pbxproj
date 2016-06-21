@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04E61A451D1880B8002AA70F /* AnimalKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A441D1880B8002AA70F /* AnimalKolodaView.swift */; };
+		04E61A471D189263002AA70F /* AnimalCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E61A461D189263002AA70F /* AnimalCardView.xib */; };
+		04E61A491D18930F002AA70F /* AnimalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCardView.swift */; };
 		0D8BA6A1D4CC3B586AEB695A /* Pods_Na4_apyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */; };
 		5C6821731D061B5C00FA7781 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821721D061B5C00FA7781 /* Animal.swift */; };
 		5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821751D061C5F00FA7781 /* Shelter.swift */; };
@@ -25,7 +28,7 @@
 		5C68218F1D08C77900FA7781 /* Shelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821751D061C5F00FA7781 /* Shelter.swift */; };
 		5C6821901D08C79300FA7781 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821821D07469C00FA7781 /* Logger.swift */; };
 		5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */; };
-		5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* ViewController.swift */; };
+		5CCD46B11D04C6E600D2D672 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B21D04C6E600D2D672 /* Main.storyboard */; };
 		5CCD46B61D04C6E600D2D672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B51D04C6E600D2D672 /* Assets.xcassets */; };
 		5CCD46B91D04C6E600D2D672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B71D04C6E600D2D672 /* LaunchScreen.storyboard */; };
@@ -53,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04E61A441D1880B8002AA70F /* AnimalKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalKolodaView.swift; sourceTree = "<group>"; };
+		04E61A461D189263002AA70F /* AnimalCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimalCardView.xib; sourceTree = "<group>"; };
+		04E61A481D18930F002AA70F /* AnimalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCardView.swift; sourceTree = "<group>"; };
 		47329DF26D6B2A34E4B5AD55 /* Pods-Na4ŁapyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C6821721D061B5C00FA7781 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animal.swift; path = Model/Animal.swift; sourceTree = "<group>"; };
 		5C6821751D061C5F00FA7781 /* Shelter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shelter.swift; path = Model/Shelter.swift; sourceTree = "<group>"; };
@@ -64,7 +70,7 @@
 		5C6821871D08C14500FA7781 /* ErrorString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorString.swift; path = Config/ErrorString.swift; sourceTree = "<group>"; };
 		5CCD46AB1D04C6E600D2D672 /* Na4Łapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Na4Łapy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5CCD46B01D04C6E600D2D672 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCardsViewController.swift; sourceTree = "<group>"; };
 		5CCD46B31D04C6E600D2D672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CCD46B51D04C6E600D2D672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CCD46B81D04C6E600D2D672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,6 +119,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E61A431D188092002AA70F /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				04E61A461D189263002AA70F /* AnimalCardView.xib */,
+				04E61A481D18930F002AA70F /* AnimalCardView.swift */,
+				04E61A441D1880B8002AA70F /* AnimalKolodaView.swift */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
 		1606DC6D1AA1EC5C21F1CE22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,10 +193,11 @@
 		5CCD46AD1D04C6E600D2D672 /* Na4Łapy */ = {
 			isa = PBXGroup;
 			children = (
+				04E61A431D188092002AA70F /* CustomViews */,
 				5C6821741D061B6F00FA7781 /* Model */,
 				5C6821841D0746A600FA7781 /* Logger */,
 				5C68217D1D06255D00FA7781 /* Config */,
-				5CCD46B01D04C6E600D2D672 /* ViewController.swift */,
+				5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */,
 				5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */,
 				5CCD46B21D04C6E600D2D672 /* Main.storyboard */,
 				5CCD46B51D04C6E600D2D672 /* Assets.xcassets */,
@@ -336,6 +353,7 @@
 			files = (
 				5CCD46B91D04C6E600D2D672 /* LaunchScreen.storyboard in Resources */,
 				5CCD46B61D04C6E600D2D672 /* Assets.xcassets in Resources */,
+				04E61A471D189263002AA70F /* AnimalCardView.xib in Resources */,
 				5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,9 +504,11 @@
 			files = (
 				5C68217F1D07295100FA7781 /* UserPreferences.swift in Sources */,
 				5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */,
-				5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */,
+				5CCD46B11D04C6E600D2D672 /* AnimalCardsViewController.swift in Sources */,
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
+				04E61A451D1880B8002AA70F /* AnimalKolodaView.swift in Sources */,
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
+				04E61A491D18930F002AA70F /* AnimalCardView.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
 				5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */,
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
