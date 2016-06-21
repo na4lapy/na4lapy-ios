@@ -43,7 +43,8 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
                             guard let strongSelf = self else { return }
                             print(animals.count)
                             strongSelf.animals = animals
-                            strongSelf.kolodaView.reloadData()
+                dispatch_async(dispatch_get_main_queue(),{strongSelf.kolodaView.reloadData()})
+                
                         },
             failure: { (error) in
             log.error(error.localizedDescription)
