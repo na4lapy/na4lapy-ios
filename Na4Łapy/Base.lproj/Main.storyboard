@@ -9,7 +9,7 @@
         <!--Dostępne zwierzęta-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Dostępne zwierzęta" id="BYZ-38-t0r" customClass="AnimalCardsViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Dostępne zwierzęta" id="BYZ-38-t0r" customClass="AnimalCardsViewController" sceneMemberID="viewController" customModule="Na4Łapy" customModuleProvider="target">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -52,7 +52,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Zwierzęta" id="nDQ-C0-7yI"/>
                     <connections>
-                        <outlet property="kolodaView" destination="o2q-fw-KUr" id="bY3-Qt-qsD"/>
+                        <outlet property="kolodaView" destination="o2q-fw-KUr" id="Fo8-yO-j7t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

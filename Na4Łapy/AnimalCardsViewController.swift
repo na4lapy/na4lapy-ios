@@ -35,14 +35,12 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
     
     
     func fetchAnimals() {
-        
-        Request.getAnimal(
-            page: 1,
-            size: 10,
+        Animal.get(
+            1,
             success: { [weak self] (animals) in
                             guard let strongSelf = self else { return }
                             print(animals.count)
-                            strongSelf.animals = animals
+                            strongSelf.animals = animals as? [Animal]
                             dispatch_async(
                                 dispatch_get_main_queue(),
                                 {strongSelf.kolodaView.reloadData()})

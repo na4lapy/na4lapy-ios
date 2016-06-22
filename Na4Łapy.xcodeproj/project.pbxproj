@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04E61A451D1880B8002AA70F /* AnimalKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A441D1880B8002AA70F /* AnimalKolodaView.swift */; };
 		04E61A471D189263002AA70F /* AnimalCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E61A461D189263002AA70F /* AnimalCardView.xib */; };
 		04E61A491D18930F002AA70F /* AnimalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCardView.swift */; };
@@ -32,7 +33,6 @@
 		5C6A40031D189FC100241067 /* APIObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A40011D1890DF00241067 /* APIObject.swift */; };
 		5C6A40041D189FCB00241067 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C712F1D1737B700ED5C3A /* Listing.swift */; };
 		5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */; };
-		5CCD46B11D04C6E600D2D672 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B21D04C6E600D2D672 /* Main.storyboard */; };
 		5CCD46B61D04C6E600D2D672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B51D04C6E600D2D672 /* Assets.xcassets */; };
 		5CCD46B91D04C6E600D2D672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCD46B71D04C6E600D2D672 /* LaunchScreen.storyboard */; };
@@ -510,10 +510,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */,
 				5C68217F1D07295100FA7781 /* UserPreferences.swift in Sources */,
 				5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */,
-				5CCD46B11D04C6E600D2D672 /* AnimalCardsViewController.swift in Sources */,
-				5CCD46B11D04C6E600D2D672 /* ViewController.swift in Sources */,
 				5C3C71301D1737B700ED5C3A /* Listing.swift in Sources */,
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
 				04E61A451D1880B8002AA70F /* AnimalKolodaView.swift in Sources */,
