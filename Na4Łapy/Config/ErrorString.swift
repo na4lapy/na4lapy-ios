@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum Error: Int {
-    case NoIdOrName = 1, WrongJsonKey, JsonParseError, NoData, WrongURL, WrongJsonStruct, NoImageData
+    case NoIdOrName = 1, WrongJsonKey, JsonParseError, NoData, WrongURL, WrongJsonStruct, NoImageData, IllegalPageNumber
 
     func desc() -> String {
         switch self {
@@ -28,6 +28,8 @@ enum Error: Int {
             return "Nieprawidłowa struktura JSON"
         case NoImageData:
             return "Brak zdjęcia"
+        case IllegalPageNumber:
+            return "Nieprawidłowy numer strony (musi być > 0)"
         }
     }
     

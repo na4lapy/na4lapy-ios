@@ -9,20 +9,46 @@
 import Foundation
 
 protocol ListingProtocol {
-    static func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject]) -> Void, failure: (NSError) -> Void)
+    static func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void)
     init?(dictionary: [String:AnyObject])
 }
 
+/**
+ Obsługa listingu wraz z prefetch'em
+ Zasada działania.
+ 
+ Dane z API są pobierane stronami. Na stronie znajduje się PAGESIZE elementów, które zostają zwrócone w formie tablicy. Taka tablica (strona) jest wpisywana do słownika localCache pod klucz będący ID danej strony, np:
+ 
+ Strona o id 1 będzie wpisana jako [1, Array<AnyObject>]
+
+ Jak dzała prefetch.
+ Wywołując metodę next() poruszamy się wzdłuż aktualnej strony (localCachePage) inkrementując localCacheIndex. Jeśli localCacheIndex znajdzie się w połowie aktualnej strony, to wykonywane są kolejno następujące operacje:
+ - ładowana jest kolejna strona (czyli aktualna strona +1)
+ - ładowana jest także wcześniejsza strona (-1) /* aby uprościć sprawdzanie w którą stronę następuje ruch, ale można to poprawić */
+ - usuwana jest strona +2 /* to też można poprawić poprzez wykrywanie kierunku ruchu */
+ - usuwana jest strona -2
+ Oczywiście jeśli strony +1 lub -1 są już w pamięci, to nie zostaną ponownie załadowane.
+ W wyniku działania powyższego algorytmu zawsze w pamięci znajdują się obiekty:
+ - strona wcześniejsza
+ - strona aktualna
+ - strona kolejna
+*/
+
+// TODO: na podstawie zmiennej 'count' rozpoznawać ostatni element na ostatniej stronie
+
 class Listing {
-    private var localCache : [AnyObject] = []
+    private var localCache : [Int: AnyObject] = [:]
     private var localCacheIndex = 0
+    private var localCachePage = 1
+    private var count = 0
     private let listingType: ListingProtocol.Type
     
     private func prefetch(page: Int) {
         listingType.get(page, size: PAGESIZE, preferences: nil,
-            success: { [weak self] (elements) in
+            success: { [weak self] (elements, count) in
                 guard let strongSelf = self else { return }
-                strongSelf.localCache = elements
+                strongSelf.localCache[page] = elements
+                strongSelf.count = count
             },
             failure: { (error) in
                 log.error(error.localizedDescription)
@@ -35,19 +61,74 @@ class Listing {
         self.prefetch(1)
     }
     
+    // Jeśli aktualny index strony przekroczy połowę wielkości to należy:
+    // - pobrać kolejną stronę (+1)
+    // - pobrać wcześniejszą stronę (-1)
+    // - usunąć (-2)
+    // - usunąć (+2)
+    func clearAndPrefetch() {
+        // +1
+        if self.localCache[localCachePage+1] == nil {
+            self.prefetch(localCachePage+1)
+        }
+        // -1
+        if self.localCache[localCachePage-1] == nil {
+            self.prefetch(localCachePage-1)
+        }
+        // -2
+        self.localCache.removeValueForKey(localCachePage-2)
+        // +2
+        self.localCache.removeValueForKey(localCachePage+2)
+    }
+    
     func next() -> AnyObject? {
-        if self.localCacheIndex+1 >= self.localCache.count {
+        // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
+        guard let page = self.localCache[localCachePage] else {
+            log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
+            self.prefetch(localCachePage)
             return nil
         }
-        self.localCacheIndex += 1
-        return localCache[self.localCacheIndex] ?? nil
+        
+        if self.localCacheIndex+1 == page.count/2 {
+            self.clearAndPrefetch()
+        }
+        
+        // Jeśli został osiągnięty skraj aktualnej strony to zmiana na kolejną
+        if self.localCacheIndex+1 >= page.count {
+            self.localCacheIndex = 0
+            self.localCachePage += 1                    // FIXME: sprawdzić czy jest to ostatnia strona
+        } else {
+            self.localCacheIndex += 1
+        }
+        log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
+        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
     }
     
     func prev() -> AnyObject? {
-        if self.localCacheIndex-1 < 0 {
+        // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
+        guard let page = self.localCache[localCachePage] else {
+            log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
+            self.prefetch(localCachePage)
             return nil
         }
-        self.localCacheIndex -= 1
-        return localCache[self.localCacheIndex] ?? nil
+        if self.localCacheIndex-1 == page.count/2 {
+            self.clearAndPrefetch()
+        }
+        // Jeśli został osiągnięty skraj aktualnej strony to zmiana na kolejną
+        if self.localCacheIndex-1 < 0 {
+            if self.localCachePage <= 1 {
+                self.localCachePage = 1
+                self.localCacheIndex = 0
+            } else {
+                self.localCachePage -= 1
+                if let page = self.localCache[localCachePage] {
+                    self.localCacheIndex = page.count-1         // index na ostatni element wcześniejszej strony
+                }
+            }
+        } else {
+            self.localCacheIndex -= 1
+        }
+        log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
+        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
     }
 }

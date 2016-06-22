@@ -42,16 +42,20 @@ class Animal: APIObject {
      - Parameter success: Tablica zwróconych obiektów
      - Parameter failure: Informacje o błędzie
      */
-    override class func get(page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: ([AnyObject]) -> Void, failure: (NSError) -> Void) {
+    override class func get(page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
+        if page <= 0 {
+            failure(Error.IllegalPageNumber.err())
+            return
+        }
         let urlstring = BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
         guard let endpoint = NSURL(string: urlstring) else {
             failure(Error.WrongURL.err())
             return
         }
         Request.getJSONData(endpoint,
-            success: { (json) in
+            success: { (json, count) in
                 let animals = Animal.jsonToObj(json)
-                success(animals)
+                success(animals, count)
             },
             failure: { (error) in
                 failure(error)

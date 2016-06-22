@@ -46,5 +46,5 @@ class APIObject: ListingProtocol {
     /**
      Metoda nadpisywana w obiektach potomnych, wymagana przez protokół ListingProtocol
      */
-    class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject]) -> Void, failure: (NSError) -> Void) {}
+    class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {}
 }

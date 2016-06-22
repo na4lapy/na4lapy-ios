@@ -27,7 +27,7 @@ class Shelter: APIObject {
         initializeWithDictionary(dictionary)
     }
 
-    override class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject]) -> Void, failure: (NSError) -> Void) {
+    override class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
     }
     
     private func initializeWithDictionary(dictionary: [String: AnyObject]) {
