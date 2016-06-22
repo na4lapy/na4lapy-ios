@@ -10,48 +10,6 @@ import Foundation
 import UIKit
 
 class Request {
-    enum JsonError: ErrorType {
-        case parseError
-        case noData
-    }
-
-    /**
-     Metoda realizuje pobieranie danych z API zgodnie z parametrami:
-     
-     - Parameter page: Index strony do pobrania
-     - Parameter size: Liczba zwróconych elementów (domyślnie PAGESIZE)
-     - Parameter preferences: Zestaw preferencji użytkownika do sortowania
-     - Parameter success: Tablica zwróconych obiektów
-     - Parameter failure: Informacje o błędzie
-    */
-    class func getAnimal(page page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: APISuccessClosure, failure: APIFailureClosure) {
-        let urlstring = BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
-        guard let endpoint = NSURL(string: urlstring) else {
-            failure(Error.WrongURL.err())
-            return
-        }
-        Request.httpGET(endpoint,
-            success: { (data) in
-                do {
-                    let json = try self.parseJSON(data)
-                    guard let jsondata = json[JsonAttr.data] as? [[String: AnyObject]] else {
-                        throw JsonError.parseError
-                    }
-                    success(Request.animalConstructor(jsondata))
-                }
-                catch let error as NSError {
-                    failure(error)
-                }
-                catch JsonError.parseError {
-                    failure(Error.WrongJsonStruct.err())
-                }
-            },
-            failure: { (error) in
-                failure(error)
-            }
-        )
-    }
-    
     /**
      Pobranie danych obrazka ze wskazanego urla
  
@@ -74,24 +32,34 @@ class Request {
         )
     }
     
-    //
-    // MARK: private
-    //
-    
     /**
-     Tworzenie obiektów Animal na podstawie JSON
- 
-     - Parameter json: Struktura JSON
-     - Returns: Tablica obiektów Animal
+     Pobranie struktury JSON ze wskazanego endpointu
+
+     - Parameter endpoint: adres endpointu
+     - Parameter success: Przekazanie pobranej struktury
+     - Parameter failure: Przekazanie błędu
     */
-    private class func animalConstructor(json: [[String: AnyObject]]) -> [Animal] {
-        var animals = [Animal]()
-        for item in json {
-            if let animal = Animal(dictionary: item) {
-                animals.append(animal)
+    class func getJSONData(endpoint: NSURL, success: ([AnyObject]) -> Void, failure: (NSError) -> Void) {
+        Request.httpGET(endpoint,
+            success: { (data) in
+                do {
+                    let json = try Request.parseJSON(data)
+                    guard let jsondata = json[JsonAttr.data] as? [[String: AnyObject]] else {
+                        throw JsonError.parseError
+                    }
+                    success(jsondata)
+                }
+                catch let error as NSError {
+                    failure(error)
+                }
+                catch JsonError.parseError {
+                    failure(Error.WrongJsonStruct.err())
+                }
+            },
+            failure: { (error) in
+                failure(error)
             }
-        }
-        return animals
+        )
     }
     
     /**
@@ -133,13 +101,6 @@ class Request {
             throw JsonError.parseError
         }
         return json
-    }
-    
-    /**
-     Metoda realizuje pobieranie danych z API zgodnie z parametrami:
-     */
-    class func getShelter() {
-        // TODO:
     }
 }
 

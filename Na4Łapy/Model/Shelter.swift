@@ -8,8 +8,7 @@
 
 import Foundation
 
-class Shelter {
-    private var name: String?
+class Shelter: APIObject {
     private var street: String?
     private var buildingNumber: String?
     private var city: String?
@@ -20,7 +19,18 @@ class Shelter {
     private var accountNumber: String?
     private var adoptionRules: String?
     
-    func get() {
-        Request.getShelter()
+    //
+    // MARK: init()
+    //
+    required init?(dictionary: [String:AnyObject]) {
+        super.init(dictionary: dictionary)
+        initializeWithDictionary(dictionary)
     }
+
+    override class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject]) -> Void, failure: (NSError) -> Void) {
+    }
+    
+    private func initializeWithDictionary(dictionary: [String: AnyObject]) {
+    }
+
 }
