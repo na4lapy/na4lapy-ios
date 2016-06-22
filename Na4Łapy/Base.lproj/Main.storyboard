@@ -9,70 +9,55 @@
         <!--Dostępne zwierzęta-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Dostępne zwierzęta" id="BYZ-38-t0r" customClass="ViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Dostępne zwierzęta" id="BYZ-38-t0r" customClass="AnimalCardsViewController" sceneMemberID="viewController" customModule="Na4Łapy" customModuleProvider="target">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AwI-c8-tVD">
-                                <rect key="frame" x="20" y="45" width="560" height="458"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgP-i4-LGm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgP-i4-LGm">
                                 <rect key="frame" x="20" y="521" width="69" height="30"/>
                                 <state key="normal" title="poprzedni"/>
                                 <connections>
                                     <action selector="prev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iMp-2M-zvJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4S-kQ-DmY">
-                                <rect key="frame" x="20" y="453" width="560" height="50"/>
-                                <color key="backgroundColor" red="0.3411764706" green="0.63921568630000003" blue="0.69411764710000001" alpha="0.70342133620689651" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Label">
-                                        <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjt-0P-vTE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjt-0P-vTE">
                                 <rect key="frame" x="517" y="521" width="63" height="30"/>
                                 <state key="normal" title="następny"/>
                                 <connections>
                                     <action selector="next:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n9E-Rh-gE9"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2q-fw-KUr" customClass="AnimalKolodaView" customModule="Na4Łapy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="513"/>
+                                <color key="backgroundColor" red="0.52941176469999995" green="0.84313725490000002" blue="0.79215686269999996" alpha="0.22893318965517243" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AwI-c8-tVD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="3xq-sD-Dgh"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IgP-i4-LGm" secondAttribute="bottom" constant="38" id="6bB-8S-b2Z"/>
-                            <constraint firstItem="AwI-c8-tVD" firstAttribute="leading" secondItem="IgP-i4-LGm" secondAttribute="leading" id="Cnd-dC-OmL"/>
-                            <constraint firstItem="AwI-c8-tVD" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="GDt-eU-5Ig"/>
-                            <constraint firstItem="AwI-c8-tVD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="VnG-B5-SAa"/>
-                            <constraint firstItem="x4S-kQ-DmY" firstAttribute="bottom" secondItem="AwI-c8-tVD" secondAttribute="bottom" id="a1i-E7-Lj7"/>
-                            <constraint firstItem="AwI-c8-tVD" firstAttribute="trailing" secondItem="rjt-0P-vTE" secondAttribute="trailing" id="czp-Vf-gVx"/>
-                            <constraint firstItem="IgP-i4-LGm" firstAttribute="baseline" secondItem="rjt-0P-vTE" secondAttribute="baseline" id="dIk-zb-Q5g"/>
-                            <constraint firstItem="IgP-i4-LGm" firstAttribute="top" secondItem="AwI-c8-tVD" secondAttribute="bottom" constant="29" id="gYe-dy-VvV"/>
-                            <constraint firstItem="AwI-c8-tVD" firstAttribute="width" secondItem="x4S-kQ-DmY" secondAttribute="width" id="lyH-Jn-Gy9"/>
+                            <constraint firstItem="o2q-fw-KUr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4uJ-Zz-yDl"/>
+                            <constraint firstItem="o2q-fw-KUr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mAA-Gk-T4v"/>
+                            <constraint firstItem="IgP-i4-LGm" firstAttribute="baseline" secondItem="rjt-0P-vTE" secondAttribute="baseline" id="qV2-gY-vLZ"/>
+                            <constraint firstAttribute="trailing" secondItem="o2q-fw-KUr" secondAttribute="trailing" id="vae-zW-nhl"/>
+                            <constraint firstItem="IgP-i4-LGm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wHB-ZX-S3O"/>
+                            <constraint firstItem="IgP-i4-LGm" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="xUk-WY-aeR"/>
+                            <constraint firstItem="IgP-i4-LGm" firstAttribute="top" secondItem="o2q-fw-KUr" secondAttribute="bottom" constant="8" symbolic="YES" id="z3i-C7-b8I"/>
+                            <constraint firstItem="rjt-0P-vTE" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="z3q-jM-fbn"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Zwierzęta" id="nDQ-C0-7yI"/>
                     <connections>
-                        <outlet property="mainphoto" destination="AwI-c8-tVD" id="MIm-YV-GOE"/>
+                        <outlet property="kolodaView" destination="o2q-fw-KUr" id="Fo8-yO-j7t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="459"/>
+            <point key="canvasLocation" x="1431" y="459"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ddN-Hi-yf8">
