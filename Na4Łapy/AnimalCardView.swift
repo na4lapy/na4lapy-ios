@@ -9,8 +9,6 @@
 import UIKit
 
 class AnimalCardView: UIView {
-
     @IBOutlet weak var animalPhoto: UIImageView!
-
     @IBOutlet weak var animalName: UILabel!
 }
