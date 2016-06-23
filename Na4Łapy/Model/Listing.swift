@@ -43,12 +43,14 @@ class Listing {
     private var count = 0
     private let listingType: ListingProtocol.Type
     
-    private func prefetch(page: Int) {
+    private func prefetch(page: Int, success: (() -> Void)? = nil) {
+        log.debug("prefetch page: \(page)")
         listingType.get(page, size: PAGESIZE, preferences: nil,
             success: { [weak self] (elements, count) in
                 guard let strongSelf = self else { return }
                 strongSelf.localCache[page] = elements
                 strongSelf.count = count
+                success?()
             },
             failure: { (error) in
                 log.error(error.localizedDescription)
@@ -58,7 +60,12 @@ class Listing {
 
     init<T: ListingProtocol>(listingType: T.Type) {
         self.listingType = listingType
-        self.prefetch(1)
+    }
+    
+    func prefetch( success: () -> Void ) {
+        self.prefetch(1) {
+            success()
+        }
     }
     
     // Jeśli aktualny index strony przekroczy połowę wielkości to należy:
@@ -79,6 +86,30 @@ class Listing {
         self.localCache.removeValueForKey(localCachePage-2)
         // +2
         self.localCache.removeValueForKey(localCachePage+2)
+    }
+    
+    func getCount() -> UInt {
+        return UInt(self.count)
+    }
+    
+    func get(index: UInt) -> AnyObject? {
+        // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
+        guard let page = self.localCache[localCachePage] else {
+            log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
+            self.prefetch(localCachePage)
+            return nil
+        }
+        
+        // Konwersja index -> index/page
+        self.localCachePage = (Int(index)/PAGESIZE)+1
+        self.localCacheIndex = Int(index) - (localCachePage-1)*PAGESIZE
+
+        if self.localCacheIndex == page.count/2 {
+            self.clearAndPrefetch()
+        }
+
+        log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
+        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
     }
     
     func next() -> AnyObject? {

@@ -13,59 +13,28 @@ private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent:CGFloat = 0.1
 
 class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaViewDataSource{
-    var animals : [Animal]?
-    var index = 0
-    
+    private var listing: Listing?
     @IBOutlet weak var kolodaView: AnimalKolodaView!
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-       
-        //setting up the swipeable KolodaView
-        kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
-        kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
-        kolodaView.dataSource = self
-        kolodaView.delegate = self
-        self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         
-        fetchAnimals()
-      
-    }
-    
-    
-    func fetchAnimals() {
-        Animal.get(
-            1,
-            success: { [weak self] (animals) in
-                            guard let strongSelf = self else { return }
-                            print(animals.count)
-                            strongSelf.animals = animals as? [Animal]
-                            dispatch_async(
-                                dispatch_get_main_queue(),
-                                {strongSelf.kolodaView.reloadData()})
-                            
-                        },
-            failure: { (error) in
-            log.error(error.localizedDescription)
+        // Do any additional setup after loading the view, typically from a nib.
+        self.listing = Listing(listingType: Animal.self)
+ 
+        // FIXME: co zrobić jeśli nie uda się pierwszy prefetch
+        self.listing?.prefetch { [weak self] in
+            guard let strongSelf = self else { return }
+            //setting up the swipeable KolodaView
+            dispatch_async(dispatch_get_main_queue()) {
+                strongSelf.kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
+                strongSelf.kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
+                strongSelf.kolodaView.dataSource = self
+                strongSelf.kolodaView.delegate = self
+                strongSelf.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+                strongSelf.kolodaView.reloadData()
             }
-        )
-    }
-    
-    @IBAction func prev(sender: UIButton) {
-        if self.index-1 < 0 {
-            return
         }
-        self.index -= 1
-//        self.showMainPhoto()
-    
-    }
-    @IBAction func next(sender: UIButton) {
-        if index+1 >= self.animals?.count {
-            return
-        }
-        self.index += 1
-//        self.showMainPhoto()
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,18 +45,21 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
     //MARK: KolodaDataSourceImplementation 
     
     func kolodaNumberOfCards(koloda:KolodaView) -> UInt {
-        //TODO: review nie wiem czy to dobrze unwrappuje
-        return UInt(self.animals?.count ?? 0)
+        return listing?.getCount() ?? 0
     }
     
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
         let animalCard = NSBundle.mainBundle().loadNibNamed("AnimalCardView", owner: self, options: nil)[0] as? AnimalCardView
-        let animalImage = animals?[Int(index)].getFirstImage()
+        guard
+            let animal = listing?.get(index) as? Animal,
+            let animalImage = animal.getFirstImage()
+        else {
+            // FIXME: w tym miejscu zwrócić obrazek z błędem
+            return UIView()
+        }
         animalCard?.animalPhoto?.image = animalImage
-        animalCard?.animalName.text = animals?[Int(index)].name
-        log.debug((animals?[Int(index)].name)!)
-        return animalCard!
-//        return UIImageView(image: animals?[Int(index)].getFirstImage())
+        animalCard?.animalName.text = animal.name
+        return animalCard ?? UIView()           // FIXME: w tym miejscu obrazek z błędem
     }
     
     func koloda(koloda: KolodaView, viewForCardOverlayAtIndex index: UInt) -> OverlayView? {
