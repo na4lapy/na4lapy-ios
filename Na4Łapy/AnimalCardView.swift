@@ -11,4 +11,39 @@ import UIKit
 class AnimalCardView: UIView {
     @IBOutlet weak var animalPhoto: UIImageView!
     @IBOutlet weak var animalName: UILabel!
+    @IBOutlet weak var animalSize: UIImageView!
+    @IBOutlet weak var animalGender: UIImageView!
+    @IBOutlet weak var animalActivity: UIImageView!
+    
+    let animalSizeImageDictionary = [
+        Size.small : "Maly",
+        Size.medium: "Sredni",
+        Size.large: "Duzy"
+    ]
+    
+    let animalGenderImageDictionary = [
+        Gender.female : "Suczka",
+        Gender.male : "Samiec"
+    ]
+    
+    let animalActivityLevelImageDictionary = [
+        Activity.high : "Aktywny",
+        Activity.low : "Domator"
+    ]
+    
+    var animal: Animal? {
+        didSet {
+            updateCellUI()
+        }
+    }
+    
+    private func updateCellUI(){
+        animalName.text = animal?.name
+        let imageName = animalSizeImageDictionary[(animal?.size)!]!
+        log.debug(imageName)
+        animalSize.image = UIImage.init(named: animalSizeImageDictionary[(animal?.size)!]!)
+        animalGender.image = UIImage.init(named: animalGenderImageDictionary[(animal?.gender)!]!)
+        animalActivity.image = UIImage.init(named: animalActivityLevelImageDictionary[(animal?.activity)!]!)
+    }
+    
 }

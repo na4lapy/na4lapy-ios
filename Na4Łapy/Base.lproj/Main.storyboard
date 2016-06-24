@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2q-fw-KUr" customClass="AnimalKolodaView" customModule="Na4Łapy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="513"/>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2q-fw-KUr" customClass="AnimalKolodaView" customModule="Na4Łapy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                                 <color key="backgroundColor" red="0.52941176469999995" green="0.84313725490000002" blue="0.79215686269999996" alpha="0.22893318965517243" colorSpace="calibratedRGB"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </view>

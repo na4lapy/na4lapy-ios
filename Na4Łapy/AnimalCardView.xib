@@ -57,8 +57,11 @@
                 <constraint firstItem="wl1-cO-whe" firstAttribute="top" secondItem="ShQ-Ap-ts7" secondAttribute="bottom" constant="1" id="ovT-HJ-Tp2"/>
             </constraints>
             <connections>
+                <outlet property="animalActivity" destination="wl1-cO-whe" id="Zhm-Z8-HRW"/>
+                <outlet property="animalGender" destination="5Ni-5A-dBi" id="AdA-do-u8i"/>
                 <outlet property="animalName" destination="mGM-AS-ked" id="nDd-al-HdP"/>
                 <outlet property="animalPhoto" destination="ShQ-Ap-ts7" id="Ib4-0u-NJX"/>
+                <outlet property="animalSize" destination="dmZ-q9-F4g" id="ycW-O0-X4P"/>
             </connections>
             <point key="canvasLocation" x="323" y="400"/>
         </view>

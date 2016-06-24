@@ -58,7 +58,7 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
             return UIView()
         }
         animalCard?.animalPhoto?.image = animalImage
-        animalCard?.animalName.text = animal.name
+        animalCard?.animal = animal
         return animalCard ?? UIView()           // FIXME: w tym miejscu obrazek z błędem
     }
     
@@ -87,7 +87,11 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
     
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
         
+        if(direction == .Left) {
+            koloda.revertAction()
+        }
     }
+    
 
 }
 
