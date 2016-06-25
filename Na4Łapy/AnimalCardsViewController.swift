@@ -77,21 +77,12 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
         return true
     }
     
-    func kolodaShouldMoveBackgroundCard(koloda: KolodaView) -> Bool {
-        return false
-    }
-    
-    func kolodaShouldTransparentizeNextCard(koloda: KolodaView) -> Bool {
-        return false
-    }
-    
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
         
         if(direction == .Left) {
             koloda.revertAction()
         }
     }
-    
 
 }
 

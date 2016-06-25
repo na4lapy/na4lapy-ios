@@ -23,7 +23,7 @@ class AnimalKolodaView: KolodaView {
             let horizontalMargin = -self.bounds.width * backgroundCardScalePercent
             let width = CGRectGetWidth(self.bounds) * backgroundCardScalePercent
             let height = width * defaultHeightRatio
-            let frame = CGRect(x: horizontalMargin, y:0 , width: width, height: height)
+            let frame = CGRect(x: horizontalMargin, y:defaultTopOffset , width: width, height: height)
             return frame
         }
         return CGRectZero
