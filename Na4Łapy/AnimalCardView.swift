@@ -39,8 +39,6 @@ class AnimalCardView: UIView {
     
     private func updateCellUI(){
         animalName.text = animal?.name
-        let imageName = animalSizeImageDictionary[(animal?.size)!]!
-//        log.debug(imageName)
         animalSize.image = UIImage.init(named: animalSizeImageDictionary[(animal?.size)!]!)
         animalGender.image = UIImage.init(named: animalGenderImageDictionary[(animal?.gender)!]!)
         if let animalActivityImageName = animalActivityLevelImageDictionary[(animal?.activity)!] {
