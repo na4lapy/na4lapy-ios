@@ -18,10 +18,40 @@ class AnimalCardView: UIView {
     @IBOutlet weak var animalGender: UIImageView!
     @IBOutlet weak var animalActivity: UIImageView!
     
-    override func awakeFromNib() {
-        self.animalPhoto?.layer.masksToBounds = true
-        self.animalPhoto?.layer.cornerRadius = 8.0
+    @IBOutlet weak var roundedCorn: UIView!
+    @IBOutlet weak var shadowBorder: UIView!
+//    @IBOutlet weak var self: UIView!
+    
+//    override func awakeFromNib() {
+    
+        
+//        log.debug(self.superview.debugDescription)
+//    }
+    
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        
+        roundedCorn.layer.masksToBounds = false
+        roundedCorn.layer.shadowColor = UIColor.blackColor().CGColor
+        roundedCorn.layer.shadowOpacity = 0.5
+        roundedCorn.layer.shadowOffset = CGSizeZero
+        roundedCorn.layer.shadowOffset = CGSize(width: 2.0, height: -2.0)
+        
+        roundedCorn.layer.shadowPath = UIBezierPath(rect:  self.frame).CGPath
+        roundedCorn.layer.shouldRasterize = true
+        
+        shadowBorder.backgroundColor = UIColor.whiteColor()
+        shadowBorder.layer.cornerRadius = 10.0
+        shadowBorder.layer.borderColor = UIColor.grayColor().CGColor
+        shadowBorder.layer.borderWidth = 0.5
+        shadowBorder.layer.masksToBounds = true
+        
     }
+    
+    
+    
+    
+    
     
     let animalSizeImageDictionary = [
         Size.small : "Maly",

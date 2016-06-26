@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dostępne zwierzęta-->
@@ -17,18 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2q-fw-KUr" customClass="AnimalKolodaView" customModule="Na4Łapy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="543"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2q-fw-KUr" customClass="AnimalKolodaView" customModule="Na4Łapy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o2q-fw-KUr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4uJ-Zz-yDl"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="o2q-fw-KUr" secondAttribute="bottom" constant="8" id="E9j-z0-IEw"/>
-                            <constraint firstItem="o2q-fw-KUr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mAA-Gk-T4v"/>
-                            <constraint firstAttribute="trailing" secondItem="o2q-fw-KUr" secondAttribute="trailing" id="vae-zW-nhl"/>
+                            <constraint firstItem="o2q-fw-KUr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="53E-J5-GlN"/>
+                            <constraint firstItem="o2q-fw-KUr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Fg7-mO-36a"/>
+                            <constraint firstItem="o2q-fw-KUr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Slg-rM-CWS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="o2q-fw-KUr" secondAttribute="bottomMargin" constant="3" id="X7j-oC-wa4"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Zwierzęta" id="nDQ-C0-7yI"/>
@@ -38,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1431" y="459"/>
+            <point key="canvasLocation" x="1549" y="341"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ddN-Hi-yf8">
@@ -50,12 +51,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="F3U-5q-aSU"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="DWw-oT-IlU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BV5-ll-vE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="459"/>
+            <point key="canvasLocation" x="749" y="313"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
