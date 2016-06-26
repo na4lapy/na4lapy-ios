@@ -20,13 +20,6 @@ class AnimalCardView: UIView {
     
     @IBOutlet weak var roundedCorn: UIView!
     @IBOutlet weak var shadowBorder: UIView!
-//    @IBOutlet weak var self: UIView!
-    
-//    override func awakeFromNib() {
-    
-        
-//        log.debug(self.superview.debugDescription)
-//    }
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
