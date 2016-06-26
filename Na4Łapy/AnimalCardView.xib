@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G19a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -13,34 +13,37 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ShQ-Ap-ts7">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="503"/>
                     <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGM-AS-ked">
-                    <rect key="frame" x="0.0" y="445" width="600" height="42"/>
-                    <color key="backgroundColor" red="0.29803921568627451" green="0.85098039215686272" blue="0.39215686274509803" alpha="0.4778825431034483" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGM-AS-ked" customClass="UIInsetLabel" customModule="Na4Łapy" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="451" width="600" height="52"/>
+                    <color key="backgroundColor" red="0.3411764706" green="0.63921568630000003" blue="0.69411764710000001" alpha="0.5" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="36"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aktywny" translatesAutoresizingMaskIntoConstraints="NO" id="wl1-cO-whe">
-                    <rect key="frame" x="400" y="488" width="200" height="112"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wl1-cO-whe">
+                    <rect key="frame" x="400" y="502" width="200" height="98"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="0.50201923076923072" colorSpace="calibratedRGB"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="Maly" translatesAutoresizingMaskIntoConstraints="NO" id="dmZ-q9-F4g">
-                    <rect key="frame" x="0.0" y="488" width="200" height="112"/>
+                    <rect key="frame" x="0.0" y="502" width="200" height="98"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="0.5" colorSpace="calibratedRGB"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="Samiec" translatesAutoresizingMaskIntoConstraints="NO" id="5Ni-5A-dBi">
-                    <rect key="frame" x="200" y="488" width="200" height="112"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="5Ni-5A-dBi">
+                    <rect key="frame" x="200" y="502" width="200" height="98"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="0.5" colorSpace="calibratedRGB"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.97288102643745733" green="0.99853639979590003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.97288102643745733" green="0.99853639979590003" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="wl1-cO-whe" secondAttribute="trailing" id="0Pa-tg-gqn"/>
                 <constraint firstItem="ShQ-Ap-ts7" firstAttribute="trailing" secondItem="mGM-AS-ked" secondAttribute="trailing" id="29A-fY-vju"/>
                 <constraint firstAttribute="bottom" secondItem="dmZ-q9-F4g" secondAttribute="bottom" id="2FD-aJ-Ytt"/>
                 <constraint firstItem="ShQ-Ap-ts7" firstAttribute="leading" secondItem="d07-Dl-xKB" secondAttribute="leading" id="4Op-hG-ejQ"/>
                 <constraint firstItem="5Ni-5A-dBi" firstAttribute="height" secondItem="dmZ-q9-F4g" secondAttribute="height" id="92x-O3-viC"/>
-                <constraint firstItem="5Ni-5A-dBi" firstAttribute="top" secondItem="ShQ-Ap-ts7" secondAttribute="bottom" constant="1" id="D12-4w-iv7"/>
+                <constraint firstItem="5Ni-5A-dBi" firstAttribute="top" secondItem="ShQ-Ap-ts7" secondAttribute="bottom" constant="-1" id="D12-4w-iv7"/>
                 <constraint firstItem="ShQ-Ap-ts7" firstAttribute="leading" secondItem="mGM-AS-ked" secondAttribute="leading" id="EBg-OS-mvt"/>
                 <constraint firstAttribute="trailing" secondItem="ShQ-Ap-ts7" secondAttribute="trailing" id="Ea0-H2-5bs"/>
                 <constraint firstItem="wl1-cO-whe" firstAttribute="width" secondItem="dmZ-q9-F4g" secondAttribute="width" id="GUo-Je-CDv"/>
@@ -48,13 +51,13 @@
                 <constraint firstItem="5Ni-5A-dBi" firstAttribute="leading" secondItem="dmZ-q9-F4g" secondAttribute="trailing" id="Mvr-8i-wcB"/>
                 <constraint firstAttribute="bottom" secondItem="wl1-cO-whe" secondAttribute="bottom" id="Tcx-kj-qCG"/>
                 <constraint firstItem="wl1-cO-whe" firstAttribute="leading" secondItem="5Ni-5A-dBi" secondAttribute="trailing" id="U0R-Qf-d0y"/>
-                <constraint firstItem="dmZ-q9-F4g" firstAttribute="top" secondItem="ShQ-Ap-ts7" secondAttribute="bottom" constant="1" id="bn7-h3-UEX"/>
+                <constraint firstItem="dmZ-q9-F4g" firstAttribute="top" secondItem="ShQ-Ap-ts7" secondAttribute="bottom" constant="-1" id="bn7-h3-UEX"/>
                 <constraint firstItem="dmZ-q9-F4g" firstAttribute="leading" secondItem="d07-Dl-xKB" secondAttribute="leading" id="i25-w5-lg4"/>
                 <constraint firstItem="5Ni-5A-dBi" firstAttribute="width" secondItem="dmZ-q9-F4g" secondAttribute="width" id="l5B-EV-5zo"/>
                 <constraint firstItem="wl1-cO-whe" firstAttribute="height" secondItem="dmZ-q9-F4g" secondAttribute="height" id="nAO-2j-GiJ"/>
-                <constraint firstItem="ShQ-Ap-ts7" firstAttribute="height" secondItem="d07-Dl-xKB" secondAttribute="height" multiplier="0.75" constant="37" id="nPW-nr-awd"/>
+                <constraint firstItem="ShQ-Ap-ts7" firstAttribute="height" secondItem="d07-Dl-xKB" secondAttribute="height" multiplier="0.8" constant="23" id="nPW-nr-awd"/>
                 <constraint firstItem="ShQ-Ap-ts7" firstAttribute="top" secondItem="d07-Dl-xKB" secondAttribute="top" id="nZx-3p-0Eq"/>
-                <constraint firstItem="wl1-cO-whe" firstAttribute="top" secondItem="ShQ-Ap-ts7" secondAttribute="bottom" constant="1" id="ovT-HJ-Tp2"/>
+                <constraint firstItem="wl1-cO-whe" firstAttribute="top" secondItem="ShQ-Ap-ts7" secondAttribute="bottom" constant="-1" id="ovT-HJ-Tp2"/>
             </constraints>
             <connections>
                 <outlet property="animalActivity" destination="wl1-cO-whe" id="Zhm-Z8-HRW"/>
@@ -67,8 +70,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Aktywny" width="600" height="600"/>
         <image name="Maly" width="600" height="600"/>
-        <image name="Samiec" width="600" height="600"/>
     </resources>
 </document>

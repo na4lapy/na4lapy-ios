@@ -174,4 +174,20 @@ class Animal: APIObject {
             }
         }
     }
+    
+    func getAge() -> Int {
+        return NSCalendar.currentCalendar().components(.Year, fromDate: self.birthDate!, toDate: NSDate(), options: []).year
+    }
+    
+    //TODO: zmienić to na używanie NSLocalizedString i stringdict (jeszcze nie wiem jak)
+    func getDescription() -> String {
+        let age = getAge()
+        var ageDescription = " rok"
+        if 2 ... 4 ~= age {
+            ageDescription = " lata"
+        } else if age > 4 {
+            ageDescription = " lat"
+        }
+        return self.name + ", " + String(age) + ageDescription
+    }
 }

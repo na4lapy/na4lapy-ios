@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040BDF341D1F0EE300A46FB1 /* UIInsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BDF331D1F0EE300A46FB1 /* UIInsetLabel.swift */; };
+		040BDF3A1D1F13E100A46FB1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF391D1F13E100A46FB1 /* Localizable.strings */; };
+		040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */; };
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04E61A451D1880B8002AA70F /* AnimalKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A441D1880B8002AA70F /* AnimalKolodaView.swift */; };
 		04E61A471D189263002AA70F /* AnimalCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E61A461D189263002AA70F /* AnimalCardView.xib */; };
@@ -60,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040BDF331D1F0EE300A46FB1 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIInsetLabel.swift; sourceTree = "<group>"; };
+		040BDF391D1F13E100A46FB1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
+		040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Localizable.stringsdict.plist; path = ../Localizable.stringsdict.plist; sourceTree = "<group>"; };
 		04E61A441D1880B8002AA70F /* AnimalKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalKolodaView.swift; sourceTree = "<group>"; };
 		04E61A461D189263002AA70F /* AnimalCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimalCardView.xib; sourceTree = "<group>"; };
 		04E61A481D18930F002AA70F /* AnimalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCardView.swift; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 				04E61A461D189263002AA70F /* AnimalCardView.xib */,
 				04E61A481D18930F002AA70F /* AnimalCardView.swift */,
 				04E61A441D1880B8002AA70F /* AnimalKolodaView.swift */,
+				040BDF331D1F0EE300A46FB1 /* UIInsetLabel.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -211,6 +218,8 @@
 				5CCD46B51D04C6E600D2D672 /* Assets.xcassets */,
 				5CCD46B71D04C6E600D2D672 /* LaunchScreen.storyboard */,
 				5CCD46BA1D04C6E600D2D672 /* Info.plist */,
+				040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */,
+				040BDF391D1F13E100A46FB1 /* Localizable.strings */,
 			);
 			path = "Na4Łapy";
 			sourceTree = "<group>";
@@ -360,6 +369,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCD46B91D04C6E600D2D672 /* LaunchScreen.storyboard in Resources */,
+				040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict.plist in Resources */,
+				040BDF3A1D1F13E100A46FB1 /* Localizable.strings in Resources */,
 				5CCD46B61D04C6E600D2D672 /* Assets.xcassets in Resources */,
 				04E61A471D189263002AA70F /* AnimalCardView.xib in Resources */,
 				5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */,
@@ -518,6 +529,7 @@
 				04E61A451D1880B8002AA70F /* AnimalKolodaView.swift in Sources */,
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
 				04E61A491D18930F002AA70F /* AnimalCardView.swift in Sources */,
+				040BDF341D1F0EE300A46FB1 /* UIInsetLabel.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
 				5C6A40021D1890DF00241067 /* APIObject.swift in Sources */,
 				5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */,

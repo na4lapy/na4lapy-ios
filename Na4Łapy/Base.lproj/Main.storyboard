@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kFK-qQ-zwH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G19a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kFK-qQ-zwH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,15 +18,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2q-fw-KUr" customClass="AnimalKolodaView" customModule="Na4Łapy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
-                                <color key="backgroundColor" red="0.52941176469999995" green="0.84313725490000002" blue="0.79215686269999996" alpha="0.22893318965517243" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="543"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="o2q-fw-KUr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4uJ-Zz-yDl"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="o2q-fw-KUr" secondAttribute="bottom" constant="1" id="E9j-z0-IEw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="o2q-fw-KUr" secondAttribute="bottom" constant="8" id="E9j-z0-IEw"/>
                             <constraint firstItem="o2q-fw-KUr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mAA-Gk-T4v"/>
                             <constraint firstAttribute="trailing" secondItem="o2q-fw-KUr" secondAttribute="trailing" id="vae-zW-nhl"/>
                         </constraints>
