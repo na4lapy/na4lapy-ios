@@ -14,7 +14,7 @@ private let kolodaAlphaValueSemiTransparent:CGFloat = 0.1
 
 class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaViewDataSource{
     private var listing: Listing?
-    @IBOutlet weak var kolodaView: AnimalKolodaView!
+    weak var kolodaView: AnimalKolodaView!
    
     override func viewDidLoad() {
         super.viewDidLoad()

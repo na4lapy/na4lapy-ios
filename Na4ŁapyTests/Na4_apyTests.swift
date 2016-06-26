@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Na4Łapy
+//@testable import NaŁapy
 
 class Na4ŁapyTests: XCTestCase {
     
