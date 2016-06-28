@@ -27,7 +27,6 @@ class AnimalCardView: UIView {
         roundedCorn.layer.masksToBounds = false
         roundedCorn.layer.shadowColor = UIColor.blackColor().CGColor
         roundedCorn.layer.shadowOpacity = 0.5
-        roundedCorn.layer.shadowOffset = CGSizeZero
         roundedCorn.layer.shadowOffset = CGSize(width: 2.0, height: -2.0)
         
         roundedCorn.layer.shadowPath = UIBezierPath(rect:  self.frame).CGPath
@@ -40,27 +39,6 @@ class AnimalCardView: UIView {
         shadowBorder.layer.masksToBounds = true
         
     }
-    
-    
-    
-    
-    
-    
-    let animalSizeImageDictionary = [
-        Size.small : "Maly",
-        Size.medium: "Sredni",
-        Size.large: "Duzy"
-    ]
-    
-    let animalGenderImageDictionary = [
-        Gender.female : "Suczka",
-        Gender.male : "Samiec"
-    ]
-    
-    let animalActivityLevelImageDictionary = [
-        Activity.high : "Aktywny",
-        Activity.low : "Domator"
-    ]
     
     var animal: Animal? {
         didSet {
@@ -79,15 +57,15 @@ class AnimalCardView: UIView {
         
         self.animalName.text = animal.getDescription()
         
-        if let animalSizeImageName = animalSizeImageDictionary[(animal.size)!] {
+        if let animalSizeImageName = animal.size?.pl() {
             animalSize.image = UIImage.init(named: animalSizeImageName)
         }
         
-        if let animalGenderImageName = animalGenderImageDictionary[(animal.gender)!] {
+        if let animalGenderImageName = animal.gender?.pl() {
             animalGender.image = UIImage.init(named: animalGenderImageName)
         }
         
-        if let animalActivityImageName = animalActivityLevelImageDictionary[(animal.activity)!] {
+        if let animalActivityImageName = animal.activity?.pl() {
                 animalActivity.image = UIImage.init(named: animalActivityImageName)
         }
     }

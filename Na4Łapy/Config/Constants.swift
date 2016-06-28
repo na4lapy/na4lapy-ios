@@ -19,18 +19,51 @@ enum Gender: String {
     case male = "MALE"
     case female = "FEMALE"
     case unknown = "UNKNOWN"
+    
+    func pl() -> String {
+        switch self {
+            case male:
+                return "Samiec"
+            case female:
+                return "Suczka"
+            default:
+                return "Brak"
+        }
+    }
 }
 
 enum Size: String {
     case small = "SMALL"
     case medium = "MEDIUM"
     case large = "LARGE"
+    
+    func pl() -> String {
+        switch self {
+        case .small:
+            return "Maly"
+        case .medium:
+            return "Sredni"
+        case .large:
+            return "Duzy"
+        }
+    }
 }
 
 enum Activity: String {
     case low = "LOW"
     case high = "HIGH"
     case unknown = "UNKNOWN"
+    
+    func pl() -> String {
+        switch self {
+        case .low:
+            return "Domator"
+        case .high:
+            return "Aktywny"
+        default:
+            return "Brak"
+        }
+    }
 }
 
 enum Training: String {
