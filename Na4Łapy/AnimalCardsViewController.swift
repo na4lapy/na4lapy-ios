@@ -9,7 +9,7 @@
 import UIKit
 
 class AnimalCardsViewController: UIViewController{
-    @IBOutlet weak var CardCollection: UICollectionView!
+    @IBOutlet weak var cardCollection: UICollectionView!
     
     //MARK: UICollectionDataSource
     private var listing: Listing?
@@ -29,7 +29,7 @@ class AnimalCardsViewController: UIViewController{
             guard let strongSelf = self else { return }
             //setting up the swipeable KolodaView
             dispatch_async(dispatch_get_main_queue()) {
-                strongSelf.CardCollection.reloadData()
+                strongSelf.cardCollection.reloadData()
             }
         }
     }
@@ -61,8 +61,7 @@ extension AnimalCardsViewController: UICollectionViewDataSource {
 extension AnimalCardsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        log.debug(self.CardCollection.bounds.width.description)
-        return CGSizeMake(self.CardCollection.bounds.width, self.CardCollection.bounds.height)
+        return CGSizeMake(self.cardCollection.bounds.width, self.cardCollection.bounds.height)
     }
 }
 
