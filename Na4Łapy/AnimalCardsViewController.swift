@@ -9,12 +9,13 @@
 import UIKit
 import Koloda
 
-private let kolodaCountOfVisibleCards = 2
+private let kolodaCountOfVisibleCards = 3
 private let kolodaAlphaValueSemiTransparent:CGFloat = 0.1
 
 class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaViewDataSource{
     private var listing: Listing?
     weak var kolodaView: AnimalKolodaView!
+    private var dataSource = [Animal]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,8 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
             }
         }
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,12 +80,11 @@ class AnimalCardsViewController: UIViewController, KolodaViewDelegate, KolodaVie
         return true
     }
     
-    func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
-        
-        if(direction == .Left) {
-            koloda.revertAction()
-        }
+    func koloda(koloda: KolodaView, shouldSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) -> Bool {
+        return true
     }
+    
+    
 
 }
 

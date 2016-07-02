@@ -23,11 +23,10 @@ class AnimalCardView: UIView {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        
         roundedCorn.layer.masksToBounds = false
         roundedCorn.layer.shadowColor = UIColor.blackColor().CGColor
         roundedCorn.layer.shadowOpacity = 0.5
-        roundedCorn.layer.shadowOffset = CGSize(width: 2.0, height: -2.0)
+        roundedCorn.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         
         roundedCorn.layer.shadowPath = UIBezierPath(rect:  self.frame).CGPath
         roundedCorn.layer.shouldRasterize = true
