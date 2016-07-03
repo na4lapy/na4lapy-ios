@@ -16,6 +16,12 @@ class AnimalCollectionCell: UICollectionViewCell {
         super.layoutSubviews()
         self.layer.cornerRadius = 5.0
         self.clipsToBounds = true
+        
+        self.layer.masksToBounds = false
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        self.layer.shouldRasterize = false
+//        self.layer.shadowPath = UIBezierPath(rect: self.frame).CGPath
     }
 
     //MARK: Public API
@@ -40,7 +46,7 @@ class AnimalCollectionCell: UICollectionViewCell {
     
     
     private func updateUI() {
-        animalDescriptionLabel.text! = (animal?.name)!
+        animalDescriptionLabel.text! = (animal?.getDescription())!
         animalImage.image = animal?.getFirstImage()
         
         if let animalSize = animal?.size?.pl() {
