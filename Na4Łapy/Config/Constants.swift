@@ -134,11 +134,6 @@ struct EndPoint {
 // MARK: ErrorDomain dla NSError
 let ErrorDomain = "Na4Łapy"
 
-// MARK: Koloda config
-let defaultBottomOffset: CGFloat = 0
-let defaultTopOffset: CGFloat = 20
-let defaultHorizontalOffset: CGFloat = 10
-let defaultHeightRatio: CGFloat = 1.7
-let backroundCardHorizontalMarginMultiplier: CGFloat = 0.25
-let backgroundCardScalePercent: CGFloat = 1
+//AnimalCollectionView
+let AnimalCollectionViewWidthSubtrahend:CGFloat = 20.0
 

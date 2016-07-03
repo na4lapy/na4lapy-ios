@@ -11,6 +11,12 @@ import UIKit
 //Karta określająca sposób prezentacji danych dotyczących zwierzaka
 
 class AnimalCollectionCell: UICollectionViewCell {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = 5.0
+        self.clipsToBounds = true
+    }
 
     //MARK: Public API
     
