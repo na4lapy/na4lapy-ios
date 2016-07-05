@@ -95,6 +95,7 @@ enum Species: String {
 struct JsonAttr  {
     static let id = "id"
     static let name = "name"
+    static let shelterId = "shelterId"
     static let race = "race"
     static let description = "description"
     static let birthDate = "birthDate"
