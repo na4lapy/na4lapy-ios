@@ -6,7 +6,7 @@ target 'Na4Łapy' do
   use_frameworks!
 
   # Pods for Na4Łapy
-  pod 'Koloda', '~> 3.1.1'
+  # pod 'Koloda', '~> 3.1.1'
   target 'Na4ŁapyTests' do
     inherit! :search_paths
     # Pods for testing
