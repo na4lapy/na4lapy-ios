@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="caD-kW-T3i">
-                                <rect key="frame" x="0.0" y="16" width="320" height="407"/>
+                                <rect key="frame" x="0.0" y="24" width="320" height="399"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AuC-X2-jDv" customClass="CenterCellCollectionViewFlowLayout" customModule="Na4Łapy" customModuleProvider="target">
                                     <size key="itemSize" width="288" height="358"/>
@@ -30,7 +30,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="Animal Cell" id="rEG-Ap-Ydc" customClass="AnimalCollectionCell" customModule="Na4Łapy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="358"/>
+                                        <rect key="frame" x="0.0" y="-4" width="288" height="358"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="358"/>
@@ -59,6 +59,13 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0y-vT-r77">
+                                                    <rect key="frame" x="232" y="246" width="48" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="ZbQ-An-Ive"/>
+                                                    </constraints>
+                                                    <state key="normal" image="favouriteStateIcon"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -66,6 +73,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="N20-iF-ZDK" secondAttribute="trailing" constant="8" id="0bN-w4-YI1"/>
                                             <constraint firstItem="N20-iF-ZDK" firstAttribute="leading" secondItem="rEG-Ap-Ydc" secondAttribute="leading" constant="8" id="7af-Zy-1ne"/>
+                                            <constraint firstItem="b0y-vT-r77" firstAttribute="bottom" secondItem="8Ss-ZB-JMo" secondAttribute="bottom" id="8GU-f1-KMr"/>
                                             <constraint firstItem="N20-iF-ZDK" firstAttribute="top" secondItem="rEG-Ap-Ydc" secondAttribute="top" constant="8" id="94w-8i-wU9"/>
                                             <constraint firstItem="kzo-PN-Asq" firstAttribute="leading" secondItem="rEG-Ap-Ydc" secondAttribute="leadingMargin" id="HG5-pv-Mwh"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="fNJ-WM-1QC" secondAttribute="bottom" constant="-8" id="Ibf-4g-g1Z"/>
@@ -75,6 +83,7 @@
                                             <constraint firstItem="fNJ-WM-1QC" firstAttribute="trailing" secondItem="rEG-Ap-Ydc" secondAttribute="trailingMargin" id="R60-LE-sry"/>
                                             <constraint firstItem="lCc-oz-WKa" firstAttribute="width" secondItem="N20-iF-ZDK" secondAttribute="width" multiplier="0.33" constant="1" id="Sfp-cL-QRx"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="fNJ-WM-1QC" secondAttribute="bottom" constant="-8" id="UT4-my-ONY"/>
+                                            <constraint firstItem="b0y-vT-r77" firstAttribute="trailing" secondItem="8Ss-ZB-JMo" secondAttribute="trailing" id="WaI-sc-Hpb"/>
                                             <constraint firstItem="8Ss-ZB-JMo" firstAttribute="leading" secondItem="kzo-PN-Asq" secondAttribute="leading" id="ZJP-ed-yyM"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="kzo-PN-Asq" secondAttribute="bottom" constant="-8" id="eZ1-3h-wnZ"/>
                                             <constraint firstItem="lCc-oz-WKa" firstAttribute="top" secondItem="8Ss-ZB-JMo" secondAttribute="bottom" id="fx7-8s-kuC"/>
@@ -85,6 +94,7 @@
                                             <constraint firstItem="fNJ-WM-1QC" firstAttribute="height" secondItem="lCc-oz-WKa" secondAttribute="height" id="sSM-Mz-CsD"/>
                                             <constraint firstAttribute="leadingMargin" secondItem="kzo-PN-Asq" secondAttribute="leading" id="wvV-Wl-FF3"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="lCc-oz-WKa" secondAttribute="bottom" constant="-8" id="xda-bS-H7c"/>
+                                            <constraint firstItem="b0y-vT-r77" firstAttribute="top" secondItem="8Ss-ZB-JMo" secondAttribute="top" id="ybQ-FL-EF7"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="animalActivityLevelIcon" destination="fNJ-WM-1QC" id="u8k-7k-wGM"/>
@@ -105,7 +115,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="caD-kW-T3i" secondAttribute="trailing" id="C8S-NG-WrY"/>
                             <constraint firstItem="caD-kW-T3i" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gO8-6x-RfT"/>
-                            <constraint firstItem="caD-kW-T3i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="8" id="sb8-1v-g7T"/>
+                            <constraint firstItem="caD-kW-T3i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="16" id="sb8-1v-g7T"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="caD-kW-T3i" secondAttribute="bottom" constant="8" symbolic="YES" id="ue7-PL-31E"/>
                         </constraints>
                     </view>
@@ -137,5 +147,8 @@
             <point key="canvasLocation" x="749" y="313"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favouriteStateIcon" width="600" height="600"/>
+    </resources>
     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
