@@ -37,13 +37,13 @@ class AnimalCardsViewController: UIViewController{
     
     
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        var insets = self.cardCollection.contentInset
-        insets.left = AnimalCollectionViewWidthSubtrahend/2
-        self.cardCollection.contentInset = insets
-
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        var insets = self.cardCollection.contentInset
+//        insets.left = AnimalCollectionViewWidthSubtrahend/2
+//        self.cardCollection.contentInset = insets
+//
+//    }
 
 
 }
@@ -73,7 +73,7 @@ extension AnimalCardsViewController: UICollectionViewDataSource {
 extension AnimalCardsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.cardCollection.bounds.width-AnimalCollectionViewWidthSubtrahend, self.cardCollection.bounds.height)
+        return CGSizeMake(self.cardCollection.bounds.width, self.cardCollection.bounds.height - 16)
     }
 }
 
