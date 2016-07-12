@@ -17,6 +17,7 @@ class AnimalCardsViewController: UIViewController{
     
     private struct Storyboard {
         static let CellIndentifier = "Animal Cell"
+        static let AnimalDetailSegueIdentifier = "AnimalDetail"
     }
    
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class AnimalCardsViewController: UIViewController{
         
         // Do any additional setup after loading the view, typically from a nib.
         self.listing = Listing(listingType: Animal.self)
+        self.automaticallyAdjustsScrollViewInsets = false
  
         // FIXME: co zrobić jeśli nie uda się pierwszy prefetch
         self.listing?.prefetch { [weak self] in
@@ -37,12 +39,19 @@ class AnimalCardsViewController: UIViewController{
     
     
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        var insets = self.cardCollection.contentInset
-        insets.left = AnimalCollectionViewWidthSubtrahend/2
-        self.cardCollection.contentInset = insets
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let identifier = segue.identifier else { return }
+        guard let animal = (sender as? AnimalCollectionCell)?.animal else { return }
+        
+        switch identifier {
+            
+        case Storyboard.AnimalDetailSegueIdentifier:
+            guard let vc = segue.destinationViewController as? AnimalDetailViewController else { return }
+            vc.animal = animal
+            
+        default:
+            break
+        }
     }
 
 
@@ -73,7 +82,7 @@ extension AnimalCardsViewController: UICollectionViewDataSource {
 extension AnimalCardsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.cardCollection.bounds.width-AnimalCollectionViewWidthSubtrahend, self.cardCollection.bounds.height)
+        return CGSizeMake(self.cardCollection.bounds.width, self.cardCollection.bounds.height)
     }
 }
 

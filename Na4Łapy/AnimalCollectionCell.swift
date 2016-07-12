@@ -14,14 +14,11 @@ class AnimalCollectionCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = 5.0
-        self.clipsToBounds = true
-        
-        self.layer.masksToBounds = false
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        self.layer.shouldRasterize = false
-//        self.layer.shadowPath = UIBezierPath(rect: self.frame).CGPath
+        self.animalImage.clipsToBounds = true
+//        self.animalImage.layer.cornerRadius = 15.0
+        let animalImageMask = CAShapeLayer()
+        animalImageMask.path = UIBezierPath(roundedRect: animalImage.bounds, byRoundingCorners:  UIRectCorner.TopLeft.union(.TopRight), cornerRadii: CGSizeMake(10, 10)).CGPath
+        self.animalImage.layer.mask = animalImageMask
     }
 
     //MARK: Public API

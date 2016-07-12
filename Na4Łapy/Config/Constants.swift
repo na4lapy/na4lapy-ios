@@ -26,8 +26,8 @@ enum Gender: String {
                 return "Samiec"
             case female:
                 return "Suczka"
-            default:
-                return "Brak"
+            case .unknown:
+                return "GenderUnknown"
         }
     }
 }
@@ -60,8 +60,8 @@ enum Activity: String {
             return "Domator"
         case .high:
             return "Aktywny"
-        default:
-            return "Brak"
+        case .unknown:
+            return "ActivityLevelUnknown"
         }
     }
 }

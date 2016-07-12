@@ -12,7 +12,10 @@
 		042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */; };
 		042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */; };
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
+		04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */; };
 		04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */; };
+		04EE02B11D3118B600E8EEB7 /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */; };
+		04EE02B31D31467500E8EEB7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE02B21D31467500E8EEB7 /* Utils.swift */; };
 		0D8BA6A1D4CC3B586AEB695A /* Pods_Na4_apyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */; };
 		5C3C71301D1737B700ED5C3A /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C712F1D1737B700ED5C3A /* Listing.swift */; };
 		5C6821731D061B5C00FA7781 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6821721D061B5C00FA7781 /* Animal.swift */; };
@@ -64,9 +67,12 @@
 /* Begin PBXFileReference section */
 		040BDF391D1F13E100A46FB1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
 		040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Localizable.stringsdict.plist; path = ../Localizable.stringsdict.plist; sourceTree = "<group>"; };
-		042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIInsetLabel.swift; sourceTree = "<group>"; };
+		042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIInsetLabel.swift; path = ../UIInsetLabel.swift; sourceTree = "<group>"; };
 		042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCircularExtension.swift; sourceTree = "<group>"; };
 		04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionCell.swift; sourceTree = "<group>"; };
+		04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
+		04EE02B21D31467500E8EEB7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		47329DF26D6B2A34E4B5AD55 /* Pods-Na4ŁapyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C3C712F1D1737B700ED5C3A /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Listing.swift; path = Model/Listing.swift; sourceTree = "<group>"; };
 		5C6821721D061B5C00FA7781 /* Animal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animal.swift; path = Model/Animal.swift; sourceTree = "<group>"; };
@@ -134,6 +140,8 @@
 			children = (
 				04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */,
 				042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */,
+				042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */,
+				04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -182,7 +190,6 @@
 		5CCD46A21D04C6E500D2D672 = {
 			isa = PBXGroup;
 			children = (
-				042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */,
 				5CCD46AD1D04C6E600D2D672 /* Na4Łapy */,
 				5CCD46C21D04C6E600D2D672 /* Na4ŁapyTests */,
 				5CCD46CD1D04C6E600D2D672 /* Na4ŁapyUITests */,
@@ -212,11 +219,13 @@
 				5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */,
 				5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */,
 				5CCD46B21D04C6E600D2D672 /* Main.storyboard */,
+				04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */,
 				5CCD46B51D04C6E600D2D672 /* Assets.xcassets */,
 				5CCD46B71D04C6E600D2D672 /* LaunchScreen.storyboard */,
 				5CCD46BA1D04C6E600D2D672 /* Info.plist */,
 				040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */,
 				040BDF391D1F13E100A46FB1 /* Localizable.strings */,
+				04EE02B21D31467500E8EEB7 /* Utils.swift */,
 			);
 			path = "Na4Łapy";
 			sourceTree = "<group>";
@@ -528,12 +537,15 @@
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
 				04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
+				04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */,
 				5C6A40021D1890DF00241067 /* APIObject.swift in Sources */,
+				04EE02B31D31467500E8EEB7 /* Utils.swift in Sources */,
 				5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */,
 				042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */,
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
 				042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
+				04EE02B11D3118B600E8EEB7 /* AnimalDetailViewController.swift in Sources */,
 				5C6821861D077E5900FA7781 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
