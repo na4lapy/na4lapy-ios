@@ -107,9 +107,17 @@ class Listing {
         if self.localCacheIndex == page.count/2 {
             self.clearAndPrefetch()
         }
+        if self.localCacheIndex > page.count - 1 || Int(index) > self.count - 1 {
+            return nil
+        }
 
         log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
-        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
+        
+        if let returnPage = self.localCache[localCachePage] as? [AnyObject] where returnPage.count > 0 {
+            return returnPage[localCacheIndex]
+        } else {
+            return nil
+        }
     }
     
     func next() -> AnyObject? {

@@ -43,7 +43,7 @@ class AnimalCollectionCell: UICollectionViewCell {
     
     
     private func updateUI() {
-        animalDescriptionLabel.text! = (animal?.getDescription())!
+        animalDescriptionLabel.text = animal?.getDescription()
         animalImage.image = animal?.getFirstImage()
         
         if let animalSize = animal?.size?.pl() {
