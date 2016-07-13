@@ -37,24 +37,18 @@ class AnimalCardsViewController: UIViewController{
         }
     }
     
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let identifier = segue.identifier else { return }
-        guard let animal = (sender as? AnimalCollectionCell)?.animal else { return }
-        
-        switch identifier {
-            
-        case Storyboard.AnimalDetailSegueIdentifier:
-            guard let vc = segue.destinationViewController as? AnimalDetailViewController else { return }
-            vc.animal = animal
-            
-        default:
-            break
+        guard
+            let identifier = segue.identifier,
+            let animal = (sender as? AnimalCollectionCell)?.animal,
+            let vc = segue.destinationViewController as? AnimalDetailViewController
+            where identifier == Storyboard.AnimalDetailSegueIdentifier
+        else {
+            return
         }
+        
+        vc.animal = animal
     }
-
-
 }
 
 
