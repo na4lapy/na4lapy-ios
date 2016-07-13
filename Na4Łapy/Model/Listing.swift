@@ -118,56 +118,5 @@ class Listing {
         } else {
             return nil
         }
-    }
-    
-    func next() -> AnyObject? {
-        // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
-        guard let page = self.localCache[localCachePage] else {
-            log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
-            self.prefetch(localCachePage)
-            return nil
-        }
-        
-        if self.localCacheIndex+1 == page.count/2 {
-            self.clearAndPrefetch()
-        }
-        
-        // Jeśli został osiągnięty skraj aktualnej strony to zmiana na kolejną
-        if self.localCacheIndex+1 >= page.count {
-            self.localCacheIndex = 0
-            self.localCachePage += 1                    // FIXME: sprawdzić czy jest to ostatnia strona
-        } else {
-            self.localCacheIndex += 1
-        }
-        log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
-        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
-    }
-    
-    func prev() -> AnyObject? {
-        // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
-        guard let page = self.localCache[localCachePage] else {
-            log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
-            self.prefetch(localCachePage)
-            return nil
-        }
-        if self.localCacheIndex-1 == page.count/2 {
-            self.clearAndPrefetch()
-        }
-        // Jeśli został osiągnięty skraj aktualnej strony to zmiana na kolejną
-        if self.localCacheIndex-1 < 0 {
-            if self.localCachePage <= 1 {
-                self.localCachePage = 1
-                self.localCacheIndex = 0
-            } else {
-                self.localCachePage -= 1
-                if let page = self.localCache[localCachePage] {
-                    self.localCacheIndex = page.count-1         // index na ostatni element wcześniejszej strony
-                }
-            }
-        } else {
-            self.localCacheIndex -= 1
-        }
-        log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
-        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
-    }
+    }    
 }
