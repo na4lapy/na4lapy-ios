@@ -39,7 +39,7 @@ protocol ListingProtocol {
 class Listing {
     private var localCache : [Int: AnyObject] = [:]
     private var localCacheIndex = 0
-    private var localCachePage = 1
+    private var localCachePage = 0
     private var count = 0
     private let listingType: ListingProtocol.Type
     
@@ -63,7 +63,7 @@ class Listing {
     }
     
     func prefetch( success: () -> Void ) {
-        self.prefetch(1) {
+        self.prefetch(0) {
             success()
         }
     }
@@ -101,8 +101,8 @@ class Listing {
         }
         
         // Konwersja index -> index/page
-        self.localCachePage = (Int(index)/PAGESIZE)+1
-        self.localCacheIndex = Int(index) - (localCachePage-1)*PAGESIZE
+        self.localCachePage = Int(index)/PAGESIZE
+        self.localCacheIndex = Int(index) - localCachePage*PAGESIZE
 
         if self.localCacheIndex == page.count/2 {
             self.clearAndPrefetch()
