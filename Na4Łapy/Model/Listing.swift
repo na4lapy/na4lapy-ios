@@ -43,7 +43,7 @@ class Listing {
     private var count = 0
     private let listingType: ListingProtocol.Type
     
-    private func prefetch(page: Int, success: (() -> Void)? = nil) {
+    func prefetch(page: Int, success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
         log.debug("prefetch page: \(page)")
         listingType.get(page, size: PAGESIZE, preferences: nil,
             success: { [weak self] (elements, count) in
@@ -54,6 +54,7 @@ class Listing {
             },
             failure: { (error) in
                 log.error(error.localizedDescription)
+                failure?()
             }
         )
     }
@@ -118,5 +119,5 @@ class Listing {
         } else {
             return nil
         }
-    }    
+    }
 }

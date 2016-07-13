@@ -27,14 +27,17 @@ class AnimalCardsViewController: UIViewController{
         self.listing = Listing(listingType: Animal.self)
         self.automaticallyAdjustsScrollViewInsets = false
  
-        // FIXME: co zrobić jeśli nie uda się pierwszy prefetch
-        self.listing?.prefetch { [weak self] in
-            guard let strongSelf = self else { return }
-            //setting up the swipeable KolodaView
-            dispatch_async(dispatch_get_main_queue()) {
-                strongSelf.cardCollection.reloadData()
+        self.listing?.prefetch(0,
+            success: { [weak self] in
+                guard let strongSelf = self else { return }
+                dispatch_async(dispatch_get_main_queue()) {
+                    strongSelf.cardCollection.reloadData()
+                }
+            },
+            failure: { _ in
+                //TODO: Wyświetl informację o błędzie
             }
-        }
+        )
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
