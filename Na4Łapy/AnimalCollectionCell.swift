@@ -30,19 +30,19 @@ class AnimalCollectionCell: UICollectionViewCell {
     
     //MARK: Private
  
-    @IBOutlet weak var animalActivityLevelIcon: UIImageView! 
+    @IBOutlet private weak var animalActivityLevelIcon: UIImageView!
     
-    @IBOutlet weak var animalGenderIcon: UIImageView!
+    @IBOutlet private weak var animalGenderIcon: UIImageView!
     
-    @IBOutlet weak var animalSizeIcon: UIImageView!
+    @IBOutlet private weak var animalSizeIcon: UIImageView!
     
-    @IBOutlet weak var animalDescriptionLabel: UILabel!
+    @IBOutlet private weak var animalDescriptionLabel: UILabel!
     
-    @IBOutlet weak var animalImage: UIImageView!
+    @IBOutlet private weak var animalImage: UIImageView!
     
     
     private func updateUI() {
-        animalDescriptionLabel.text = animal?.getDescription()
+        animalDescriptionLabel.text = animal?.getAgeName()
         animalImage.image = animal?.getFirstImage()
         
         if let animalSize = animal?.size?.pl() {

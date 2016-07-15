@@ -100,6 +100,7 @@ class Animal: APIObject {
                     self.race = race
                 }
             case JsonAttr.description:
+                //TODO: Czy możemy zmienić klucz description na jakiś inny? MOże się mylić z debugDescription i description dla obiektów w Swifcie np. na narration albo information 
                 if let description = value as? String {
                     self.description = description
                 }
@@ -184,7 +185,7 @@ class Animal: APIObject {
     }
     
     //TODO: zmienić to na używanie NSLocalizedString i stringdict (jeszcze nie wiem jak)
-    func getDescription() -> String {
+    func getAgeName() -> String {
         let age = getAge()
         var ageDescription = " rok"
         if 2 ... 4 ~= age {

@@ -12,7 +12,6 @@ class AnimalDetailViewController: UIViewController {
     
     var animal:Animal!
     private var animalPhotos:[Photo]!
-    
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
     @IBOutlet weak var animalBackgroundPhoto: UIImageView!
     
@@ -20,6 +19,7 @@ class AnimalDetailViewController: UIViewController {
     
     private struct Storyboard {
         static let CellIdentifier = "AnimalPhotoCell"
+        static let FooterIdentifier = "AnimalDetailsCollectionFooter"
     }
     
     override func viewDidLoad() {
@@ -30,12 +30,13 @@ class AnimalDetailViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        animalPhotos = animal.getAllImages()
         updateUI()
     }
     
+    
     func updateUI(){
-        self.navigationItem.title = animal.getDescription()
-        animalPhotos = animal.getAllImages()!
+        self.navigationItem.title = animal.getAgeName()
     
         animalPhotoCollection.reloadData()
         
@@ -65,6 +66,17 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    
+        if kind == UICollectionElementKindSectionFooter {
+            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Storyboard.FooterIdentifier, forIndexPath: indexPath) as! AnimalDetailPhotosCollectionFooter
+            headerView.animalFullDescriptionLabel.text = animal.description
+            
+            return headerView
+        }
+        assert(false, "Unexpected element kind")
+    }
 }
 
 
@@ -75,10 +87,22 @@ extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     
-    let cellWidth:CGFloat = screenWidth / 3
+    let cellWidth:CGFloat = screenWidth / 3 - 10
         
-    return CGSize(width: cellWidth, height: cellWidth)
+    return CGSize(width: ceil(cellWidth), height: ceil(cellWidth))
     
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsZero
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 8
     }
     
 

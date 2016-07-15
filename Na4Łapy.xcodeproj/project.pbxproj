@@ -12,6 +12,7 @@
 		042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */; };
 		042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */; };
 		042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */; };
+		047D44521D396B4A00CF40FE /* AnimalDetailPhotosCollectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D44511D396B4A00CF40FE /* AnimalDetailPhotosCollectionFooter.swift */; };
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */; };
 		04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */; };
@@ -71,6 +72,7 @@
 		042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIInsetLabel.swift; path = ../UIInsetLabel.swift; sourceTree = "<group>"; };
 		042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalPhotoCell.swift; sourceTree = "<group>"; };
+		047D44511D396B4A00CF40FE /* AnimalDetailPhotosCollectionFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailPhotosCollectionFooter.swift; sourceTree = "<group>"; };
 		04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCircularExtension.swift; sourceTree = "<group>"; };
 		04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionCell.swift; sourceTree = "<group>"; };
 		04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
@@ -137,16 +139,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04E61A431D188092002AA70F /* CustomViews */ = {
+		047D444D1D396A8C00CF40FE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				047D44501D396AF400CF40FE /* Common */,
+				047D444F1D396AD300CF40FE /* AnimalDetailView */,
+				047D444E1D396AA200CF40FE /* AnimalCardsView */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		047D444E1D396AA200CF40FE /* AnimalCardsView */ = {
+			isa = PBXGroup;
+			children = (
+				5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */,
 				04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */,
 				042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */,
-				042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */,
+			);
+			name = AnimalCardsView;
+			sourceTree = "<group>";
+		};
+		047D444F1D396AD300CF40FE /* AnimalDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */,
 				04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */,
 				042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */,
+				047D44511D396B4A00CF40FE /* AnimalDetailPhotosCollectionFooter.swift */,
 			);
-			name = CustomViews;
+			name = AnimalDetailView;
+			sourceTree = "<group>";
+		};
+		047D44501D396AF400CF40FE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		1606DC6D1AA1EC5C21F1CE22 /* Frameworks */ = {
@@ -215,14 +244,12 @@
 		5CCD46AD1D04C6E600D2D672 /* Na4Łapy */ = {
 			isa = PBXGroup;
 			children = (
-				04E61A431D188092002AA70F /* CustomViews */,
+				047D444D1D396A8C00CF40FE /* UI */,
 				5C6821741D061B6F00FA7781 /* Model */,
 				5C6821841D0746A600FA7781 /* Logger */,
 				5C68217D1D06255D00FA7781 /* Config */,
-				5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */,
 				5CCD46AE1D04C6E600D2D672 /* AppDelegate.swift */,
 				5CCD46B21D04C6E600D2D672 /* Main.storyboard */,
-				04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */,
 				5CCD46B51D04C6E600D2D672 /* Assets.xcassets */,
 				5CCD46B71D04C6E600D2D672 /* LaunchScreen.storyboard */,
 				5CCD46BA1D04C6E600D2D672 /* Info.plist */,
@@ -548,6 +575,7 @@
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
 				042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */,
+				047D44521D396B4A00CF40FE /* AnimalDetailPhotosCollectionFooter.swift in Sources */,
 				042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				04EE02B11D3118B600E8EEB7 /* AnimalDetailViewController.swift in Sources */,
 				5C6821861D077E5900FA7781 /* Constants.swift in Sources */,
