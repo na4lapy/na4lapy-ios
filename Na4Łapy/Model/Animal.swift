@@ -43,7 +43,7 @@ class Animal: APIObject {
      - Parameter failure: Informacje o błędzie
      */
     override class func get(page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
-        if page <= 0 {
+        if page < 0 {
             failure(Error.IllegalPageNumber.err())
             return
         }
@@ -176,7 +176,11 @@ class Animal: APIObject {
     }
     
     func getAge() -> Int {
-        return NSCalendar.currentCalendar().components(.Year, fromDate: self.birthDate!, toDate: NSDate(), options: []).year
+        guard let birthDate = self.birthDate else {
+            // w przypadku braku daty urodzenia przyjmowana jest domyślna wartość wieku == 0
+            return 0
+        }
+        return NSCalendar.currentCalendar().components(.Year, fromDate: birthDate, toDate: NSDate(), options: []).year
     }
     
     //TODO: zmienić to na używanie NSLocalizedString i stringdict (jeszcze nie wiem jak)
@@ -185,7 +189,7 @@ class Animal: APIObject {
         var ageDescription = " rok"
         if 2 ... 4 ~= age {
             ageDescription = " lata"
-        } else if age > 4 {
+        } else if age > 4 || age == 0 {
             ageDescription = " lat"
         }
         return self.name + ", " + String(age) + ageDescription

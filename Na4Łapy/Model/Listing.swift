@@ -39,11 +39,11 @@ protocol ListingProtocol {
 class Listing {
     private var localCache : [Int: AnyObject] = [:]
     private var localCacheIndex = 0
-    private var localCachePage = 1
+    private var localCachePage = 0
     private var count = 0
     private let listingType: ListingProtocol.Type
     
-    private func prefetch(page: Int, success: (() -> Void)? = nil) {
+    func prefetch(page: Int, success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
         log.debug("prefetch page: \(page)")
         listingType.get(page, size: PAGESIZE, preferences: nil,
             success: { [weak self] (elements, count) in
@@ -54,6 +54,7 @@ class Listing {
             },
             failure: { (error) in
                 log.error(error.localizedDescription)
+                failure?()
             }
         )
     }
@@ -63,7 +64,7 @@ class Listing {
     }
     
     func prefetch( success: () -> Void ) {
-        self.prefetch(1) {
+        self.prefetch(0) {
             success()
         }
     }
@@ -101,65 +102,22 @@ class Listing {
         }
         
         // Konwersja index -> index/page
-        self.localCachePage = (Int(index)/PAGESIZE)+1
-        self.localCacheIndex = Int(index) - (localCachePage-1)*PAGESIZE
+        self.localCachePage = Int(index)/PAGESIZE
+        self.localCacheIndex = Int(index) - localCachePage*PAGESIZE
 
         if self.localCacheIndex == page.count/2 {
             self.clearAndPrefetch()
         }
+        if self.localCacheIndex > page.count - 1 || Int(index) > self.count - 1 {
+            return nil
+        }
 
         log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
-        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
-    }
-    
-    func next() -> AnyObject? {
-        // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
-        guard let page = self.localCache[localCachePage] else {
-            log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
-            self.prefetch(localCachePage)
+        
+        if let returnPage = self.localCache[localCachePage] as? [AnyObject] where returnPage.count > 0 {
+            return returnPage[localCacheIndex]
+        } else {
             return nil
         }
-        
-        if self.localCacheIndex+1 == page.count/2 {
-            self.clearAndPrefetch()
-        }
-        
-        // Jeśli został osiągnięty skraj aktualnej strony to zmiana na kolejną
-        if self.localCacheIndex+1 >= page.count {
-            self.localCacheIndex = 0
-            self.localCachePage += 1                    // FIXME: sprawdzić czy jest to ostatnia strona
-        } else {
-            self.localCacheIndex += 1
-        }
-        log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
-        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
-    }
-    
-    func prev() -> AnyObject? {
-        // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
-        guard let page = self.localCache[localCachePage] else {
-            log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
-            self.prefetch(localCachePage)
-            return nil
-        }
-        if self.localCacheIndex-1 == page.count/2 {
-            self.clearAndPrefetch()
-        }
-        // Jeśli został osiągnięty skraj aktualnej strony to zmiana na kolejną
-        if self.localCacheIndex-1 < 0 {
-            if self.localCachePage <= 1 {
-                self.localCachePage = 1
-                self.localCacheIndex = 0
-            } else {
-                self.localCachePage -= 1
-                if let page = self.localCache[localCachePage] {
-                    self.localCacheIndex = page.count-1         // index na ostatni element wcześniejszej strony
-                }
-            }
-        } else {
-            self.localCacheIndex -= 1
-        }
-        log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
-        return self.localCache[localCachePage]?[localCacheIndex] ?? nil
     }
 }

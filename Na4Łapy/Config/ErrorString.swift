@@ -29,7 +29,7 @@ enum Error: Int {
         case NoImageData:
             return "Brak zdjęcia"
         case IllegalPageNumber:
-            return "Nieprawidłowy numer strony (musi być > 0)"
+            return "Nieprawidłowy numer strony (musi być >= 0)"
         }
     }
     
