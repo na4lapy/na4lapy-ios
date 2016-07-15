@@ -15,7 +15,6 @@ class AnimalCollectionCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.animalImage.clipsToBounds = true
-//        self.animalImage.layer.cornerRadius = 15.0
         let animalImageMask = CAShapeLayer()
         animalImageMask.path = UIBezierPath(roundedRect: animalImage.bounds, byRoundingCorners:  UIRectCorner.TopLeft.union(.TopRight), cornerRadii: CGSizeMake(10, 10)).CGPath
         self.animalImage.layer.mask = animalImageMask

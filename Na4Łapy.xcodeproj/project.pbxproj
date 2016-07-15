@@ -11,6 +11,7 @@
 		040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */; };
 		042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */; };
 		042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */; };
+		042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */; };
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */; };
 		04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */; };
@@ -69,6 +70,7 @@
 		040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Localizable.stringsdict.plist; path = ../Localizable.stringsdict.plist; sourceTree = "<group>"; };
 		042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIInsetLabel.swift; path = ../UIInsetLabel.swift; sourceTree = "<group>"; };
 		042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalPhotoCell.swift; sourceTree = "<group>"; };
 		04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCircularExtension.swift; sourceTree = "<group>"; };
 		04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionCell.swift; sourceTree = "<group>"; };
 		04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */,
 				042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */,
 				04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */,
+				042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */,
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
+				042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */,
 				042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				04EE02B11D3118B600E8EEB7 /* AnimalDetailViewController.swift in Sources */,
 				5C6821861D077E5900FA7781 /* Constants.swift in Sources */,

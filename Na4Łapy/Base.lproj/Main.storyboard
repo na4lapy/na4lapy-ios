@@ -252,6 +252,39 @@
                                                     <constraint firstAttribute="width" secondItem="KPB-TZ-gxL" secondAttribute="height" multiplier="1:1" id="q1u-R0-7Cd"/>
                                                 </constraints>
                                             </imageView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HbT-AP-A8g">
+                                                <rect key="frame" x="0.0" y="192" width="320" height="155"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L9V-xT-QcK">
+                                                    <size key="itemSize" width="85" height="85"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalPhotoCell" id="rGv-Wh-fBl" customClass="AnimalPhotoCell" customModule="Na4Łapy" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yz-K8-yDZ">
+                                                                    <rect key="frame" x="-135" y="-52" width="320" height="155"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
+                                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="animalImage" destination="5yz-K8-yDZ" id="s6w-C9-Cc8"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="MtD-qe-A9Q" id="t00-BI-6rV"/>
+                                                    <outlet property="delegate" destination="MtD-qe-A9Q" id="shP-IX-daT"/>
+                                                </connections>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -309,6 +342,7 @@
                     <connections>
                         <outlet property="animalBackgroundPhoto" destination="6ce-aN-PAf" id="iHH-WZ-iZd"/>
                         <outlet property="animalCenterCircularPhoto" destination="KPB-TZ-gxL" id="5Qa-qh-RHq"/>
+                        <outlet property="animalPhotoCollection" destination="HbT-AP-A8g" id="eg6-tb-TNm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgd-tm-GdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
