@@ -255,10 +255,13 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HbT-AP-A8g">
                                                 <rect key="frame" x="8" y="153" width="304" height="255"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="258" id="pZJ-QD-pcd"/>
+                                                </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L9V-xT-QcK">
                                                     <size key="itemSize" width="100" height="100"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="50" height="149"/>
+                                                    <size key="footerReferenceSize" width="50" height="116"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
@@ -286,25 +289,89 @@
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
-                                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnimalDetailsCollectionFooter" id="Yhr-wr-Vht" customClass="AnimalDetailPhotosCollectionFooter" customModule="Na4Łapy" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="100" width="304" height="149"/>
+                                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="AnimalDetailsCollectionFooter" id="VlR-qg-jHy" customClass="AnimalDetailPhotosCollectionFooter" customModule="Na4Łapy" customModuleProvider="target">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVT-Kj-hA4">
-                                                            <rect key="frame" x="8" y="8" width="288" height="103"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxL-xQ-j6w">
+                                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <gestureRecognizers/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="126" id="4IR-s5-k3U">
+                                                                    <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                                                                </constraint>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="4IR-s5-k3U"/>
+                                                                </mask>
+                                                            </variation>
+                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                                <mask key="constraints">
+                                                                    <include reference="4IR-s5-k3U"/>
+                                                                </mask>
+                                                            </variation>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="5Tw-lt-Ztv" appends="YES" id="hf9-zE-mkj"/>
+                                                            </connections>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOc-3m-ob7">
-                                                            <rect key="frame" x="99" y="119" width="106" height="30"/>
-                                                            <state key="normal" title="Pokaż więcej"/>
-                                                        </button>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="qxL-xQ-j6w" firstAttribute="trailing" secondItem="VlR-qg-jHy" secondAttribute="trailingMargin" constant="8" id="79C-Xq-ApL">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                        </constraint>
+                                                        <constraint firstItem="qxL-xQ-j6w" firstAttribute="leading" secondItem="VlR-qg-jHy" secondAttribute="leadingMargin" constant="8" id="Bha-H3-ayP"/>
+                                                        <constraint firstItem="qxL-xQ-j6w" firstAttribute="top" secondItem="VlR-qg-jHy" secondAttribute="topMargin" id="H7e-qj-lBf"/>
+                                                        <constraint firstItem="qxL-xQ-j6w" firstAttribute="top" secondItem="VlR-qg-jHy" secondAttribute="topMargin" id="IZU-ow-4Oz"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="qxL-xQ-j6w" secondAttribute="bottom" id="ZFb-ih-Kyq"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="qxL-xQ-j6w" secondAttribute="bottom" constant="187.5" id="pQq-Ab-qH5">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                        </constraint>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="subviews">
+                                                            <exclude reference="qxL-xQ-j6w"/>
+                                                        </mask>
+                                                        <mask key="constraints">
+                                                            <exclude reference="79C-Xq-ApL"/>
+                                                            <exclude reference="Bha-H3-ayP"/>
+                                                            <exclude reference="H7e-qj-lBf"/>
+                                                            <exclude reference="IZU-ow-4Oz"/>
+                                                            <exclude reference="ZFb-ih-Kyq"/>
+                                                            <exclude reference="pQq-Ab-qH5"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="subviews">
+                                                            <include reference="qxL-xQ-j6w"/>
+                                                        </mask>
+                                                        <mask key="constraints">
+                                                            <include reference="79C-Xq-ApL"/>
+                                                            <include reference="Bha-H3-ayP"/>
+                                                            <include reference="H7e-qj-lBf"/>
+                                                            <exclude reference="IZU-ow-4Oz"/>
+                                                            <include reference="ZFb-ih-Kyq"/>
+                                                            <exclude reference="pQq-Ab-qH5"/>
+                                                        </mask>
+                                                    </variation>
                                                     <connections>
-                                                        <outlet property="animalFullDescriptionLabel" destination="lVT-Kj-hA4" id="2wa-cx-8l5"/>
+                                                        <outlet property="animalFullDescriptionLabel" destination="qxL-xQ-j6w" id="zib-vI-wQj"/>
                                                     </connections>
                                                 </collectionReusableView>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="pZJ-QD-pcd"/>
+                                                    </mask>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=compact">
+                                                    <mask key="constraints">
+                                                        <include reference="pZJ-QD-pcd"/>
+                                                    </mask>
+                                                </variation>
                                                 <connections>
                                                     <outlet property="dataSource" destination="MtD-qe-A9Q" id="t00-BI-6rV"/>
                                                     <outlet property="delegate" destination="MtD-qe-A9Q" id="shP-IX-daT"/>
@@ -336,6 +403,11 @@
                                             <mask key="constraints">
                                                 <exclude reference="Bue-gy-kVm"/>
                                                 <exclude reference="7zs-qy-odF"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <exclude reference="MrQ-Pa-gUS"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -370,6 +442,8 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="PQU-WB-V35"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="600"/>
                     <connections>
                         <outlet property="animalBackgroundPhoto" destination="6ce-aN-PAf" id="iHH-WZ-iZd"/>
                         <outlet property="animalCenterCircularPhoto" destination="KPB-TZ-gxL" id="5Qa-qh-RHq"/>
@@ -377,8 +451,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgd-tm-GdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5Tw-lt-Ztv">
+                    <connections>
+                        <action selector="toggleMoreDescription:" destination="MtD-qe-A9Q" id="3SN-We-k0b"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3421" y="313"/>
+            <point key="canvasLocation" x="3613.5" y="318"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ddN-Hi-yf8">

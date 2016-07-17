@@ -9,6 +9,6 @@
 import UIKit
 
 class AnimalDetailPhotosCollectionFooter: UICollectionReusableView {
-
+    
     @IBOutlet weak var animalFullDescriptionLabel: UILabel!
 }

@@ -12,10 +12,26 @@ class AnimalDetailViewController: UIViewController {
     
     var animal:Animal!
     private var animalPhotos:[Photo]!
+    private var footer:AnimalDetailPhotosCollectionFooter!
+    private var collapsing = false
+    
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
     @IBOutlet weak var animalBackgroundPhoto: UIImageView!
     
     @IBOutlet weak var animalPhotoCollection: UICollectionView!
+    
+    
+    @IBAction func toggleMoreDescription(sender: AnyObject) {
+        
+        log.debug(footer.frame.height.description)
+        
+        log.debug(footer.frame.height.description)
+        collapsing = !collapsing
+        
+        animalPhotoCollection.reloadData()
+        
+    }
+    
     
     private struct Storyboard {
         static let CellIdentifier = "AnimalPhotoCell"
@@ -26,8 +42,7 @@ class AnimalDetailViewController: UIViewController {
         animalPhotoCollection.dataSource = self
         super.viewDidLoad()
        
-        // Do any additional setup after loading the view.
-    }
+        }
     
     override func viewDidLayoutSubviews() {
         animalPhotos = animal.getAllImages()
@@ -70,12 +85,30 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
     
         if kind == UICollectionElementKindSectionFooter {
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Storyboard.FooterIdentifier, forIndexPath: indexPath) as! AnimalDetailPhotosCollectionFooter
-            headerView.animalFullDescriptionLabel.text = animal.description
             
-            return headerView
+            footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Storyboard.FooterIdentifier, forIndexPath: indexPath) as! AnimalDetailPhotosCollectionFooter
+            footer.animalFullDescriptionLabel.text = animal.description
+
+            return footer
         }
         assert(false, "Unexpected element kind")
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        collectionView
+        
+        if(!collapsing) {
+            return CGSizeMake(UIScreen.mainScreen().bounds.size.width, 280)
+        }
+        
+        let height = animal.description?.heightWithConstrainedWidth(UIScreen.mainScreen().bounds.size.width, font: footer.animalFullDescriptionLabel.font)
+        
+        let labelFrame = footer.animalFullDescriptionLabel.sizeThatFits(CGSizeMake(UIScreen.mainScreen().bounds.size.width, CGFloat.max))
+//        footer.animalFullDescriptionLabel.frame = CGRect(footer.animalFullDescriptionLabel.frame.width, height!)
+//        footer.animalFullDescriptionLabel.invalidateIntrinsicContentSize()
+        log.debug(height!.description)
+//        footer.sizeToFit()
+        return footer.systemLayoutSizeFittingSize(CGSizeMake(labelFrame.width, height!))
     }
 }
 
@@ -84,12 +117,12 @@ extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-    
-    let screenWidth = UIScreen.mainScreen().bounds.size.width
-    
-    let cellWidth:CGFloat = screenWidth / 3 - 10
         
-    return CGSize(width: ceil(cellWidth), height: ceil(cellWidth))
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        
+        let cellWidth:CGFloat = screenWidth / 3 - 10
+            
+        return CGSize(width: ceil(cellWidth), height: ceil(cellWidth))
     
     }
     
