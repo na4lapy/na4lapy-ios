@@ -102,7 +102,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
         
         footer.animalFullDescriptionLabel.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, height!)
         log.debug(height!.description)
-        let size = CGSizeMake(UIScreen.mainScreen().bounds.size.width, height! + 200)
+        let size = CGSizeMake(UIScreen.mainScreen().bounds.size.width, height! + 170)
         return size
     }
 }

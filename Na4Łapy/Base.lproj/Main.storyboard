@@ -291,7 +291,7 @@
                                                     </collectionViewCell>
                                                 </cells>
                                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="AnimalDetailsCollectionFooter" id="VlR-qg-jHy" customClass="AnimalDetailPhotosCollectionFooter" customModule="Na4Łapy" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="100" width="304" height="116"/>
+                                                    <rect key="frame" x="0.0" y="100" width="304" height="222"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxL-xQ-j6w">
@@ -344,6 +344,9 @@
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aktywny" translatesAutoresizingMaskIntoConstraints="NO" id="1y5-fc-2VV">
                                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                        <rect key="frame" x="194" y="0.0" width="97" height="97"/>
+                                                                    </variation>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -372,6 +375,12 @@
                                                                     <exclude reference="1y5-fc-2VV"/>
                                                                 </mask>
                                                                 <mask key="constraints">
+                                                                    <exclude reference="19t-Fo-JMK"/>
+                                                                    <exclude reference="9LZ-2c-Otc"/>
+                                                                    <exclude reference="JnY-gn-Kil"/>
+                                                                    <exclude reference="ka4-bL-rEx"/>
+                                                                    <exclude reference="rZD-hr-BrN"/>
+                                                                    <exclude reference="xIh-Sc-pep"/>
                                                                     <exclude reference="EvS-uG-Igd"/>
                                                                     <exclude reference="cCU-KX-Vja"/>
                                                                     <exclude reference="lfK-wh-ZpH"/>
@@ -380,12 +389,6 @@
                                                                     <exclude reference="rHA-dP-TFy"/>
                                                                     <exclude reference="shq-7z-zMZ"/>
                                                                     <exclude reference="tbN-y0-RTg"/>
-                                                                    <exclude reference="19t-Fo-JMK"/>
-                                                                    <exclude reference="9LZ-2c-Otc"/>
-                                                                    <exclude reference="JnY-gn-Kil"/>
-                                                                    <exclude reference="ka4-bL-rEx"/>
-                                                                    <exclude reference="rZD-hr-BrN"/>
-                                                                    <exclude reference="xIh-Sc-pep"/>
                                                                 </mask>
                                                             </variation>
                                                             <variation key="heightClass=regular-widthClass=compact">
@@ -395,6 +398,12 @@
                                                                     <include reference="1y5-fc-2VV"/>
                                                                 </mask>
                                                                 <mask key="constraints">
+                                                                    <include reference="19t-Fo-JMK"/>
+                                                                    <include reference="9LZ-2c-Otc"/>
+                                                                    <include reference="JnY-gn-Kil"/>
+                                                                    <include reference="ka4-bL-rEx"/>
+                                                                    <exclude reference="rZD-hr-BrN"/>
+                                                                    <include reference="xIh-Sc-pep"/>
                                                                     <include reference="EvS-uG-Igd"/>
                                                                     <include reference="cCU-KX-Vja"/>
                                                                     <include reference="lfK-wh-ZpH"/>
@@ -403,12 +412,6 @@
                                                                     <include reference="rHA-dP-TFy"/>
                                                                     <include reference="shq-7z-zMZ"/>
                                                                     <include reference="tbN-y0-RTg"/>
-                                                                    <include reference="19t-Fo-JMK"/>
-                                                                    <include reference="9LZ-2c-Otc"/>
-                                                                    <include reference="JnY-gn-Kil"/>
-                                                                    <include reference="ka4-bL-rEx"/>
-                                                                    <include reference="rZD-hr-BrN"/>
-                                                                    <include reference="xIh-Sc-pep"/>
                                                                 </mask>
                                                             </variation>
                                                         </view>
