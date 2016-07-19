@@ -23,9 +23,6 @@ class AnimalDetailViewController: UIViewController {
     
     @IBAction func toggleMoreDescription(sender: AnyObject) {
         
-        log.debug(footer.frame.height.description)
-        
-        log.debug(footer.frame.height.description)
         collapsing = !collapsing
         
         animalPhotoCollection.reloadData()
@@ -103,12 +100,10 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
         
         let height = animal.description?.heightWithConstrainedWidth(UIScreen.mainScreen().bounds.size.width, font: footer.animalFullDescriptionLabel.font)
         
-        let labelFrame = footer.animalFullDescriptionLabel.sizeThatFits(CGSizeMake(UIScreen.mainScreen().bounds.size.width, CGFloat.max))
-//        footer.animalFullDescriptionLabel.frame = CGRect(footer.animalFullDescriptionLabel.frame.width, height!)
-//        footer.animalFullDescriptionLabel.invalidateIntrinsicContentSize()
+        footer.animalFullDescriptionLabel.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, height!)
         log.debug(height!.description)
-//        footer.sizeToFit()
-        return footer.systemLayoutSizeFittingSize(CGSizeMake(labelFrame.width, height!))
+        let size = CGSizeMake(UIScreen.mainScreen().bounds.size.width, height! + 200)
+        return size
     }
 }
 
