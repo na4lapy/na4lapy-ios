@@ -16,26 +16,30 @@ import UIKit
         @IBInspectable var rightInset: CGFloat = 7.0
         
         override func drawTextInRect(rect: CGRect) {
-            let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+            let insets = UIEdgeInsets(top: topInset,
+                                      left: leftInset,
+                                      bottom: bottomInset,
+                                      right: rightInset)
             super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
         }
-        
+
         override func intrinsicContentSize() -> CGSize {
             var intrinsicSuperViewContentSize = super.intrinsicContentSize()
             intrinsicSuperViewContentSize.height += topInset + bottomInset
             intrinsicSuperViewContentSize.width += leftInset + rightInset
             return intrinsicSuperViewContentSize
         }
-    
 
 }
 
 extension String {
     func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: CGFloat.max)
-        
-        let boundingBox = self.boundingRectWithSize(constraintRect, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-        
+
+        let boundingBox =
+            self.boundingRectWithSize(constraintRect,
+                                      options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                                      attributes: [NSFontAttributeName: font], context: nil)
         return boundingBox.height
     }
 }
