@@ -10,8 +10,8 @@ import UIKit
 
 class AnimalDetailViewController: UIViewController {
     
-    var animal:Animal!
-    private var animalPhotos:[Photo]!
+    var animal: Animal!
+    private var animalPhotos: [Photo]!
     
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
     @IBOutlet weak var animalBackgroundPhoto: UIImageView!
@@ -38,18 +38,25 @@ class AnimalDetailViewController: UIViewController {
         self.navigationItem.title = animal.getAgeName()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         animalPhotos = animal.getAllImages()
         updateUI()
+    }
+    
+    override func viewDidLayoutSubviews() {
         self.collectionViewHeightConstraint.constant = self.animalPhotoCollection.contentSize.height
     }
     
     func updateUI() {
-        animalPhotoCollection.reloadData()
+        self.animalPhotoCollection.reloadData()
         
-        animalCenterCircularPhoto.image = animalPhotos.first?.image?.circle
-        animalCenterCircularPhoto.clipsToBounds = true
-        animalBackgroundPhoto.image = animalPhotos.first?.image
+        dispatch_async(dispatch_get_main_queue()) {
+            self.animalCenterCircularPhoto.image = self.animalPhotos.first?.image?.circle
+            self.animalCenterCircularPhoto.clipsToBounds = true
+            self.animalBackgroundPhoto.image = self.animalPhotos.first?.image
+        }
     }
 }
 
@@ -68,7 +75,9 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIdentifier, forIndexPath: indexPath) as! AnimalPhotoCell
         
-        cell.animalImage.image = animalPhotos[indexPath.item].image
+        dispatch_async(dispatch_get_main_queue()) {
+            cell.animalImage.image = self.animalPhotos[indexPath.item].image
+        }
         
         return cell
     }
