@@ -93,7 +93,6 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
        
-        
         if(!collapsing) {
             return CGSizeMake(UIScreen.mainScreen().bounds.size.width, 400)
         }
