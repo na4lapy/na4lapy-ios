@@ -10,5 +10,7 @@ import UIKit
 
 class AnimalDetailPhotosCollectionFooter: UICollectionReusableView {
     
+    @IBOutlet weak var animalLabelContainer: UIView!
+    @IBOutlet weak var animalFeaturesTableView: UITableView!
     @IBOutlet weak var animalFullDescriptionLabel: UILabel!
 }

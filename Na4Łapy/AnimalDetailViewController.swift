@@ -92,17 +92,18 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        collectionView
+       
         
         if(!collapsing) {
-            return CGSizeMake(UIScreen.mainScreen().bounds.size.width, 280)
+            return CGSizeMake(UIScreen.mainScreen().bounds.size.width, 400)
         }
         
         let height = animal.description?.heightWithConstrainedWidth(UIScreen.mainScreen().bounds.size.width, font: footer.animalFullDescriptionLabel.font)
         
-        footer.animalFullDescriptionLabel.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, height!)
+        footer.animalLabelContainer.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, height!)
         log.debug(height!.description)
-        let size = CGSizeMake(UIScreen.mainScreen().bounds.size.width, height! + 170)
+        let tableHeight = footer.animalFeaturesTableView.frame.height
+        let size = CGSizeMake(UIScreen.mainScreen().bounds.size.width, height! + 175 + tableHeight)
         return size
     }
 }
