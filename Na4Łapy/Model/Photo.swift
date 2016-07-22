@@ -38,7 +38,7 @@ class Photo {
     /**
     Asynchroniczne pobieranie obrazka
     */
-    func download() {
+    func download(success: (() -> Void)? = nil) {
         if self.downloaded {
             log.debug("Zdjęcie zostało już wcześniej pobrane.")
             return
@@ -48,7 +48,7 @@ class Photo {
             success: { (image) in
                 self.image = image
                 self.downloaded = true
-                NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
+                success?()
             },
             failure: { (error) in
                 log.error("Błąd: \(error.localizedDescription) dla urla: \(self.url.absoluteString)")

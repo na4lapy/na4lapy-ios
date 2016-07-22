@@ -33,13 +33,16 @@ class AnimalCardsPresenter {
                 NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
             },
             failure: {
-                log.error("Błąd podczas pobierania pobierania pierwszej strony!")
+                log.error("Błąd podczas pobierania pierwszej strony!")
             }
         )
     }
     
     func getAnimalAmount() -> Int {
-        return Int((animalsListing?.getCount())!)
+        guard let count = animalsListing?.getCount() else {
+            return 0
+        }
+        return Int(count)
     }
     
     func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath:NSIndexPath) -> UICollectionViewCell {
