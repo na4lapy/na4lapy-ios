@@ -19,11 +19,21 @@ class AnimalCardsViewController: UIViewController{
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadCardCollection(_:)), name: "ReloadCollectionView", object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
         presenter.attachView(self)
         presenter.getAnimals()
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    @objc func reloadCardCollection(notificatio: NSNotification) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.cardCollection.reloadData()
+        }
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard
@@ -36,13 +46,10 @@ class AnimalCardsViewController: UIViewController{
         }
         
         vc.animal = animal
-    
     }
 }
 
-
 extension AnimalCardsViewController: UICollectionViewDataSource {
-    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -53,16 +60,12 @@ extension AnimalCardsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
         return presenter.cellForAnimalOnCollectionView(collectionView , withIndexPath: indexPath)
-
     }
     
 }
 
-
 extension AnimalCardsViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(self.cardCollection.bounds.width, self.cardCollection.bounds.height)
     }

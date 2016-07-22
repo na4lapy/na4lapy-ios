@@ -11,11 +11,10 @@ import UIKit
 
 
 class AnimalCardsPresenter {
-
     weak private var  animalCardsController : AnimalCardsViewController?
     private let animalsListing: Listing?
     
-   struct Storyboard {
+    struct Storyboard {
         static let CellIndentifier = "Animal Cell"
         static let AnimalDetailSegueIdentifier = "AnimalDetail"
     }
@@ -28,20 +27,15 @@ class AnimalCardsPresenter {
         animalCardsController = view
     }
     
-    
     func getAnimals() {
         self.animalsListing?.prefetch(0,
-                               success: { [weak self] in
-                                    guard let strongSelf = self else { return }
-                                    dispatch_async(dispatch_get_main_queue()) {
-                                    strongSelf.animalCardsController?.cardCollection.reloadData()
-                                    }
-                                },
-                               failure: { _ in
-                                //TODO: Wyświetl informację o błędzie
-                                }
-                            )
-    
+            success: {
+                NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
+            },
+            failure: {
+                log.error("Błąd podczas pobierania pobierania pierwszej strony!")
+            }
+        )
     }
     
     func getAnimalAmount() -> Int {
@@ -49,15 +43,8 @@ class AnimalCardsPresenter {
     }
     
     func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath:NSIndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as! AnimalCollectionCell
-
         cell.animal = animalsListing?.get(UInt(indexPath.item)) as? Animal
-
         return cell
-    
     }
-    
-    
-    
 }

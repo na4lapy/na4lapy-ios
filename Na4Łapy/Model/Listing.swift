@@ -34,8 +34,6 @@ protocol ListingProtocol {
  - strona kolejna
 */
 
-// TODO: na podstawie zmiennej 'count' rozpoznawać ostatni element na ostatniej stronie
-
 class Listing {
     private var localCache : [Int: AnyObject] = [:]
     private var localCacheIndex = 0

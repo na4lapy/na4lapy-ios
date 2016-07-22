@@ -48,6 +48,7 @@ class Photo {
             success: { (image) in
                 self.image = image
                 self.downloaded = true
+                NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
             },
             failure: { (error) in
                 log.error("Błąd: \(error.localizedDescription) dla urla: \(self.url.absoluteString)")
