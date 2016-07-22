@@ -14,6 +14,7 @@ class Photo {
     let url: NSURL
     var author: String?
     var image: UIImage?
+    var downloaded: Bool = false
     
     init?(dictionary: [String:AnyObject]) {
         guard
@@ -27,6 +28,7 @@ class Photo {
         
         self.id = id
         self.url = url
+        self.image = UIImage(named: "Placeholder")
         
         if let author = dictionary[JsonAttr.author] as? String {
             self.author = author
@@ -37,7 +39,7 @@ class Photo {
     Asynchroniczne pobieranie obrazka
     */
     func download() {
-        if self.image != nil {
+        if self.downloaded {
             log.debug("Zdjęcie zostało już wcześniej pobrane.")
             return
         }
@@ -45,6 +47,7 @@ class Photo {
         Request.getImageData(self.url,
             success: { (image) in
                 self.image = image
+                self.downloaded = true
             },
             failure: { (error) in
                 log.error("Błąd: \(error.localizedDescription) dla urla: \(self.url.absoluteString)")
