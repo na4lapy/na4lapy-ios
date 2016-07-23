@@ -11,49 +11,43 @@ import UIKit
 
 
 class AnimalCardsPresenter {
-
-    weak private var  animalCardsController: AnimalCardsViewController?
+    weak private var  animalCardsController : AnimalCardsViewController?
     private let animalsListing: Listing?
-
-   struct Storyboard {
+    
+    struct Storyboard {
         static let CellIndentifier = "Animal Cell"
         static let AnimalDetailSegueIdentifier = "AnimalDetail"
     }
-
+    
     required init(listing: Listing) {
         self.animalsListing = listing
     }
-
+    
     func attachView(view: AnimalCardsViewController) {
         animalCardsController = view
     }
-
+    
     func getAnimals() {
         self.animalsListing?.prefetch(0,
-                               success: { [weak self] in
-                                    guard let strongSelf = self else { return }
-                                    dispatch_async(dispatch_get_main_queue()) {
-                                    strongSelf.animalCardsController?.cardCollection.reloadData()
-                                    }
-                                },
-                               failure: { _ in
-                                //TODO: Wyświetl informację o błędzie
-                                }
-                            )
+            success: {
+                NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
+            },
+            failure: {
+                log.error("Błąd podczas pobierania pierwszej strony!")
+            }
+        )
     }
-
+    
     func getAnimalAmount() -> Int {
-        return Int((animalsListing?.getCount())!)
-    }
-
-    func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as? AnimalCollectionCell {
-
-            cell.animal = animalsListing?.get(UInt(indexPath.item)) as? Animal
-
-        return cell
+        guard let count = animalsListing?.getCount() else {
+            return 0
         }
-        assert(false, "Cell type should be AnimalCollectionCell")
+        return Int(count)
+    }
+    
+    func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath:NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as! AnimalCollectionCell
+        cell.animal = animalsListing?.get(UInt(indexPath.item)) as? Animal
+        return cell
     }
 }

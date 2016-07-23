@@ -8,62 +8,66 @@
 
 import UIKit
 
-class AnimalCardsViewController: UIViewController {
-
+class AnimalCardsViewController: UIViewController{
+    
     @IBOutlet weak var cardCollection: UICollectionView!
-
+    
     //MARK: UICollectionDataSource
     private let presenter: AnimalCardsPresenter = AnimalCardsPresenter(listing: Listing(listingType: Animal.self))
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view, typically from a nib.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadCardCollection(_:)), name: "ReloadCollectionView", object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
         presenter.attachView(self)
         presenter.getAnimals()
     }
-
-
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    @objc func reloadCardCollection(notificatio: NSNotification) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.cardCollection.reloadData()
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard
             let identifier = segue.identifier,
-                animal = (sender as? AnimalCollectionCell)?.animal,
-                vc = segue.destinationViewController as? AnimalDetailViewController
+            let animal = (sender as? AnimalCollectionCell)?.animal,
+            let vc = segue.destinationViewController as? AnimalDetailViewController
             where identifier == AnimalCardsPresenter.Storyboard.AnimalDetailSegueIdentifier
         else {
             return
         }
-
+        
         vc.animal = animal
-
     }
 }
 
-
 extension AnimalCardsViewController: UICollectionViewDataSource {
-
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.getAnimalAmount()
 
     }
-
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-
-        return presenter.cellForAnimalOnCollectionView(collectionView, withIndexPath: indexPath)
-
+        return presenter.cellForAnimalOnCollectionView(collectionView , withIndexPath: indexPath)
     }
-
+    
 }
-
 
 extension AnimalCardsViewController: UICollectionViewDelegateFlowLayout {
-
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width:self.cardCollection.bounds.width, height:self.cardCollection.bounds.height)
+        return CGSizeMake(self.cardCollection.bounds.width, self.cardCollection.bounds.height)
     }
 }
+

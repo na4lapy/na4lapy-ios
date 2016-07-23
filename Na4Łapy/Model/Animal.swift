@@ -164,7 +164,9 @@ class Animal: APIObject {
                     }
                     // Pobranie danych głównego obrazka
                     // TODO: sprawdzić czy na pewno pierwszy obrazek jest zawsze głównym??
-                    self.images?.first?.download()
+                    self.images?.first?.download() {
+                        NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
+                    }
                 }
             case JsonAttr.name:
                 break
