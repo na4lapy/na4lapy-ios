@@ -25,7 +25,7 @@ enum Gender: String {
             case male:
                 return "Samiec"
             case female:
-                return "Suczka"
+                return "Samica"
             case .unknown:
                 return "GenderUnknown"
         }

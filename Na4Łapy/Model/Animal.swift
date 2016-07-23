@@ -197,4 +197,17 @@ class Animal: APIObject {
         }
         return self.name + ", " + String(age) + ageDescription
     }
+
+    func getFeatures() -> [String:String] {
+        var features = [String:String]()
+        features["Rasa"] = self.race ?? ""
+        features["Wielkość"] = self.size?.pl() ?? ""
+        features["Płeć"] = self.gender?.pl() ?? ""
+        features["Aktywność"] = self.activity?.pl() ?? ""
+//        features["Ułożenie"] = self.training ?? ""
+//        features["Sterylizacja"] = self.sterilization ?? ""
+//        features["Chip"] = self.chipId ?? ""
+//        features["W schronisku od"] = self.admittanceDate ?? ""
+        return features
+    }
 }

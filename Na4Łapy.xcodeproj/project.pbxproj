@@ -15,6 +15,7 @@
 		044D64BE1D3C12BA008CF116 /* AnimalCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D64BD1D3C12BA008CF116 /* AnimalCardsPresenter.swift */; };
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */; };
+		04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */; };
 		04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */; };
 		04EE02B11D3118B600E8EEB7 /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */; };
 		0D8BA6A1D4CC3B586AEB695A /* Pods_Na4_apyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */; };
@@ -73,6 +74,7 @@
 		042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalPhotoCell.swift; sourceTree = "<group>"; };
 		044D64BD1D3C12BA008CF116 /* AnimalCardsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCardsPresenter.swift; sourceTree = "<group>"; };
 		04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCircularExtension.swift; sourceTree = "<group>"; };
+		04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFeatureTableCell.swift; sourceTree = "<group>"; };
 		04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionCell.swift; sourceTree = "<group>"; };
 		04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
 		47329DF26D6B2A34E4B5AD55 /* Pods-Na4ŁapyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */,
 				04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */,
 				042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */,
+				04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */,
 			);
 			name = AnimalDetailView;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */,
 				5C3C71301D1737B700ED5C3A /* Listing.swift in Sources */,
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
+				04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */,
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
 				04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
