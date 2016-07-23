@@ -21,7 +21,7 @@ class UserPreferences {
     private var sizeLarge: Bool?
     private var activityLow: Bool?
     private var activityHigh: Bool?
-    
+
     init(typeDog: Bool?, typeCat: Bool?, typeOther: Bool?, genderFemale: Bool?, genderMale: Bool?, ageMin: Int, ageMax: Int, sizeSmall: Bool?, sizeMedium: Bool?, sizeLarge: Bool?, activityLow: Bool?, activityHigh: Bool?) {
         self.typeDog = typeDog
         self.typeCat = typeCat
@@ -36,8 +36,8 @@ class UserPreferences {
         self.activityLow = activityLow
         self.activityHigh = activityHigh
     }
-    
+
     func dictionaryRepresentation() {
-        
+
     }
 }

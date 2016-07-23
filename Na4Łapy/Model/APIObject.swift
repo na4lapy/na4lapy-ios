@@ -18,7 +18,7 @@ class APIObject: ListingProtocol {
     required init?(dictionary: [String:AnyObject]) {
         guard
             let id = dictionary[JsonAttr.id] as? Int,
-            let name = dictionary[JsonAttr.name] as? String
+                name = dictionary[JsonAttr.name] as? String
             else {
                 log.error(Error.NoIdOrName.desc())
                 return nil
@@ -29,20 +29,23 @@ class APIObject: ListingProtocol {
 
     /**
      Tworzenie obiektów na podstawie JSON
-     
+
      - Parameter json: Struktura JSON
      - Returns: Tablica obiektów Animal
      */
     class func jsonToObj(obj: [AnyObject]) -> [AnyObject] {
         var animals = [AnyObject]()
-        for item in obj as! [[String: AnyObject]] {
-            if let animal = self.init(dictionary: item) as? AnyObject {
-                animals.append(animal)
+        if let obj = obj as? [[String: AnyObject]] {
+            for item in obj {
+                if let animal = self.init(dictionary: item) as? AnyObject {
+                    animals.append(animal)
+                }
             }
         }
         return animals
+
     }
-    
+
     /**
      Metoda nadpisywana w obiektach potomnych, wymagana przez protokół ListingProtocol
      */

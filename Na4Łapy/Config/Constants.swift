@@ -19,7 +19,7 @@ enum Gender: String {
     case male = "MALE"
     case female = "FEMALE"
     case unknown = "UNKNOWN"
-    
+
     func pl() -> String {
         switch self {
             case male:
@@ -36,7 +36,7 @@ enum Size: String {
     case small = "SMALL"
     case medium = "MEDIUM"
     case large = "LARGE"
-    
+
     func pl() -> String {
         switch self {
         case .small:
@@ -53,7 +53,7 @@ enum Activity: String {
     case low = "LOW"
     case high = "HIGH"
     case unknown = "UNKNOWN"
-    
+
     func pl() -> String {
         switch self {
         case .low:
@@ -92,7 +92,7 @@ enum Species: String {
 
 // MARK: Klucze JSON
 
-struct JsonAttr  {
+struct JsonAttr {
     static let id = "id"
     static let name = "name"
     static let race = "race"
@@ -125,15 +125,11 @@ let PAGESIZE = 10
 
 // MARK: URL
 
-let BaseUrl = "http://na4lapy.kodujdlapolski.pl"
+let baseUrl = "http://na4lapy.kodujdlapolski.pl"
 struct EndPoint {
     static let animals = "/api/animals"
     static let shelter = "/api/shelter"
 }
 
 // MARK: ErrorDomain dla NSError
-let ErrorDomain = "Na4Łapy"
-
-//AnimalCollectionView
-let AnimalCollectionViewWidthSubtrahend:CGFloat = 20.0
-
+let errorDomain = "Na4Łapy"

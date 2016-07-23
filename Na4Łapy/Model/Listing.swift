@@ -16,9 +16,9 @@ protocol ListingProtocol {
 /**
  Obsługa listingu wraz z prefetch'em
  Zasada działania.
- 
+
  Dane z API są pobierane stronami. Na stronie znajduje się PAGESIZE elementów, które zostają zwrócone w formie tablicy. Taka tablica (strona) jest wpisywana do słownika localCache pod klucz będący ID danej strony, np:
- 
+
  Strona o id 1 będzie wpisana jako [1, Array<AnyObject>]
 
  Jak dzała prefetch.
@@ -37,12 +37,12 @@ protocol ListingProtocol {
 // TODO: na podstawie zmiennej 'count' rozpoznawać ostatni element na ostatniej stronie
 
 class Listing {
-    private var localCache : [Int: AnyObject] = [:]
+    private var localCache: [Int: AnyObject] = [:]
     private var localCacheIndex = 0
     private var localCachePage = 0
     private var count = 0
     private let listingType: ListingProtocol.Type
-    
+
     func prefetch(page: Int, success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
         log.debug("prefetch page: \(page)")
         listingType.get(page, size: PAGESIZE, preferences: nil,
@@ -62,13 +62,13 @@ class Listing {
     init<T: ListingProtocol>(listingType: T.Type) {
         self.listingType = listingType
     }
-    
+
     func prefetch( success: () -> Void ) {
         self.prefetch(0) {
             success()
         }
     }
-    
+
     // Jeśli aktualny index strony przekroczy połowę wielkości to należy:
     // - pobrać kolejną stronę (+1)
     // - pobrać wcześniejszą stronę (-1)
@@ -88,11 +88,11 @@ class Listing {
         // +2
         self.localCache.removeValueForKey(localCachePage+2)
     }
-    
+
     func getCount() -> UInt {
         return UInt(self.count)
     }
-    
+
     func get(index: UInt) -> AnyObject? {
         // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
         guard let page = self.localCache[localCachePage] else {
@@ -100,7 +100,7 @@ class Listing {
             self.prefetch(localCachePage)
             return nil
         }
-        
+
         // Konwersja index -> index/page
         self.localCachePage = Int(index)/PAGESIZE
         self.localCacheIndex = Int(index) - localCachePage*PAGESIZE
@@ -113,7 +113,7 @@ class Listing {
         }
 
         log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
-        
+
         if let returnPage = self.localCache[localCachePage] as? [AnyObject] where returnPage.count > 0 {
             return returnPage[localCacheIndex]
         } else {

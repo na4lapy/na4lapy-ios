@@ -8,63 +8,62 @@
 
 import UIKit
 
-class AnimalCardsViewController: UIViewController{
-    
+class AnimalCardsViewController: UIViewController {
+
     @IBOutlet weak var cardCollection: UICollectionView!
-    
+
     //MARK: UICollectionDataSource
     private let presenter: AnimalCardsPresenter = AnimalCardsPresenter(listing: Listing(listingType: Animal.self))
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view, typically from a nib.
         self.automaticallyAdjustsScrollViewInsets = false
         presenter.attachView(self)
         presenter.getAnimals()
     }
-    
-    
+
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard
             let identifier = segue.identifier,
-            let animal = (sender as? AnimalCollectionCell)?.animal,
-            let vc = segue.destinationViewController as? AnimalDetailViewController
+                animal = (sender as? AnimalCollectionCell)?.animal,
+                vc = segue.destinationViewController as? AnimalDetailViewController
             where identifier == AnimalCardsPresenter.Storyboard.AnimalDetailSegueIdentifier
         else {
             return
         }
-        
+
         vc.animal = animal
-    
+
     }
 }
 
 
 extension AnimalCardsViewController: UICollectionViewDataSource {
-    
+
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.getAnimalAmount()
 
     }
-    
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        return presenter.cellForAnimalOnCollectionView(collectionView , withIndexPath: indexPath)
+
+        return presenter.cellForAnimalOnCollectionView(collectionView, withIndexPath: indexPath)
 
     }
-    
+
 }
 
 
 extension AnimalCardsViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(self.cardCollection.bounds.width, self.cardCollection.bounds.height)
+        return CGSize(width:self.cardCollection.bounds.width, height:self.cardCollection.bounds.height)
     }
 }
-

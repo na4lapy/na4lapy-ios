@@ -32,9 +32,9 @@ enum Error: Int {
             return "Nieprawidłowy numer strony (musi być >= 0)"
         }
     }
-    
+
     func err() -> NSError {
-        let error = NSError(domain: ErrorDomain, code: self.rawValue, userInfo: [NSLocalizedDescriptionKey: self.desc()])
+        let error = NSError(domain: errorDomain, code: self.rawValue, userInfo: [NSLocalizedDescriptionKey: self.desc()])
         return error
     }
 }
@@ -43,6 +43,3 @@ enum JsonError: ErrorType {
     case parseError
     case noData
 }
-
-
-

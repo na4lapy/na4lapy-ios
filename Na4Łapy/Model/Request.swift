@@ -12,7 +12,7 @@ import UIKit
 class Request {
     /**
      Pobranie danych obrazka ze wskazanego urla
- 
+
      - Parameter url: URL
      - Parameter success: Przekazanie UIImage
      - Parameter failure: Przekazanie błędu
@@ -31,7 +31,7 @@ class Request {
             }
         )
     }
-    
+
     /**
      Pobranie struktury JSON ze wskazanego endpointu
 
@@ -46,16 +46,14 @@ class Request {
                     let json = try Request.parseJSON(data)
                     guard
                         let jsondata = json[JsonAttr.data] as? [[String: AnyObject]],
-                        let count = json[JsonAttr.total] as? Int
+                            count = json[JsonAttr.total] as? Int
                     else {
                         throw JsonError.parseError
                     }
                     success(jsondata, count)
-                }
-                catch let error as NSError {
+                } catch let error as NSError {
                     failure(error)
-                }
-                catch JsonError.parseError {
+                } catch JsonError.parseError {
                     failure(Error.WrongJsonStruct.err())
                 }
             },
@@ -64,7 +62,7 @@ class Request {
             }
         )
     }
-    
+
     /**
      Implementacja zapytania HTTP GET
 
@@ -78,7 +76,7 @@ class Request {
         request.HTTPMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
+
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             if error != nil {
                 failure(error!)
@@ -92,10 +90,10 @@ class Request {
         }
         task.resume()
     }
-    
+
     /**
      Parsowanie JSON
- 
+
      - Parameter data: Obiekt NSData
      - Returns: Dictionary<String:AnyObject>
     */
@@ -106,4 +104,3 @@ class Request {
         return json
     }
 }
-

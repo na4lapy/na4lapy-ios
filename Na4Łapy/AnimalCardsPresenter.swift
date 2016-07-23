@@ -12,23 +12,22 @@ import UIKit
 
 class AnimalCardsPresenter {
 
-    weak private var  animalCardsController : AnimalCardsViewController?
+    weak private var  animalCardsController: AnimalCardsViewController?
     private let animalsListing: Listing?
-    
+
    struct Storyboard {
         static let CellIndentifier = "Animal Cell"
         static let AnimalDetailSegueIdentifier = "AnimalDetail"
     }
-    
+
     required init(listing: Listing) {
         self.animalsListing = listing
     }
-    
+
     func attachView(view: AnimalCardsViewController) {
         animalCardsController = view
     }
-    
-    
+
     func getAnimals() {
         self.animalsListing?.prefetch(0,
                                success: { [weak self] in
@@ -41,23 +40,20 @@ class AnimalCardsPresenter {
                                 //TODO: Wyświetl informację o błędzie
                                 }
                             )
-    
     }
-    
+
     func getAnimalAmount() -> Int {
         return Int((animalsListing?.getCount())!)
     }
-    
-    func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath:NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as! AnimalCollectionCell
 
-        cell.animal = animalsListing?.get(UInt(indexPath.item)) as? Animal
+    func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as? AnimalCollectionCell {
+
+            cell.animal = animalsListing?.get(UInt(indexPath.item)) as? Animal
 
         return cell
-    
+        }
+        assert(false, "Cell type should be AnimalCollectionCell")
     }
-    
-    
-    
 }

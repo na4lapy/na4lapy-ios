@@ -24,7 +24,7 @@ class Animal: APIObject {
     private(set) var vaccination: Vaccination?
     private(set) var status: Status?
     private var images: [Photo]?
-    
+
     //
     // MARK: init()
     //
@@ -32,10 +32,10 @@ class Animal: APIObject {
         super.init(dictionary: dictionary)
         initializeWithDictionary(dictionary)
     }
-    
+
     /**
      Metoda realizuje pobieranie danych z API zgodnie z parametrami:
-     
+
      - Parameter page: Index strony do pobrania
      - Parameter size: Liczba zwróconych elementów (domyślnie PAGESIZE)
      - Parameter preferences: Zestaw preferencji użytkownika do sortowania
@@ -47,7 +47,7 @@ class Animal: APIObject {
             failure(Error.IllegalPageNumber.err())
             return
         }
-        let urlstring = BaseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
+        let urlstring = baseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
         guard let endpoint = NSURL(string: urlstring) else {
             failure(Error.WrongURL.err())
             return
@@ -72,7 +72,7 @@ class Animal: APIObject {
         }
         return image
     }
-    
+
     /**
      Pobieranie wszystkich zdjęć zwierzaka
     */
@@ -86,10 +86,10 @@ class Animal: APIObject {
         }
         return images
     }
-    
+
     /**
      Wypełnienie właściwości obiektu na podstawie struktury JSON
- 
+
      - Parameter dictionary: Struktura JSON
     */
     private func initializeWithDictionary(dictionary: [String: AnyObject]) {
@@ -100,7 +100,7 @@ class Animal: APIObject {
                     self.race = race
                 }
             case JsonAttr.description:
-                //TODO: Czy możemy zmienić klucz description na jakiś inny? MOże się mylić z debugDescription i description dla obiektów w Swifcie np. na narration albo information 
+                //TODO: Czy możemy zmienić klucz description na jakiś inny? MOże się mylić z debugDescription i description dla obiektów w Swifcie np. na narration albo information
                 if let description = value as? String {
                     self.description = description
                 }
@@ -123,35 +123,35 @@ class Animal: APIObject {
                     self.chipId = chipId
                 }
             case JsonAttr.sterilization:
-                if let value = value as? String, let sterilization = Sterilization(rawValue: value) {
+                if let value = value as? String, sterilization = Sterilization(rawValue: value) {
                     self.sterilization = sterilization
                 }
             case JsonAttr.species:
-                if let value = value as? String, let species = Species(rawValue: value) {
+                if let value = value as? String, species = Species(rawValue: value) {
                     self.species = species
                 }
             case JsonAttr.gender:
-                if let value = value as? String, let gender = Gender(rawValue: value) {
+                if let value = value as? String, gender = Gender(rawValue: value) {
                     self.gender = gender
                 }
             case JsonAttr.size:
-                if let value = value as? String, let size = Size(rawValue: value) {
+                if let value = value as? String, size = Size(rawValue: value) {
                     self.size = size
                 }
             case JsonAttr.activity:
-                if let value = value as? String, let activity = Activity(rawValue: value) {
+                if let value = value as? String, activity = Activity(rawValue: value) {
                     self.activity = activity
                 }
             case JsonAttr.training:
-                if let value = value as? String, let training = Training(rawValue: value) {
+                if let value = value as? String, training = Training(rawValue: value) {
                     self.training = training
                 }
             case JsonAttr.vaccination:
-                if let value = value as? String, let vaccination = Vaccination(rawValue: value) {
+                if let value = value as? String, vaccination = Vaccination(rawValue: value) {
                     self.vaccination = vaccination
                 }
             case JsonAttr.status:
-                if let value = value as? String, let status = Status(rawValue: value) {
+                if let value = value as? String, status = Status(rawValue: value) {
                     self.status = status
                 }
             case JsonAttr.photos:
@@ -175,7 +175,7 @@ class Animal: APIObject {
             }
         }
     }
-    
+
     func getAge() -> Int {
         guard let birthDate = self.birthDate else {
             // w przypadku braku daty urodzenia przyjmowana jest domyślna wartość wieku == 0
@@ -183,7 +183,7 @@ class Animal: APIObject {
         }
         return NSCalendar.currentCalendar().components(.Year, fromDate: birthDate, toDate: NSDate(), options: []).year
     }
-    
+
     //TODO: zmienić to na używanie NSLocalizedString i stringdict (jeszcze nie wiem jak)
     func getAgeName() -> String {
         let age = getAge()

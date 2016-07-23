@@ -15,13 +15,13 @@ let log = Logger.sharedInstance
 */
 class Logger {
     static let sharedInstance = Logger()
-    
+
     private func out(msg: String) {
     #if DEBUG
         print(msg)
     #endif
     }
-    
+
     func error(msg: String, file: String = #file, function: String = #function) {
         var filename: String = file
         if let lastPathElement = file.componentsSeparatedByString("/").last {
@@ -29,7 +29,7 @@ class Logger {
         }
         self.out("ERROR/\(filename)/\(function): \(msg)")
     }
-    
+
     func debug(msg: String, file: String = #file, function: String = #function) {
         var filename: String = file
         if let lastPathElement = file.componentsSeparatedByString("/").last {

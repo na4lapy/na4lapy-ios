@@ -18,7 +18,6 @@ class Shelter: APIObject {
     private var website: String?
     private var accountNumber: String?
     private var adoptionRules: String?
-    
     //
     // MARK: init()
     //
@@ -29,7 +28,7 @@ class Shelter: APIObject {
 
     override class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
     }
-    
+
     private func initializeWithDictionary(dictionary: [String: AnyObject]) {
     }
 
