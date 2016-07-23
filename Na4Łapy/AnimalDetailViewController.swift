@@ -9,99 +9,101 @@
 import UIKit
 
 class AnimalDetailViewController: UIViewController {
-    
-    var animal:Animal!
-    private var animalPhotos:[Photo]!
-    private var footer:AnimalDetailPhotosCollectionFooter!
-    private var collapsing = false
-    
+
+    var animal: Animal!
+    private var animalPhotos: [Photo]!
+
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
     @IBOutlet weak var animalBackgroundPhoto: UIImageView!
+
     @IBOutlet weak var animalPhotoCollection: UICollectionView!
+
+    @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var animalFullDescriptionLabel: UILabel!
+
     @IBAction func toggleMoreDescription(sender: AnyObject) {
-        collapsing = !collapsing
-        animalPhotoCollection.reloadData()
+        animalFullDescriptionLabel.numberOfLines = animalFullDescriptionLabel.numberOfLines == 0 ? 3 : 0
     }
-    
+
     private struct Storyboard {
         static let CellIdentifier = "AnimalPhotoCell"
         static let FooterIdentifier = "AnimalDetailsCollectionFooter"
     }
-    
+
     override func viewDidLoad() {
-        animalPhotoCollection.dataSource = self
         super.viewDidLoad()
+
+        self.animalFullDescriptionLabel.text = animal.description
+        self.navigationItem.title = animal.getAgeName()
     }
-    
-    override func viewDidLayoutSubviews() {
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
         animalPhotos = animal.getAllImages()
         updateUI()
     }
-    
-    func updateUI(){
-        self.navigationItem.title = animal.getAgeName()
-    
-        animalPhotoCollection.reloadData()
-        animalCenterCircularPhoto.image = animalPhotos.first?.image?.circle
-        animalCenterCircularPhoto.clipsToBounds = true
-        animalBackgroundPhoto.image = animalPhotos.first?.image
+
+    override func viewDidLayoutSubviews() {
+        self.collectionViewHeightConstraint.constant = self.animalPhotoCollection.contentSize.height
+    }
+
+    func updateUI() {
+        self.animalPhotoCollection.reloadData()
+
+        dispatch_async(dispatch_get_main_queue()) {
+            self.animalCenterCircularPhoto.image = self.animalPhotos.first?.image?.circle
+            self.animalCenterCircularPhoto.clipsToBounds = true
+            self.animalBackgroundPhoto.image = self.animalPhotos.first?.image
+        }
     }
 }
 
+
 extension AnimalDetailViewController: UICollectionViewDataSource {
-    
+
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return animalPhotos.count
     }
-    
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIdentifier, forIndexPath: indexPath) as! AnimalPhotoCell
-        cell.animalImage.image = animalPhotos[indexPath.item].image
+
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIdentifier, forIndexPath: indexPath) as? AnimalPhotoCell  else {
+            return UICollectionViewCell()
+        }
+
+        dispatch_async(dispatch_get_main_queue()) {
+            cell.animalImage.image = self.animalPhotos[indexPath.item].image
+        }
+
         return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-    
-        if kind == UICollectionElementKindSectionFooter {
-            footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Storyboard.FooterIdentifier, forIndexPath: indexPath) as! AnimalDetailPhotosCollectionFooter
-            footer.animalFullDescriptionLabel.text = animal.description
-            return footer
-        }
-        assert(false, "Unexpected element kind")
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        collectionView
-        
-        guard collapsing, let height = animal.description?.heightWithConstrainedWidth(UIScreen.mainScreen().bounds.size.width, font: footer.animalFullDescriptionLabel.font) else {
-            return CGSizeMake(UIScreen.mainScreen().bounds.size.width, 280)
-        }
-        footer.animalFullDescriptionLabel.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, height)
-        log.debug(height.description)
-        return CGSizeMake(UIScreen.mainScreen().bounds.size.width, height + 200)
     }
 }
 
+
 extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+
         let screenWidth = UIScreen.mainScreen().bounds.size.width
-        let cellWidth:CGFloat = screenWidth / 3 - 10
+        let cellWidth: CGFloat = screenWidth / 3 - 10
+
         return CGSize(width: ceil(cellWidth), height: ceil(cellWidth))
     }
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsZero
     }
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
     }
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 8
     }

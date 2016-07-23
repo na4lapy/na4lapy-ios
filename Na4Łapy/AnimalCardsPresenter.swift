@@ -11,22 +11,22 @@ import UIKit
 
 
 class AnimalCardsPresenter {
-    weak private var  animalCardsController : AnimalCardsViewController?
+    weak private var  animalCardsController: AnimalCardsViewController?
     private let animalsListing: Listing?
-    
+
     struct Storyboard {
         static let CellIndentifier = "Animal Cell"
         static let AnimalDetailSegueIdentifier = "AnimalDetail"
     }
-    
+
     required init(listing: Listing) {
         self.animalsListing = listing
     }
-    
+
     func attachView(view: AnimalCardsViewController) {
         animalCardsController = view
     }
-    
+
     func getAnimals() {
         self.animalsListing?.prefetch(0,
             success: {
@@ -37,16 +37,18 @@ class AnimalCardsPresenter {
             }
         )
     }
-    
+
     func getAnimalAmount() -> Int {
         guard let count = animalsListing?.getCount() else {
             return 0
         }
         return Int(count)
     }
-    
-    func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath:NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as! AnimalCollectionCell
+
+    func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as? AnimalCollectionCell else {
+            assert(false, "Cell should be of type AnimalCollectionCell")
+        }
         cell.animal = animalsListing?.get(UInt(indexPath.item)) as? Animal
         return cell
     }

@@ -15,26 +15,26 @@ class Photo {
     var author: String?
     var image: UIImage?
     var downloaded: Bool = false
-    
+
     init?(dictionary: [String:AnyObject]) {
         guard
             let id = dictionary[JsonAttr.id] as? Int,
-            let urlstring = dictionary[JsonAttr.url] as? String,
-            let url = NSURL(string: urlstring)
+                urlstring = dictionary[JsonAttr.url] as? String,
+                url = NSURL(string: urlstring)
         else {
             log.error(Error.NoIdOrName.desc())
             return nil
         }
-        
+
         self.id = id
         self.url = url
         self.image = UIImage(named: "Placeholder")
-        
+
         if let author = dictionary[JsonAttr.author] as? String {
             self.author = author
         }
     }
-    
+
     /**
     Asynchroniczne pobieranie obrazka
     */
