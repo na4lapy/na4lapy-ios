@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040BDF3A1D1F13E100A46FB1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF391D1F13E100A46FB1 /* Localizable.strings */; };
-		040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */; };
+		040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict */; };
 		042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */; };
 		042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */; };
 		042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */; };
@@ -16,6 +16,7 @@
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */; };
 		04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */; };
+		04E3081B1D44BCE400A822BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04E3081A1D44BCE400A822BF /* Localizable.strings */; };
 		04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */; };
 		04EE02B11D3118B600E8EEB7 /* AnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */; };
 		0D8BA6A1D4CC3B586AEB695A /* Pods_Na4_apyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */; };
@@ -68,13 +69,14 @@
 
 /* Begin PBXFileReference section */
 		040BDF391D1F13E100A46FB1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
-		040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Localizable.stringsdict.plist; path = ../Localizable.stringsdict.plist; sourceTree = "<group>"; };
+		040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = ../Localizable.stringsdict; sourceTree = "<group>"; };
 		042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIInsetLabel.swift; path = ../UIInsetLabel.swift; sourceTree = "<group>"; };
 		042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalPhotoCell.swift; sourceTree = "<group>"; };
 		044D64BD1D3C12BA008CF116 /* AnimalCardsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCardsPresenter.swift; sourceTree = "<group>"; };
 		04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCircularExtension.swift; sourceTree = "<group>"; };
 		04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFeatureTableCell.swift; sourceTree = "<group>"; };
+		04E3081A1D44BCE400A822BF /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionCell.swift; sourceTree = "<group>"; };
 		04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalDetailViewController.swift; sourceTree = "<group>"; };
 		47329DF26D6B2A34E4B5AD55 /* Pods-Na4ŁapyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		5CCD46A21D04C6E500D2D672 = {
 			isa = PBXGroup;
 			children = (
+				04E3081A1D44BCE400A822BF /* Localizable.strings */,
 				5CCD46AD1D04C6E600D2D672 /* Na4Łapy */,
 				5CCD46C21D04C6E600D2D672 /* Na4ŁapyTests */,
 				5CCD46CD1D04C6E600D2D672 /* Na4ŁapyUITests */,
@@ -254,7 +257,7 @@
 				5CCD46B51D04C6E600D2D672 /* Assets.xcassets */,
 				5CCD46B71D04C6E600D2D672 /* LaunchScreen.storyboard */,
 				5CCD46BA1D04C6E600D2D672 /* Info.plist */,
-				040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict.plist */,
+				040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict */,
 				040BDF391D1F13E100A46FB1 /* Localizable.strings */,
 			);
 			path = "Na4Łapy";
@@ -409,7 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCD46B91D04C6E600D2D672 /* LaunchScreen.storyboard in Resources */,
-				040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict.plist in Resources */,
+				04E3081B1D44BCE400A822BF /* Localizable.strings in Resources */,
+				040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict in Resources */,
 				040BDF3A1D1F13E100A46FB1 /* Localizable.strings in Resources */,
 				5CCD46B61D04C6E600D2D672 /* Assets.xcassets in Resources */,
 				5CCD46B41D04C6E600D2D672 /* Main.storyboard in Resources */,

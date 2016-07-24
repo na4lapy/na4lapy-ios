@@ -75,7 +75,7 @@ enum Training: String {
 
 enum Vaccination: String {
     case basic = "BASIC"
-    case extended = "EXTENDED"
+    case extended = "EXTENDED" 
     case none = "NONE"
     case unknown = "UNKNOWN"
 }

@@ -35,9 +35,9 @@ class AnimalDetailViewController: UIViewController {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
 
 
-
     @IBAction func toggleMoreDescription(sender: AnyObject) {
         animalFullDescriptionLabel.numberOfLines = animalFullDescriptionLabel.numberOfLines == 0 ? 3 : 0
+            
         toggleDescriptionButton.titleLabel?.text = "Pokaż mniej"
     }
 
@@ -150,7 +150,6 @@ extension AnimalDetailViewController: UITableViewDelegate {
 extension AnimalDetailViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        log.debug(animal.getFeatures().count.description)
         return animal.getFeatures().count
     }
 
@@ -159,8 +158,9 @@ extension AnimalDetailViewController: UITableViewDataSource {
             assert(false, "Table cell should be of type AnimalFeatureTableCell")
             return UITableViewCell()
         }
-        let key = Array(animal.getFeatures())[indexPath.item].0
-        cell.featureKeyLabel.text = key
+        cell.backgroundColor = UIColor.clearColor()
+        let key = animal.getFeatureKeys()[indexPath.item]
+        cell.featureKeyLabel.text = key + ":"
         cell.featureValueLabel.text = animal.getFeatures()[key]
         return cell
     }

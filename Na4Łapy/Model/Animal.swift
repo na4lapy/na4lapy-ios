@@ -198,16 +198,97 @@ class Animal: APIObject {
         return self.name + ", " + String(age) + ageDescription
     }
 
+    func getSize() -> String {
+
+        if let size = self.size {
+            return NSLocalizedString(size.rawValue, comment: "size")
+        }
+
+        return ""
+    }
+
+    func getGender() -> String {
+        if let gender = self.gender {
+            return NSLocalizedString(gender.rawValue, comment: "gender")
+        }
+        return ""
+    }
+
+    func getActivityLevel() -> String {
+        if let activityLevel = self.activity {
+            return NSLocalizedString(activityLevel.rawValue, comment: "activityLevel")
+        }
+        return ""
+    }
+
+    func getTraining() -> String {
+        if let training = self.training {
+            return NSLocalizedString(training.rawValue, comment: "training")
+        }
+        return ""
+
+    }
+
+    func getSterlization() -> String {
+        if let _ = self.sterilization {
+            return NSLocalizedString("YES", comment: "positive")
+        }
+        return NSLocalizedString("NONE", comment: "none")
+    }
+
+    func getVaccination() -> String {
+        if let vaccination = self.vaccination {
+            return NSLocalizedString(vaccination.rawValue, comment: "vaccination")
+        }
+        return ""
+    }
+
+    func getAdmitannceMonthsFromNow() -> Int {
+
+        if let admittanceDate = self.admittanceDate {
+            return NSCalendar.currentCalendar().components(.Month, fromDate: admittanceDate, toDate: NSDate(), options: []).month
+        }
+        // w przypadku braku daty przyjęcia zwracamy zero
+        return 0
+    }
+
+    func getAdmintannceYearsFromNow() -> Int {
+        if let admittanceDate = self.admittanceDate {
+            return NSCalendar.currentCalendar().components(.Year, fromDate: admittanceDate, toDate: NSDate(), options: []).year
+        }
+        // w przypadku braku daty przyjęcia zwracamy zero
+        return 0
+    }
+
     func getFeatures() -> [String:String] {
         var features = [String:String]()
         features["Rasa"] = self.race ?? ""
-        features["Wielkość"] = self.size?.pl() ?? ""
-        features["Płeć"] = self.gender?.pl() ?? ""
-        features["Aktywność"] = self.activity?.pl() ?? ""
-//        features["Ułożenie"] = self.training ?? ""
-//        features["Sterylizacja"] = self.sterilization ?? ""
-//        features["Chip"] = self.chipId ?? ""
-//        features["W schronisku od"] = self.admittanceDate ?? ""
+
+        features["Wielkość"] = getSize()
+
+        features["Płeć"] = getGender()
+        features["Aktywność"] = getActivityLevel()
+        features["Ułożenie"] = getTraining()
+
+        features["Sterylizacja"] = getSterlization()
+        features["Chip"] = self.chipId ?? ""
+
+        let monthsSinceAdmintannce = getAdmitannceMonthsFromNow()
+        if monthsSinceAdmintannce != 0 {
+            log.debug(floor(Double(monthsSinceAdmintannce)/12).description)
+            if monthsSinceAdmintannce >= 12 {
+                features["W schronisku od"] = NSString.localizedStringWithFormat(NSLocalizedString("%d num_of_years", comment: ""), getAdmintannceYearsFromNow()) as String
+            } else {
+                features["W schronisku od"] =  NSString.localizedStringWithFormat(NSLocalizedString("%d num_of_months", comment: ""), monthsSinceAdmintannce) as String
+            }
+        } else {
+            features["W schronisku od"] = ""
+        }
+
         return features
+    }
+
+    func getFeatureKeys() -> [String] {
+        return ["Rasa", "Wielkość", "Płeć", "Aktywność", "Ułożenie", "Sterylizacja", "Chip", "W schronisku od"]
     }
 }

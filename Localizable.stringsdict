@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%d num_of_years</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@num_of_years@</string>
+        <key>num_of_years</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>one</key>
+            <string>%d roku</string>
+            <key>other</key>
+            <string>%d lat</string>
+        </dict>
+    </dict>
+	<key>%d num_of_months</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@num_of_months@</string>
+		<key>num_of_months</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>%d miesięcy</string>
+			<key>one</key>
+			<string>%d miesiąca</string>
+			<key>other</key>
+			<string>%d miesięcy</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

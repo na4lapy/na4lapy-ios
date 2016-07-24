@@ -1,7 +1,15 @@
-/* 
-  Localizable.strings
-  Na4Łapy
-
-  Created by mac on 25/06/16.
-  Copyright © 2016 Koduj dla Polski. All rights reserved.
-*/
+{
+	YES = Tak;
+	EXTENDED = Rozszerzone;
+	ADVANCED = Zaawansowane;
+	BASIC = Podstawowe;
+	NONE = Brak;
+	HIGH = Wysoka;
+	LOW = Niska;
+	UNKNOWN = Nieznany;
+	FEMALE = Samica;
+	MALE = Samiec;
+	LARGE = "Du\U017cy";
+	MEDIUM = "\U015aredni";
+	SMALL = "Ma\U0142y";
+}
