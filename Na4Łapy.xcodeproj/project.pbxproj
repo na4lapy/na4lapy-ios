@@ -15,6 +15,8 @@
 		044D64BE1D3C12BA008CF116 /* AnimalCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D64BD1D3C12BA008CF116 /* AnimalCardsPresenter.swift */; };
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */; };
+		04C22B261D47CEAC000E7AC3 /* AnimalImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C22B251D47CEAC000E7AC3 /* AnimalImageProvider.swift */; };
+		04C22B281D47D16B000E7AC3 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C22B271D47D16B000E7AC3 /* CounterView.swift */; };
 		04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */; };
 		04E3081B1D44BCE400A822BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04E3081A1D44BCE400A822BF /* Localizable.strings */; };
 		04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */; };
@@ -75,6 +77,8 @@
 		042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalPhotoCell.swift; sourceTree = "<group>"; };
 		044D64BD1D3C12BA008CF116 /* AnimalCardsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCardsPresenter.swift; sourceTree = "<group>"; };
 		04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCircularExtension.swift; sourceTree = "<group>"; };
+		04C22B251D47CEAC000E7AC3 /* AnimalImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalImageProvider.swift; sourceTree = "<group>"; };
+		04C22B271D47D16B000E7AC3 /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFeatureTableCell.swift; sourceTree = "<group>"; };
 		04E3081A1D44BCE400A822BF /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		04E61A481D18930F002AA70F /* AnimalCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCollectionCell.swift; sourceTree = "<group>"; };
@@ -166,9 +170,11 @@
 			isa = PBXGroup;
 			children = (
 				04EE02B01D3118B600E8EEB7 /* AnimalDetailViewController.swift */,
+				04C22B271D47D16B000E7AC3 /* CounterView.swift */,
 				04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */,
 				042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */,
 				04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */,
+				04C22B251D47CEAC000E7AC3 /* AnimalImageProvider.swift */,
 			);
 			name = AnimalDetailView;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
 				04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
+				04C22B261D47CEAC000E7AC3 /* AnimalImageProvider.swift in Sources */,
 				04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */,
 				044D64BE1D3C12BA008CF116 /* AnimalCardsPresenter.swift in Sources */,
 				5C6A40021D1890DF00241067 /* APIObject.swift in Sources */,
@@ -593,6 +600,7 @@
 				042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */,
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
+				04C22B281D47D16B000E7AC3 /* CounterView.swift in Sources */,
 				042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */,
 				042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				04EE02B11D3118B600E8EEB7 /* AnimalDetailViewController.swift in Sources */,

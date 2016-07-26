@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import ImageViewer
 
 class AnimalDetailViewController: UIViewController {
 
     var animal: Animal!
     private var animalPhotos: [Photo]!
+    private var animalImageProvider: AnimalImageProvider!
 
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
     @IBOutlet weak var animalBackgroundPhoto: UIImageView!
@@ -37,7 +39,6 @@ class AnimalDetailViewController: UIViewController {
 
     @IBAction func toggleMoreDescription(sender: AnyObject) {
         animalFullDescriptionLabel.numberOfLines = animalFullDescriptionLabel.numberOfLines == 0 ? 3 : 0
-            
         toggleDescriptionButton.titleLabel?.text = "Pokaż mniej"
     }
 
@@ -57,6 +58,7 @@ class AnimalDetailViewController: UIViewController {
         super.viewWillAppear(animated)
 
         animalPhotos = animal.getAllImages()
+        self.animalImageProvider = AnimalImageProvider(animalPhotos: animalPhotos)
 
         updateUI()
 
@@ -94,6 +96,32 @@ class AnimalDetailViewController: UIViewController {
     }
 }
 
+
+extension AnimalDetailViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+        let frame = CGRect(x: 0, y: 0, width: 200, height: 24)
+        let headerView = CounterView(frame: frame, currentIndex: indexPath.item, count: animalPhotos.count)
+        let footerView = CounterView(frame: frame, currentIndex: indexPath.item, count: animalPhotos.count)
+
+        if let displacedView =  collectionView.cellForItemAtIndexPath(indexPath) as UIView? {
+
+        let galleryViewController = GalleryViewController(imageProvider: self.animalImageProvider, displacedView: displacedView, imageCount: animalPhotos.count, startIndex: indexPath.item)
+
+            galleryViewController.headerView = headerView
+            galleryViewController.footerView = footerView
+
+            galleryViewController.landedPageAtIndexCompletion = {index in
+                headerView.currentIndex = index
+                footerView.currentIndex = index
+            }
+
+         self.presentImageGallery(galleryViewController)
+        }
+
+        log.debug("Clicked " + indexPath.item.description)
+    }
+}
 
 extension AnimalDetailViewController: UICollectionViewDataSource {
 
@@ -141,10 +169,6 @@ extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 8
     }
-}
-
-extension AnimalDetailViewController: UITableViewDelegate {
-
 }
 
 extension AnimalDetailViewController: UITableViewDataSource {
