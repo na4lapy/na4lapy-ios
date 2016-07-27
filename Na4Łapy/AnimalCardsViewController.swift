@@ -19,7 +19,7 @@ class AnimalCardsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadCardCollection(_:)), name: "ReloadCollectionView", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadCardCollection(_:)), name: "ReloadAnimalView", object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
         presenter.attachView(self)
         presenter.getAnimals()

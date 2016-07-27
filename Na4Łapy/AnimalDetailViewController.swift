@@ -52,6 +52,8 @@ class AnimalDetailViewController: UIViewController {
 
         self.animalFullDescriptionLabel.text = animal.description
         self.navigationItem.title = animal.getAgeName()
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadAnimalPhoto(_:)), name: "ReloadDetailView", object: nil)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,17 +66,27 @@ class AnimalDetailViewController: UIViewController {
 
 
     }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 
     override func viewDidLayoutSubviews() {
         self.collectionViewHeightConstraint.constant = self.animalPhotoCollection.contentSize.height
 
          self.tableViewHeightConstraint.constant = self.animalFeaturesTable.contentSize.height
-    }
+        }
 
-    func updateUI() {
-        self.animalPhotoCollection.reloadData()
-        self.animalFeaturesTable.dataSource = self
+    @objc func reloadAnimalPhoto(notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue()) {
+        self.animalPhotoCollection.reloadData()
+        }
+    }
+    
+    func updateUI() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.animalPhotoCollection.reloadData()
+            self.animalFeaturesTable.dataSource = self
             self.animalCenterCircularPhoto.image = self.animalPhotos.first?.image?.circle
             self.animalCenterCircularPhoto.clipsToBounds = true
             self.animalBackgroundPhoto.image = self.animalPhotos.first?.image

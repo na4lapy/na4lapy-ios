@@ -82,7 +82,9 @@ class Animal: APIObject {
         }
         log.debug("\(self.name): liczba zdjęć: \(self.images?.count)")
         for image in images {
-            image.download()
+            image.download() {
+                NSNotificationCenter.defaultCenter().postNotificationName("ReloadDetailView", object: nil)
+            }
         }
         return images
     }
@@ -165,7 +167,7 @@ class Animal: APIObject {
                     // Pobranie danych głównego obrazka
                     // TODO: sprawdzić czy na pewno pierwszy obrazek jest zawsze głównym??
                     self.images?.first?.download() {
-                        NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
+                        NSNotificationCenter.defaultCenter().postNotificationName("ReloadAnimalView", object: nil)
                     }
                 }
             case JsonAttr.name:
