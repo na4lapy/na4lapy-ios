@@ -2,12 +2,23 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "iOS_pomagaj_OFF.png",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "iOS_pomagaj_OFF.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

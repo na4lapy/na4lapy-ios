@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kFK-qQ-zwH">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G7a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kFK-qQ-zwH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -236,7 +236,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukT-Bu-MAQ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="536"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGZ-qi-zfC" userLabel="Content View">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGZ-qi-zfC" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ce-aN-PAf">
@@ -305,7 +305,7 @@
                                                 </connections>
                                             </collectionView>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au6-B2-oGe">
-                                                <rect key="frame" x="8" y="200" width="304" height="15.5"/>
+                                                <rect key="frame" x="8" y="200" width="304" height="16"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -314,7 +314,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="5Tw-lt-Ztv" appends="YES" id="gqO-DA-p7t"/>
                                                 </connections>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaT-fP-QrD">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaT-fP-QrD">
                                                 <rect key="frame" x="124" y="215" width="73" height="27"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <state key="normal" title="Pokaż więcej">
@@ -324,20 +324,20 @@
                                                     <action selector="toggleMoreDescription:" destination="MtD-qe-A9Q" eventType="touchUpInside" id="qqV-Je-tOb"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6b-ir-Ndj">
-                                                <rect key="frame" x="0.0" y="250" width="320" height="107.5"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m6b-ir-Ndj">
+                                                <rect key="frame" x="0.0" y="250" width="320" height="108"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aktywny" translatesAutoresizingMaskIntoConstraints="NO" id="IkZ-tH-P8P">
-                                                        <rect key="frame" x="0.0" y="0.0" width="107.5" height="107.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="108" height="108"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="IkZ-tH-P8P" secondAttribute="height" multiplier="1:1" id="GUR-ra-785"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aktywny" translatesAutoresizingMaskIntoConstraints="NO" id="LQg-cO-Lns">
-                                                        <rect key="frame" x="106" y="0.0" width="107.5" height="107.5"/>
+                                                        <rect key="frame" x="106" y="0.0" width="108" height="108"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aktywny" translatesAutoresizingMaskIntoConstraints="NO" id="bPZ-pF-CZB">
-                                                        <rect key="frame" x="212" y="0.0" width="107.5" height="107.5"/>
+                                                        <rect key="frame" x="212" y="0.0" width="108" height="108"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -364,8 +364,8 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rHI-li-xua">
-                                                <rect key="frame" x="8" y="365.5" width="304" height="75.5"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rHI-li-xua">
+                                                <rect key="frame" x="8" y="366" width="304" height="75"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75.5" id="LBF-Tc-PZP"/>
@@ -375,7 +375,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YB-ib-zIS" id="BJU-vA-AOH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="304" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roa-o7-P3z">
@@ -508,17 +508,22 @@
                     </tabBar>
                     <connections>
                         <segue destination="sZd-M0-tRt" kind="relationship" relationship="viewControllers" id="DWw-oT-IlU"/>
+                        <segue destination="4iF-5E-veU" kind="relationship" relationship="viewControllers" id="Kel-g7-76O"/>
+                        <segue destination="FHk-le-2AE" kind="relationship" relationship="viewControllers" id="41q-Za-krn"/>
+                        <segue destination="3mq-gG-ftg" kind="relationship" relationship="viewControllers" id="r6A-8Y-UWD"/>
+                        <segue destination="01b-Wl-ZuC" kind="relationship" relationship="viewControllers" id="bXI-i6-5rs"/>
+                        <segue destination="dJF-4A-jTO" kind="relationship" relationship="viewControllers" id="kO7-hs-5o2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BV5-ll-vE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1195" y="313"/>
         </scene>
-        <!--Zwierzęta-->
+        <!--Przeglądaj-->
         <scene sceneID="g8y-4U-nPU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sZd-M0-tRt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Zwierzęta" id="nDQ-C0-7yI"/>
+                    <tabBarItem key="tabBarItem" title="Przeglądaj" image="iOS_przegladaj_OFF" selectedImage="iOS_przegladaj_ON" id="nDQ-C0-7yI"/>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zaW-Yg-N9g">
@@ -539,10 +544,117 @@
             </objects>
             <point key="canvasLocation" x="2089" y="318"/>
         </scene>
+        <!--Ulubione-->
+        <scene sceneID="jpm-jL-Ewg">
+            <objects>
+                <viewController id="4iF-5E-veU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8VA-7W-b5w"/>
+                        <viewControllerLayoutGuide type="bottom" id="y9r-UJ-x4Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TLB-Aw-hdb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Ulubione" image="iOS_ulubione_OFF" selectedImage="iOS_ulubione_ON" id="Bfi-EL-Wg1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ofv-hL-TwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2117" y="1148"/>
+        </scene>
+        <!--Pomagaj-->
+        <scene sceneID="tu7-ec-hgx">
+            <objects>
+                <viewController id="FHk-le-2AE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Obn-Gt-56y"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Pd-m4-RTp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q0m-wl-OBS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Pomagaj" image="iOS_pomagaj_OFF" selectedImage="iOS_pomagaj_ON" id="pT3-Uk-cNO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="95x-kX-moJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2110" y="1861"/>
+        </scene>
+        <!--Preferencje-->
+        <scene sceneID="bnE-ld-JCw">
+            <objects>
+                <viewController id="3mq-gG-ftg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6uB-oG-tJ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="fVb-uT-rym"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tcw-eb-kBn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Preferencje" image="iOS_preferencje2_OFF" selectedImage="iOS_preferencje2_ON" id="aXF-Ai-8KR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xP8-Ou-bIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2124" y="2612"/>
+        </scene>
+        <!--O schronisku-->
+        <scene sceneID="1EP-bi-V7b">
+            <objects>
+                <viewController id="01b-Wl-ZuC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J5t-Cd-Nr0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q60-zt-fQ1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kpw-IX-iYO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="O schronisku" image="iOS_schronisko_OFF" selectedImage="iOS_schronisko_ON" id="Dxv-I9-0X3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4sf-Ld-sWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2120" y="3320"/>
+        </scene>
+        <!--O aplikacji-->
+        <scene sceneID="vfL-1k-TmN">
+            <objects>
+                <viewController id="dJF-4A-jTO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5VV-y7-3XV"/>
+                        <viewControllerLayoutGuide type="bottom" id="uIV-s0-zhw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kl8-Tx-HQa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="O aplikacji" image="iOS_oAplikacji_OFF" selectedImage="iOS_oAplikacji_ON" id="kCb-vz-n79"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cj1-Vn-Eeu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2132" y="4020"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Aktywny" width="300" height="300"/>
         <image name="favouriteStateIcon" width="600" height="600"/>
+        <image name="iOS_oAplikacji_OFF" width="37" height="37"/>
+        <image name="iOS_oAplikacji_ON" width="37" height="37"/>
+        <image name="iOS_pomagaj_OFF" width="37" height="37"/>
+        <image name="iOS_pomagaj_ON" width="37" height="37"/>
+        <image name="iOS_preferencje2_OFF" width="37" height="37"/>
+        <image name="iOS_preferencje2_ON" width="37" height="37"/>
+        <image name="iOS_przegladaj_OFF" width="37" height="37"/>
+        <image name="iOS_przegladaj_ON" width="37" height="37"/>
+        <image name="iOS_schronisko_OFF" width="37" height="37"/>
+        <image name="iOS_schronisko_ON" width="37" height="37"/>
+        <image name="iOS_ulubione_OFF" width="37" height="37"/>
+        <image name="iOS_ulubione_ON" width="37" height="37"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
