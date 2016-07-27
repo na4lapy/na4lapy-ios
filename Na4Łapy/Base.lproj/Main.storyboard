@@ -236,8 +236,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukT-Bu-MAQ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="536"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGZ-qi-zfC" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="442"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGZ-qi-zfC" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="449"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6ce-aN-PAf">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="176"/>
@@ -304,10 +304,10 @@
                                                     <outlet property="delegate" destination="MtD-qe-A9Q" id="8DO-q4-IlS"/>
                                                 </connections>
                                             </collectionView>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au6-B2-oGe">
-                                                <rect key="frame" x="8" y="192" width="304" height="13.5"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au6-B2-oGe">
+                                                <rect key="frame" x="8" y="200" width="304" height="15.5"/>
                                                 <gestureRecognizers/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <connections>
@@ -315,7 +315,7 @@
                                                 </connections>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaT-fP-QrD">
-                                                <rect key="frame" x="124" y="205" width="73" height="27"/>
+                                                <rect key="frame" x="124" y="215" width="73" height="27"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <state key="normal" title="Pokaż więcej">
                                                     <color key="titleColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -324,8 +324,8 @@
                                                     <action selector="toggleMoreDescription:" destination="MtD-qe-A9Q" eventType="touchUpInside" id="qqV-Je-tOb"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m6b-ir-Ndj">
-                                                <rect key="frame" x="0.0" y="243" width="320" height="107.5"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6b-ir-Ndj">
+                                                <rect key="frame" x="0.0" y="250" width="320" height="107.5"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Aktywny" translatesAutoresizingMaskIntoConstraints="NO" id="IkZ-tH-P8P">
                                                         <rect key="frame" x="0.0" y="0.0" width="107.5" height="107.5"/>
@@ -364,8 +364,8 @@
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rHI-li-xua">
-                                                <rect key="frame" x="8" y="358" width="304" height="75.5"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rHI-li-xua">
+                                                <rect key="frame" x="8" y="365.5" width="304" height="75.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75.5" id="LBF-Tc-PZP"/>
@@ -417,7 +417,7 @@
                                             <constraint firstAttribute="trailing" secondItem="au6-B2-oGe" secondAttribute="trailing" constant="8" id="KCQ-Dh-enA"/>
                                             <constraint firstAttribute="bottom" secondItem="au6-B2-oGe" secondAttribute="bottom" constant="10" id="LhP-N7-b81"/>
                                             <constraint firstItem="6ce-aN-PAf" firstAttribute="leading" secondItem="rGZ-qi-zfC" secondAttribute="leading" id="NrM-vH-tZY"/>
-                                            <constraint firstItem="au6-B2-oGe" firstAttribute="top" secondItem="HbT-AP-A8g" secondAttribute="bottom" constant="8" id="NsJ-dE-qn7"/>
+                                            <constraint firstItem="au6-B2-oGe" firstAttribute="top" secondItem="HbT-AP-A8g" secondAttribute="bottom" constant="16" id="NsJ-dE-qn7"/>
                                             <constraint firstItem="m6b-ir-Ndj" firstAttribute="leading" secondItem="rGZ-qi-zfC" secondAttribute="leading" id="OUo-2m-Kl3"/>
                                             <constraint firstItem="au6-B2-oGe" firstAttribute="leading" secondItem="rGZ-qi-zfC" secondAttribute="leading" constant="8" id="P4M-Gp-J04"/>
                                             <constraint firstItem="TfP-8N-RBa" firstAttribute="top" secondItem="6ce-aN-PAf" secondAttribute="top" id="SDa-DS-ggI"/>

@@ -284,11 +284,12 @@ class Animal: APIObject {
         } else {
             features["W schronisku od"] = ""
         }
+        features["Szczepienie"] = getVaccination()
 
         return features
     }
 
     func getFeatureKeys() -> [String] {
-        return ["Rasa", "Wielkość", "Płeć", "Aktywność", "Ułożenie", "Sterylizacja", "Chip", "W schronisku od"]
+        return ["Rasa", "Wielkość", "Płeć", "Aktywność", "Ułożenie", "Sterylizacja", "Szczepienie", "Chip", "W schronisku od"]
     }
 }

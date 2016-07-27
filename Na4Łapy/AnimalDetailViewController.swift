@@ -186,6 +186,7 @@ extension AnimalDetailViewController: UITableViewDataSource {
         let key = animal.getFeatureKeys()[indexPath.item]
         cell.featureKeyLabel.text = key + ":"
         cell.featureValueLabel.text = animal.getFeatures()[key]
+
         return cell
     }
 
