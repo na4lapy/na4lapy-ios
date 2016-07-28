@@ -347,6 +347,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ukT-Bu-MAQ" firstAttribute="top" secondItem="ZPb-b4-lkT" secondAttribute="bottom" id="BvC-2O-292"/>
                             <constraint firstItem="ukT-Bu-MAQ" firstAttribute="leading" secondItem="P6T-CP-P3a" secondAttribute="leading" id="aGs-ir-hRM"/>
