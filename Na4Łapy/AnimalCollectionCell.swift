@@ -15,9 +15,9 @@ class AnimalCollectionCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.animalImage.clipsToBounds = true
-        let animalImageMask = CAShapeLayer()
-        animalImageMask.path = UIBezierPath(roundedRect: animalImage.bounds, byRoundingCorners:  UIRectCorner.TopLeft.union(.TopRight), cornerRadii: CGSize(width: 10, height: 10)).CGPath
-        self.animalImage.layer.mask = animalImageMask
+//        let animalImageMask = CAShapeLayer()
+//        animalImageMask.path = UIBezierPath(roundedRect: animalImage.bounds, byRoundingCorners:  UIRectCorner.TopLeft.union(.TopRight), cornerRadii: CGSize(width: 10, height: 10)).CGPath
+//        self.animalImage.layer.mask = animalImageMask
     }
 
     //MARK: Public API
@@ -45,17 +45,17 @@ class AnimalCollectionCell: UICollectionViewCell {
         animalDescriptionLabel.text = animal?.getAgeName()
         animalImage.image = animal?.getFirstImage()
 
-        if let animalSize = animal?.size?.pl() {
-            animalSizeIcon.image = UIImage(named: animalSize)
-        }
-
-        if let animalGender = animal?.gender?.pl() {
-            animalGenderIcon.image = UIImage(named: animalGender)
-        }
-
-        if let animalActivityLevel = animal?.activity?.pl() {
-            animalActivityLevelIcon.image = UIImage(named: animalActivityLevel)
-        }
+//        if let animalSize = animal?.size?.pl() {
+//            animalSizeIcon.image = UIImage(named: animalSize)
+//        }
+//
+//        if let animalGender = animal?.gender?.pl() {
+//            animalGenderIcon.image = UIImage(named: animalGender)
+//        }
+//
+//        if let animalActivityLevel = animal?.activity?.pl() {
+//            animalActivityLevelIcon.image = UIImage(named: animalActivityLevel)
+//        }
 
 
     }
