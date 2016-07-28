@@ -30,16 +30,12 @@ class AnimalCollectionCell: UICollectionViewCell {
 
     //MARK: Private
 
-    @IBOutlet private weak var animalActivityLevelIcon: UIImageView!
-
-    @IBOutlet private weak var animalGenderIcon: UIImageView!
-
-    @IBOutlet private weak var animalSizeIcon: UIImageView!
-
+//    @IBOutlet private weak var animalActivityLevelIcon: UIImageView!
+//    @IBOutlet private weak var animalGenderIcon: UIImageView!
+//    @IBOutlet private weak var animalSizeIcon: UIImageView!
+    
     @IBOutlet private weak var animalDescriptionLabel: UILabel!
-
     @IBOutlet private weak var animalImage: UIImageView!
-
 
     private func updateUI() {
         animalDescriptionLabel.text = animal?.getAgeName()
