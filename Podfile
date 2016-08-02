@@ -9,7 +9,7 @@ target 'Na4Łapy' do
   # use_frameworks!
   # platform :ios, "8.0"
 
-  pod "ImageViewer"
+  pod "SKPhotoBrowser"
 
   target 'Na4ŁapyTests' do
     inherit! :search_paths

@@ -1,12 +1,12 @@
 PODS:
-  - ImageViewer (2.0)
+  - SKPhotoBrowser (2.0.1)
 
 DEPENDENCIES:
-  - ImageViewer
+  - SKPhotoBrowser
 
 SPEC CHECKSUMS:
-  ImageViewer: 00eae024d0cb2eebb4b228f4669b6c4872afadb9
+  SKPhotoBrowser: 8d2dd1c476c8e01226f885e2ba581a4601a1cdf1
 
-PODFILE CHECKSUM: 4142f08423e3813b83cfbf9f764bda389c3046a7
+PODFILE CHECKSUM: 957335725ef99b392eff8a2c4db03934e8da96f6
 
 COCOAPODS: 1.0.1

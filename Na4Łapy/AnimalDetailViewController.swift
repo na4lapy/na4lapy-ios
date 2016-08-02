@@ -8,6 +8,7 @@
 
 import UIKit
 import ImageViewer
+import SKPhotoBrowser
 
 class AnimalDetailViewController: UIViewController {
 
@@ -63,8 +64,6 @@ class AnimalDetailViewController: UIViewController {
         self.animalImageProvider = AnimalImageProvider(animalPhotos: animalPhotos)
 
         updateUI()
-
-
     }
     
     deinit {
@@ -79,7 +78,7 @@ class AnimalDetailViewController: UIViewController {
 
     @objc func reloadAnimalPhoto(notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue()) {
-        self.animalPhotoCollection.reloadData()
+            self.animalPhotoCollection.reloadData()
         }
     }
     
@@ -106,30 +105,59 @@ class AnimalDetailViewController: UIViewController {
             }
         }
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
 }
 
+extension AnimalDetailViewController: SKPhotoBrowserDelegate {
+    func didShowPhotoAtIndex(index: Int) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.animalPhotoCollection.visibleCells().forEach({$0.hidden = false})
+            self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = true
+        }
+    }
+    
+    func willDismissAtPageIndex(index: Int) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.animalPhotoCollection.visibleCells().forEach({$0.hidden = false})
+            self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = true
+        }
+    }
+    
+    func didDismissAtPageIndex(index: Int) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = false
+        }
+    }
+    
+    func viewForPhoto(browser: SKPhotoBrowser, index: Int) -> UIView? {
+        return animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))
+    }
+    
+    func removePhoto(browser: SKPhotoBrowser, index: Int, reload: (() -> Void)) {
+        reload()
+    }
+    
+}
 
 extension AnimalDetailViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
-        let frame = CGRect(x: 0, y: 0, width: 200, height: 24)
-        let headerView = CounterView(frame: frame, currentIndex: indexPath.item, count: animalPhotos.count)
-        let footerView = CounterView(frame: frame, currentIndex: indexPath.item, count: animalPhotos.count)
-
-        if let displacedView =  collectionView.cellForItemAtIndexPath(indexPath) as UIView? {
-
-        let galleryViewController = GalleryViewController(imageProvider: self.animalImageProvider, displacedView: displacedView, imageCount: animalPhotos.count, startIndex: indexPath.item)
-
-            galleryViewController.headerView = headerView
-            galleryViewController.footerView = footerView
-
-            galleryViewController.landedPageAtIndexCompletion = {index in
-                headerView.currentIndex = index
-                footerView.currentIndex = index
-            }
-
-         self.presentImageGallery(galleryViewController)
+        guard let cell = collectionView.cellForItemAtIndexPath(indexPath) as? AnimalPhotoCell else {
+            return
         }
+        
+        let browser = SKPhotoBrowser(originImage: cell.animalImage.image!, photos: self.animalImageProvider.animalPhotos, animatedFromView: cell)
+        browser.initializePageIndex(indexPath.row)
+        browser.statusBarStyle = .LightContent
+        browser.bounceAnimation = true
+        browser.delegate = self
+        presentViewController(browser, animated: true, completion: {})
 
         log.debug("Clicked " + indexPath.item.description)
     }
@@ -151,9 +179,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        dispatch_async(dispatch_get_main_queue()) {
-            cell.animalImage.image = self.animalPhotos[indexPath.item].image
-        }
+        cell.animalImage.image = self.animalPhotos[indexPath.item].image
 
         return cell
     }

@@ -1,20 +1,17 @@
 //This class is the image provider for the ImageViewer in the gallery
 
-import ImageViewer
+import SKPhotoBrowser
 
-class AnimalImageProvider: ImageProvider {
+class AnimalImageProvider {
 
-    let animalPhotos: [Photo]
+    let animalPhotos: [SKPhoto]
 
     init(animalPhotos: [Photo]) {
-        self.animalPhotos = animalPhotos
-    }
-
-    func provideImage(completion: UIImage? -> Void) {
-        completion(animalPhotos.first?.image)
-    }
-
-    func provideImage(atIndex index: Int, completion: UIImage? -> Void) {
-        completion(animalPhotos[index].image)
+        var images = [SKPhoto]()
+        for (index, _) in animalPhotos.enumerate() {
+            let url = animalPhotos[index].url
+            images.append(SKPhoto.photoWithImageURL(url.absoluteString))
+        }
+        self.animalPhotos = images
     }
 }
