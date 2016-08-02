@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ImageViewer
 import SKPhotoBrowser
 
 class AnimalDetailViewController: UIViewController {
