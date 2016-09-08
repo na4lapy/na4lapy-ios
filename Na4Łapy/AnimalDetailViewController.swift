@@ -54,6 +54,9 @@ class AnimalDetailViewController: UIViewController {
         self.navigationItem.title = animal.getAgeName()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadAnimalPhoto(_:)), name: "ReloadDetailView", object: nil)
+
+        self.animalFeaturesTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.animalFeaturesTable.rowHeight = 24.0
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,7 +67,7 @@ class AnimalDetailViewController: UIViewController {
 
         updateUI()
     }
-    
+
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -80,7 +83,7 @@ class AnimalDetailViewController: UIViewController {
             self.animalPhotoCollection.reloadData()
         }
     }
-    
+
     func updateUI() {
         dispatch_async(dispatch_get_main_queue()) {
             self.animalPhotoCollection.reloadData()
@@ -104,11 +107,11 @@ class AnimalDetailViewController: UIViewController {
             }
         }
     }
-    
+
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-    
+
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
@@ -121,28 +124,28 @@ extension AnimalDetailViewController: SKPhotoBrowserDelegate {
             self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = true
         }
     }
-    
+
     func willDismissAtPageIndex(index: Int) {
         dispatch_async(dispatch_get_main_queue()) {
             self.animalPhotoCollection.visibleCells().forEach({$0.hidden = false})
             self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = true
         }
     }
-    
+
     func didDismissAtPageIndex(index: Int) {
         dispatch_async(dispatch_get_main_queue()) {
             self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = false
         }
     }
-    
+
     func viewForPhoto(browser: SKPhotoBrowser, index: Int) -> UIView? {
         return animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))
     }
-    
+
     func removePhoto(browser: SKPhotoBrowser, index: Int, reload: (() -> Void)) {
         reload()
     }
-    
+
 }
 
 extension AnimalDetailViewController: UICollectionViewDelegate {
@@ -150,7 +153,7 @@ extension AnimalDetailViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItemAtIndexPath(indexPath) as? AnimalPhotoCell else {
             return
         }
-        
+
         let browser = SKPhotoBrowser(originImage: cell.animalImage.image!, photos: self.animalImageProvider.animalPhotos, animatedFromView: cell)
         browser.initializePageIndex(indexPath.row)
         browser.statusBarStyle = .LightContent
@@ -226,5 +229,4 @@ extension AnimalDetailViewController: UITableViewDataSource {
 
         return cell
     }
-
 }
