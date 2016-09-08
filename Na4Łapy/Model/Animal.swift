@@ -66,6 +66,25 @@ class Animal: APIObject {
             }
         )
     }
+    
+    class func getById(id: Int, success: ([Animal]) -> Void, failure: (NSError) -> Void) {
+        let urlstring = BaseUrl+EndPoint.animals+"/\(id)"
+        guard let endpoint = NSURL(string: urlstring) else {
+            failure(Error.WrongURL.err())
+            return
+        }
+        Request.getJSONData(endpoint,
+                            success: { (json, count) in
+                                if let animals = Animal.jsonToObj(json) as? [Animal] {
+                                    success(animals)
+                                }
+            },
+                            failure: { (error) in
+                                failure(error)
+            }
+        )
+        
+    }
 
     /**
      Pobieranie pierwszego (głównego) zdjęcia zwierzaka
