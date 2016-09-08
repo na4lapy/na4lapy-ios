@@ -68,7 +68,7 @@ class Animal: APIObject {
     }
     
     class func getById(id: Int, success: ([Animal]) -> Void, failure: (NSError) -> Void) {
-        let urlstring = BaseUrl+EndPoint.animals+"/\(id)"
+        let urlstring = baseUrl+EndPoint.animals+"/\(id)"
         guard let endpoint = NSURL(string: urlstring) else {
             failure(Error.WrongURL.err())
             return
