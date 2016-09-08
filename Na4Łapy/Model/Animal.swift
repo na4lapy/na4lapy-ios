@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Animal: APIObject {
+    private(set) var shelterId: Int?
     private(set) var race: String?
     private(set) var description: String?
     private(set) var birthDate: NSDate?
@@ -31,6 +32,9 @@ class Animal: APIObject {
     required init?(dictionary: [String:AnyObject]) {
         super.init(dictionary: dictionary)
         initializeWithDictionary(dictionary)
+
+        // FIXME: usunąć, jeśli shelterId będzie dostarczane przez API
+        self.shelterId = 1
     }
 
     /**
@@ -61,6 +65,25 @@ class Animal: APIObject {
                 failure(error)
             }
         )
+    }
+    
+    class func getById(id: Int, success: ([Animal]) -> Void, failure: (NSError) -> Void) {
+        let urlstring = BaseUrl+EndPoint.animals+"/\(id)"
+        guard let endpoint = NSURL(string: urlstring) else {
+            failure(Error.WrongURL.err())
+            return
+        }
+        Request.getJSONData(endpoint,
+                            success: { (json, count) in
+                                if let animals = Animal.jsonToObj(json) as? [Animal] {
+                                    success(animals)
+                                }
+            },
+                            failure: { (error) in
+                                failure(error)
+            }
+        )
+        
     }
 
     /**
@@ -97,6 +120,10 @@ class Animal: APIObject {
     private func initializeWithDictionary(dictionary: [String: AnyObject]) {
         for (key, value) in dictionary {
             switch key {
+            case JsonAttr.shelterId:
+                if let shelterId = value as? Int {
+                    self.shelterId = shelterId
+                }
             case JsonAttr.race:
                 if let race = value as? String {
                     self.race = race
