@@ -10,19 +10,9 @@ import UIKit
 
 class PreferencesViewController: UIViewController {
 
-    @IBOutlet weak var typeDogButton: UIButton!
-    @IBOutlet weak var typeCatButton: UIButton!
-    @IBOutlet weak var typeOtherButton: UIButton!
 
-    @IBOutlet weak var genderFemale: UIButton!
-    @IBOutlet weak var genderMale: UIButton!
+    @IBOutlet var preferenceButtons: [UIButton]!
 
-    @IBOutlet weak var sizeSmallButton: UIButton!
-    @IBOutlet weak var sizeMediumButton: UIButton!
-    @IBOutlet weak var sizeLargeButton: UIButton!
-
-    @IBOutlet weak var activityHigh: UIButton!
-    @IBOutlet weak var activityLow: UIButton!
 
     @IBOutlet weak var ageMinSlider: UISlider!
     @IBOutlet weak var ageMaxSlider: UISlider!
@@ -30,34 +20,57 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var ageMinLabel: UILabel!
     @IBOutlet weak var ageMaxLabel: UILabel!
 
+    var userPreferences: UserPreferences?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userPreferences = UserPreferences.init()
         setUIBasedOnSavedPreferences()
-        // Do any additional setup after loading the view.
-        //TODO: Set the starting state for buttons and scroll
+
+        for button in preferenceButtons {
+            button.addTarget(self, action: #selector(onPreferenceButtonTouched), forControlEvents: .TouchUpInside)
+        }
     }
 
     @IBAction func ageMinSliderValueChanged(sender: UISlider) {
         let sliderIntValue =  Int (round(sender.value))
         ageMinLabel.text = sliderIntValue.description
+
+        if let savedPreferences = userPreferences {
+            savedPreferences.setMinAge(sliderIntValue)
+        }
     }
 
 
     @IBAction func ageMaxSliderValueChanged(sender: UISlider) {
         let sliderIntValue =  Int (round(sender.value))
         ageMaxLabel.text = sliderIntValue.description
+        if let savedPreferences = userPreferences {
+            savedPreferences.setMaxAge(sliderIntValue)
+        }
     }
 
+    @IBAction func onSavePreferencesTouched(sender: UIButton) {
+        if let savedPreferences = userPreferences {
+            savedPreferences.savePreferencesToUserDefault()
+        }
+    }
+
+    func onPreferenceButtonTouched(sender: UIButton!) {
+        sender.selected = !sender.selected
+        if let savedPreferences = userPreferences {
+            savedPreferences.togglePreferenceAtIndex(sender.tag)
+        }
+    }
 
     private func setUIBasedOnSavedPreferences() {
-        guard let savedPreferences =  UserPreferences.init()  else {
-            //TODO: throw error instead
 
+        guard let savedPreferences = userPreferences else {
+            log.error("Can't initiate userPreferences!!!!!!!!")
             return
         }
 
-        var buttonTuple: (String?, UIButton?)
         for (_, preferenceValue) in savedPreferences.dictionaryRepresentation().enumerate() {
 
             let (preferenceKey, preferenceValue) = preferenceValue
@@ -72,52 +85,25 @@ class PreferencesViewController: UIViewController {
                 continue
             }
 
-
-
-            switch preferenceKey {
-            case Species.dog.rawValue:
-                buttonTuple.0 = "preferencjePies"
-                buttonTuple.1 = typeDogButton
-            case Species.cat.rawValue:
-                buttonTuple.0 = "preferencjeKot"
-                buttonTuple.1 = typeCatButton
-            case Species.other.rawValue:
-                buttonTuple.0 = "preferencjeInny"
-                buttonTuple.1 = typeOtherButton
-            case Gender.female.rawValue:
-                buttonTuple.0 = "preferencjeSuczka"
-                buttonTuple.1 = genderFemale
-            case Gender.male.rawValue:
-                buttonTuple.0 = "preferencjeSamiec"
-                buttonTuple.1 = genderMale
-            case Size.small.rawValue:
-                buttonTuple.0 = "preferencjeMaly"
-                buttonTuple.1 = sizeSmallButton
-            case Size.medium.rawValue:
-                buttonTuple.0 = "preferencjeSredni"
-                buttonTuple.1 = sizeMediumButton
-            case Size.large.rawValue:
-                buttonTuple.0 = "preferencjeDuzy"
-                buttonTuple.1 = sizeLargeButton
-            case Activity.high.rawValue:
-                buttonTuple.0 = "preferencjeAktywny"
-                buttonTuple.1 = activityHigh
-            case Activity.low.rawValue:
-                buttonTuple.0 = "preferencjeDomator"
-                buttonTuple.1 = activityLow
-            default:
-                break
+            guard let preferenceIndex = PREFERENCES.indexOf(preferenceKey) else {
+                continue
             }
 
-            if let button = buttonTuple.1, imageName = buttonTuple.0 {
-                button.selected = preferenceValue == 1
+            for button in preferenceButtons {
+                if(button.tag == preferenceIndex) {
+                    button.selected = preferenceValue == 1
+                }
             }
+
         }
+
 
     }
 
-
     @IBAction func toggleAnimalPreference(sender: UIButton) {
-        log.debug(sender.tag.description)
+        if let savedPreferences = userPreferences {
+             savedPreferences.togglePreferenceAtIndex(sender.tag)
+        }
+
     }
 }

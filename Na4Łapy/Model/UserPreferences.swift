@@ -9,18 +9,20 @@
 import Foundation
 
 class UserPreferences {
-    fileprivate var typeDog: Bool?
-    fileprivate var typeCat: Bool?
-    fileprivate var typeOther: Bool?
-    fileprivate var genderFemale: Bool?
-    fileprivate var genderMale: Bool?
-    fileprivate var ageMin: Int = 0
-    fileprivate var ageMax: Int = 20
-    fileprivate var sizeSmall: Bool?
-    fileprivate var sizeMedium: Bool?
-    fileprivate var sizeLarge: Bool?
-    fileprivate var activityLow: Bool?
-    fileprivate var activityHigh: Bool?
+    private var typeDog: Bool?
+    private var typeCat: Bool?
+    private var typeOther: Bool?
+    private var genderFemale: Bool?
+    private var genderMale: Bool?
+    private var ageMin: Int = 0
+    private var ageMax: Int = 20
+    private var sizeSmall: Bool?
+    private var sizeMedium: Bool?
+    private var sizeLarge: Bool?
+    private var activityLow: Bool?
+    private var activityHigh: Bool?
+    private final let USER_PREFERENCES_KEY = "UserPreferences"
+    private var userPreferencesDictionary = [String: Int]()
 
     init(typeDog: Bool?, typeCat: Bool?, typeOther: Bool?, genderFemale: Bool?, genderMale: Bool?, ageMin: Int, ageMax: Int, sizeSmall: Bool?, sizeMedium: Bool?, sizeLarge: Bool?, activityLow: Bool?, activityHigh: Bool?) {
         self.typeDog = typeDog
@@ -37,7 +39,135 @@ class UserPreferences {
         self.activityHigh = activityHigh
     }
 
-    func dictionaryRepresentation() {
+    convenience init?() {
+        if let animalPreferences = NSUserDefaults.standardUserDefaults().dictionaryForKey("UserPreferences") {
+
+        print(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())
+        self.init(
+            typeDog: animalPreferences["DOG"] as? Bool,
+            typeCat: animalPreferences["CAT"] as? Bool,
+            typeOther: animalPreferences["OTHER"] as? Bool,
+            genderFemale: animalPreferences["FEMALE"] as? Bool,
+            genderMale: animalPreferences["MALE"] as? Bool,
+            ageMin: animalPreferences["minAge"] as! Int,
+            ageMax: animalPreferences["maxAge"] as! Int,
+            sizeSmall: animalPreferences["SMALL"] as? Bool,
+            sizeMedium: animalPreferences["MEDIUM"] as? Bool,
+            sizeLarge: animalPreferences["LARGE"] as? Bool,
+            activityLow: animalPreferences["LOW"] as? Bool,
+            activityHigh: animalPreferences["HIGH"] as? Bool
+            )
+        } else {
+            return nil
+        }
+    }
+
+
+    func togglePreferenceAtIndex(preferenceIndex: Int) {
+        switch preferenceIndex {
+        case 0:
+            if let _ = self.typeDog {
+                self.typeDog! = !self.typeDog!
+            }
+        case 1:
+            if let _ = self.typeCat {
+                self.typeCat! = !self.typeCat!
+            }
+        case 2:
+            if let _ = self.typeOther {
+                self.typeOther! = !self.typeOther!
+            }
+        case 3:
+            if let _ = self.genderFemale {
+                self.genderFemale! = !self.genderFemale!
+            }
+        case 4:
+            if let _ = self.genderMale {
+                self.genderMale! = !self.genderMale!
+            }
+        case 5:
+            if let _ = self.sizeSmall {
+                self.sizeSmall! = !self.sizeSmall!
+            }
+        case 6:
+            if let _ = self.sizeMedium {
+                self.sizeMedium! = !self.sizeMedium!
+            }
+        case 7:
+            if let _ = self.sizeLarge {
+                self.sizeLarge! = !self.sizeLarge!
+            }
+        case 8:
+            if let _ = self.activityHigh {
+                self.activityHigh! = !self.activityHigh!
+            }
+        case 9:
+            if let _ = self.activityLow {
+                self.activityLow! = !self.activityLow!
+            }
+
+        default:
+            break
+        }
+
+    }
+
+    func setMinAge(newValue: Int) {
+        self.ageMin = newValue
+    }
+
+    func setMaxAge(newValue: Int) {
+        self.ageMax = newValue
+    }
+
+
+    func dictionaryRepresentation() -> [String: Int] {
+
+
+        if let dogValue = self.typeDog {
+            userPreferencesDictionary["DOG"] = dogValue ? 1 : 0
+        }
+        if let catValue = self.typeCat {
+            userPreferencesDictionary["CAT"] = catValue ? 1 : 0
+        }
+        if let otherValue = self.typeOther {
+            userPreferencesDictionary["OTHER"] = otherValue ? 1 : 0
+        }
+
+        if let femaleValue = self.genderFemale {
+            userPreferencesDictionary["FEMALE"] = femaleValue ? 1 : 0
+        }
+
+        if let maleValue = self.genderMale {
+            userPreferencesDictionary["MALE"] = maleValue ? 1 : 0
+        }
+        if let smallValue = self.sizeSmall {
+            userPreferencesDictionary["SMALL"] = smallValue ? 1 : 0
+        }
+        if let mediumValue = self.sizeMedium {
+            userPreferencesDictionary["MEDIUM"] = mediumValue ? 1 : 0
+        }
+        if let largeValue = self.sizeLarge {
+            userPreferencesDictionary["LARGE"] = largeValue ? 1 : 0
+        }
+        if let highValue = self.activityHigh {
+            userPreferencesDictionary["HIGH"] = highValue ? 1 : 0
+        }
+
+        if let lowValue = self.activityLow {
+            userPreferencesDictionary["LOW"] = lowValue ? 1 : 0
+        }
+
+        userPreferencesDictionary["minAge"] = ageMin
+
+        userPreferencesDictionary["maxAge"] = ageMax
+
+        return  userPreferencesDictionary
+    }
+
+    func savePreferencesToUserDefault() {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject(self.dictionaryRepresentation(), forKey: USER_PREFERENCES_KEY)
 
     }
 }
