@@ -507,7 +507,7 @@
                                             <constraint firstAttribute="width" secondItem="A42-Ms-clM" secondAttribute="height" multiplier="1:1" id="xYa-Ln-eb5"/>
                                         </constraints>
                                         <state key="normal" image="preferencjeKot_off"/>
-                                        <state key="selected" image="preferencjeKot_off"/>
+                                        <state key="selected" image="preferencjeKot"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="vJW-CA-VAw"/>
@@ -896,6 +896,9 @@
                                 <state key="normal" title="Zapisz">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="onSavePreferencesTouched:" destination="3mq-gG-ftg" eventType="touchUpInside" id="Dcu-Q5-4aa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -953,20 +956,20 @@
                     </view>
                     <navigationItem key="navigationItem" title="Jakiego zwierzaka szukasz?" id="InH-Fk-a0B"/>
                     <connections>
-                        <outlet property="activityHigh" destination="ydc-8f-8TE" id="eGl-8o-lIV"/>
-                        <outlet property="activityLow" destination="beR-CL-EAz" id="0P6-T6-Pk9"/>
                         <outlet property="ageMaxLabel" destination="oPc-Of-mXY" id="D77-SH-WFR"/>
                         <outlet property="ageMaxSlider" destination="IoB-8s-gKI" id="6FT-2Z-5TW"/>
                         <outlet property="ageMinLabel" destination="57b-Yf-ZuA" id="QcL-dM-PXf"/>
                         <outlet property="ageMinSlider" destination="zhr-FN-fGH" id="hJA-hQ-aVB"/>
-                        <outlet property="genderFemale" destination="dxn-dJ-NTN" id="tn9-Vh-8vn"/>
-                        <outlet property="genderMale" destination="Biu-vI-LCQ" id="cub-CR-l0L"/>
-                        <outlet property="sizeLargeButton" destination="7Ve-BA-eX8" id="hJq-lz-XMp"/>
-                        <outlet property="sizeMediumButton" destination="0Yp-vN-awP" id="Lgz-Xk-6ja"/>
-                        <outlet property="sizeSmallButton" destination="X6b-Fo-Oge" id="891-9d-6nT"/>
-                        <outlet property="typeCatButton" destination="A42-Ms-clM" id="NzX-Rf-5Ud"/>
-                        <outlet property="typeDogButton" destination="PiW-5C-FPp" id="LdE-aP-jtn"/>
-                        <outlet property="typeOtherButton" destination="ru1-el-l0b" id="Fkx-dK-87f"/>
+                        <outletCollection property="preferenceButtons" destination="PiW-5C-FPp" collectionClass="NSMutableArray" id="4o8-A3-Bxo"/>
+                        <outletCollection property="preferenceButtons" destination="A42-Ms-clM" collectionClass="NSMutableArray" id="k1M-SU-B3J"/>
+                        <outletCollection property="preferenceButtons" destination="ru1-el-l0b" collectionClass="NSMutableArray" id="5Ox-rx-QYq"/>
+                        <outletCollection property="preferenceButtons" destination="dxn-dJ-NTN" collectionClass="NSMutableArray" id="8gZ-e4-BPe"/>
+                        <outletCollection property="preferenceButtons" destination="Biu-vI-LCQ" collectionClass="NSMutableArray" id="UU0-AK-Kyy"/>
+                        <outletCollection property="preferenceButtons" destination="X6b-Fo-Oge" collectionClass="NSMutableArray" id="caS-a9-mCP"/>
+                        <outletCollection property="preferenceButtons" destination="0Yp-vN-awP" collectionClass="NSMutableArray" id="mor-hf-CfO"/>
+                        <outletCollection property="preferenceButtons" destination="7Ve-BA-eX8" collectionClass="NSMutableArray" id="HgM-Ca-aWI"/>
+                        <outletCollection property="preferenceButtons" destination="ydc-8f-8TE" collectionClass="NSMutableArray" id="cm9-du-jR4"/>
+                        <outletCollection property="preferenceButtons" destination="beR-CL-EAz" collectionClass="NSMutableArray" id="KyO-wB-5bW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xP8-Ou-bIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1071,6 +1074,7 @@
         <image name="preferencjeDuzy_off" width="600" height="600"/>
         <image name="preferencjeInny" width="600" height="600"/>
         <image name="preferencjeInny_off" width="600" height="600"/>
+        <image name="preferencjeKot" width="600" height="600"/>
         <image name="preferencjeKot_off" width="600" height="600"/>
         <image name="preferencjeMaly" width="600" height="600"/>
         <image name="preferencjeMaly_off" width="600" height="600"/>
