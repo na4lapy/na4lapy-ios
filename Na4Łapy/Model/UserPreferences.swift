@@ -65,26 +65,103 @@ class UserPreferences {
 
 
     func togglePreferenceAtIndex(preferenceIndex: Int) {
+        switch preferenceIndex {
+        case 0:
+            if let _ = self.typeDog {
+                self.typeDog! = !self.typeDog!
+            }
+        case 1:
+            if let _ = self.typeCat {
+                self.typeCat! = !self.typeCat!
+            }
+        case 2:
+            if let _ = self.typeOther {
+                self.typeOther! = !self.typeOther!
+            }
+        case 3:
+            if let _ = self.genderFemale {
+                self.genderFemale! = !self.genderFemale!
+            }
+        case 4:
+            if let _ = self.genderMale {
+                self.genderMale! = !self.genderMale!
+            }
+        case 5:
+            if let _ = self.sizeSmall {
+                self.sizeSmall! = !self.sizeSmall!
+            }
+        case 6:
+            if let _ = self.sizeMedium {
+                self.sizeMedium! = !self.sizeMedium!
+            }
+        case 7:
+            if let _ = self.sizeLarge {
+                self.sizeLarge! = !self.sizeLarge!
+            }
+        case 8:
+            if let _ = self.activityHigh {
+                self.activityHigh! = !self.activityHigh!
+            }
+        case 9:
+            if let _ = self.activityLow {
+                self.activityLow! = !self.activityLow!
+            }
 
+        default:
+            break
+        }
+
+    }
+
+    func setMinAge(newValue: Int) {
+        self.ageMin = newValue
+    }
+
+    func setMaxAge(newValue: Int) {
+        self.ageMax = newValue
     }
 
 
     func dictionaryRepresentation() -> [String: Int] {
 
-        if (userPreferencesDictionary.isEmpty) {
-            userPreferencesDictionary["DOG"] = Int(self.typeDog ?? 0)
-            userPreferencesDictionary["CAT"] = Int(self.typeCat ?? 0)
-            userPreferencesDictionary["OTHER"] = Int(self.typeOther ?? 0)
-            userPreferencesDictionary["FEMALE"] = Int(self.genderFemale ?? 0)
-            userPreferencesDictionary["MALE"] = Int(self.genderMale ?? 0)
-            userPreferencesDictionary["SMALL"] = Int(self.sizeSmall ?? 0)
-            userPreferencesDictionary["MEDIUM"] = Int(self.sizeMedium ?? 0)
-            userPreferencesDictionary["LARGE"] = Int(self.sizeLarge ?? 0)
-            userPreferencesDictionary["HIGH"] = Int(self.activityHigh ?? 0)
-            userPreferencesDictionary["LOW"] = Int(self.activityLow ?? 0)
-            userPreferencesDictionary["minAge"] = self.ageMin
-            userPreferencesDictionary["maxAge"] = self.ageMax
+
+        if let dogValue = self.typeDog {
+            userPreferencesDictionary["DOG"] = dogValue ? 1 : 0
         }
+        if let catValue = self.typeCat {
+            userPreferencesDictionary["CAT"] = catValue ? 1 : 0
+        }
+        if let otherValue = self.typeOther {
+            userPreferencesDictionary["OTHER"] = otherValue ? 1 : 0
+        }
+
+        if let femaleValue = self.genderFemale {
+            userPreferencesDictionary["FEMALE"] = femaleValue ? 1 : 0
+        }
+
+        if let maleValue = self.genderMale {
+            userPreferencesDictionary["MALE"] = maleValue ? 1 : 0
+        }
+        if let smallValue = self.sizeSmall {
+            userPreferencesDictionary["SMALL"] = smallValue ? 1 : 0
+        }
+        if let mediumValue = self.sizeMedium {
+            userPreferencesDictionary["MEDIUM"] = mediumValue ? 1 : 0
+        }
+        if let largeValue = self.sizeLarge {
+            userPreferencesDictionary["LARGE"] = largeValue ? 1 : 0
+        }
+        if let highValue = self.activityHigh {
+            userPreferencesDictionary["HIGH"] = highValue ? 1 : 0
+        }
+
+        if let lowValue = self.activityLow {
+            userPreferencesDictionary["LOW"] = lowValue ? 1 : 0
+        }
+
+        userPreferencesDictionary["minAge"] = ageMin
+
+        userPreferencesDictionary["maxAge"] = ageMax
 
         return  userPreferencesDictionary
     }
@@ -92,5 +169,6 @@ class UserPreferences {
     func savePreferencesToUserDefault() {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(self.dictionaryRepresentation(), forKey: USER_PREFERENCES_KEY)
+
     }
 }
