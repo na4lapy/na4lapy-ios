@@ -36,6 +36,7 @@ class UserPreferences {
         self.sizeLarge = sizeLarge
         self.activityLow = activityLow
         self.activityHigh = activityHigh
+
     }
 
     convenience init?() {
