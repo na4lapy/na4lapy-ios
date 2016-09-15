@@ -259,7 +259,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YB-ib-zIS" id="BJU-vA-AOH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roa-o7-P3z">
@@ -473,7 +473,7 @@
         <!--Jakiego zwierzaka szukasz?-->
         <scene sceneID="bnE-ld-JCw">
             <objects>
-                <viewController id="3mq-gG-ftg" sceneMemberID="viewController">
+                <viewController id="3mq-gG-ftg" customClass="PreferencesViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6uB-oG-tJ2"/>
                         <viewControllerLayoutGuide type="bottom" id="fVb-uT-rym"/>
@@ -485,29 +485,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-Dx-jbc" userLabel="Typ View">
                                 <rect key="frame" x="20" y="80" width="560" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiW-5C-FPp">
-                                        <rect key="frame" x="356" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.26258893026092078" blue="0.48558220215486814" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiW-5C-FPp">
+                                        <rect key="frame" x="356" y="1" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="PiW-5C-FPp" secondAttribute="height" multiplier="1:1" id="8NN-ol-1lH"/>
                                             <constraint firstAttribute="width" secondItem="PiW-5C-FPp" secondAttribute="height" multiplier="1:1" id="kyQ-Ko-E0X"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjePies"/>
+                                        <state key="normal" image="preferencjePies_off"/>
+                                        <state key="selected" image="preferencjePies"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="8NN-ol-1lH"/>
                                             </mask>
                                         </variation>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A42-Ms-clM">
-                                        <rect key="frame" x="424" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.27958266380306929" blue="0.90427821013985898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A42-Ms-clM">
+                                        <rect key="frame" x="424" y="-1" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="A42-Ms-clM" secondAttribute="height" multiplier="1:1" id="e6h-Vq-UPr"/>
                                             <constraint firstAttribute="width" constant="72" id="vJW-CA-VAw"/>
                                             <constraint firstAttribute="width" secondItem="A42-Ms-clM" secondAttribute="height" multiplier="1:1" id="xYa-Ln-eb5"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeKot"/>
+                                        <state key="normal" image="preferencjeKot_off"/>
+                                        <state key="selected" image="preferencjeKot_off"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="vJW-CA-VAw"/>
@@ -515,15 +515,15 @@
                                             </mask>
                                         </variation>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ru1-el-l0b">
+                                    <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ru1-el-l0b">
                                         <rect key="frame" x="492" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.48674977007036357" green="0.2173137597307564" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ru1-el-l0b" secondAttribute="height" multiplier="1:1" id="f7c-3E-HF4"/>
                                             <constraint firstAttribute="width" secondItem="ru1-el-l0b" secondAttribute="height" multiplier="1:1" id="jYG-QK-qse"/>
                                             <constraint firstAttribute="width" constant="72" id="z0N-NT-8B3"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeInny"/>
+                                        <state key="normal" image="preferencjeInny_off"/>
+                                        <state key="selected" image="preferencjeInny"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="jYG-QK-qse"/>
@@ -533,13 +533,11 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Typ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYP-qq-daQ">
                                         <rect key="frame" x="8" y="17" width="328" height="26"/>
-                                        <color key="backgroundColor" red="0.47098395707538154" green="1" blue="0.58162191223223703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.9229232755460528" blue="0.32713622947218546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="A42-Ms-clM" firstAttribute="leading" secondItem="PiW-5C-FPp" secondAttribute="trailing" constant="8" symbolic="YES" id="2BV-u3-2xS"/>
                                     <constraint firstItem="A42-Ms-clM" firstAttribute="baseline" secondItem="PiW-5C-FPp" secondAttribute="baseline" id="3Tx-u4-8yx"/>
@@ -567,29 +565,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spx-c4-oy9" userLabel="Płeć">
                                 <rect key="frame" x="20" y="157" width="560" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxn-dJ-NTN">
+                                    <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxn-dJ-NTN">
                                         <rect key="frame" x="424" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.26258893030000002" blue="0.48558220219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dxn-dJ-NTN" secondAttribute="height" multiplier="1:1" id="M1g-u4-Q8z"/>
                                             <constraint firstAttribute="width" secondItem="dxn-dJ-NTN" secondAttribute="height" multiplier="1:1" id="Ulc-Ga-mpv"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeSuczka"/>
+                                        <state key="normal" image="preferencjeSuczka_off"/>
+                                        <state key="selected" image="preferencjeSuczka"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="Ulc-Ga-mpv"/>
                                             </mask>
                                         </variation>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-vI-LCQ">
+                                    <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Biu-vI-LCQ">
                                         <rect key="frame" x="492" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.27958266380000002" blue="0.90427821009999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Biu-vI-LCQ" secondAttribute="height" multiplier="1:1" id="8BR-nD-veh"/>
                                             <constraint firstAttribute="width" constant="72" id="ZZi-HI-dic"/>
                                             <constraint firstAttribute="width" secondItem="Biu-vI-LCQ" secondAttribute="height" multiplier="1:1" id="mjP-m1-pDB"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeSamiec"/>
+                                        <state key="normal" image="preferencjeSamiec_off"/>
+                                        <state key="selected" image="preferencjeSamiec"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="ZZi-HI-dic"/>
@@ -599,13 +597,11 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Płeć" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVc-R4-7ya">
                                         <rect key="frame" x="8" y="17" width="396" height="26"/>
-                                        <color key="backgroundColor" red="0.47098395710000002" green="1" blue="0.58162191220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.92292327549999997" blue="0.32713622949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="dxn-dJ-NTN" firstAttribute="top" secondItem="spx-c4-oy9" secondAttribute="top" id="0yZ-FJ-aWw"/>
                                     <constraint firstItem="mVc-R4-7ya" firstAttribute="leading" secondItem="spx-c4-oy9" secondAttribute="leading" constant="8" id="AAa-xc-Q09"/>
@@ -632,7 +628,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wiek" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrL-3A-VzF">
                                         <rect key="frame" x="8" y="27" width="39" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjM-8v-Gnj">
@@ -641,16 +637,22 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Od" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbL-sd-vNE">
                                                 <rect key="frame" x="17" y="10" width="19.5" height="17"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zhr-FN-fGH">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="zhr-FN-fGH">
                                                 <rect key="frame" x="50" y="5" width="388" height="31"/>
+                                                <connections>
+                                                    <action selector="ageMinSliderValueChanged:" destination="3mq-gG-ftg" eventType="valueChanged" id="hbw-UA-5hU"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57b-Yf-ZuA">
                                                 <rect key="frame" x="453" y="10" width="35.5" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35.5" id="8yT-bb-UEF"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -677,19 +679,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuS-FQ-Fr9">
                                         <rect key="frame" x="63" y="38" width="489" height="38"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Od" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkN-pV-ZCU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Do" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkN-pV-ZCU">
                                                 <rect key="frame" x="16" y="10" width="19.5" height="17"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IoB-8s-gKI">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="IoB-8s-gKI">
                                                 <rect key="frame" x="50" y="5" width="389" height="31"/>
+                                                <connections>
+                                                    <action selector="ageMaxSliderValueChanged:" destination="3mq-gG-ftg" eventType="valueChanged" id="Kob-QH-KgS"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPc-Of-mXY">
-                                                <rect key="frame" x="453" y="9" width="35.5" height="21"/>
+                                                <rect key="frame" x="453" y="8" width="35.5" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35.5" id="LN8-RG-LyP"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -698,7 +706,7 @@
                                             <constraint firstItem="oPc-Of-mXY" firstAttribute="centerY" secondItem="DuS-FQ-Fr9" secondAttribute="centerY" id="0EI-W0-Ivc"/>
                                             <constraint firstAttribute="bottom" secondItem="oPc-Of-mXY" secondAttribute="bottom" constant="8" id="6IZ-HV-DDp"/>
                                             <constraint firstAttribute="bottom" secondItem="IoB-8s-gKI" secondAttribute="bottom" constant="3" id="Bne-ay-YNP"/>
-                                            <constraint firstItem="oPc-Of-mXY" firstAttribute="top" secondItem="DuS-FQ-Fr9" secondAttribute="top" constant="9" id="HQD-l1-dyo"/>
+                                            <constraint firstItem="oPc-Of-mXY" firstAttribute="top" secondItem="DuS-FQ-Fr9" secondAttribute="top" constant="8" id="HQD-l1-dyo"/>
                                             <constraint firstItem="IoB-8s-gKI" firstAttribute="centerX" secondItem="DuS-FQ-Fr9" secondAttribute="centerX" id="Qy7-2Y-gAB"/>
                                             <constraint firstItem="IoB-8s-gKI" firstAttribute="top" secondItem="DuS-FQ-Fr9" secondAttribute="top" constant="5" id="RmB-Zg-vYy"/>
                                             <constraint firstAttribute="trailing" secondItem="oPc-Of-mXY" secondAttribute="trailing" id="cwc-90-hjT"/>
@@ -741,61 +749,59 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gVk-QG-T4k" userLabel="Rozmiar View">
                                 <rect key="frame" x="20" y="327" width="560" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6b-Fo-Oge">
+                                    <button opaque="NO" tag="5" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6b-Fo-Oge">
                                         <rect key="frame" x="356" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.26258893030000002" blue="0.48558220219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="X6b-Fo-Oge" secondAttribute="height" multiplier="1:1" id="7py-wj-sz4"/>
                                             <constraint firstAttribute="width" secondItem="X6b-Fo-Oge" secondAttribute="height" multiplier="1:1" id="GMD-mR-cWU"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeMaly"/>
+                                        <state key="normal" image="preferencjeMaly_off"/>
+                                        <state key="selected" image="preferencjeMaly"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="7py-wj-sz4"/>
                                             </mask>
                                         </variation>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yp-vN-awP">
+                                    <button opaque="NO" tag="6" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yp-vN-awP">
                                         <rect key="frame" x="424" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.27958266380000002" blue="0.90427821009999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="0Yp-vN-awP" secondAttribute="height" multiplier="1:1" id="2gw-lP-Yed"/>
                                             <constraint firstAttribute="width" secondItem="0Yp-vN-awP" secondAttribute="height" multiplier="1:1" id="KvN-bA-LpT"/>
                                             <constraint firstAttribute="width" constant="72" id="Z9l-db-NW3"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeSredni"/>
+                                        <state key="normal" image="preferencjeSredni_off"/>
+                                        <state key="selected" image="preferencjeSredni"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="Z9l-db-NW3"/>
                                                 <exclude reference="2gw-lP-Yed"/>
+                                                <exclude reference="Z9l-db-NW3"/>
                                             </mask>
                                         </variation>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ve-BA-eX8">
+                                    <button opaque="NO" tag="7" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ve-BA-eX8">
                                         <rect key="frame" x="492" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.48674977009999998" green="0.2173137597" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="72" id="bcl-CS-YVh"/>
                                             <constraint firstAttribute="width" secondItem="7Ve-BA-eX8" secondAttribute="height" multiplier="1:1" id="v77-26-Cuj"/>
                                             <constraint firstAttribute="width" secondItem="7Ve-BA-eX8" secondAttribute="height" multiplier="1:1" id="wjZ-hv-pps"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeDuzy"/>
+                                        <state key="normal" image="preferencjeDuzy_off"/>
+                                        <state key="selected" image="preferencjeDuzy"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="wjZ-hv-pps"/>
                                                 <exclude reference="bcl-CS-YVh"/>
+                                                <exclude reference="wjZ-hv-pps"/>
                                             </mask>
                                         </variation>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rozmiar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p0F-Wm-TX3">
                                         <rect key="frame" x="8" y="17" width="328" height="26"/>
-                                        <color key="backgroundColor" red="0.47098395710000002" green="1" blue="0.58162191220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.92292327549999997" blue="0.32713622949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="0Yp-vN-awP" firstAttribute="top" secondItem="X6b-Fo-Oge" secondAttribute="top" id="6Nv-It-jWO"/>
                                     <constraint firstItem="0Yp-vN-awP" firstAttribute="baseline" secondItem="X6b-Fo-Oge" secondAttribute="baseline" id="C8G-Kg-msB"/>
@@ -823,45 +829,43 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujW-pn-YRc" userLabel="Aktywność">
                                 <rect key="frame" x="20" y="404" width="560" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydc-8f-8TE">
+                                    <button opaque="NO" tag="8" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydc-8f-8TE">
                                         <rect key="frame" x="424" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.26258893030000002" blue="0.48558220219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ydc-8f-8TE" secondAttribute="height" multiplier="1:1" id="QwZ-Mo-jsZ"/>
                                             <constraint firstAttribute="width" secondItem="ydc-8f-8TE" secondAttribute="height" multiplier="1:1" id="hbL-I8-hfs"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeAktywny"/>
+                                        <state key="normal" image="preferencjeAktywny_off"/>
+                                        <state key="selected" image="preferencjeAktywny"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="hbL-I8-hfs"/>
                                             </mask>
                                         </variation>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beR-CL-EAz">
+                                    <button opaque="NO" tag="9" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beR-CL-EAz">
                                         <rect key="frame" x="492" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="1" green="0.27958266380000002" blue="0.90427821009999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="beR-CL-EAz" secondAttribute="height" multiplier="1:1" id="34Y-af-lRF"/>
                                             <constraint firstAttribute="width" secondItem="beR-CL-EAz" secondAttribute="height" multiplier="1:1" id="CgM-Hx-mwL"/>
                                             <constraint firstAttribute="width" constant="72" id="ZhN-Ka-UFo"/>
                                         </constraints>
-                                        <state key="normal" image="preferencjeDomator"/>
+                                        <state key="normal" image="preferencjeDomator_off"/>
+                                        <state key="selected" image="preferencjeDomator"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="ZhN-Ka-UFo"/>
                                                 <exclude reference="CgM-Hx-mwL"/>
+                                                <exclude reference="ZhN-Ka-UFo"/>
                                             </mask>
                                         </variation>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktywność" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTY-GI-YKj">
                                         <rect key="frame" x="8" y="17" width="396" height="26"/>
-                                        <color key="backgroundColor" red="0.47098395710000002" green="1" blue="0.58162191220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.92292327549999997" blue="0.32713622949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ydc-8f-8TE" firstAttribute="top" secondItem="ujW-pn-YRc" secondAttribute="top" id="7jz-gH-72I"/>
                                     <constraint firstItem="ydc-8f-8TE" firstAttribute="leading" secondItem="YTY-GI-YKj" secondAttribute="trailing" constant="20" id="NwW-hs-Nio"/>
@@ -883,8 +887,15 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psJ-28-tbV">
-                                <rect key="frame" x="277" y="481" width="46" height="62"/>
-                                <state key="normal" title="Zapisz"/>
+                                <rect key="frame" x="255" y="481" width="90" height="48"/>
+                                <color key="backgroundColor" red="0.3411764706" green="0.63921568630000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="Kqj-md-K8a"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="oEJ-Rc-4m4"/>
+                                </constraints>
+                                <state key="normal" title="Zapisz">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -922,7 +933,7 @@
                             <constraint firstItem="2HM-6h-RcH" firstAttribute="trailing" secondItem="N7i-Xc-dQA" secondAttribute="trailing" id="isO-iH-e80"/>
                             <constraint firstItem="eAr-Dy-umM" firstAttribute="leading" secondItem="spx-c4-oy9" secondAttribute="leading" id="j6C-73-1TO"/>
                             <constraint firstItem="psJ-28-tbV" firstAttribute="top" secondItem="r8e-0D-nDC" secondAttribute="bottom" constant="8" id="kmh-7S-U7A"/>
-                            <constraint firstItem="fVb-uT-rym" firstAttribute="top" secondItem="psJ-28-tbV" secondAttribute="bottom" constant="8" id="ldr-Uy-Y8U"/>
+                            <constraint firstItem="fVb-uT-rym" firstAttribute="top" relation="greaterThanOrEqual" secondItem="psJ-28-tbV" secondAttribute="bottom" constant="8" id="ldr-Uy-Y8U"/>
                             <constraint firstItem="N7i-Xc-dQA" firstAttribute="trailing" secondItem="spx-c4-oy9" secondAttribute="trailing" id="p3x-4X-vOR"/>
                             <constraint firstItem="Rkp-04-sFg" firstAttribute="leading" secondItem="gVk-QG-T4k" secondAttribute="leading" id="qqf-nL-A9k"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3SE-Dx-jbc" secondAttribute="trailing" id="sMD-y3-V2p"/>
@@ -941,6 +952,22 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Jakiego zwierzaka szukasz?" id="InH-Fk-a0B"/>
+                    <connections>
+                        <outlet property="activityHigh" destination="ydc-8f-8TE" id="eGl-8o-lIV"/>
+                        <outlet property="activityLow" destination="beR-CL-EAz" id="0P6-T6-Pk9"/>
+                        <outlet property="ageMaxLabel" destination="oPc-Of-mXY" id="D77-SH-WFR"/>
+                        <outlet property="ageMaxSlider" destination="IoB-8s-gKI" id="6FT-2Z-5TW"/>
+                        <outlet property="ageMinLabel" destination="57b-Yf-ZuA" id="QcL-dM-PXf"/>
+                        <outlet property="ageMinSlider" destination="zhr-FN-fGH" id="hJA-hQ-aVB"/>
+                        <outlet property="genderFemale" destination="dxn-dJ-NTN" id="tn9-Vh-8vn"/>
+                        <outlet property="genderMale" destination="Biu-vI-LCQ" id="cub-CR-l0L"/>
+                        <outlet property="sizeLargeButton" destination="7Ve-BA-eX8" id="hJq-lz-XMp"/>
+                        <outlet property="sizeMediumButton" destination="0Yp-vN-awP" id="Lgz-Xk-6ja"/>
+                        <outlet property="sizeSmallButton" destination="X6b-Fo-Oge" id="891-9d-6nT"/>
+                        <outlet property="typeCatButton" destination="A42-Ms-clM" id="NzX-Rf-5Ud"/>
+                        <outlet property="typeDogButton" destination="PiW-5C-FPp" id="LdE-aP-jtn"/>
+                        <outlet property="typeOtherButton" destination="ru1-el-l0b" id="Fkx-dK-87f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xP8-Ou-bIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1036,16 +1063,25 @@
         <image name="iOS_schronisko_ON" width="37" height="37"/>
         <image name="iOS_ulubione_OFF" width="37" height="37"/>
         <image name="iOS_ulubione_ON" width="37" height="37"/>
-        <image name="preferencjeAktywny" width="300" height="300"/>
-        <image name="preferencjeDomator" width="300" height="300"/>
-        <image name="preferencjeDuzy" width="300" height="300"/>
-        <image name="preferencjeInny" width="300" height="300"/>
-        <image name="preferencjeKot" width="300" height="300"/>
-        <image name="preferencjeMaly" width="300" height="300"/>
-        <image name="preferencjePies" width="300" height="300"/>
-        <image name="preferencjeSamiec" width="300" height="300"/>
-        <image name="preferencjeSredni" width="300" height="300"/>
-        <image name="preferencjeSuczka" width="300" height="300"/>
+        <image name="preferencjeAktywny" width="600" height="600"/>
+        <image name="preferencjeAktywny_off" width="600" height="600"/>
+        <image name="preferencjeDomator" width="600" height="600"/>
+        <image name="preferencjeDomator_off" width="600" height="600"/>
+        <image name="preferencjeDuzy" width="600" height="600"/>
+        <image name="preferencjeDuzy_off" width="600" height="600"/>
+        <image name="preferencjeInny" width="600" height="600"/>
+        <image name="preferencjeInny_off" width="600" height="600"/>
+        <image name="preferencjeKot_off" width="600" height="600"/>
+        <image name="preferencjeMaly" width="600" height="600"/>
+        <image name="preferencjeMaly_off" width="600" height="600"/>
+        <image name="preferencjePies" width="600" height="600"/>
+        <image name="preferencjePies_off" width="600" height="600"/>
+        <image name="preferencjeSamiec" width="600" height="600"/>
+        <image name="preferencjeSamiec_off" width="600" height="600"/>
+        <image name="preferencjeSredni" width="600" height="600"/>
+        <image name="preferencjeSredni_off" width="600" height="600"/>
+        <image name="preferencjeSuczka" width="600" height="600"/>
+        <image name="preferencjeSuczka_off" width="600" height="600"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

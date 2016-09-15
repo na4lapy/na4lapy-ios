@@ -18,11 +18,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red:0.00, green:0.41, blue:0.45, alpha:1.00)
-        UINavigationBar.appearance().barStyle = UIBarStyle.black
+        UINavigationBar.appearance().barStyle = UIBarStyle.Black
+
+        setAnimalPreferencesStartingState()
+
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
+    func setAnimalPreferencesStartingState() {
+
+        let appWasLaunchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+
+        if !appWasLaunchedBefore {
+            //set preferences state for the start
+            UserPreferences(
+                typeDog: false,
+                typeCat: false,
+                typeOther: false,
+                genderFemale: true,
+                genderMale: true,
+                ageMin: 1,
+                ageMax: 15,
+                sizeSmall: true,
+                sizeMedium: true,
+                sizeLarge: false,
+                activityLow: false,
+                activityHigh: true
+                ).savePreferencesToUserDefault()
+
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
+        }
+
+    }
+
+    func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }

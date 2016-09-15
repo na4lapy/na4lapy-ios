@@ -75,7 +75,7 @@ enum Training: String {
 
 enum Vaccination: String {
     case basic = "BASIC"
-    case extended = "EXTENDED" 
+    case extended = "EXTENDED"
     case none = "NONE"
     case unknown = "UNKNOWN"
 }
@@ -90,7 +90,14 @@ enum Species: String {
     case other = "OTHER"
 }
 
+enum ageBoundaries: String {
+    case ageMin = "minAge"
+    case ageMax = "maxAge"
+}
+
 // MARK: Klucze JSON
+
+
 
 struct JsonAttr {
     static let id = "id"
@@ -131,6 +138,19 @@ struct EndPoint {
     static let animals = "/api/animals"
     static let shelter = "/api/shelter"
 }
+
+let PREFERENCES = [
+    Species.dog.rawValue,
+    Species.cat.rawValue,
+    Species.other.rawValue,
+    Gender.female.rawValue,
+    Gender.male.rawValue,
+    Size.small.rawValue,
+    Size.medium.rawValue,
+    Size.large.rawValue,
+    Activity.low.rawValue,
+    Activity.high.rawValue
+]
 
 // MARK: ErrorDomain dla NSError
 let errorDomain = "Na4Łapy"

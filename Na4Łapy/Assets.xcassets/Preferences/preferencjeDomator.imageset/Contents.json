@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "preferencjeDomator.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "preferencjeDomator.png",
       "scale" : "2x"
     },
     {

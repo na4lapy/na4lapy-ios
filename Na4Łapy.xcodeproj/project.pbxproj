@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		040BDF3A1D1F13E100A46FB1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF391D1F13E100A46FB1 /* Localizable.strings */; };
 		040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict */; };
+		0428194E1D854ADD00ECA3B9 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428194D1D854ADD00ECA3B9 /* PreferencesViewController.swift */; };
 		042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */; };
 		042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */; };
 		042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */; };
 		044D64BE1D3C12BA008CF116 /* AnimalCardsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D64BD1D3C12BA008CF116 /* AnimalCardsPresenter.swift */; };
 		04A3F1A41D1B3C7800B728E8 /* AnimalCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46B01D04C6E600D2D672 /* AnimalCardsViewController.swift */; };
 		04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */; };
+		04AAE1571D87217A009246D2 /* BoolInitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AAE1561D87217A009246D2 /* BoolInitExtension.swift */; };
 		04C22B261D47CEAC000E7AC3 /* AnimalImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C22B251D47CEAC000E7AC3 /* AnimalImageProvider.swift */; };
 		04C22B281D47D16B000E7AC3 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C22B271D47D16B000E7AC3 /* CounterView.swift */; };
 		04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */; };
@@ -74,11 +76,13 @@
 /* Begin PBXFileReference section */
 		040BDF391D1F13E100A46FB1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
 		040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = ../Localizable.stringsdict; sourceTree = "<group>"; };
+		0428194D1D854ADD00ECA3B9 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIInsetLabel.swift; path = ../UIInsetLabel.swift; sourceTree = "<group>"; };
 		042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		042F97F31D35899F00FE1961 /* AnimalPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalPhotoCell.swift; sourceTree = "<group>"; };
 		044D64BD1D3C12BA008CF116 /* AnimalCardsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalCardsPresenter.swift; sourceTree = "<group>"; };
 		04A8E1001D31867B00E28A0C /* UIImageCircularExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCircularExtension.swift; sourceTree = "<group>"; };
+		04AAE1561D87217A009246D2 /* BoolInitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolInitExtension.swift; sourceTree = "<group>"; };
 		04C22B251D47CEAC000E7AC3 /* AnimalImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalImageProvider.swift; sourceTree = "<group>"; };
 		04C22B271D47D16B000E7AC3 /* CounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		04CCB0A91D43F74800BCE06B /* AnimalFeatureTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimalFeatureTableCell.swift; sourceTree = "<group>"; };
@@ -148,9 +152,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0428194C1D854ABA00ECA3B9 /* PreferencesView */ = {
+			isa = PBXGroup;
+			children = (
+				0428194D1D854ADD00ECA3B9 /* PreferencesViewController.swift */,
+				04AAE1561D87217A009246D2 /* BoolInitExtension.swift */,
+			);
+			name = PreferencesView;
+			sourceTree = "<group>";
+		};
 		047D444D1D396A8C00CF40FE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0428194C1D854ABA00ECA3B9 /* PreferencesView */,
 				047D44501D396AF400CF40FE /* Common */,
 				047D444F1D396AD300CF40FE /* AnimalDetailView */,
 				047D444E1D396AA200CF40FE /* AnimalCardsView */,
@@ -598,6 +612,8 @@
 				04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
 				04C22B261D47CEAC000E7AC3 /* AnimalImageProvider.swift in Sources */,
+				04AAE1571D87217A009246D2 /* BoolInitExtension.swift in Sources */,
+				0428194E1D854ADD00ECA3B9 /* PreferencesViewController.swift in Sources */,
 				04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */,
 				044D64BE1D3C12BA008CF116 /* AnimalCardsPresenter.swift in Sources */,
 				5C6A40021D1890DF00241067 /* APIObject.swift in Sources */,
