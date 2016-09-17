@@ -66,50 +66,28 @@ class UserPreferences {
     func togglePreferenceAtIndex(preferenceIndex: Int) {
         switch preferenceIndex {
         case 0:
-            if let _ = self.typeDog {
-                self.typeDog! = !self.typeDog!
-            }
+            self.typeDog?.toggle()
         case 1:
-            if let _ = self.typeCat {
-                self.typeCat! = !self.typeCat!
-            }
+            self.typeCat?.toggle()
         case 2:
-            if let _ = self.typeOther {
-                self.typeOther! = !self.typeOther!
-            }
+            self.typeOther?.toggle()
         case 3:
-            if let _ = self.genderFemale {
-                self.genderFemale! = !self.genderFemale!
-            }
+            self.genderFemale?.toggle()
         case 4:
-            if let _ = self.genderMale {
-                self.genderMale! = !self.genderMale!
-            }
+            self.genderMale?.toggle()
         case 5:
-            if let _ = self.sizeSmall {
-                self.sizeSmall! = !self.sizeSmall!
-            }
+            self.sizeSmall?.toggle()
         case 6:
-            if let _ = self.sizeMedium {
-                self.sizeMedium! = !self.sizeMedium!
-            }
+            self.sizeMedium?.toggle()
         case 7:
-            if let _ = self.sizeLarge {
-                self.sizeLarge! = !self.sizeLarge!
-            }
+            self.sizeLarge?.toggle()
         case 8:
-            if let _ = self.activityHigh {
-                self.activityHigh! = !self.activityHigh!
-            }
+           self.activityHigh?.toggle()
         case 9:
-            if let _ = self.activityLow {
-                self.activityLow! = !self.activityLow!
-            }
-
+            self.activityLow?.toggle()
         default:
             break
         }
-
     }
 
     func setMinAge(newValue: Int) {
@@ -122,7 +100,6 @@ class UserPreferences {
 
 
     func dictionaryRepresentation() -> [String: Int] {
-
 
         if let dogValue = self.typeDog {
             userPreferencesDictionary["DOG"] = dogValue ? 1 : 0

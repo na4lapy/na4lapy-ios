@@ -8,9 +8,9 @@
 
 import Foundation
 
-class AnimalURLBuilder {
+class AnimalURLBuilder: URLBuildable {
 
-    class func buildURLFrom(baseUrl: String, page: Int, pageSize: Int, params: UserPreferences?) -> String {
+    static func buildURLFrom(baseUrl: String, page: Int, pageSize: Int, params: UserPreferences?) -> String {
         var url = baseUrl + "?page=\(page)&size=\(pageSize)"
 
         guard let preferencesParams = params?.dictionaryRepresentation() else {

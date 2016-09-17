@@ -43,7 +43,8 @@ class Listing {
 
     func prefetch(_ page: Int, success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
         log.debug("prefetch page: \(page)")
-        listingType.get(page, size: PAGESIZE, preferences: nil,
+        let userPreferences = UserPreferences.init()
+        listingType.get(page, size: PAGESIZE, preferences: userPreferences,
             success: { [weak self] (elements, count) in
                 guard let strongSelf = self else { return }
                 strongSelf.localCache[page] = elements as AnyObject?
