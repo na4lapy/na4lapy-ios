@@ -9,5 +9,5 @@
 import Foundation
 
 protocol URLBuildable {
-    func buildURLFrom(baseUrl: String, page: Int, pageSize: Int, params: UserPreferences?) -> String
+    static func buildURLFrom(baseUrl: String, page: Int, pageSize: Int, params: UserPreferences?) -> String
 }
