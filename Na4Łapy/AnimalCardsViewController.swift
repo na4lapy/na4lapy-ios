@@ -17,7 +17,7 @@ class AnimalCardsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCardCollection(_:)), name: NSNotification.Name(rawValue: "ReloadAnimalView"), object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
