@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		040BDF3A1D1F13E100A46FB1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF391D1F13E100A46FB1 /* Localizable.strings */; };
 		040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict */; };
+		04235BE21D8DB2260097353B /* URLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04235BE11D8DB2260097353B /* URLBuildable.swift */; };
+		04235BE41D8DB22E0097353B /* AnimalURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04235BE31D8DB22E0097353B /* AnimalURLBuilder.swift */; };
 		0428194E1D854ADD00ECA3B9 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0428194D1D854ADD00ECA3B9 /* PreferencesViewController.swift */; };
 		042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */; };
 		042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */; };
@@ -76,6 +78,8 @@
 /* Begin PBXFileReference section */
 		040BDF391D1F13E100A46FB1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
 		040BDF3D1D1F187100A46FB1 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = ../Localizable.stringsdict; sourceTree = "<group>"; };
+		04235BE11D8DB2260097353B /* URLBuildable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLBuildable.swift; path = Model/URLBuildable.swift; sourceTree = "<group>"; };
+		04235BE31D8DB22E0097353B /* AnimalURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimalURLBuilder.swift; path = Model/AnimalURLBuilder.swift; sourceTree = "<group>"; };
 		0428194D1D854ADD00ECA3B9 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		042AF0ED1D27DCC100FC8175 /* UIInsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIInsetLabel.swift; path = ../UIInsetLabel.swift; sourceTree = "<group>"; };
 		042AF0EF1D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				5C6821801D0729EB00FA7781 /* Request.swift */,
 				5C68217E1D07295100FA7781 /* UserPreferences.swift */,
 				5C6821771D06200B00FA7781 /* Photo.swift */,
+				04235BE31D8DB22E0097353B /* AnimalURLBuilder.swift */,
+				04235BE11D8DB2260097353B /* URLBuildable.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
 				04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */,
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
+				04235BE21D8DB2260097353B /* URLBuildable.swift in Sources */,
 				04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */,
 				5C6821831D07469C00FA7781 /* Logger.swift in Sources */,
 				04C22B261D47CEAC000E7AC3 /* AnimalImageProvider.swift in Sources */,
@@ -621,6 +628,7 @@
 				042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */,
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
+				04235BE41D8DB22E0097353B /* AnimalURLBuilder.swift in Sources */,
 				04C22B281D47D16B000E7AC3 /* CounterView.swift in Sources */,
 				042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */,
 				042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
