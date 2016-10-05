@@ -2428,6 +2428,7 @@ fi
 		5CCD46CF1D04C6E600D2D672 /* Na4_apyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46CE1D04C6E600D2D672 /* Na4_apyUITests.swift */; };
 		6FAFA5AA4D783B7B0881C547 /* Pods_Na4_apyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EE99D39CE35B1899BDCDE5B /* Pods_Na4_apyTests.framework */; };
 		89166A708B522BCFBA3BA06F /* Pods_Na4_apy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E840672C406BA1344B0FF4ED /* Pods_Na4_apy.framework */; };
+		DC92F6311D8EBD4100A1FD57 /* ShelterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC92F6301D8EBD4100A1FD57 /* ShelterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2497,6 +2498,7 @@ fi
 		B58F094A766A3A49618A8110 /* Pods-Na4ŁapyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyUITests/Pods-Na4ŁapyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B864BB45FF53EC48343D3FFC /* Pods-Na4ŁapyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyUITests/Pods-Na4ŁapyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C0085FB30658EB415E5825F5 /* Pods-Na4Łapy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4Łapy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4Łapy/Pods-Na4Łapy.debug.xcconfig"; sourceTree = "<group>"; };
+		DC92F6301D8EBD4100A1FD57 /* ShelterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelterViewController.swift; sourceTree = "<group>"; };
 		E840672C406BA1344B0FF4ED /* Pods_Na4_apy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87CECEEC3B22DA0335263A9 /* Pods_Na4_apyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2542,6 +2544,7 @@ fi
 		047D444D1D396A8C00CF40FE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DC92F62F1D8EBD2600A1FD57 /* ShelterView */,
 				0428194C1D854ABA00ECA3B9 /* PreferencesView */,
 				047D44501D396AF400CF40FE /* Common */,
 				047D444F1D396AD300CF40FE /* AnimalDetailView */,
@@ -2696,6 +2699,14 @@ fi
 				B864BB45FF53EC48343D3FFC /* Pods-Na4ŁapyUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DC92F62F1D8EBD2600A1FD57 /* ShelterView */ = {
+			isa = PBXGroup;
+			children = (
+				DC92F6301D8EBD4100A1FD57 /* ShelterViewController.swift */,
+			);
+			name = ShelterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3003,6 +3014,7 @@ fi
 				042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */,
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
+				DC92F6311D8EBD4100A1FD57 /* ShelterViewController.swift in Sources */,
 				04235BE41D8DB22E0097353B /* AnimalURLBuilder.swift in Sources */,
 				04C22B281D47D16B000E7AC3 /* CounterView.swift in Sources */,
 				042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */,

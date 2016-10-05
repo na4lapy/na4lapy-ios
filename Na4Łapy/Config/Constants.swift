@@ -127,6 +127,22 @@ struct JsonAttr {
     static let data = "data"
 }
 
+struct ShelterJsonAttr {
+    static let accountNumber = "accountNumber"
+    static let adoptionRules = "adoptionRules"
+    static let buildingNumber = "buildingNumber"
+    static let city = "city"
+    static let email = "email"
+    static let facebookProfile = "facebookProfile"
+    static let id = "id"
+    static let name = "name"
+    static let phoneNumber = "phoneNumber"
+    static let postalCode = "postalCode"
+    static let street = "street"
+    static let voivodeship = "voivodeship"
+    static let website = "website"
+}
+
 // MARK: Rozmiary pobieranej strony (liczba elementów)
 
 let PAGESIZE = 10
@@ -136,7 +152,7 @@ let PAGESIZE = 10
 let baseUrl = "http://na4lapy.kodujdlapolski.pl"
 struct EndPoint {
     static let animals = "/api/animals"
-    static let shelter = "/api/shelter"
+    static let shelter = "/api/shelters"
 }
 
 let USER_PREFERENCES_KEY = "UserPreferences"
