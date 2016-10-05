@@ -9,15 +9,18 @@
 import Foundation
 
 class Shelter: APIObject {
-    private var street: String?
-    private var buildingNumber: String?
-    private var city: String?
-    private var postalCode: String?
-    private var email: String?
-    private var phoneNumber: String?
-    private var website: String?
-    private var accountNumber: String?
-    private var adoptionRules: String?
+    private(set) var street: String?
+    private(set) var buildingNumber: String?
+    private(set) var city: String?
+    private(set) var postalCode: String?
+    private(set) var email: String?
+    private(set) var phoneNumber: String?
+    private(set) var website: String?
+    private(set) var accountNumber: String?
+    private(set) var adoptionRules: String?
+    private(set) var facebookProfile: String?
+    private(set) var voivoideship: String?
+
     //
     // MARK: init()
     //
@@ -27,9 +30,104 @@ class Shelter: APIObject {
     }
 
     override class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
+
+        if (page < 0) {
+            failure(Error.IllegalPageNumber.err())
+            return
+        }
+
+        let urlstring = baseUrl + EndPoint.shelter + "/1"
+
+        guard let enpoint = NSURL(string: urlstring) else {
+            failure(Error.WrongURL.err())
+            return
+        }
+
+        Request.getJSONData(enpoint, parseData: false, success: { (json, count) in
+            let shelter = Shelter.jsonToObj(json) //HACK should be changed
+            success(shelter, count)
+        }) { (error) in
+            failure(error)
+        }
+    }
+
+    func getAdress() -> String {
+        guard let
+            street = self.street,
+            builidingNumber = self.buildingNumber
+
+                else {
+                    return ""
+                }
+
+        return street + " " + builidingNumber
+    }
+
+    func getAdressSecondLine() -> String {
+        guard let
+            postalCode = postalCode,
+            city = self.city else {
+                return " "
+            }
+        return postalCode + " " + city
     }
 
     private func initializeWithDictionary(dictionary: [String: AnyObject]) {
+
+        for (key, value) in dictionary {
+            switch key {
+            case ShelterJsonAttr.accountNumber:
+                if let accountNumber = value as? String {
+                    self.accountNumber = accountNumber
+                }
+            case  ShelterJsonAttr.adoptionRules:
+                if let adoptionRules = value as? String {
+                    self.adoptionRules = adoptionRules
+                }
+            case ShelterJsonAttr.buildingNumber:
+                if let buildingNumber = value as? String {
+                    self.buildingNumber = buildingNumber
+                }
+            case ShelterJsonAttr.city:
+                if let city = value as? String {
+                    self.city = city
+                }
+            case ShelterJsonAttr.email:
+                if let email = value as? String {
+                    self.email = email
+                }
+            case ShelterJsonAttr.facebookProfile:
+                if let facebookProfile = value as? String {
+                    self.facebookProfile = facebookProfile
+                }
+            case ShelterJsonAttr.id:
+                break
+            case ShelterJsonAttr.name:
+                break
+            case ShelterJsonAttr.phoneNumber:
+                if let phoneNumber = value as? String {
+                    self.phoneNumber = phoneNumber
+                }
+            case ShelterJsonAttr.postalCode:
+                if let postalCode = value as? String {
+                    self.postalCode = postalCode
+                }
+            case ShelterJsonAttr.street:
+                if let street = value as? String {
+                    self.street = street
+                }
+            case ShelterJsonAttr.voivodeship:
+                if let voivodeship = value as? String {
+                    self.voivoideship = voivodeship
+                }
+            case ShelterJsonAttr.website:
+                if let website = value as? String {
+                    self.website = website
+                }
+            default:
+                log.error(Error.WrongJsonKey.desc() + " \(key)")
+             }
+        }
     }
 
 }

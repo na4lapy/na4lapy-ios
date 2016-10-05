@@ -39,18 +39,22 @@ class Request {
      - Parameter success: Przekazanie pobranej struktury
      - Parameter failure: Przekazanie błędu
     */
-    class func getJSONData(endpoint: NSURL, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
+    class func getJSONData(endpoint: NSURL, parseData: Bool = true, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
         Request.httpGET(endpoint,
             success: { (data) in
                 do {
                     let json = try Request.parseJSON(data)
-                    guard
-                        let jsondata = json[JsonAttr.data] as? [[String: AnyObject]],
-                            count = json[JsonAttr.total] as? Int
-                    else {
-                        throw JsonError.parseError
+                    if parseData {
+                        guard
+                            let jsondata = json[JsonAttr.data] as? [[String: AnyObject]],
+                                count = json[JsonAttr.total] as? Int
+                        else {
+                            throw JsonError.parseError
+                        }
+                            success(jsondata, count)
+                    } else {
+                        success([json], 0)
                     }
-                    success(jsondata, count)
                 } catch let error as NSError {
                     failure(error)
                 } catch JsonError.parseError {
