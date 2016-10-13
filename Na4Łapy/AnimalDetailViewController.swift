@@ -12,8 +12,8 @@ import SKPhotoBrowser
 class AnimalDetailViewController: UIViewController {
 
     var animal: Animal!
-    private var animalPhotos: [Photo]!
-    private var animalImageProvider: AnimalImageProvider!
+    fileprivate var animalPhotos: [Photo]!
+    fileprivate var animalImageProvider: AnimalImageProvider!
 
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
     @IBOutlet weak var animalBackgroundPhoto: UIImageView!
@@ -37,12 +37,12 @@ class AnimalDetailViewController: UIViewController {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
 
 
-    @IBAction func toggleMoreDescription(sender: AnyObject) {
+    @IBAction func toggleMoreDescription(_ sender: AnyObject) {
         animalFullDescriptionLabel.numberOfLines = animalFullDescriptionLabel.numberOfLines == 0 ? 3 : 0
         toggleDescriptionButton.titleLabel?.text = "Pokaż mniej"
     }
 
-    private struct Storyboard {
+    fileprivate struct Storyboard {
         static let CellIdentifier = "AnimalPhotoCell"
         static let TableCellIdentifier = "AnimalDetailTableCell"
     }
@@ -53,13 +53,13 @@ class AnimalDetailViewController: UIViewController {
         self.animalFullDescriptionLabel.text = animal.description
         self.navigationItem.title = animal.getAgeName()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadAnimalPhoto(_:)), name: "ReloadDetailView", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadAnimalPhoto(_:)), name: NSNotification.Name(rawValue: "ReloadDetailView"), object: nil)
 
-        self.animalFeaturesTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.animalFeaturesTable.separatorStyle = UITableViewCellSeparatorStyle.none
         self.animalFeaturesTable.rowHeight = 24.0
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         animalPhotos = animal.getAllImages()
@@ -69,7 +69,7 @@ class AnimalDetailViewController: UIViewController {
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewDidLayoutSubviews() {
@@ -78,14 +78,14 @@ class AnimalDetailViewController: UIViewController {
          self.tableViewHeightConstraint.constant = self.animalFeaturesTable.contentSize.height
         }
 
-    @objc func reloadAnimalPhoto(notification: NSNotification) {
-        dispatch_async(dispatch_get_main_queue()) {
+    @objc func reloadAnimalPhoto(_ notification: Notification) {
+        DispatchQueue.main.async {
             self.animalPhotoCollection.reloadData()
         }
     }
 
     func updateUI() {
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             self.animalPhotoCollection.reloadData()
             self.animalFeaturesTable.dataSource = self
             self.animalCenterCircularPhoto.image = self.animalPhotos.first?.image?.circle
@@ -108,80 +108,80 @@ class AnimalDetailViewController: UIViewController {
         }
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return false
     }
 }
 
 extension AnimalDetailViewController: SKPhotoBrowserDelegate {
-    func didShowPhotoAtIndex(index: Int) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.animalPhotoCollection.visibleCells().forEach({$0.hidden = false})
-            self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = true
+    func didShowPhotoAtIndex(_ index: Int) {
+        DispatchQueue.main.async {
+            self.animalPhotoCollection.visibleCells.forEach({$0.isHidden = false})
+            self.animalPhotoCollection.cellForItem(at: IndexPath(item: index, section: 0))?.isHidden = true
         }
     }
 
-    func willDismissAtPageIndex(index: Int) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.animalPhotoCollection.visibleCells().forEach({$0.hidden = false})
-            self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = true
+    func willDismissAtPageIndex(_ index: Int) {
+        DispatchQueue.main.async {
+            self.animalPhotoCollection.visibleCells.forEach({$0.isHidden = false})
+            self.animalPhotoCollection.cellForItem(at: IndexPath(item: index, section: 0))?.isHidden = true
         }
     }
 
-    func didDismissAtPageIndex(index: Int) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))?.hidden = false
+    func didDismissAtPageIndex(_ index: Int) {
+        DispatchQueue.main.async {
+            self.animalPhotoCollection.cellForItem(at: IndexPath(item: index, section: 0))?.isHidden = false
         }
     }
 
-    func viewForPhoto(browser: SKPhotoBrowser, index: Int) -> UIView? {
-        return animalPhotoCollection.cellForItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0))
+    func viewForPhoto(_ browser: SKPhotoBrowser, index: Int) -> UIView? {
+        return animalPhotoCollection.cellForItem(at: IndexPath(item: index, section: 0))
     }
 
-    func removePhoto(browser: SKPhotoBrowser, index: Int, reload: (() -> Void)) {
+    func removePhoto(_ browser: SKPhotoBrowser, index: Int, reload: (() -> Void)) {
         reload()
     }
 
 }
 
 extension AnimalDetailViewController: UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = collectionView.cellForItemAtIndexPath(indexPath) as? AnimalPhotoCell else {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AnimalPhotoCell else {
             return
         }
 
         let browser = SKPhotoBrowser(originImage: cell.animalImage.image!, photos: self.animalImageProvider.animalPhotos, animatedFromView: cell)
         browser.initializePageIndex(indexPath.row)
-        browser.statusBarStyle = .LightContent
-        browser.bounceAnimation = true
+//        browser.statusBarStyle = .LightContent
+//        browser.bounceAnimation = true
         browser.delegate = self
-        presentViewController(browser, animated: true, completion: {})
+        present(browser, animated: true, completion: {})
 
-        log.debug("Clicked " + indexPath.item.description)
+        log.debug("Clicked " + (indexPath as NSIndexPath).item.description)
     }
 }
 
 extension AnimalDetailViewController: UICollectionViewDataSource {
 
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return animalPhotos.count
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIdentifier, forIndexPath: indexPath) as? AnimalPhotoCell  else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIdentifier, for: indexPath) as? AnimalPhotoCell  else {
             return UICollectionViewCell()
         }
 
-        cell.animalImage.image = self.animalPhotos[indexPath.item].image
+        cell.animalImage.image = self.animalPhotos[(indexPath as NSIndexPath).item].image
 
         return cell
     }
@@ -190,40 +190,40 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
 
 extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let screenWidth = UIScreen.main.bounds.size.width
         let cellWidth: CGFloat = screenWidth / 3 - 10
 
         return CGSize(width: ceil(cellWidth), height: ceil(cellWidth))
     }
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
     }
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
 }
 
 extension AnimalDetailViewController: UITableViewDataSource {
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return animal.getFeatures().count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.TableCellIdentifier, forIndexPath: indexPath) as? AnimalFeatureTableCell else {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.TableCellIdentifier, for: indexPath) as? AnimalFeatureTableCell else {
             assert(false, "Table cell should be of type AnimalFeatureTableCell")
             return UITableViewCell()
         }
-        cell.backgroundColor = UIColor.clearColor()
-        let key = animal.getFeatureKeys()[indexPath.item]
+        cell.backgroundColor = UIColor.clear
+        let key = animal.getFeatureKeys()[(indexPath as NSIndexPath).item]
         cell.featureKeyLabel.text = key + ":"
         cell.featureValueLabel.text = animal.getFeatures()[key]
 

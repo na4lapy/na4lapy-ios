@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ListingProtocol {
-    static func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void)
+    static func get(_ page: Int, size: Int, preferences: UserPreferences?, success: @escaping ([AnyObject], Int) -> Void, failure: @escaping (NSError) -> Void)
     init?(dictionary: [String:AnyObject])
 }
 
@@ -35,18 +35,18 @@ protocol ListingProtocol {
 */
 
 class Listing {
-    private var localCache: [Int: AnyObject] = [:]
-    private var localCacheIndex = 0
-    private var localCachePage = 0
-    private var count = 0
-    private let listingType: ListingProtocol.Type
+    fileprivate var localCache: [Int: AnyObject] = [:]
+    fileprivate var localCacheIndex = 0
+    fileprivate var localCachePage = 0
+    fileprivate var count = 0
+    fileprivate let listingType: ListingProtocol.Type
 
-    func prefetch(page: Int, success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
+    func prefetch(_ page: Int, success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
         log.debug("prefetch page: \(page)")
         listingType.get(page, size: PAGESIZE, preferences: nil,
             success: { [weak self] (elements, count) in
                 guard let strongSelf = self else { return }
-                strongSelf.localCache[page] = elements
+                strongSelf.localCache[page] = elements as AnyObject?
                 strongSelf.count = count
                 success?()
             },
@@ -61,7 +61,7 @@ class Listing {
         self.listingType = listingType
     }
 
-    func prefetch( success: () -> Void ) {
+    func prefetch( _ success: @escaping () -> Void ) {
         self.prefetch(0) {
             success()
         }
@@ -82,16 +82,16 @@ class Listing {
             self.prefetch(localCachePage-1)
         }
         // -2
-        self.localCache.removeValueForKey(localCachePage-2)
+        self.localCache.removeValue(forKey: localCachePage-2)
         // +2
-        self.localCache.removeValueForKey(localCachePage+2)
+        self.localCache.removeValue(forKey: localCachePage+2)
     }
 
     func getCount() -> UInt {
         return UInt(self.count)
     }
 
-    func get(index: UInt) -> AnyObject? {
+    func get(_ index: UInt) -> AnyObject? {
         // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
         guard let page = self.localCache[localCachePage] else {
             log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
@@ -112,7 +112,7 @@ class Listing {
 
         log.debug("===== Strona: \(localCachePage), index: \(localCacheIndex)")
 
-        if let returnPage = self.localCache[localCachePage] as? [AnyObject] where returnPage.count > 0 {
+        if let returnPage = self.localCache[localCachePage] as? [AnyObject] , returnPage.count > 0 {
             return returnPage[localCacheIndex]
         } else {
             return nil

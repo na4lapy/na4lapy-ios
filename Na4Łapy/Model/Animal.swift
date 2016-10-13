@@ -10,21 +10,21 @@ import Foundation
 import UIKit
 
 class Animal: APIObject {
-    private(set) var shelterId: Int?
-    private(set) var race: String?
-    private(set) var description: String?
-    private(set) var birthDate: NSDate?
-    private(set) var admittanceDate: NSDate?
-    private(set) var chipId: String?
-    private(set) var sterilization: Sterilization?
-    private(set) var species: Species?
-    private(set) var gender: Gender?
-    private(set) var size: Size?
-    private(set) var activity: Activity?
-    private(set) var training: Training?
-    private(set) var vaccination: Vaccination?
-    private(set) var status: Status?
-    private var images: [Photo]?
+    fileprivate(set) var shelterId: Int?
+    fileprivate(set) var race: String?
+    fileprivate(set) var description: String?
+    fileprivate(set) var birthDate: Date?
+    fileprivate(set) var admittanceDate: Date?
+    fileprivate(set) var chipId: String?
+    fileprivate(set) var sterilization: Sterilization?
+    fileprivate(set) var species: Species?
+    fileprivate(set) var gender: Gender?
+    fileprivate(set) var size: Size?
+    fileprivate(set) var activity: Activity?
+    fileprivate(set) var training: Training?
+    fileprivate(set) var vaccination: Vaccination?
+    fileprivate(set) var status: Status?
+    fileprivate var images: [Photo]?
 
     //
     // MARK: init()
@@ -46,14 +46,14 @@ class Animal: APIObject {
      - Parameter success: Tablica zwróconych obiektów
      - Parameter failure: Informacje o błędzie
      */
-    override class func get(page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
+    override class func get(_ page: Int, size: Int = PAGESIZE, preferences: UserPreferences? = nil, success: @escaping ([AnyObject], Int) -> Void,  failure: @escaping (NSError) -> Void) {
         if page < 0 {
-            failure(Error.IllegalPageNumber.err())
+            failure(Err.illegalPageNumber.err())
             return
         }
         let urlstring = baseUrl+EndPoint.animals+"?page=\(page)&size=\(size)"
-        guard let endpoint = NSURL(string: urlstring) else {
-            failure(Error.WrongURL.err())
+        guard let endpoint = URL(string: urlstring) else {
+            failure(Err.wrongURL.err())
             return
         }
         Request.getJSONData(endpoint,
@@ -67,10 +67,10 @@ class Animal: APIObject {
         )
     }
     
-    class func getById(id: Int, success: ([Animal]) -> Void, failure: (NSError) -> Void) {
+    class func getById(_ id: Int, success: @escaping ([Animal]) -> Void, failure: @escaping (NSError) -> Void) {
         let urlstring = baseUrl+EndPoint.animals+"/\(id)"
-        guard let endpoint = NSURL(string: urlstring) else {
-            failure(Error.WrongURL.err())
+        guard let endpoint = URL(string: urlstring) else {
+            failure(Err.wrongURL.err())
             return
         }
         Request.getJSONData(endpoint,
@@ -100,13 +100,13 @@ class Animal: APIObject {
      Pobieranie wszystkich zdjęć zwierzaka
     */
     func getAllImages() -> [Photo]? {
-        guard let images = self.images where !images.isEmpty else {
+        guard let images = self.images , !images.isEmpty else {
             return nil
         }
         log.debug("\(self.name): liczba zdjęć: \(self.images?.count)")
         for image in images {
             image.download() {
-                NSNotificationCenter.defaultCenter().postNotificationName("ReloadDetailView", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "ReloadDetailView"), object: nil)
             }
         }
         return images
@@ -117,7 +117,7 @@ class Animal: APIObject {
 
      - Parameter dictionary: Struktura JSON
     */
-    private func initializeWithDictionary(dictionary: [String: AnyObject]) {
+    fileprivate func initializeWithDictionary(_ dictionary: [String: AnyObject]) {
         for (key, value) in dictionary {
             switch key {
             case JsonAttr.shelterId:
@@ -135,52 +135,52 @@ class Animal: APIObject {
                 }
             case JsonAttr.birthDate:
                 if let birthDate = value as? String {
-                    let dateFormatter = NSDateFormatter()
-                    dateFormatter.timeZone = NSTimeZone(name: JsonAttr.birthDateTimeZone)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = TimeZone(identifier: JsonAttr.birthDateTimeZone)
                     dateFormatter.dateFormat = JsonAttr.birthDateFormat
-                    self.birthDate = dateFormatter.dateFromString(birthDate)
+                    self.birthDate = dateFormatter.date(from: birthDate)
                 }
             case JsonAttr.admittanceDate:
                 if let admittanceDate = value as? String {
-                    let dateFormatter = NSDateFormatter()
-                    dateFormatter.timeZone = NSTimeZone(name: JsonAttr.admittanceDateTimeZone)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeZone = TimeZone(identifier: JsonAttr.admittanceDateTimeZone)
                     dateFormatter.dateFormat = JsonAttr.admittanceDateFormat
-                    self.admittanceDate = dateFormatter.dateFromString(admittanceDate)
+                    self.admittanceDate = dateFormatter.date(from: admittanceDate)
                 }
             case JsonAttr.chipId:
                 if let chipId = value as? String {
                     self.chipId = chipId
                 }
             case JsonAttr.sterilization:
-                if let value = value as? String, sterilization = Sterilization(rawValue: value) {
+                if let value = value as? String, let sterilization = Sterilization(rawValue: value) {
                     self.sterilization = sterilization
                 }
             case JsonAttr.species:
-                if let value = value as? String, species = Species(rawValue: value) {
+                if let value = value as? String, let species = Species(rawValue: value) {
                     self.species = species
                 }
             case JsonAttr.gender:
-                if let value = value as? String, gender = Gender(rawValue: value) {
+                if let value = value as? String, let gender = Gender(rawValue: value) {
                     self.gender = gender
                 }
             case JsonAttr.size:
-                if let value = value as? String, size = Size(rawValue: value) {
+                if let value = value as? String, let size = Size(rawValue: value) {
                     self.size = size
                 }
             case JsonAttr.activity:
-                if let value = value as? String, activity = Activity(rawValue: value) {
+                if let value = value as? String, let activity = Activity(rawValue: value) {
                     self.activity = activity
                 }
             case JsonAttr.training:
-                if let value = value as? String, training = Training(rawValue: value) {
+                if let value = value as? String, let training = Training(rawValue: value) {
                     self.training = training
                 }
             case JsonAttr.vaccination:
-                if let value = value as? String, vaccination = Vaccination(rawValue: value) {
+                if let value = value as? String, let vaccination = Vaccination(rawValue: value) {
                     self.vaccination = vaccination
                 }
             case JsonAttr.status:
-                if let value = value as? String, status = Status(rawValue: value) {
+                if let value = value as? String, let status = Status(rawValue: value) {
                     self.status = status
                 }
             case JsonAttr.photos:
@@ -194,7 +194,7 @@ class Animal: APIObject {
                     // Pobranie danych głównego obrazka
                     // TODO: sprawdzić czy na pewno pierwszy obrazek jest zawsze głównym??
                     self.images?.first?.download() {
-                        NSNotificationCenter.defaultCenter().postNotificationName("ReloadAnimalView", object: nil)
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "ReloadAnimalView"), object: nil)
                     }
                 }
             case JsonAttr.name:
@@ -202,7 +202,7 @@ class Animal: APIObject {
             case JsonAttr.id:
                 break
             default:
-                log.error(Error.WrongJsonKey.desc()+" \(key)")
+                log.error(Err.wrongJsonKey.desc()+" \(key)")
             }
         }
     }
@@ -212,7 +212,7 @@ class Animal: APIObject {
             // w przypadku braku daty urodzenia przyjmowana jest domyślna wartość wieku == 0
             return 0
         }
-        return NSCalendar.currentCalendar().components(.Year, fromDate: birthDate, toDate: NSDate(), options: []).year
+        return (Calendar.current as NSCalendar).components(.year, from: birthDate, to: Date(), options: []).year!
     }
 
     //TODO: zmienić to na używanie NSLocalizedString i stringdict (jeszcze nie wiem jak)
@@ -275,7 +275,7 @@ class Animal: APIObject {
     func getAdmitannceMonthsFromNow() -> Int {
 
         if let admittanceDate = self.admittanceDate {
-            return NSCalendar.currentCalendar().components(.Month, fromDate: admittanceDate, toDate: NSDate(), options: []).month
+            return (Calendar.current as NSCalendar).components(.month, from: admittanceDate, to: Date(), options: []).month!
         }
         // w przypadku braku daty przyjęcia zwracamy zero
         return 0
@@ -283,7 +283,7 @@ class Animal: APIObject {
 
     func getAdmintannceYearsFromNow() -> Int {
         if let admittanceDate = self.admittanceDate {
-            return NSCalendar.currentCalendar().components(.Year, fromDate: admittanceDate, toDate: NSDate(), options: []).year
+            return (Calendar.current as NSCalendar).components(.year, from: admittanceDate, to: Date(), options: []).year!
         }
         // w przypadku braku daty przyjęcia zwracamy zero
         return 0
@@ -306,9 +306,9 @@ class Animal: APIObject {
         if monthsSinceAdmintannce != 0 {
             log.debug(floor(Double(monthsSinceAdmintannce)/12).description)
             if monthsSinceAdmintannce >= 12 {
-                features["W schronisku od"] = NSString.localizedStringWithFormat(NSLocalizedString("%d num_of_years", comment: ""), getAdmintannceYearsFromNow()) as String
+                features["W schronisku od"] = NSString.localizedStringWithFormat(NSLocalizedString("%d num_of_years", comment: "") as NSString, getAdmintannceYearsFromNow()) as String
             } else {
-                features["W schronisku od"] =  NSString.localizedStringWithFormat(NSLocalizedString("%d num_of_months", comment: ""), monthsSinceAdmintannce) as String
+                features["W schronisku od"] =  NSString.localizedStringWithFormat(NSLocalizedString("%d num_of_months", comment: "") as NSString, monthsSinceAdmintannce) as String
             }
         } else {
             features["W schronisku od"] = ""

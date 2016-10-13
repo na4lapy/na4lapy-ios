@@ -8,7 +8,7 @@ class AnimalImageProvider {
 
     init(animalPhotos: [Photo]) {
         var images = [SKPhoto]()
-        for (index, _) in animalPhotos.enumerate() {
+        for (index, _) in animalPhotos.enumerated() {
             let url = animalPhotos[index].url
             images.append(SKPhoto.photoWithImageURL(url.absoluteString))
         }

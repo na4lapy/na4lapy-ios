@@ -15,16 +15,16 @@ import UIKit
         @IBInspectable var leftInset: CGFloat = 7.0
         @IBInspectable var rightInset: CGFloat = 7.0
         
-        override func drawTextInRect(rect: CGRect) {
+        override func drawText(in rect: CGRect) {
             let insets = UIEdgeInsets(top: topInset,
                                       left: leftInset,
                                       bottom: bottomInset,
                                       right: rightInset)
-            super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+            super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
         }
 
-        override func intrinsicContentSize() -> CGSize {
-            var intrinsicSuperViewContentSize = super.intrinsicContentSize()
+        override var intrinsicContentSize : CGSize {
+            var intrinsicSuperViewContentSize = super.intrinsicContentSize
             intrinsicSuperViewContentSize.height += topInset + bottomInset
             intrinsicSuperViewContentSize.width += leftInset + rightInset
             return intrinsicSuperViewContentSize
@@ -33,12 +33,12 @@ import UIKit
 }
 
 extension String {
-    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: CGFloat.max)
+    func heightWithConstrainedWidth(_ width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
 
         let boundingBox =
-            self.boundingRectWithSize(constraintRect,
-                                      options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+            self.boundingRect(with: constraintRect,
+                                      options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                       attributes: [NSFontAttributeName: font], context: nil)
         return boundingBox.height
     }

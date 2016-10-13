@@ -16,23 +16,23 @@ let log = Logger.sharedInstance
 class Logger {
     static let sharedInstance = Logger()
 
-    private func out(msg: String) {
+    fileprivate func out(_ msg: String) {
     #if DEBUG
         print(msg)
     #endif
     }
 
-    func error(msg: String, file: String = #file, function: String = #function) {
+    func error(_ msg: String, file: String = #file, function: String = #function) {
         var filename: String = file
-        if let lastPathElement = file.componentsSeparatedByString("/").last {
+        if let lastPathElement = file.components(separatedBy: "/").last {
             filename = lastPathElement
         }
         self.out("ERROR/\(filename)/\(function): \(msg)")
     }
 
-    func debug(msg: String, file: String = #file, function: String = #function) {
+    func debug(_ msg: String, file: String = #file, function: String = #function) {
         var filename: String = file
-        if let lastPathElement = file.componentsSeparatedByString("/").last {
+        if let lastPathElement = file.components(separatedBy: "/").last {
             filename = lastPathElement
         }
         self.out("DEBUG/\(filename)/\(function): \(msg)")

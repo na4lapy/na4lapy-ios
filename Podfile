@@ -9,7 +9,8 @@ target 'Na4Łapy' do
   # use_frameworks!
   # platform :ios, "8.0"
 
-  pod "SKPhotoBrowser"
+  # pod "SKPhotoBrowser"
+  pod 'SKPhotoBrowser', :git => 'https://github.com/suzuki-0000/SKPhotoBrowser.git', :branch => 'swift3'
 
   target 'Na4ŁapyTests' do
     inherit! :search_paths

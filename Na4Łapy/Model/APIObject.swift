@@ -9,8 +9,8 @@
 import Foundation
 
 class APIObject: ListingProtocol {
-    private(set) var id: Int
-    private(set) var name: String
+    fileprivate(set) var id: Int
+    fileprivate(set) var name: String
 
     //
     // MARK: inicjalizacja obiektu za pomocą struktury JSON (id oraz name)
@@ -18,9 +18,9 @@ class APIObject: ListingProtocol {
     required init?(dictionary: [String:AnyObject]) {
         guard
             let id = dictionary[JsonAttr.id] as? Int,
-                name = dictionary[JsonAttr.name] as? String
+                let name = dictionary[JsonAttr.name] as? String
             else {
-                log.error(Error.NoIdOrName.desc())
+                log.error(Err.noIdOrName.desc())
                 return nil
         }
         self.id = id
@@ -33,11 +33,11 @@ class APIObject: ListingProtocol {
      - Parameter json: Struktura JSON
      - Returns: Tablica obiektów Animal
      */
-    class func jsonToObj(obj: [AnyObject]) -> [AnyObject] {
+    class func jsonToObj(_ obj: [AnyObject]) -> [AnyObject] {
         var animals = [AnyObject]()
         if let obj = obj as? [[String: AnyObject]] {
             for item in obj {
-                if let animal = self.init(dictionary: item) as? AnyObject {
+                if let animal = self.init(dictionary: item) {
                     animals.append(animal)
                 }
             }
@@ -49,5 +49,5 @@ class APIObject: ListingProtocol {
     /**
      Metoda nadpisywana w obiektach potomnych, wymagana przez protokół ListingProtocol
      */
-    class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {}
+    class func get(_ page: Int, size: Int, preferences: UserPreferences?, success: @escaping ([AnyObject], Int) -> Void, failure: @escaping (NSError) -> Void) {}
 }

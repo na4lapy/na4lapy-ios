@@ -9,18 +9,18 @@
 import Foundation
 
 class UserPreferences {
-    private var typeDog: Bool?
-    private var typeCat: Bool?
-    private var typeOther: Bool?
-    private var genderFemale: Bool?
-    private var genderMale: Bool?
-    private var ageMin: Int = 0
-    private var ageMax: Int = 20
-    private var sizeSmall: Bool?
-    private var sizeMedium: Bool?
-    private var sizeLarge: Bool?
-    private var activityLow: Bool?
-    private var activityHigh: Bool?
+    fileprivate var typeDog: Bool?
+    fileprivate var typeCat: Bool?
+    fileprivate var typeOther: Bool?
+    fileprivate var genderFemale: Bool?
+    fileprivate var genderMale: Bool?
+    fileprivate var ageMin: Int = 0
+    fileprivate var ageMax: Int = 20
+    fileprivate var sizeSmall: Bool?
+    fileprivate var sizeMedium: Bool?
+    fileprivate var sizeLarge: Bool?
+    fileprivate var activityLow: Bool?
+    fileprivate var activityHigh: Bool?
 
     init(typeDog: Bool?, typeCat: Bool?, typeOther: Bool?, genderFemale: Bool?, genderMale: Bool?, ageMin: Int, ageMax: Int, sizeSmall: Bool?, sizeMedium: Bool?, sizeLarge: Bool?, activityLow: Bool?, activityHigh: Bool?) {
         self.typeDog = typeDog

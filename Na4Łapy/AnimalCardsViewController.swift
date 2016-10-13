@@ -13,34 +13,34 @@ class AnimalCardsViewController: UIViewController {
     @IBOutlet weak var cardCollection: UICollectionView!
 
     //MARK: UICollectionDataSource
-    private let presenter: AnimalCardsPresenter = AnimalCardsPresenter(listing: Listing(listingType: Animal.self))
+    fileprivate let presenter: AnimalCardsPresenter = AnimalCardsPresenter(listing: Listing(listingType: Animal.self))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reloadCardCollection(_:)), name: "ReloadAnimalView", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCardCollection(_:)), name: NSNotification.Name(rawValue: "ReloadAnimalView"), object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
         presenter.attachView(self)
         presenter.getAnimals()
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
-    @objc func reloadCardCollection(notificatio: NSNotification) {
-        dispatch_async(dispatch_get_main_queue()) {
+    @objc func reloadCardCollection(_ notificatio: Notification) {
+        DispatchQueue.main.async {
             self.cardCollection.reloadData()
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let identifier = segue.identifier,
-                animal = (sender as? AnimalCollectionCell)?.animal,
-                vc = segue.destinationViewController as? AnimalDetailViewController
-            where identifier == AnimalCardsPresenter.Storyboard.AnimalDetailSegueIdentifier
+                let animal = (sender as? AnimalCollectionCell)?.animal,
+                let vc = segue.destination as? AnimalDetailViewController
+            , identifier == AnimalCardsPresenter.Storyboard.AnimalDetailSegueIdentifier
         else {
             return
         }
@@ -50,23 +50,23 @@ class AnimalCardsViewController: UIViewController {
 }
 
 extension AnimalCardsViewController: UICollectionViewDataSource {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.getAnimalAmount()
 
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return presenter.cellForAnimalOnCollectionView(collectionView, withIndexPath: indexPath)
     }
 
 }
 
 extension AnimalCardsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.cardCollection.bounds.width, height: self.cardCollection.bounds.height)
     }
 }

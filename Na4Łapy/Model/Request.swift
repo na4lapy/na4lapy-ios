@@ -17,11 +17,11 @@ class Request {
      - Parameter success: Przekazanie UIImage
      - Parameter failure: Przekazanie błędu
     */
-    class func getImageData(url: NSURL, success: (UIImage) -> Void, failure: (NSError) -> Void) {
+    class func getImageData(_ url: URL, success: @escaping (UIImage) -> Void, failure: @escaping (NSError) -> Void) {
         Request.httpGET(url,
             success: { (data) in
                 guard let image = UIImage(data: data) else {
-                    failure(Error.NoImageData.err())
+                    failure(Err.noImageData.err())
                     return
                 }
                 success(image)
@@ -39,22 +39,22 @@ class Request {
      - Parameter success: Przekazanie pobranej struktury
      - Parameter failure: Przekazanie błędu
     */
-    class func getJSONData(endpoint: NSURL, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
+    class func getJSONData(_ endpoint: URL, success: @escaping ([AnyObject], Int) -> Void, failure: @escaping (NSError) -> Void) {
         Request.httpGET(endpoint,
             success: { (data) in
                 do {
                     let json = try Request.parseJSON(data)
                     guard
                         let jsondata = json[JsonAttr.data] as? [[String: AnyObject]],
-                            count = json[JsonAttr.total] as? Int
+                            let count = json[JsonAttr.total] as? Int
                     else {
                         throw JsonError.parseError
                     }
-                    success(jsondata, count)
+                    success(jsondata as [AnyObject], count)
                 } catch let error as NSError {
                     failure(error)
                 } catch JsonError.parseError {
-                    failure(Error.WrongJsonStruct.err())
+                    failure(Err.wrongJsonStruct.err())
                 }
             },
             failure: { (error) in
@@ -70,24 +70,24 @@ class Request {
      - Parameter success: Closure w przypadku sukcesu
      - Parameter failure: Closure w przypadku błędu
     */
-    private class func httpGET(url: NSURL, success: (NSData) -> Void, failure: (NSError) -> Void) {
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
+    fileprivate class func httpGET(_ url: URL, success: @escaping (Data) -> Void, failure: @escaping (NSError) -> Void) {
+        let session = URLSession.shared
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
 
-        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             if error != nil {
-                failure(error!)
+                failure(error! as NSError)
                 return
             }
             guard let data = data else {
-                failure(Error.NoData.err())
+                failure(Err.noData.err())
                 return
             }
             success(data)
-        }
+        }) 
         task.resume()
     }
 
@@ -97,8 +97,8 @@ class Request {
      - Parameter data: Obiekt NSData
      - Returns: Dictionary<String:AnyObject>
     */
-    private class func parseJSON(data: NSData) throws -> [String:AnyObject] {
-        guard let json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject] else {
+    fileprivate class func parseJSON(_ data: Data) throws -> [String:AnyObject] {
+        guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject] else {
             throw JsonError.parseError
         }
         return json

@@ -12,8 +12,8 @@ class Favourite {
     
     class func get() -> [Int]? {
         // Pobierz aktualny stan
-        let defaults = NSUserDefaults.standardUserDefaults()
-        guard let favourites = defaults.stringArrayForKey("Favourites") else {
+        let defaults = UserDefaults.standard
+        guard let favourites = defaults.stringArray(forKey: "Favourites") else {
             log.error("Brak NSUserDefaults dla klucza: 'Favourites'")
             return nil
         }
@@ -25,35 +25,35 @@ class Favourite {
         return favouritesResult
     }
     
-    class func add(id: Int) {
+    class func add(_ id: Int) {
         let animalId = String(id)
 
         // Pobierz aktualny stan
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var favouritesTable: [String]! = defaults.stringArrayForKey("Favourites") ?? []
+        let defaults = UserDefaults.standard
+        var favouritesTable: [String]! = defaults.stringArray(forKey: "Favourites") ?? []
 
         if !favouritesTable.contains(animalId) {
             favouritesTable.append(animalId)
         }
         
         // Zapisz nową tablicę
-        defaults.setObject(favouritesTable, forKey: "Favourites")
+        defaults.set(favouritesTable, forKey: "Favourites")
     }
     
-    class func delete(id: Int) {
+    class func delete(_ id: Int) {
         let animalId = String(id)
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let favouritesTable: [String]! = defaults.stringArrayForKey("Favourites") ?? []
+        let defaults = UserDefaults.standard
+        let favouritesTable: [String]! = defaults.stringArray(forKey: "Favourites") ?? []
         let newFavourites = favouritesTable.filter {
             $0 != animalId
         }
-        defaults.setObject(newFavourites, forKey: "Favourites")
+        defaults.set(newFavourites, forKey: "Favourites")
     }
     
-    class func isFavourite(id: Int) -> Bool {
+    class func isFavourite(_ id: Int) -> Bool {
         let animalId = String(id)
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let favouritesTable: [String]! = defaults.stringArrayForKey("Favourites") ?? []
+        let defaults = UserDefaults.standard
+        let favouritesTable: [String]! = defaults.stringArray(forKey: "Favourites") ?? []
         return favouritesTable.contains(animalId)
     }
 }

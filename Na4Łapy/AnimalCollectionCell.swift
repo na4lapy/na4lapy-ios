@@ -34,10 +34,10 @@ class AnimalCollectionCell: UICollectionViewCell {
 //    @IBOutlet private weak var animalGenderIcon: UIImageView!
 //    @IBOutlet private weak var animalSizeIcon: UIImageView!
     
-    @IBOutlet private weak var animalDescriptionLabel: UILabel!
-    @IBOutlet private weak var animalImage: UIImageView!
+    @IBOutlet fileprivate weak var animalDescriptionLabel: UILabel!
+    @IBOutlet fileprivate weak var animalImage: UIImageView!
 
-    private func updateUI() {
+    fileprivate func updateUI() {
         animalDescriptionLabel.text = animal?.getAgeName()
         animalImage.image = animal?.getFirstImage()
 

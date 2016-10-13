@@ -22,9 +22,9 @@ enum Gender: String {
 
     func pl() -> String {
         switch self {
-            case male:
+            case .male:
                 return "Samiec"
-            case female:
+            case .female:
                 return "Samica"
             case .unknown:
                 return "GenderUnknown"

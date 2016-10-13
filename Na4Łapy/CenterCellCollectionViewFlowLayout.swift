@@ -10,7 +10,7 @@ import UIKit
 
 class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
 
         if let cv = self.collectionView {
 
@@ -18,8 +18,8 @@ class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
             let halfWidth = cvBounds.size.width * 0.5
             let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth
 
-            if let attributesArray: NSArray = self.layoutAttributesForElementsInRect(cvBounds)!
-                    as [UICollectionViewLayoutAttributes] {
+            if let attributesArray: NSArray = self.layoutAttributesForElements(in: cvBounds)!
+                    as [UICollectionViewLayoutAttributes] as NSArray? {
 
                 var candidateAttributes: UICollectionViewLayoutAttributes?
                 for attributes in attributesArray {
@@ -27,13 +27,13 @@ class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
                     let _attributes = attributes as? UICollectionViewLayoutAttributes
 
                     // == Skip comparison with non-cell items (headers and footers) == //
-                    if attributes.representedElementCategory != UICollectionElementCategory.Cell {
+                    if (attributes as AnyObject).representedElementCategory != UICollectionElementCategory.cell {
                         continue
                     }
 
                     if let candAttrs = candidateAttributes {
 
-                        let a = attributes.center.x - proposedContentOffsetCenterX
+                        let a = (attributes as AnyObject).center.x - proposedContentOffsetCenterX
                         let b = candAttrs.center.x - proposedContentOffsetCenterX
 
                         if fabsf(Float(a)) < fabsf(Float(b)) {
@@ -56,6 +56,6 @@ class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
 
         // Fallback
-        return super.targetContentOffsetForProposedContentOffset(proposedContentOffset)
+        return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
     }
 }

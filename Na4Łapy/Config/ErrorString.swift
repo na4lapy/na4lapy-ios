@@ -9,26 +9,26 @@
 import Foundation
 import UIKit
 
-enum Error: Int {
-    case NoIdOrName = 1, WrongJsonKey, JsonParseError, NoData, WrongURL, WrongJsonStruct, NoImageData, IllegalPageNumber
+enum Err: Int {
+    case noIdOrName = 1, wrongJsonKey, jsonParseError, noData, wrongURL, wrongJsonStruct, noImageData, illegalPageNumber
 
     func desc() -> String {
         switch self {
-        case NoIdOrName:
+        case .noIdOrName:
             return "Brak 'id' lub 'name' w parametrach kontruktora klasy"
-        case WrongJsonKey:
+        case .wrongJsonKey:
             return "Błędny klucz JSON"
-        case JsonParseError:
+        case .jsonParseError:
             return "Błąd parsowania JSON"
-        case NoData:
+        case .noData:
             return "Brak danych"
-        case WrongURL:
+        case .wrongURL:
             return "Błędny URL"
-        case WrongJsonStruct:
+        case .wrongJsonStruct:
             return "Nieprawidłowa struktura JSON"
-        case NoImageData:
+        case .noImageData:
             return "Brak zdjęcia"
-        case IllegalPageNumber:
+        case .illegalPageNumber:
             return "Nieprawidłowy numer strony (musi być >= 0)"
         }
     }
@@ -39,7 +39,7 @@ enum Error: Int {
     }
 }
 
-enum JsonError: ErrorType {
+enum JsonError: Error {
     case parseError
     case noData
 }

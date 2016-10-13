@@ -11,7 +11,7 @@ import UIKit
 
 class Photo {
     let id: Int
-    let url: NSURL
+    let url: URL
     var author: String?
     var image: UIImage?
     var downloaded: Bool = false
@@ -19,10 +19,10 @@ class Photo {
     init?(dictionary: [String:AnyObject]) {
         guard
             let id = dictionary[JsonAttr.id] as? Int,
-                urlstring = dictionary[JsonAttr.url] as? String,
-                url = NSURL(string: urlstring)
+                let urlstring = dictionary[JsonAttr.url] as? String,
+                let url = URL(string: urlstring)
         else {
-            log.error(Error.NoIdOrName.desc())
+            log.error(Err.noIdOrName.desc())
             return nil
         }
 
@@ -38,7 +38,7 @@ class Photo {
     /**
     Asynchroniczne pobieranie obrazka
     */
-    func download(success: (() -> Void)? = nil) {
+    func download(_ success: (() -> Void)? = nil) {
         if self.downloaded {
             log.debug("Zdjęcie zostało już wcześniej pobrane.")
             return

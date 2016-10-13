@@ -9,15 +9,15 @@
 import Foundation
 
 class Shelter: APIObject {
-    private var street: String?
-    private var buildingNumber: String?
-    private var city: String?
-    private var postalCode: String?
-    private var email: String?
-    private var phoneNumber: String?
-    private var website: String?
-    private var accountNumber: String?
-    private var adoptionRules: String?
+    fileprivate var street: String?
+    fileprivate var buildingNumber: String?
+    fileprivate var city: String?
+    fileprivate var postalCode: String?
+    fileprivate var email: String?
+    fileprivate var phoneNumber: String?
+    fileprivate var website: String?
+    fileprivate var accountNumber: String?
+    fileprivate var adoptionRules: String?
     //
     // MARK: init()
     //
@@ -26,10 +26,10 @@ class Shelter: APIObject {
         initializeWithDictionary(dictionary)
     }
 
-    override class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
+    override class func get(_ page: Int, size: Int, preferences: UserPreferences?, success: @escaping ([AnyObject], Int) -> Void, failure: @escaping (NSError) -> Void) {
     }
 
-    private func initializeWithDictionary(dictionary: [String: AnyObject]) {
+    fileprivate func initializeWithDictionary(_ dictionary: [String: AnyObject]) {
     }
 
 }

@@ -11,8 +11,8 @@ import UIKit
 
 
 class AnimalCardsPresenter {
-    weak private var  animalCardsController: AnimalCardsViewController?
-    private let animalsListing: Listing?
+    weak fileprivate var  animalCardsController: AnimalCardsViewController?
+    fileprivate let animalsListing: Listing?
 
     struct Storyboard {
         static let CellIndentifier = "Animal Cell"
@@ -23,14 +23,14 @@ class AnimalCardsPresenter {
         self.animalsListing = listing
     }
 
-    func attachView(view: AnimalCardsViewController) {
+    func attachView(_ view: AnimalCardsViewController) {
         animalCardsController = view
     }
 
     func getAnimals() {
         self.animalsListing?.prefetch(0,
             success: {
-                NSNotificationCenter.defaultCenter().postNotificationName("ReloadCollectionView", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "ReloadCollectionView"), object: nil)
             },
             failure: {
                 log.error("Błąd podczas pobierania pierwszej strony!")
@@ -45,11 +45,11 @@ class AnimalCardsPresenter {
         return Int(count)
     }
 
-    func cellForAnimalOnCollectionView(collectionView: UICollectionView, withIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellIndentifier, forIndexPath: indexPath) as? AnimalCollectionCell else {
+    func cellForAnimalOnCollectionView(_ collectionView: UICollectionView, withIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIndentifier, for: indexPath) as? AnimalCollectionCell else {
             assert(false, "Cell should be of type AnimalCollectionCell")
         }
-        cell.animal = animalsListing?.get(UInt(indexPath.item)) as? Animal
+        cell.animal = animalsListing?.get(UInt((indexPath as NSIndexPath).item)) as? Animal
         return cell
     }
 }
