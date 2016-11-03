@@ -51,14 +51,14 @@ class Animal: APIObject {
             return
         }
 
-       let urlstring = AnimalURLBuilder.buildURLFrom(baseUrl+EndPoint.animals, page: page, pageSize: size, params: preferences)
+       let urlstring = AnimalURLBuilder.buildURLFrom(baseUrl: baseUrl+EndPoint.animals, page: page, pageSize: size, params: preferences)
 
         guard let endpoint = NSURL(string: urlstring) else {
-            failure(Error.WrongURL.err())
+            failure(Err.wrongURL.err())
             return
         }
 
-        Request.getJSONData(endpoint,
+        Request.getJSONData(endpoint as URL,
             success: { (json, count) in
                 let animals = Animal.jsonToObj(json)
                 success(animals, count)
@@ -365,22 +365,22 @@ class Animal: APIObject {
         }
 
         if (!spieciesParams.isEmpty) {
-            let joinedParams = spieciesParams.joinWithSeparator(",")
+            let joinedParams = spieciesParams.joined(separator: ",")
             url += "&species=\(joinedParams)"
         }
 
         if (!genderParams.isEmpty) {
-            let joinedParams = genderParams.joinWithSeparator(",")
+            let joinedParams = genderParams.joined(separator: ",")
             url += "&genders=\(joinedParams)"
         }
 
         if (!sizeParams.isEmpty) {
-            let joinedParams = sizeParams.joinWithSeparator(",")
+            let joinedParams = sizeParams.joined(separator: ",")
             url += "&sizes=\(joinedParams)"
         }
 
         if (!activitiesParams.isEmpty) {
-            let joinedParams = sizeParams.joinWithSeparator(",")
+            let joinedParams = sizeParams.joined(separator: ",")
             url += "&activities=\(joinedParams)"
         }
 

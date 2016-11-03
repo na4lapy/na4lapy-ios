@@ -1,4 +1,4 @@
-//
+	//
 //  AppDelegate.swift
 //  Na4Łapy
 //
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red:0.00, green:0.41, blue:0.45, alpha:1.00)
-        UINavigationBar.appearance().barStyle = UIBarStyle.Black
+        UINavigationBar.appearance().barStyle = UIBarStyle.black
 
         setAnimalPreferencesStartingState()
 
@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setAnimalPreferencesStartingState() {
 
-        let appWasLaunchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+        let appWasLaunchedBefore = UserDefaults.standard.bool(forKey:"launchedBefore")
 
         if !appWasLaunchedBefore {
             //set preferences state for the start
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 activityHigh: true
                 ).savePreferencesToUserDefault()
 
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
 
     }

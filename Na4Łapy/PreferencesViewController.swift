@@ -29,38 +29,39 @@ class PreferencesViewController: UIViewController {
         setUIBasedOnSavedPreferences()
 
         for button in preferenceButtons {
-            button.addTarget(self, action: #selector(onPreferenceButtonTouched), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(onPreferenceButtonTouched), for: .touchUpInside)
         }
     }
 
-    @IBAction func ageMinSliderValueChanged(sender: UISlider) {
+    @IBAction func ageMinSliderValueChanged(_ sender: UISlider) {
         let sliderIntValue =  Int (round(sender.value))
         ageMinLabel.text = sliderIntValue.description
 
         if let savedPreferences = userPreferences {
-            savedPreferences.setMinAge(sliderIntValue)
+            savedPreferences.setMinAge(newValue: sliderIntValue)
         }
     }
 
 
-    @IBAction func ageMaxSliderValueChanged(sender: UISlider) {
+    @IBAction func ageMaxSliderValueChanged(_ sender: UISlider) {
         let sliderIntValue =  Int (round(sender.value))
         ageMaxLabel.text = sliderIntValue.description
         if let savedPreferences = userPreferences {
-            savedPreferences.setMaxAge(sliderIntValue)
+            savedPreferences.setMaxAge(newValue: sliderIntValue)
         }
     }
 
-    @IBAction func onSavePreferencesTouched(sender: UIButton) {
+    @IBAction func onSavePreferencesTouched(_ sender: UIButton) {
         if let savedPreferences = userPreferences {
             savedPreferences.savePreferencesToUserDefault()
         }
     }
 
+
     func onPreferenceButtonTouched(sender: UIButton!) {
-        sender.selected = !sender.selected
+        sender.isSelected = !sender.isSelected
         if let savedPreferences = userPreferences {
-            savedPreferences.togglePreferenceAtIndex(sender.tag)
+            savedPreferences.togglePreferenceAtIndex(preferenceIndex: sender.tag)
         }
     }
 
@@ -71,7 +72,7 @@ class PreferencesViewController: UIViewController {
             return
         }
 
-        for (_, preferenceValue) in savedPreferences.dictionaryRepresentation().enumerate() {
+        for (_, preferenceValue) in savedPreferences.dictionaryRepresentation().enumerated() {
 
             let (preferenceKey, preferenceValue) = preferenceValue
 
@@ -85,13 +86,13 @@ class PreferencesViewController: UIViewController {
                 continue
             }
 
-            guard let preferenceIndex = PREFERENCES.indexOf(preferenceKey) else {
+            guard let preferenceIndex = PREFERENCES.index(of: preferenceKey) else {
                 continue
             }
 
             for button in preferenceButtons {
                 if(button.tag == preferenceIndex) {
-                    button.selected = preferenceValue == 1
+                    button.isSelected = preferenceValue == 1
                 }
             }
 
@@ -102,7 +103,7 @@ class PreferencesViewController: UIViewController {
 
     @IBAction func toggleAnimalPreference(sender: UIButton) {
         if let savedPreferences = userPreferences {
-             savedPreferences.togglePreferenceAtIndex(sender.tag)
+             savedPreferences.togglePreferenceAtIndex(preferenceIndex: sender.tag)
         }
 
     }

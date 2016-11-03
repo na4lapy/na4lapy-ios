@@ -40,9 +40,8 @@ class UserPreferences {
     }
 
     convenience init?() {
-        if let animalPreferences = NSUserDefaults.standardUserDefaults().dictionaryForKey("UserPreferences") {
+        if let animalPreferences = UserDefaults.standard.dictionary(forKey: "UserPreferences") {
 
-        print(NSUserDefaults.standardUserDefaults().dictionaryRepresentation())
         self.init(
             typeDog: animalPreferences["DOG"] as? Bool,
             typeCat: animalPreferences["CAT"] as? Bool,
@@ -143,8 +142,8 @@ class UserPreferences {
     }
 
     func savePreferencesToUserDefault() {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setObject(self.dictionaryRepresentation(), forKey: USER_PREFERENCES_KEY)
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(self.dictionaryRepresentation(), forKey: USER_PREFERENCES_KEY)
 
     }
 }

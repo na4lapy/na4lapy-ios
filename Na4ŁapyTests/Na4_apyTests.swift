@@ -7,7 +7,7 @@
 //
 
 import XCTest
-//@testable import NaŁapy
+@testable import Na4Łapy
 
 class Na4ŁapyTests: XCTestCase {
 
@@ -28,7 +28,7 @@ class Na4ŁapyTests: XCTestCase {
 
     func testAnimalInitWithWrongParams1() {
         let animal = Animal(dictionary: [
-            "errKey":"errValue"
+            "errKey":"errValue" as AnyObject
             ])
         XCTAssertNil(animal)
     }

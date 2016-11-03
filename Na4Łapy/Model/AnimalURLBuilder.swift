@@ -50,22 +50,22 @@ class AnimalURLBuilder: URLBuildable {
         }
 
         if (!spieciesParams.isEmpty) {
-            let joinedParams = spieciesParams.joinWithSeparator(",")
+            let joinedParams = spieciesParams.joined(separator: ",")
             url += "&spiecies=\(joinedParams)"
         }
 
         if (!genderParams.isEmpty) {
-            let joinedParams = genderParams.joinWithSeparator(",")
+            let joinedParams = genderParams.joined(separator: ",")
             url += "&genders=\(joinedParams)"
         }
 
         if (!sizeParams.isEmpty) {
-            let joinedParams = sizeParams.joinWithSeparator(",")
+            let joinedParams = sizeParams.joined(separator: ",")
             url += "&sizes=\(joinedParams)"
         }
 
         if (!activitiesParams.isEmpty) {
-            let joinedParams = sizeParams.joinWithSeparator(",")
+            let joinedParams = sizeParams.joined(separator: ",")
             url += "&activities=\(joinedParams)"
         }
 
