@@ -53,6 +53,7 @@ class Animal: APIObject {
 
        let urlstring = AnimalURLBuilder.buildURLFrom(baseUrl: baseUrl+EndPoint.animals, page: page, pageSize: size, params: preferences)
 
+        log.debug(urlstring)
         guard let endpoint = NSURL(string: urlstring) else {
             failure(Err.wrongURL.err())
             return

@@ -139,6 +139,8 @@ struct EndPoint {
     static let shelter = "/api/shelter"
 }
 
+let USER_PREFERENCES_KEY = "UserPreferences"
+
 let PREFERENCES = [
     Species.dog.rawValue,
     Species.cat.rawValue,

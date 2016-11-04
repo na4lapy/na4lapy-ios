@@ -21,7 +21,6 @@ class UserPreferences {
     private var sizeLarge: Bool?
     private var activityLow: Bool?
     private var activityHigh: Bool?
-    private final let USER_PREFERENCES_KEY = "UserPreferences"
     private var userPreferencesDictionary = [String: Int]()
 
     init(typeDog: Bool?, typeCat: Bool?, typeOther: Bool?, genderFemale: Bool?, genderMale: Bool?, ageMin: Int, ageMax: Int, sizeSmall: Bool?, sizeMedium: Bool?, sizeLarge: Bool?, activityLow: Bool?, activityHigh: Bool?) {
@@ -40,7 +39,7 @@ class UserPreferences {
     }
 
     convenience init?() {
-        if let animalPreferences = UserDefaults.standard.dictionary(forKey: "UserPreferences") {
+        if let animalPreferences = UserDefaults.standard.dictionary(forKey: USER_PREFERENCES_KEY) {
 
         self.init(
             typeDog: animalPreferences["DOG"] as? Bool,
