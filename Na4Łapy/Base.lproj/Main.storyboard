@@ -242,7 +242,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YB-ib-zIS" id="BJU-vA-AOH">
-                                                            <frame key="frameInset" width="240" height="44"/>
+                                                            <frame key="frameInset" width="240" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roa-o7-P3z">
@@ -436,7 +436,7 @@
         <!--Pomagaj-->
         <scene sceneID="tu7-ec-hgx">
             <objects>
-                <viewController id="FHk-le-2AE" sceneMemberID="viewController">
+                <viewController id="FHk-le-2AE" customClass="PomagajViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Obn-Gt-56y"/>
                         <viewControllerLayoutGuide type="bottom" id="8Pd-m4-RTp"/>
@@ -444,13 +444,31 @@
                     <view key="view" contentMode="scaleToFill" id="Q0m-wl-OBS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVG-2T-quZ">
+                                <color key="backgroundColor" red="0.20779225130173196" green="1" blue="0.97106565737676631" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Kliknij aby pomóc"/>
+                                <connections>
+                                    <action selector="pomagaj:" destination="FHk-le-2AE" eventType="touchUpInside" id="ZfE-mZ-l7S"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8Pd-m4-RTp" firstAttribute="top" secondItem="oVG-2T-quZ" secondAttribute="bottom" constant="254" id="2ea-UK-j67"/>
+                            <constraint firstItem="oVG-2T-quZ" firstAttribute="centerY" secondItem="Q0m-wl-OBS" secondAttribute="centerY" id="AE7-DF-s7U"/>
+                            <constraint firstItem="oVG-2T-quZ" firstAttribute="trailing" secondItem="Q0m-wl-OBS" secondAttribute="trailingMargin" id="AP3-Fb-peP"/>
+                            <constraint firstItem="oVG-2T-quZ" firstAttribute="centerX" secondItem="Q0m-wl-OBS" secondAttribute="centerX" id="Fxo-Lr-yAR"/>
+                            <constraint firstItem="oVG-2T-quZ" firstAttribute="leading" secondItem="Q0m-wl-OBS" secondAttribute="leadingMargin" id="NU3-aP-BQm"/>
+                            <constraint firstItem="oVG-2T-quZ" firstAttribute="top" secondItem="Obn-Gt-56y" secondAttribute="bottom" constant="170" id="pqV-In-cDz"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pomagaj" image="iOS_pomagaj_OFF" selectedImage="iOS_pomagaj_ON" id="pT3-Uk-cNO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95x-kX-moJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="1861"/>
+            <point key="canvasLocation" x="2109.5999999999999" y="1860.7196401799101"/>
         </scene>
         <!--Jakiego zwierzaka szukasz?-->
         <scene sceneID="bnE-ld-JCw">
