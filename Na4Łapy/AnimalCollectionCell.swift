@@ -12,6 +12,21 @@ import UIKit
 
 class AnimalCollectionCell: UICollectionViewCell {
 
+    @IBOutlet weak var favouriteButtonOutlet: UIButton!
+    @IBAction func favouriteButtonAction(_ sender: UIButton) {
+        guard let id = animal?.id else {
+            return
+        }
+        if Favourite.isFavourite(id) {
+            Favourite.delete(id)
+            log.debug("polubienie usunięte dla nr \(id) :(")
+            self.favouriteButtonOutlet.setImage(UIImage(named: "iOS_oAplikacji_OFF"), for: UIControlState.normal)
+        } else {
+            Favourite.add(id)
+            log.debug("zwierzak nr \(id) polubiony")
+            self.favouriteButtonOutlet.setImage(UIImage(named: "favouriteStateIcon"), for: UIControlState.normal)
+        }
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
         self.animalImage.clipsToBounds = true
@@ -38,8 +53,19 @@ class AnimalCollectionCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var animalImage: UIImageView!
 
     fileprivate func updateUI() {
-        animalDescriptionLabel.text = animal?.getAgeName()
-        animalImage.image = animal?.getFirstImage()
+        guard let animal = animal else {
+            log.error("Brak zwierzaka.")
+            return
+        }
+        
+        if Favourite.isFavourite(animal.id) {
+            self.favouriteButtonOutlet.setImage(UIImage(named: "favouriteStateIcon"), for: UIControlState.normal)
+        } else {
+            self.favouriteButtonOutlet.setImage(UIImage(named: "iOS_oAplikacji_OFF"), for: UIControlState.normal)
+        }
+        
+        animalDescriptionLabel.text = animal.getAgeName()
+        animalImage.image = animal.getFirstImage()
 
 //        if let animalSize = animal?.size?.pl() {
 //            animalSizeIcon.image = UIImage(named: animalSize)
