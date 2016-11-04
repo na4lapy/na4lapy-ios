@@ -35,28 +35,28 @@ class Na4ŁapyTests: XCTestCase {
 
     func testAnimalInitWithInsufficientParams1() {
         let animal = Animal(dictionary: [
-            JsonAttr.id:1,
+            JsonAttr.id:1 as AnyObject,
             ])
         XCTAssertNil(animal)
     }
 
     func testAnimalInitWithInsufficientParams2() {
         let animal = Animal(dictionary: [
-            JsonAttr.name:"Vika",
+            JsonAttr.name:"Vika" as AnyObject,
             ])
         XCTAssertNil(animal)
     }
 
     func testAnimalInitWithGoodParams() {
         let animal = Animal(dictionary: [
-                JsonAttr.id:1,
-                JsonAttr.name:"Vika",
-                JsonAttr.gender:Gender.female.rawValue,
-                JsonAttr.activity:Activity.high.rawValue,
-                JsonAttr.description:"My belowed doggy!",
-                JsonAttr.vaccination:Vaccination.basic.rawValue,
-                JsonAttr.training:Training.basic.rawValue,
-                JsonAttr.size:Size.medium.rawValue
+                JsonAttr.id:1 as AnyObject,
+                JsonAttr.name:"Vika" as AnyObject,
+                JsonAttr.gender:Gender.female.rawValue as AnyObject,
+                JsonAttr.activity:Activity.high.rawValue as AnyObject,
+                JsonAttr.description:"My belowed doggy!" as AnyObject,
+                JsonAttr.vaccination:Vaccination.basic.rawValue as AnyObject,
+                JsonAttr.training:Training.basic.rawValue as AnyObject,
+                JsonAttr.size:Size.medium.rawValue as AnyObject
             ])
         XCTAssertNotNil(animal)
     }
