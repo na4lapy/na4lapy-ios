@@ -417,7 +417,7 @@
         <!--Ulubione-->
         <scene sceneID="jpm-jL-Ewg">
             <objects>
-                <viewController id="4iF-5E-veU" sceneMemberID="viewController">
+                <viewController id="4iF-5E-veU" customClass="FavouriteViewController" customModule="Na4Łapy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8VA-7W-b5w"/>
                         <viewControllerLayoutGuide type="bottom" id="y9r-UJ-x4Y"/>
@@ -425,13 +425,27 @@
                     <view key="view" contentMode="scaleToFill" id="TLB-Aw-hdb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K48-Na-4wt">
+                                <frame key="frameInset" minX="16" minY="20" width="343" height="566"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="4iF-5E-veU" id="rI3-oP-8HN"/>
+                                    <outlet property="delegate" destination="4iF-5E-veU" id="fQq-KC-KRw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ulubione" image="iOS_ulubione_OFF" selectedImage="iOS_ulubione_ON" id="Bfi-EL-Wg1"/>
+                    <connections>
+                        <outlet property="tableView" destination="K48-Na-4wt" id="HJC-Sf-0RW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofv-hL-TwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2117" y="1148"/>
+            <point key="canvasLocation" x="2116" y="1147.3763118440781"/>
         </scene>
         <!--Pomagaj-->
         <scene sceneID="tu7-ec-hgx">

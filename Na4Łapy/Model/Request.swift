@@ -43,14 +43,30 @@ class Request {
         Request.httpGET(endpoint,
             success: { (data) in
                 do {
+                    var count = 0
+                    var jsondata: [AnyObject]?
+                    
                     let json = try Request.parseJSON(data)
-                    guard
-                        let jsondata = json[JsonAttr.data] as? [[String: AnyObject]],
-                            let count = json[JsonAttr.total] as? Int
-                    else {
-                        throw JsonError.parseError
+
+                    // Ze względu na różne zachowanie API należy obslużyć 2 warianty:
+                    // 1. cały json jest pakowany w klucz 'JsonAttr.data' oraz dołaczany jest klucz 'JsonAttr.total'
+                    // 2. brak w/w kluczy
+                    if let jdata = json[JsonAttr.data] as? [[String: AnyObject]], let cnt = json[JsonAttr.total] as? Int {
+                        jsondata = jdata as [AnyObject]
+                        count = cnt
+                    } else {
+                        let tmp = [json] as [[String: AnyObject]]
+                        jsondata = tmp as [AnyObject]
+                        count = 0
                     }
-                    success(jsondata as [AnyObject], count)
+
+//                    guard
+//                        let jsondata = json[JsonAttr.data] as? [[String: AnyObject]]
+//                    else {
+//                        throw JsonError.parseError
+//                    }
+                    
+                    success(jsondata ?? [], count)
                 } catch let error as NSError {
                     failure(error)
                 } catch JsonError.parseError {
