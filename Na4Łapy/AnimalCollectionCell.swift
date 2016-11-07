@@ -20,7 +20,7 @@ class AnimalCollectionCell: UICollectionViewCell {
         if Favourite.isFavourite(id) {
             Favourite.delete(id)
             log.debug("polubienie usunięte dla nr \(id) :(")
-            self.favouriteButtonOutlet.setImage(UIImage(named: "iOS_oAplikacji_OFF"), for: UIControlState.normal)
+            self.favouriteButtonOutlet.setImage(UIImage(named: "unfavouriteStateIcon"), for: UIControlState.normal)
         } else {
             Favourite.add(id)
             log.debug("zwierzak nr \(id) polubiony")
@@ -61,7 +61,7 @@ class AnimalCollectionCell: UICollectionViewCell {
         if Favourite.isFavourite(animal.id) {
             self.favouriteButtonOutlet.setImage(UIImage(named: "favouriteStateIcon"), for: UIControlState.normal)
         } else {
-            self.favouriteButtonOutlet.setImage(UIImage(named: "iOS_oAplikacji_OFF"), for: UIControlState.normal)
+            self.favouriteButtonOutlet.setImage(UIImage(named: "unfavouriteStateIcon"), for: UIControlState.normal)
         }
         
         animalDescriptionLabel.text = animal.getAgeName()

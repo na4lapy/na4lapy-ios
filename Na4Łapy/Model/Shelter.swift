@@ -18,29 +18,31 @@ class Shelter: APIObject {
     fileprivate var website: String?
     fileprivate var accountNumber: String?
     fileprivate var adoptionRules: String?
+    fileprivate var voivodeship: String?
+    fileprivate var facebookProfile: String?
     //
     // MARK: init()
     //
     required init?(dictionary: [String:AnyObject]) {
         super.init(dictionary: dictionary)
-        initializeWithDictionary(dictionary)
+        initializeWithDictionary(dictionary: dictionary)
     }
 
-    override class func get(page: Int, size: Int, preferences: UserPreferences?, success: ([AnyObject], Int) -> Void, failure: (NSError) -> Void) {
+    override class func get(_ page: Int, size: Int, preferences: UserPreferences?, success: @escaping ([AnyObject], Int) -> Void, failure: @escaping (NSError) -> Void) {
 
         if (page < 0) {
-            failure(Error.IllegalPageNumber.err())
+            failure(Err.illegalPageNumber.err())
             return
         }
 
         let urlstring = baseUrl + EndPoint.shelter + "/1"
 
         guard let enpoint = NSURL(string: urlstring) else {
-            failure(Error.WrongURL.err())
+            failure(Err.wrongURL.err())
             return
         }
 
-        Request.getJSONData(enpoint, parseData: false, success: { (json, count) in
+        Request.getJSONData(enpoint as URL, success: { (json, count) in
             let shelter = Shelter.jsonToObj(json) //HACK should be changed
             success(shelter, count)
         }) { (error) in
@@ -51,7 +53,7 @@ class Shelter: APIObject {
     func getAdress() -> String {
         guard let
             street = self.street,
-            builidingNumber = self.buildingNumber
+            let builidingNumber = self.buildingNumber
 
                 else {
                     return ""
@@ -63,7 +65,7 @@ class Shelter: APIObject {
     func getAdressSecondLine() -> String {
         guard let
             postalCode = postalCode,
-            city = self.city else {
+            let city = self.city else {
                 return " "
             }
         return postalCode + " " + city
@@ -115,14 +117,14 @@ class Shelter: APIObject {
                 }
             case ShelterJsonAttr.voivodeship:
                 if let voivodeship = value as? String {
-                    self.voivoideship = voivodeship
+                    self.voivodeship = voivodeship
                 }
             case ShelterJsonAttr.website:
                 if let website = value as? String {
                     self.website = website
                 }
             default:
-                log.error(Error.WrongJsonKey.desc() + " \(key)")
+                log.error(Err.wrongJsonKey.desc() + " \(key)")
              }
         }
     }
