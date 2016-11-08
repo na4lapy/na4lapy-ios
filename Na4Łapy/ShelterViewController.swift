@@ -10,16 +10,16 @@ import UIKit
 
 class ShelterViewController: UIViewController {
 
-    @IBOutlet weak var adres: UILabel!
-    @IBOutlet weak var adresSecondLine: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var phoneNumber: UILabel!
-    @IBOutlet weak var website: UILabel!
-    @IBOutlet weak var accountNumber: UILabel!
-    @IBOutlet weak var adoptionRules: UILabel!
+    @IBOutlet private weak var adres: UILabel!
+    @IBOutlet private weak var adresSecondLine: UILabel!
+    @IBOutlet private weak var email: UILabel!
+    @IBOutlet private weak var phoneNumber: UILabel!
+    @IBOutlet private weak var website: UILabel!
+    @IBOutlet private weak var accountNumber: UILabel!
+    @IBOutlet private weak var adoptionRules: UILabel!
 
     @IBOutlet weak var containerView: UIView!
-    private var shelter: Shelter?
+    var shelter: Shelter?
 
     @IBOutlet weak var scrollView: UIScrollView!
 
@@ -27,29 +27,30 @@ class ShelterViewController: UIViewController {
 
         Shelter.get(1, size: 1, preferences: nil, success: { [weak self] json, size in
             if let shelter = json[0] as? Shelter {
-                dispatch_async(dispatch_get_main_queue(), {
+
+                DispatchQueue.main.async(execute: {
                     self?.shelter = shelter
                     self?.updateUI()
                 })
             }
-            }) { (error) in
-                log.debug(error.localizedDescription)
+        }) { (error) in
+            log.debug(error.localizedDescription)
         }
     }
 
     private func updateUI() {
         if let shelter = self.shelter {
-            self.adres.text = shelter.getAdress()
-            self.adresSecondLine.text = shelter.getAdressSecondLine()
-            self.email.text = shelter.email
-            self.website.text = shelter.website
-            self.accountNumber.text = shelter.accountNumber
-            self.adoptionRules.text = shelter.adoptionRules
-            self.phoneNumber.text = shelter.phoneNumber
+            adres.text = shelter.getAdress()
+            adresSecondLine.text = shelter.getAdressSecondLine()
+            email.text = shelter.email
+            website.text = shelter.website
+            accountNumber.text = shelter.accountNumber
+            adoptionRules.text = shelter.adoptionRules
+            phoneNumber.text = shelter.phoneNumber
         }
         log.debug(self.scrollView.contentSize.height.description)
         log.debug(self.containerView.bounds.height.description)
     }
-
-
+    
+    
 }

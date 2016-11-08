@@ -9,17 +9,17 @@
 import Foundation
 
 class Shelter: APIObject {
-    fileprivate var street: String?
-    fileprivate var buildingNumber: String?
+    private var street: String?
+    private var buildingNumber: String?
     fileprivate var city: String?
     fileprivate var postalCode: String?
-    fileprivate var email: String?
-    fileprivate var phoneNumber: String?
-    fileprivate var website: String?
-    fileprivate var accountNumber: String?
-    fileprivate var adoptionRules: String?
-    fileprivate var voivodeship: String?
-    fileprivate var facebookProfile: String?
+    var email: String?
+    var phoneNumber: String?
+    var website: String?
+    var accountNumber: String?
+    var adoptionRules: String?
+    var voivodeship: String?
+    var facebookProfile: String?
     //
     // MARK: init()
     //
