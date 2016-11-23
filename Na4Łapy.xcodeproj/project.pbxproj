@@ -59,6 +59,10 @@
 		5CCD46CF1D04C6E600D2D672 /* Na4_apyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD46CE1D04C6E600D2D672 /* Na4_apyUITests.swift */; };
 		82697E83B92733D64B2EC43E /* Pods_Na4_apyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 767BFCFDD8EFB569EFEC9875 /* Pods_Na4_apyTests.framework */; };
 		99189749639D4333AC87CF5A /* Pods_Na4_apy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6DBA3AF0BF87E61DF6B2AA /* Pods_Na4_apy.framework */; };
+		DC22F0631DDB95790058C86A /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC22F0621DDB95790058C86A /* FavouriteTableViewCell.swift */; };
+		DC2A08001DE62880006D9723 /* FavouriteTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC2A07FF1DE62880006D9723 /* FavouriteTableHeader.xib */; };
+		DC2A08021DE628B1006D9723 /* FavouriteTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */; };
+		DC2A08041DE63185006D9723 /* FavouriteTableHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */; };
 		DC44C7AE1DD124C8007160E6 /* ShelterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44C7AD1DD124C8007160E6 /* ShelterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +137,10 @@
 		89A280942AF787D137C49D9E /* Pods-Na4ŁapyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyTests/Pods-Na4ŁapyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B72E4F617EC925514ABCB3F6 /* Pods-Na4ŁapyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Na4ŁapyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Na4ŁapyUITests/Pods-Na4ŁapyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BA6DBA3AF0BF87E61DF6B2AA /* Pods_Na4_apy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Na4_apy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC22F0621DDB95790058C86A /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
+		DC2A07FF1DE62880006D9723 /* FavouriteTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteTableHeader.xib; sourceTree = "<group>"; };
+		DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableHeader.swift; sourceTree = "<group>"; };
+		DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableHeaderDelegate.swift; sourceTree = "<group>"; };
 		DC44C7AD1DD124C8007160E6 /* ShelterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,7 +185,7 @@
 		047D444D1D396A8C00CF40FE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				5C0A9B051DCCD27B0091B193 /* FavouriteViewController.swift */,
+				DC22F0611DDB95540058C86A /* Favourite */,
 				0428194C1D854ABA00ECA3B9 /* PreferencesView */,
 				047D44501D396AF400CF40FE /* Common */,
 				047D444F1D396AD300CF40FE /* AnimalDetailView */,
@@ -336,6 +344,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DC22F0611DDB95540058C86A /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				5C0A9B051DCCD27B0091B193 /* FavouriteViewController.swift */,
+				DC22F0621DDB95790058C86A /* FavouriteTableViewCell.swift */,
+				DC2A07FF1DE62880006D9723 /* FavouriteTableHeader.xib */,
+				DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */,
+				DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */,
+			);
+			name = Favourite;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -413,8 +433,9 @@
 				TargetAttributes = {
 					5CCD46AA1D04C6E600D2D672 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 544G5DYBST;
+						DevelopmentTeam = Y775T2M4TH;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					5CCD46BE1D04C6E600D2D672 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -454,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCD46B91D04C6E600D2D672 /* LaunchScreen.storyboard in Resources */,
+				DC2A08001DE62880006D9723 /* FavouriteTableHeader.xib in Resources */,
 				04E3081B1D44BCE400A822BF /* Localizable.strings in Resources */,
 				040BDF3E1D1F187100A46FB1 /* Localizable.stringsdict in Resources */,
 				5CCD46B61D04C6E600D2D672 /* Assets.xcassets in Resources */,
@@ -633,8 +655,10 @@
 				04C22B261D47CEAC000E7AC3 /* AnimalImageProvider.swift in Sources */,
 				04AAE1571D87217A009246D2 /* BoolInitExtension.swift in Sources */,
 				0428194E1D854ADD00ECA3B9 /* PreferencesViewController.swift in Sources */,
+				DC22F0631DDB95790058C86A /* FavouriteTableViewCell.swift in Sources */,
 				04A8E1011D31867B00E28A0C /* UIImageCircularExtension.swift in Sources */,
 				DC44C7AE1DD124C8007160E6 /* ShelterViewController.swift in Sources */,
+				DC2A08041DE63185006D9723 /* FavouriteTableHeaderDelegate.swift in Sources */,
 				5C0A9AFC1DCCB9700091B193 /* PomagajViewController.swift in Sources */,
 				044D64BE1D3C12BA008CF116 /* AnimalCardsPresenter.swift in Sources */,
 				5C6A40021D1890DF00241067 /* APIObject.swift in Sources */,
@@ -643,6 +667,7 @@
 				5C6821811D0729EB00FA7781 /* Request.swift in Sources */,
 				5C6821781D06200B00FA7781 /* Photo.swift in Sources */,
 				04235BE41D8DB22E0097353B /* AnimalURLBuilder.swift in Sources */,
+				DC2A08021DE628B1006D9723 /* FavouriteTableHeader.swift in Sources */,
 				04C22B281D47D16B000E7AC3 /* CounterView.swift in Sources */,
 				042F97F41D35899F00FE1961 /* AnimalPhotoCell.swift in Sources */,
 				042AF0F01D28179900FC8175 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
@@ -735,6 +760,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -812,15 +838,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wojtek Bilicki (8EYFBLD25Z)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Y775T2M4TH;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = "Na4Łapy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kodujdlapolski.Na4-apy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodujdlapolski.Na4lapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "558900c9-cdf5-42fa-847b-6ac2bcfb6459";
+				PROVISIONING_PROFILE_SPECIFIER = WojtekDev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -831,15 +859,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Wojtek Bilicki (8EYFBLD25Z)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = "Na4Łapy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kodujdlapolski.Na4-apy";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodujdlapolski.Na4lapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FavouriteTableHeader" customModule="Na4Łapy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="51"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sIg-Ol-Lwx">
+                    <rect key="frame" x="16" y="11" width="336" height="29"/>
+                    <segments>
+                        <segment title="Wszystkie"/>
+                        <segment title="Psy"/>
+                        <segment title="Koty"/>
+                        <segment title="Inne"/>
+                    </segments>
+                    <color key="tintColor" red="0.3411764706" green="0.63921568630000003" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="didChangeSelectorValue:" destination="iN0-l3-epB" eventType="valueChanged" id="5dj-eg-ydo"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sIg-Ol-Lwx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="20P-D0-3bO"/>
+                <constraint firstItem="sIg-Ol-Lwx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6Ko-HN-6Kd"/>
+                <constraint firstItem="sIg-Ol-Lwx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="8x2-ZA-ig7"/>
+                <constraint firstAttribute="trailing" secondItem="sIg-Ol-Lwx" secondAttribute="trailing" constant="16" id="hmy-m8-mfe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="animalTypeSelector" destination="sIg-Ol-Lwx" id="0Ks-Ut-7fj"/>
+            </connections>
+            <point key="canvasLocation" x="-49" y="-244.5"/>
+        </view>
+    </objects>
+</document>

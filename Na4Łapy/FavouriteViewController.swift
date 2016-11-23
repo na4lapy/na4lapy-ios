@@ -13,9 +13,21 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var favouriteAnimals: [Animal] = []
+
+    var searchController: UISearchController?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+
+        let nib = UINib(nibName: "FavouriteTableHeaderView", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "TableHeader")
+
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
         // Do any additional setup after loading the view.
@@ -31,9 +43,13 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
         for id in favouriteIds {
             Animal.getById(id,
                success: { [weak self] animals in
-                    self?.favouriteAnimals.append(animals.first!)
-                    log.debug("Zwierzak nr \(animals.first?.id) pobrany z ulubionych")
-                    self?.tableView.reloadData()
+
+                    DispatchQueue.main.async {
+                        self?.favouriteAnimals.append(animals.first!)
+                        log.debug("Zwierzak nr \(animals.first?.id) pobrany z ulubionych")
+                        self?.tableView.reloadData()
+
+                    }
                 },
                 failure: { _ in
                     log.error("Błąd podczas pobierania ulubionych zwierzaków")
@@ -52,22 +68,41 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "favouriteCell")
-        
-        cell.textLabel?.text = favouriteAnimals[indexPath.row].name
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteCell", for: indexPath) as? FavouriteTableViewCell else {
+            assert(false, "Cell should be favouriteCell")
+        }
+
+       cell.configureCell(withAnimal: favouriteAnimals[indexPath.row])
+
         return cell
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
-    */
 
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let bundle = Bundle.main
+        let header = bundle.loadNibNamed("FavouriteTableHeader", owner: self, options: nil)?.first
+
+        guard let h = header as? FavouriteTableHeader else {
+            return nil
+        }
+        h.delegate = self
+        return h
+    }
+
+
+}
+
+extension FavouriteViewController: FavouriteTableHeaderDelegate {
+
+    func didSelect(favAnimalType: FavAnimalType) {
+        log.debug("\(favAnimalType)")
+    }
 }
