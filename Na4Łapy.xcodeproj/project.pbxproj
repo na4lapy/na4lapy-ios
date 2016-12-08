@@ -845,7 +845,7 @@
 				INFOPLIST_FILE = "Na4Łapy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kodujdlapolski.Na4lapy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stowarzyszenie.Na4lapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "558900c9-cdf5-42fa-847b-6ac2bcfb6459";
 				PROVISIONING_PROFILE_SPECIFIER = WojtekDev;
@@ -866,7 +866,7 @@
 				INFOPLIST_FILE = "Na4Łapy/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kodujdlapolski.Na4lapy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stowarzyszenie.Na4lapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

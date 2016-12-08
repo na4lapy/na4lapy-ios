@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SKPhotoBrowser:
-    :commit: 2ec9887a8f5bc82aabc61da035cd4ab9b1230b63
+    :commit: 2b51155541dcf95a32917a9a610f851630fa4e41
     :git: https://github.com/suzuki-0000/SKPhotoBrowser.git
 
 SPEC CHECKSUMS:
