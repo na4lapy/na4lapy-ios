@@ -17,25 +17,15 @@ class AnimalDetailViewController: UIViewController {
 
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
     @IBOutlet weak var animalBackgroundPhoto: UIImageView!
-
     @IBOutlet weak var animalFeaturesTable: UITableView!
-
     @IBOutlet weak var animalPhotoCollection: UICollectionView!
-
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
-
     @IBOutlet weak var animalFullDescriptionLabel: UILabel!
     @IBOutlet weak var toggleDescriptionButton: UIButton!
-
     @IBOutlet weak var animalGenderImage: UIImageView!
-
     @IBOutlet weak var animalSizeImage: UIImageView!
-
     @IBOutlet weak var animalActivityLevelImage: UIImageView!
-
-
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-
 
     @IBAction func toggleMoreDescription(_ sender: AnyObject) {
         animalFullDescriptionLabel.numberOfLines = animalFullDescriptionLabel.numberOfLines == 0 ? 3 : 0
@@ -91,7 +81,6 @@ class AnimalDetailViewController: UIViewController {
             self.animalCenterCircularPhoto.image = self.animalPhotos.first?.image?.circle
             self.animalCenterCircularPhoto.clipsToBounds = true
             self.animalBackgroundPhoto.image = self.animalPhotos.first?.image
-
 
             //Update the icons
             if let animalSize = self.animal?.size?.pl() {
@@ -166,7 +155,6 @@ extension AnimalDetailViewController: UICollectionViewDelegate {
 }
 
 extension AnimalDetailViewController: UICollectionViewDataSource {
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -189,7 +177,6 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
 
 
 extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let screenWidth = UIScreen.main.bounds.size.width
@@ -212,7 +199,6 @@ extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension AnimalDetailViewController: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return animal.getFeatures().count
     }

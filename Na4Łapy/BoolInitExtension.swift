@@ -16,5 +16,4 @@ extension Bool {
             self.init(true)
         }
     }
-
 }
