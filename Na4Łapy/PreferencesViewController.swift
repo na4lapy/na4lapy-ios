@@ -9,14 +9,9 @@
 import UIKit
 
 class PreferencesViewController: UIViewController {
-
-
     @IBOutlet var preferenceButtons: [UIButton]!
-
-
     @IBOutlet weak var ageMinSlider: UISlider!
     @IBOutlet weak var ageMaxSlider: UISlider!
-
     @IBOutlet weak var ageMinLabel: UILabel!
     @IBOutlet weak var ageMaxLabel: UILabel!
 
@@ -42,7 +37,6 @@ class PreferencesViewController: UIViewController {
         }
     }
 
-
     @IBAction func ageMaxSliderValueChanged(_ sender: UISlider) {
         let sliderIntValue =  Int (round(sender.value))
         ageMaxLabel.text = sliderIntValue.description
@@ -66,7 +60,6 @@ class PreferencesViewController: UIViewController {
     }
 
     private func setUIBasedOnSavedPreferences() {
-
         guard let savedPreferences = userPreferences else {
             log.error("Can't initiate userPreferences!!!!!!!!")
             return
@@ -97,7 +90,6 @@ class PreferencesViewController: UIViewController {
             }
 
         }
-
 
     }
 

@@ -387,9 +387,4 @@ class Animal: APIObject {
 
         return url
     }
-
-
-
-
-
 }
