@@ -9,8 +9,6 @@
 import UIKit
 
 class AnimalFeatureTableCell: UITableViewCell {
-
     @IBOutlet weak var featureValueLabel: UILabel!
-    
     @IBOutlet weak var featureKeyLabel: UILabel!
 }

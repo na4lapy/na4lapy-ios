@@ -11,9 +11,7 @@ import UIKit
 class FavouriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
     var favouriteAnimals: [Animal] = []
-
     var searchController: UISearchController?
 
     var favAnimalType: FavAnimalType = .All
@@ -29,9 +27,7 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
 
         let nib = UINib(nibName: "FavoubriteTableHeaderView", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "TableHeader")
-
     }
-
     
     override func viewDidAppear(_ animated: Bool) {
 
@@ -96,7 +92,6 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
         let bundle = Bundle.main
         header = bundle.loadNibNamed("FavouriteTableHeader", owner: self, options: nil)?.first as? FavouriteTableHeader
 
@@ -121,7 +116,6 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
 
         vc.animal = favouriteAnimals.filter( { $0.id == animalId } ).first
     }
-
 }
 
 extension FavouriteViewController: FavouriteTableHeaderDelegate {
