@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukT-Bu-MAQ">
-                                <rect key="frame" x="0.0" y="64" width="320" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGZ-qi-zfC" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="452.5"/>
@@ -388,7 +388,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3613" y="318"/>
+            <point key="canvasLocation" x="3726" y="661"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ddN-Hi-yf8">
@@ -467,16 +467,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGO-gI-CAK">
-                                                    <rect key="frame" x="313" y="7" width="54" height="30"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6we-yX-uoz">
                                                     <rect key="frame" x="8" y="4" width="24" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="6we-yX-uoz" secondAttribute="height" multiplier="11:16" constant="1" id="BAA-WE-UVY"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGO-gI-CAK">
+                                                    <rect key="frame" x="324" y="2" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="36" id="ETB-g0-t5R"/>
+                                                        <constraint firstAttribute="height" constant="36" id="y6q-SP-4Os"/>
+                                                    </constraints>
+                                                    <state key="normal" image="heartIconON"/>
+                                                    <connections>
+                                                        <action selector="onRemoveFavouriteButtonPressed:" destination="pz3-H9-uLY" eventType="touchUpInside" id="miU-fJ-5zN"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="6we-yX-uoz" secondAttribute="bottom" constant="6" id="QF7-Wk-J1O"/>
@@ -491,7 +498,7 @@
                                         <connections>
                                             <outlet property="animalDescLabel" destination="G0R-fp-5zX" id="yHD-FQ-xSv"/>
                                             <outlet property="animalImage" destination="6we-yX-uoz" id="XeV-K2-tlb"/>
-                                            <outlet property="toggleFavouriteButton" destination="qGO-gI-CAK" id="78S-ez-nBF"/>
+                                            <segue destination="MtD-qe-A9Q" kind="show" identifier="FavouriteAnimalSegue" id="NuO-wc-qPf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1283,6 +1290,7 @@
     <resources>
         <image name="Aktywny" width="300" height="300"/>
         <image name="favouriteStateIcon" width="600" height="600"/>
+        <image name="heartIconON" width="267" height="267"/>
         <image name="iOS_oAplikacji_OFF" width="37" height="37"/>
         <image name="iOS_oAplikacji_ON" width="37" height="37"/>
         <image name="iOS_pomagaj_OFF" width="37" height="37"/>
@@ -1316,5 +1324,8 @@
         <image name="preferencjeSuczka" width="600" height="600"/>
         <image name="preferencjeSuczka_off" width="600" height="600"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NuO-wc-qPf"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

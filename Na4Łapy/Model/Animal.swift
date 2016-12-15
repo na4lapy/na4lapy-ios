@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Animal: APIObject {
+class Animal: APIObject, Equatable {
     fileprivate(set) var shelterId: Int?
     fileprivate(set) var race: String?
     fileprivate(set) var description: String?
@@ -388,8 +388,13 @@ class Animal: APIObject {
         return url
     }
 
+}
 
 
+func ==(lhs: Animal, rhs: Animal) -> Bool {
+    if  lhs.id != rhs.id {
+        return false
+    }
 
-
+    return true
 }
