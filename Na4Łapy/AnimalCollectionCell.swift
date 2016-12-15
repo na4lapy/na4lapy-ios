@@ -3,7 +3,7 @@
 //  Na4Łapy
 //
 //  Created by Wojciech Bilicki on 20/06/16.
-//  Copyright © 2016 Koduj dla Polski. All rights reserved.
+//  Copyright © 2016 Stowarzyszenie Na4Łapy. All rights reserved.
 //
 
 import UIKit
