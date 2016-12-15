@@ -90,6 +90,29 @@ enum Species: String {
     case other = "OTHER"
 }
 
+enum FavAnimalType: Int {
+
+    case All = 0
+    case Dogs = 1
+    case Cats = 2
+    case Others = 3
+
+    func toString() -> String {
+        switch self {
+        case .All:
+            return "ALL"
+        case .Dogs:
+            return "DOG"
+        case .Cats:
+            return "CAT"
+        case .Others:
+            return "OTHER"
+
+        }
+    }
+}
+
+
 enum ageBoundaries: String {
     case ageMin = "minAge"
     case ageMax = "maxAge"

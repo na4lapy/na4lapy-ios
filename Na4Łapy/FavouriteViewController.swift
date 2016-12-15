@@ -14,6 +14,11 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
     var favouriteAnimals: [Animal] = []
     var searchController: UISearchController?
 
+    var favAnimalType: FavAnimalType = .All
+
+    var header: FavouriteTableHeader?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -25,25 +30,29 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // Do any additional setup after loading the view.
-        self.favouriteAnimals.removeAll()
+
         self.prepareFavouriteTable()
     }
     
     func prepareFavouriteTable() {
+        self.favouriteAnimals.removeAll()
         guard let favouriteIds = Favourite.get() else {
             log.debug("Brak ulubionych zwierzaków")
             return
         }
+//        Sposób użycia: {{url}}/v1/animals?filter=0,1,2,3,4
         for id in favouriteIds {
             Animal.getById(id,
                success: { [weak self] animals in
 
                     DispatchQueue.main.async {
-                        self?.favouriteAnimals.append(animals.first!)
-                        log.debug("Zwierzak nr \(animals.first?.id) pobrany z ulubionych")
-                        self?.tableView.reloadData()
 
+                        //if species of animal is the same as the one set from header or any type of species is set
+                        if animals.first?.species?.rawValue == self?.favAnimalType.toString() || self?.favAnimalType.rawValue == 0 {
+                            self?.favouriteAnimals.append(animals.first!)
+                            log.debug("Zwierzak nr \(animals.first?.id) pobrany z ulubionych")
+                            self?.tableView.reloadData()
+                        }
                     }
                 },
                 failure: { _ in
@@ -59,8 +68,10 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
         return favouriteAnimals.count
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favouriteCell", for: indexPath) as? FavouriteTableViewCell else {
@@ -68,6 +79,7 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
         }
 
         cell.configureCell(withAnimal: favouriteAnimals[indexPath.row])
+        cell.delegate = self
         return cell
     }
 
@@ -81,19 +93,45 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let bundle = Bundle.main
-        let header = bundle.loadNibNamed("FavouriteTableHeader", owner: self, options: nil)?.first
+        header = bundle.loadNibNamed("FavouriteTableHeader", owner: self, options: nil)?.first as? FavouriteTableHeader
 
-        guard let h = header as? FavouriteTableHeader else {
-            return nil
+        header?.delegate = self
+
+        header?.animalTypeSelector.selectedSegmentIndex = favAnimalType.rawValue
+
+        return header
+    }
+
+
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "FavouriteAnimalSegue",
+            let animalId = (sender as? FavouriteTableViewCell)?.favouriteAnimalId,
+            let vc = segue.destination as? AnimalDetailViewController
+        else {
+            return
         }
-        h.delegate = self
-        return h
+
+        vc.animal = favouriteAnimals.filter( { $0.id == animalId } ).first
     }
 }
 
 extension FavouriteViewController: FavouriteTableHeaderDelegate {
 
     func didSelect(favAnimalType: FavAnimalType) {
-        log.debug("\(favAnimalType)")
+        self.favAnimalType = favAnimalType
+
+        prepareFavouriteTable()
+    }
+
+}
+
+
+extension FavouriteViewController: FavouriteTableCellDelegate {
+
+    func removeFromFavouritesAnimal(withId id: Int) {
+        Favourite.delete(id)
     }
 }
