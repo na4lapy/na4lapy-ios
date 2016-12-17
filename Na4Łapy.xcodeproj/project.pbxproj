@@ -64,6 +64,7 @@
 		DC2A08021DE628B1006D9723 /* FavouriteTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */; };
 		DC2A08041DE63185006D9723 /* FavouriteTableHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */; };
 		DC44C7AE1DD124C8007160E6 /* ShelterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44C7AD1DD124C8007160E6 /* ShelterViewController.swift */; };
+		DC5A66CE1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5A66CD1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableHeader.swift; sourceTree = "<group>"; };
 		DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableHeaderDelegate.swift; sourceTree = "<group>"; };
 		DC44C7AD1DD124C8007160E6 /* ShelterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelterViewController.swift; sourceTree = "<group>"; };
+		DC5A66CD1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableCellDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +354,7 @@
 				DC2A07FF1DE62880006D9723 /* FavouriteTableHeader.xib */,
 				DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */,
 				DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */,
+				DC5A66CD1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift */,
 			);
 			name = Favourite;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				5C6821881D08C14500FA7781 /* ErrorString.swift in Sources */,
 				04235BE81D8DB6360097353B /* BoolToggleExtension.swift in Sources */,
 				5C5134BF1D2C52FB00D50BCB /* Favourite.swift in Sources */,
+				DC5A66CE1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift in Sources */,
 				5C3C71301D1737B700ED5C3A /* Listing.swift in Sources */,
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
 				04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */,
