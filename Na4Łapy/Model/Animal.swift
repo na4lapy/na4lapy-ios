@@ -51,7 +51,7 @@ class Animal: APIObject, Equatable {
             return
         }
 
-       let urlstring = AnimalURLBuilder.buildURLFrom(baseUrl: baseUrl+EndPoint.animals, page: page, pageSize: size, params: preferences)
+       let urlstring = AnimalURLBuilder.buildURLFrom(baseUrl: baseUrl + EndPoint.animals, page: page, pageSize: size, params: preferences)
 
         log.debug(urlstring)
         guard let endpoint = NSURL(string: urlstring) else {
@@ -61,7 +61,10 @@ class Animal: APIObject, Equatable {
 
         Request.getJSONData(endpoint as URL,
             success: { (json, count) in
-                let animals = Animal.jsonToObj(json)
+                guard let jsonDic = json[0] as? [String: AnyObject] else {
+                    fatalError("JSON SO BAADDD")
+                }
+                let animals = Animal.jsonToObj(jsonDic["data"] as! [AnyObject])
                 success(animals, count)
             },
             failure: { (error) in
@@ -203,6 +206,8 @@ class Animal: APIObject, Equatable {
             case JsonAttr.name:
                 break
             case JsonAttr.id:
+                break
+            case JsonAttr.animalStatus:
                 break
             default:
                 log.error(Err.wrongJsonKey.desc()+" \(key)")

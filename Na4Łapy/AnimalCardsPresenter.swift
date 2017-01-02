@@ -29,8 +29,8 @@ class AnimalCardsPresenter {
 
     func getAnimals() {
         self.animalsListing?.prefetch(0,
-            success: {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "ReloadCollectionView"), object: nil)
+            success: { [weak self] in
+                self?.animalCardsController?.reloadCardCollection()
             },
             failure: {
                 log.error("Błąd podczas pobierania pierwszej strony!")

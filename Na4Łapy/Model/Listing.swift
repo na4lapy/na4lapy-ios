@@ -83,7 +83,7 @@ class Listing {
             success: { [weak self] (elements, count) in
                 guard let strongSelf = self else { return }
                 strongSelf.localCache[page] = elements as AnyObject?
-                strongSelf.count = count
+                strongSelf.count = elements.count
                 success?()
             },
             failure: { (error) in

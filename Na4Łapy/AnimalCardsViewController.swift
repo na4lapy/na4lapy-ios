@@ -1,4 +1,4 @@
-//
+ //
 //  ViewController.swift
 //  Na4Łapy
 //
@@ -19,17 +19,12 @@ class AnimalCardsViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadCardCollection(_:)), name: NSNotification.Name(rawValue: "ReloadAnimalView"), object: nil)
         self.automaticallyAdjustsScrollViewInsets = false
         presenter.attachView(self)
         presenter.getAnimals()
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    @objc func reloadCardCollection(_ notificatio: Notification) {
+    func reloadCardCollection() {
         DispatchQueue.main.async {
             self.cardCollection.reloadData()
         }

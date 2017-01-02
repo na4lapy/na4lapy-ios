@@ -16,6 +16,7 @@ class APIObject: ListingProtocol {
     // MARK: inicjalizacja obiektu za pomocą struktury JSON (id oraz name)
     //
     required init?(dictionary: [String:AnyObject]) {
+
         guard
             let id = dictionary[JsonAttr.id] as? Int,
                 let name = dictionary[JsonAttr.name] as? String
@@ -34,6 +35,7 @@ class APIObject: ListingProtocol {
      - Returns: Tablica obiektów Animal
      */
     class func jsonToObj(_ obj: [AnyObject]) -> [AnyObject] {
+
         var animals = [AnyObject]()
         if let obj = obj as? [[String: AnyObject]] {
             for item in obj {
