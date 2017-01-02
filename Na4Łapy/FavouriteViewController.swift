@@ -22,7 +22,7 @@ class FavouriteViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        tableView.delegate = selfb
+        tableView.delegate = self
         tableView.separatorStyle = .none
 
         let nib = UINib(nibName: "FavoubriteTableHeaderView", bundle: nil)
