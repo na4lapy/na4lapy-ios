@@ -57,9 +57,25 @@ class AnimalCollectionCell: UICollectionViewCell {
         }
         
         animalDescriptionLabel.text = animal.getAgeName()
-        animalImage.image = animal.getFirstImage()
 
+        if let image = animal.getFirstImage() {
+            animalImage.image = image
+        } else {
+            guard let species = animal.species else {
+                animalImage.image = UIImage(named: "preferencjePies")
+                return
+            }
 
+            switch species {
+            case .dog:
+                animalImage.image = UIImage(named: "preferencjePies")
+            case .cat:
+                animalImage.image = UIImage(named: "preferencjeKot")
+            case .other:
+                animalImage.image = UIImage(named: "preferencjeInny")
+            }
+            animalImage.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+        }
     }
 
 }

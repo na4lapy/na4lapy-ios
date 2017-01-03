@@ -21,18 +21,53 @@ protocol ListingProtocol {
 
  Strona o id 1 będzie wpisana jako [1, Array<AnyObject>]
 
- Jak dzała prefetch.
- Wywołując metodę next() poruszamy się wzdłuż aktualnej strony (localCachePage) inkrementując localCacheIndex. Jeśli localCacheIndex znajdzie się w połowie aktualnej strony, to wykonywane są kolejno następujące operacje:
- - ładowana jest kolejna strona (czyli aktualna strona +1)
- - ładowana jest także wcześniejsza strona (-1) /* aby uprościć sprawdzanie w którą stronę następuje ruch, ale można to poprawić */
- - usuwana jest strona +2 /* to też można poprawić poprzez wykrywanie kierunku ruchu */
- - usuwana jest strona -2
- Oczywiście jeśli strony +1 lub -1 są już w pamięci, to nie zostaną ponownie załadowane.
- W wyniku działania powyższego algorytmu zawsze w pamięci znajdują się obiekty:
- - strona wcześniejsza
- - strona aktualna
- - strona kolejna
-*/
+ Jak działa metoda get(index:)
+ =============================
+ 
+ Parametrem metody jest index, czyli kolejny numer obiektu. Przykładowo: zwierzaków w bazie jest 120, więc index może przyjąć wartość od 1 do 120.
+ Przyjmijmy, że metoda get została wywołana z parametrem 56, przy czym rozmiar strony jest ustalony na 10 (stała PAGESIZE)
+ Oznacza to, że szukany obiekt znajduje się na stronie nr 5 (56/10) i jest to 6-ty element tej strony 56-5*10.
+ Otrzymujemy więc zmienne:
+    localCachePage = 5
+    localCacheIndex = 6
+ Kolejnym krokiem jest test, czy localCacheIndex wskazuje dokładnie połowę aktualnej strony. Jeśli tak, to należy wykonać prefetch kolejnej strony.
+ Przy rozmiarze strony 10, index 6 wykracza poza połowę, więc nie należy wykonywać prefetch (gdyż został wykonany przy poprzednim pobieraniu indexu o wartości 5)
+ Skoro nie trzeba wykonywać prefetch, to metoda get kończy pracę zwracając obiekt nr 6 na stronie nr 5.
+ 
+ ------
+ 
+ Rozważmy inny przypadek, gdy prefetch będzie konieczny.
+ Pytamy o index = 85
+    localCachePage = 8 (gdyż 85/10)
+    localCacheIndex = 5 (85 - 8*10)
+ localCacheIndex wskazuje dokładnie na PAGESIZE/2, więc należy wykonać prefetch kolejnej strony (czyli strona nr 9). Dodatkowo wykonywane są jeszcze 3 inne czynności:
+ 1. prefetch _poprzedniej_ strony, czyli strony nr 7, gdyby użytkownik zechciał się cofnąć.
+ 2. usuwana jest strona oddalona o 2 od aktualnej, czyli 8 + 2 = 10 (bo nie chcemy przechowywać tak wielu stron)
+ 3. usuwana jest strona oddalona o -2 od aktualnej, czyli 8 - 2 = 6 (j.w.)
+ W wyniku w/w operacji w pamięci urządzenia znajdują się 3 strony: poprzednia, aktualna oraz następna.
+ (btw. prefetch stron nie jest wykonywany jeśli strony już znajdują się w pamięci)
+ 
+ Uwaga, metody prefetch i clearAndPrefetch wykonywane są asynchronicznie. Oznacza to, że wyjście z metody get może nastąpić _zanim_ te metody zakończą pracę.
+ Może to się zdarzyć w momencie np. problemów sieciowych, timeoutu na serwerze itp. Możliwe są 2 scenariusze błędów:
+ 1. metoda prefetch zakończyła się błędem (bo np. serwer nie odpowiada)
+ 2. metoda prefetch zakończyła się poprawnie, lecz po długim czasie (np. 10 sek.)
+ 
+ W przypadku wariantu 1, nie zostanie załadowana kolejna strona. Wszystkie obiekty aktualnej strony będą dostępne dla użytkownika 
+ (czyli obiekty o localCacheIndex od 1 do 10), jednak podczas zmiany strony na kolejną użytkownik otrzyma błąd. Metoda get posiada zabezpieczenie i zawsze
+ próbuje jeszcze raz pobrać aktualną stronę, o ile nie została wcześniej załadowana. Jeśli jednak i to zawiedzie, to oznacza problem sieciowy/serwerowy i należy
+ oddać inicjatywę użytkownikowi (np. przycisk "spróbuj ponownie")
+ 
+ W przypadku wariantu nr 2, metoda get zakończy się wcześniej niż prefetch. Użytkownik nadal będzie dysponował obiektami aktualnej strony (od 1 do 10) i teraz
+ mogą się zdarzyć 2 kolejne warianty:
+ a. użytkownik bardzo szybko "doscrollował" do obiektu nr 10 i przełączył stronę zanim metoda prefetch się zakończyła
+ b. użytkownik powoli scrolluje i metoda prefetch zdążyła zakończyć się zanim została przełączona strona.
+ 
+ Jeśli wystąpił wariant 'a', to użytkownik dostanie błąd, który jest spowodowany problemami sieciowymi. Należy więc oddać mu inicjatywę jak to opisano wyżej.
+ Wariant 'b' oznacza, że użytkownik nie zauważy problemu gdyż kolejna strona zdąży zostać załadowana zanim wystąpi potrzeba jej wyświetlenia.
+ 
+ Wszystkie operacje na lokalnym cache MUSZĄ być wykonywane na tym samym wątku, więc w przypadku wprowadzenia wielowątkowości do aplikacji należy to zabezpieczyć.
+ 
+ */
 
 class Listing {
     fileprivate var localCache: [Int: AnyObject] = [:]
@@ -48,7 +83,7 @@ class Listing {
             success: { [weak self] (elements, count) in
                 guard let strongSelf = self else { return }
                 strongSelf.localCache[page] = elements as AnyObject?
-                strongSelf.count = count
+                strongSelf.count = elements.count
                 success?()
             },
             failure: { (error) in
@@ -62,7 +97,7 @@ class Listing {
         self.listingType = listingType
     }
 
-    func prefetch( _ success: @escaping () -> Void ) {
+    private func prefetch( _ success: @escaping () -> Void ) {
         self.prefetch(0) {
             success()
         }
@@ -73,7 +108,7 @@ class Listing {
     // - pobrać wcześniejszą stronę (-1)
     // - usunąć (-2)
     // - usunąć (+2)
-    func clearAndPrefetch() {
+    private func clearAndPrefetch() {
         // +1
         if self.localCache[localCachePage+1] == nil {
             self.prefetch(localCachePage+1)
@@ -94,6 +129,7 @@ class Listing {
 
     func get(_ index: UInt) -> AnyObject? {
         // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
+        log.debug("index: \(index)")
         guard let page = self.localCache[localCachePage] else {
             log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
             self.prefetch(localCachePage)
@@ -104,7 +140,7 @@ class Listing {
         self.localCachePage = Int(index)/PAGESIZE
         self.localCacheIndex = Int(index) - localCachePage*PAGESIZE
 
-        if self.localCacheIndex == page.count/2 {
+        if self.localCacheIndex == page.count/2 && self.count >= PAGESIZE {
             self.clearAndPrefetch()
         }
         if self.localCacheIndex > page.count - 1 || Int(index) > self.count - 1 {
