@@ -851,7 +851,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stowarzyszenie.Na4lapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "558900c9-cdf5-42fa-847b-6ac2bcfb6459";
+				PROVISIONING_PROFILE = "13056364-9f85-4a66-bdcf-c4e3906d8122";
 				PROVISIONING_PROFILE_SPECIFIER = WojtekDev;
 				SWIFT_VERSION = 3.0;
 			};

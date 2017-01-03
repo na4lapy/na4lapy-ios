@@ -19,8 +19,8 @@ class Photo {
     init?(dictionary: [String:AnyObject]) {
         guard
             let id = dictionary[JsonAttr.id] as? Int,
-                let urlstring = dictionary[JsonAttr.url] as? String,
-                let url = URL(string: urlstring)
+                let fileName = dictionary[JsonAttr.fileName] as? String,
+                let url = URL(string: baseUrl + "shelter/" + EndPoint.files + fileName)
         else {
             log.error(Err.noIdOrName.desc())
             return nil

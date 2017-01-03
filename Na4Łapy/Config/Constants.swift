@@ -148,6 +148,8 @@ struct JsonAttr {
     static let status = "status"
     static let total = "total"
     static let data = "data"
+    static let fileName = "fileName"
+    static let animalStatus = "animalStatus"
 }
 
 struct ShelterJsonAttr {
@@ -172,10 +174,12 @@ let PAGESIZE = 10
 
 // MARK: URL
 
-let baseUrl = "http://na4lapy.kodujdlapolski.pl"
+let baseUrl = "https://api.na4lapy.org/"
 struct EndPoint {
-    static let animals = "/api/animals"
-    static let shelter = "/api/shelters"
+    static let animals = "v1/animals"
+    static let shelter = "shelter"
+    static let files = "files/"
+
 }
 
 let USER_PREFERENCES_KEY = "UserPreferences"

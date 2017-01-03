@@ -143,7 +143,8 @@ class UserPreferences {
 
     func savePreferencesToUserDefault() {
         let userDefaults = UserDefaults.standard
-        userDefaults.set(self.dictionaryRepresentation(), forKey: USER_PREFERENCES_KEY)
+        let dictionary = self.dictionaryRepresentation()
+        userDefaults.set(dictionary, forKey: USER_PREFERENCES_KEY)
 
     }
 }

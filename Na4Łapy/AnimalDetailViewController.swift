@@ -12,7 +12,7 @@ import SKPhotoBrowser
 class AnimalDetailViewController: UIViewController {
 
     var animal: Animal!
-    fileprivate var animalPhotos: [Photo]!
+    fileprivate var animalPhotos: [Photo]?
     fileprivate var animalImageProvider: AnimalImageProvider!
 
     @IBOutlet weak var animalCenterCircularPhoto: UIImageView!
@@ -52,8 +52,9 @@ class AnimalDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        animalPhotos = animal.getAllImages()
-        self.animalImageProvider = AnimalImageProvider(animalPhotos: animalPhotos)
+        if let animalPhotos = animal.getAllImages() {
+            self.animalImageProvider = AnimalImageProvider(animalPhotos: animalPhotos)
+        }
 
         updateUI()
     }
@@ -78,9 +79,9 @@ class AnimalDetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.animalPhotoCollection.reloadData()
             self.animalFeaturesTable.dataSource = self
-            self.animalCenterCircularPhoto.image = self.animalPhotos.first?.image?.circle
+            self.animalCenterCircularPhoto.image = self.animalPhotos?.first?.image?.circle
             self.animalCenterCircularPhoto.clipsToBounds = true
-            self.animalBackgroundPhoto.image = self.animalPhotos.first?.image
+            self.animalBackgroundPhoto.image = self.animalPhotos?.first?.image
 
             //Update the icons
             if let animalSize = self.animal?.size?.pl() {
@@ -160,7 +161,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return animalPhotos.count
+        return animalPhotos?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -169,7 +170,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.animalImage.image = self.animalPhotos[(indexPath as NSIndexPath).item].image
+        cell.animalImage.image = self.animalPhotos?[(indexPath as NSIndexPath).item].image
 
         return cell
     }
