@@ -22,9 +22,15 @@ class AnimalCardsViewController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         presenter.attachView(self)
         presenter.getAnimals()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCardCollection(_:)), name: NSNotification.Name(rawValue: "ReloadAnimalView"), object: nil)
+
     }
 
-    func reloadCardCollection() {
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func reloadCardCollection(_ notificatio: Notification) {
         DispatchQueue.main.async {
             self.cardCollection.reloadData()
         }

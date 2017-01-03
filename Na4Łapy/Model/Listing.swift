@@ -129,6 +129,7 @@ class Listing {
 
     func get(_ index: UInt) -> AnyObject? {
         // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
+        log.debug("index: \(index)")
         guard let page = self.localCache[localCachePage] else {
             log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
             self.prefetch(localCachePage)
@@ -139,7 +140,7 @@ class Listing {
         self.localCachePage = Int(index)/PAGESIZE
         self.localCacheIndex = Int(index) - localCachePage*PAGESIZE
 
-        if self.localCacheIndex == page.count/2 {
+        if self.localCacheIndex == page.count/2 && self.count >= PAGESIZE {
             self.clearAndPrefetch()
         }
         if self.localCacheIndex > page.count - 1 || Int(index) > self.count - 1 {
