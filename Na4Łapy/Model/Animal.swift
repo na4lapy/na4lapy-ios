@@ -24,7 +24,7 @@ class Animal: APIObject, Equatable {
     fileprivate(set) var training: Training?
     fileprivate(set) var vaccination: Vaccination?
     fileprivate(set) var status: Status?
-    fileprivate var images: [Photo]?
+    var images: [Photo]?
 
     //
     // MARK: init()

@@ -174,7 +174,7 @@ let PAGESIZE = 10
 
 // MARK: URL
 
-let baseUrl = "https://api.na4lapy.org/"
+let baseUrl = "https://api.na4lapy.org/v1"
 struct EndPoint {
     static let animals = "v1/animals"
     static let shelter = "shelter"
