@@ -60,6 +60,7 @@ class AnimalCollectionCell: UICollectionViewCell {
 
         if let image = animal.getFirstImage() {
             animalImage.image = image
+            animalImage.transform = CGAffineTransform.identity
         } else {
             guard let species = animal.species else {
                 animalImage.image = UIImage(named: "preferencjePies")

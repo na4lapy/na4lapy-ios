@@ -41,6 +41,7 @@ class Photo {
     func download(_ success: (() -> Void)? = nil) {
         if self.downloaded {
             log.debug("Zdjęcie zostało już wcześniej pobrane.")
+            success?()
             return
         }
         log.debug("Pobieram zdjęcie... \(self.url.absoluteString)")

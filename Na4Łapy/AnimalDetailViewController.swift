@@ -70,8 +70,8 @@ class AnimalDetailViewController: UIViewController {
         }
 
     @objc func reloadAnimalPhoto(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.animalPhotoCollection.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.updateUI()
         }
     }
 
@@ -79,10 +79,9 @@ class AnimalDetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.animalPhotoCollection.reloadData()
             self.animalFeaturesTable.dataSource = self
-            self.animalCenterCircularPhoto.image = self.animalPhotos?.first?.image?.circle
+            self.animalCenterCircularPhoto.image = self.animal.images?.first?.image?.circle
             self.animalCenterCircularPhoto.clipsToBounds = true
-            self.animalBackgroundPhoto.image = self.animalPhotos?.first?.image
-
+            self.animalBackgroundPhoto.image = self.animal.images?.first?.image
             //Update the icons
             if let animalSize = self.animal?.size?.pl() {
                 self.animalSizeImage.image = UIImage(named: animalSize)
@@ -161,7 +160,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return animalPhotos?.count ?? 0
+        return animal.images?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -170,7 +169,7 @@ extension AnimalDetailViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.animalImage.image = self.animalPhotos?[(indexPath as NSIndexPath).item].image
+        cell.animalImage.image = self.animal.images?[(indexPath as NSIndexPath).item].image
 
         return cell
     }
