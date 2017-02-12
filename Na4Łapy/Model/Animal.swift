@@ -99,7 +99,11 @@ class Animal: APIObject, Equatable {
         guard let image = self.images?.first?.image else {
             return nil
         }
-        return image
+        
+        let profilePhotos = self.images?.filter{ $0.profile }
+        let firstPhoto = profilePhotos?.first?.image
+        
+        return firstPhoto != nil ? firstPhoto : image
     }
 
     /**
