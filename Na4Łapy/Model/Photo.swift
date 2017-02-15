@@ -15,12 +15,13 @@ class Photo {
     var author: String?
     var image: UIImage?
     var downloaded: Bool = false
+    var profile: Bool = false
 
     init?(dictionary: [String:AnyObject]) {
         guard
             let id = dictionary[JsonAttr.id] as? Int,
                 let fileName = dictionary[JsonAttr.fileName] as? String,
-                let url = URL(string: baseUrl + "shelter/" + EndPoint.files + fileName)
+                let url = URL(string: baseUrl + EndPoint.files + fileName)
         else {
             log.error(Err.noIdOrName.desc())
             return nil
@@ -33,6 +34,11 @@ class Photo {
         if let author = dictionary[JsonAttr.author] as? String {
             self.author = author
         }
+        
+        if let isProfile = dictionary[JsonAttr.profile] as? Bool {
+            self.profile = isProfile
+        }
+        
     }
 
     /**
