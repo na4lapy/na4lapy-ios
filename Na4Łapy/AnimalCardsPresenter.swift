@@ -48,7 +48,8 @@ class AnimalCardsPresenter {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.CellIndentifier, for: indexPath) as? AnimalCollectionCell else {
             assert(false, "Cell should be of type AnimalCollectionCell")
         }
-        cell.animal = animalsListing?.get(UInt((indexPath as NSIndexPath).item)) as? Animal
+        
+        cell.animal = animalsListing?.get(indexPath.row) as? Animal
         return cell
     }
 }
