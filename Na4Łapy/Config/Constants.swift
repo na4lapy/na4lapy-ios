@@ -171,7 +171,7 @@ struct ShelterJsonAttr {
 
 // MARK: Rozmiary pobieranej strony (liczba elementów)
 
-let PAGESIZE = 1000
+let PAGESIZE = 10
 
 // MARK: URL
 

@@ -71,9 +71,6 @@ protocol ListingProtocol {
 
 class Listing {
     fileprivate var localCache: [Int: AnyObject] = [:]
-    fileprivate var localCacheIndex = 0
-    fileprivate var localCachePage = 0
-    fileprivate var count = 0
     fileprivate let listingType: ListingProtocol.Type
 
     func prefetch(_ page: Int, success: (() -> Void)? = nil, failure: (() -> Void)? = nil) {
@@ -83,7 +80,6 @@ class Listing {
             success: { [weak self] (elements, count) in
                 guard let strongSelf = self else { return }
                 strongSelf.localCache[page] = elements as AnyObject?
-                strongSelf.count = elements.count
                 success?()
             },
             failure: { (error) in
@@ -108,42 +104,54 @@ class Listing {
     // - pobrać wcześniejszą stronę (-1)
     // - usunąć (-2)
     // - usunąć (+2)
-    private func clearAndPrefetch() {
+    private func clearAndPrefetch(_ page: Int) {
         // +1
-        if self.localCache[localCachePage+1] == nil {
-            self.prefetch(localCachePage+1)
+        if self.localCache[page+1] == nil {
+            self.prefetch(page+1)
         }
         // -1
-        if self.localCache[localCachePage-1] == nil {
-            self.prefetch(localCachePage-1)
+        if self.localCache[page-1] == nil && page-1 >= 0 {
+            self.prefetch(page-1)
         }
         // -2
-        self.localCache.removeValue(forKey: localCachePage-2)
+        self.localCache.removeValue(forKey: page-2)
         // +2
-        self.localCache.removeValue(forKey: localCachePage+2)
+        self.localCache.removeValue(forKey: page+2)
     }
 
-    func getCount() -> UInt {
-        return UInt(self.count)
+    func getCount() -> Int {
+        var result = 0
+        if let first = self.localCache.first {
+            result = first.value.count
+        
+            if let maxKey = self.localCache.keys.max(),
+                let lastPage = self.localCache[maxKey] {
+                    result = (maxKey)*PAGESIZE + lastPage.count
+            }
+        }
+        
+        return result
     }
 
-    func get(_ index: UInt) -> AnyObject? {
+    func get(_ index: Int) -> AnyObject? {
         // Aktualna strona musi być dostepna, w przeciwnym wypadku należy ją pobrać
         log.debug("index: \(index)")
+        
+        // Konwersja index -> index/page
+        let localCachePage = Int(index)/PAGESIZE
+        let localCacheIndex = Int(index) - localCachePage*PAGESIZE
+        
         guard let page = self.localCache[localCachePage] else {
             log.debug("Aktualna strona \(localCachePage) nie jest dostępna!")
             self.prefetch(localCachePage)
             return nil
         }
 
-        // Konwersja index -> index/page
-        self.localCachePage = Int(index)/PAGESIZE
-        self.localCacheIndex = Int(index) - localCachePage*PAGESIZE
-
-        if self.localCacheIndex == page.count/2 && self.count >= PAGESIZE {
-            self.clearAndPrefetch()
+        if localCacheIndex == page.count/2 && self.getCount() >= PAGESIZE {
+            self.clearAndPrefetch(localCachePage)
         }
-        if self.localCacheIndex > page.count - 1 || Int(index) > self.count - 1 {
+        
+        if localCacheIndex > page.count - 1 {
             return nil
         }
 
