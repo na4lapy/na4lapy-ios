@@ -24,6 +24,7 @@ class Animal: APIObject, Equatable {
     fileprivate(set) var training: Training?
     fileprivate(set) var vaccination: Vaccination?
     fileprivate(set) var status: Status?
+    fileprivate(set) var shelterName: String?
     var images: [Photo]?
 
     //
@@ -33,7 +34,6 @@ class Animal: APIObject, Equatable {
         super.init(dictionary: dictionary)
         initializeWithDictionary(dictionary)
         // FIXME: usunąć, jeśli shelterId będzie dostarczane przez API
-        self.shelterId = 1
     }
 
     /**
@@ -113,7 +113,6 @@ class Animal: APIObject, Equatable {
         guard let images = self.images , !images.isEmpty else {
             return nil
         }
-        log.debug("\(self.name): liczba zdjęć: \(self.images?.count)")
         for image in images {
             image.download() {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "ReloadDetailView"), object: nil)
@@ -139,7 +138,6 @@ class Animal: APIObject, Equatable {
                     self.race = race
                 }
             case JsonAttr.description:
-                //TODO: Czy możemy zmienić klucz description na jakiś inny? MOże się mylić z debugDescription i description dla obiektów w Swifcie np. na narration albo information
                 if let description = value as? String {
                     self.description = description
                 }
@@ -213,6 +211,8 @@ class Animal: APIObject, Equatable {
                 break
             case JsonAttr.animalStatus:
                 break
+            case JsonAttr.shelterName:
+                self.shelterName = value as? String
             default:
                 log.error(Err.wrongJsonKey.desc()+" \(key)")
             }
@@ -326,12 +326,14 @@ class Animal: APIObject, Equatable {
             features["W schronisku od"] = ""
         }
         features["Szczepienie"] = getVaccination()
+        features["Schronisko"] = shelterName
+
 
         return features
     }
 
     func getFeatureKeys() -> [String] {
-        return ["Rasa", "Wielkość", "Płeć", "Aktywność", "Ułożenie", "Sterylizacja", "Szczepienie", "Chip", "W schronisku od"]
+        return ["Rasa", "Wielkość", "Płeć", "Aktywność", "Ułożenie", "Sterylizacja", "Szczepienie", "Chip", "W schronisku od", "Schronisko"]
     }
 
 

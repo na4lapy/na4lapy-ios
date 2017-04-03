@@ -59,12 +59,6 @@ class Request {
                         jsondata = tmp as [AnyObject]
                         count = 0
                     }
-
-//                    guard
-//                        let jsondata = json[JsonAttr.data] as? [[String: AnyObject]]
-//                    else {
-//                        throw JsonError.parseError
-//                    }
                     
                     success(jsondata ?? [], count)
                 } catch let error as NSError {

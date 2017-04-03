@@ -63,8 +63,13 @@
 		DC2A08001DE62880006D9723 /* FavouriteTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC2A07FF1DE62880006D9723 /* FavouriteTableHeader.xib */; };
 		DC2A08021DE628B1006D9723 /* FavouriteTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */; };
 		DC2A08041DE63185006D9723 /* FavouriteTableHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */; };
+		DC2E140E1E92B7A800B1FB33 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E140D1E92B7A800B1FB33 /* AboutAppViewController.swift */; };
 		DC44C7AE1DD124C8007160E6 /* ShelterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44C7AD1DD124C8007160E6 /* ShelterViewController.swift */; };
 		DC5A66CE1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5A66CD1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift */; };
+		DCEFCADA1E8FB873007F8B16 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEFCAD91E8FB873007F8B16 /* ResourceTests.swift */; };
+		DCEFCADC1E8FB97B007F8B16 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEFCADB1E8FB97B007F8B16 /* Resource.swift */; };
+		DCEFCADD1E8FB9D3007F8B16 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEFCADB1E8FB97B007F8B16 /* Resource.swift */; };
+		DCEFCADF1E8FFF5C007F8B16 /* SheltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEFCADE1E8FFF5C007F8B16 /* SheltersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,8 +147,12 @@
 		DC2A07FF1DE62880006D9723 /* FavouriteTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteTableHeader.xib; sourceTree = "<group>"; };
 		DC2A08011DE628B1006D9723 /* FavouriteTableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableHeader.swift; sourceTree = "<group>"; };
 		DC2A08031DE63185006D9723 /* FavouriteTableHeaderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableHeaderDelegate.swift; sourceTree = "<group>"; };
+		DC2E140D1E92B7A800B1FB33 /* AboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		DC44C7AD1DD124C8007160E6 /* ShelterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShelterViewController.swift; sourceTree = "<group>"; };
 		DC5A66CD1DE7800C00E1E70C /* FavouriteTableCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableCellDelegate.swift; sourceTree = "<group>"; };
+		DCEFCAD91E8FB873007F8B16 /* ResourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
+		DCEFCADB1E8FB97B007F8B16 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		DCEFCADE1E8FFF5C007F8B16 /* SheltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheltersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +203,8 @@
 				047D444E1D396AA200CF40FE /* AnimalCardsView */,
 				5C0A9AFB1DCCB9700091B193 /* PomagajViewController.swift */,
 				DC44C7AD1DD124C8007160E6 /* ShelterViewController.swift */,
+				DCEFCADE1E8FFF5C007F8B16 /* SheltersViewController.swift */,
+				DC2E140D1E92B7A800B1FB33 /* AboutAppViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 				5C6821771D06200B00FA7781 /* Photo.swift */,
 				04235BE31D8DB22E0097353B /* AnimalURLBuilder.swift */,
 				04235BE11D8DB2260097353B /* URLBuildable.swift */,
+				DCEFCADB1E8FB97B007F8B16 /* Resource.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -323,6 +335,7 @@
 			children = (
 				5CCD46C31D04C6E600D2D672 /* Na4_apyTests.swift */,
 				5CCD46C51D04C6E600D2D672 /* Info.plist */,
+				DCEFCAD91E8FB873007F8B16 /* ResourceTests.swift */,
 			);
 			path = "Na4ŁapyTests";
 			sourceTree = "<group>";
@@ -652,6 +665,8 @@
 				5C3C71301D1737B700ED5C3A /* Listing.swift in Sources */,
 				5CCD46AF1D04C6E600D2D672 /* AppDelegate.swift in Sources */,
 				04CCB0AA1D43F74800BCE06B /* AnimalFeatureTableCell.swift in Sources */,
+				DCEFCADC1E8FB97B007F8B16 /* Resource.swift in Sources */,
+				DCEFCADF1E8FFF5C007F8B16 /* SheltersViewController.swift in Sources */,
 				5C6821731D061B5C00FA7781 /* Animal.swift in Sources */,
 				04235BE21D8DB2260097353B /* URLBuildable.swift in Sources */,
 				04E61A491D18930F002AA70F /* AnimalCollectionCell.swift in Sources */,
@@ -665,6 +680,7 @@
 				DC2A08041DE63185006D9723 /* FavouriteTableHeaderDelegate.swift in Sources */,
 				5C0A9AFC1DCCB9700091B193 /* PomagajViewController.swift in Sources */,
 				044D64BE1D3C12BA008CF116 /* AnimalCardsPresenter.swift in Sources */,
+				DC2E140E1E92B7A800B1FB33 /* AboutAppViewController.swift in Sources */,
 				5C6A40021D1890DF00241067 /* APIObject.swift in Sources */,
 				5C6821761D061C5F00FA7781 /* Shelter.swift in Sources */,
 				042AF0EE1D27DCC100FC8175 /* UIInsetLabel.swift in Sources */,
@@ -686,7 +702,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C68218E1D08C77500FA7781 /* Photo.swift in Sources */,
+				DCEFCADA1E8FB873007F8B16 /* ResourceTests.swift in Sources */,
 				5CCD46C41D04C6E600D2D672 /* Na4_apyTests.swift in Sources */,
+				DCEFCADD1E8FB9D3007F8B16 /* Resource.swift in Sources */,
 				5C68218D1D08C77100FA7781 /* UserPreferences.swift in Sources */,
 				5C5134C01D2C60B600D50BCB /* Favourite.swift in Sources */,
 				5C6A40041D189FCB00241067 /* Listing.swift in Sources */,

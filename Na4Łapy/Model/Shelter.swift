@@ -8,6 +8,8 @@
 
 import Foundation
 
+var shelterCache = NSCache<AnyObject, Shelter>()
+
 class Shelter: APIObject {
     private var street: String?
     private var buildingNumber: String?
@@ -23,7 +25,7 @@ class Shelter: APIObject {
     //
     // MARK: init()
     //
-    required init?(dictionary: [String:AnyObject]) {
+    required init?(dictionary: JSONDictionary) {
         super.init(dictionary: dictionary)
         initializeWithDictionary(dictionary: dictionary)
     }
@@ -35,7 +37,7 @@ class Shelter: APIObject {
             return
         }
 
-        let urlstring = baseUrl + EndPoint.shelter + "/1"
+        let urlstring = baseUrl + EndPoint.shelter
 
         guard let enpoint = NSURL(string: urlstring) else {
             failure(Err.wrongURL.err())
@@ -48,6 +50,65 @@ class Shelter: APIObject {
         }) { (error) in
             failure(error)
         }
+    }
+
+    class func all( success: @escaping ([Shelter], Int) -> Void, failure: @escaping (Error) -> Void) {
+        let urlString = "\(baseUrl)\(EndPoint.shelter)/"
+        guard let url = URL(string: urlString) else {
+            failure(Err.wrongURL.err())
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                failure(error)
+            }
+
+            if let data = data , let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [JSONDictionary] {
+                if let shelters = json.flatMap({$0.flatMap(Shelter.init)}) {
+                    DispatchQueue.main.async {
+                        success(shelters, 1)
+                    }
+                } else {
+                    failure(JsonError.parseError)
+                }
+            }
+
+            }.resume()
+
+    }
+
+    class func get(_ id: Int, success: @escaping (Shelter, Int) -> Void, failure: @escaping (Error) -> Void) {
+
+        let urlString = "\(baseUrl)\(EndPoint.shelter)/\(id)"
+
+        if let shelter = shelterCache.object(forKey: id as AnyObject) {
+            success(shelter, 1)
+            return
+        }
+
+        guard let url = URL(string: urlString) else {
+            failure(Err.wrongURL.err())
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                failure(error)
+            }
+
+            if let data = data , let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary {
+                if let shelter = json.flatMap(Shelter.init) {
+                    DispatchQueue.main.async {
+                        success(shelter, 1)
+                    }
+                } else {
+                    failure(JsonError.parseError)
+                }
+            }
+
+        }.resume()
+
     }
 
     func getAdress() -> String {

@@ -146,11 +146,12 @@ struct JsonAttr {
     static let url = "url"
     static let author = "author"
     static let status = "status"
-    static let total = "total"
+    static let total = "totalPages"
     static let data = "data"
     static let fileName = "fileName"
     static let animalStatus = "animal_status"
     static let profile = "profil"
+    static let shelterName = "shelterName"
 }
 
 struct ShelterJsonAttr {

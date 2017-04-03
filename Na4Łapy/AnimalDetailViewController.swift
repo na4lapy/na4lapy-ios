@@ -1,3 +1,4 @@
+
 //
 //  AnimalDetailViewController.swift
 //  Na4Łapy
@@ -200,7 +201,7 @@ extension AnimalDetailViewController: UICollectionViewDelegateFlowLayout {
 
 extension AnimalDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animal.getFeatures().count
+        return animal.getFeatureKeys().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -22,17 +22,8 @@ class ShelterViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
 
     override func viewDidLoad() {
-        Shelter.get(1, size: 1, preferences: nil, success: { [weak self] json, size in
-            if let shelter = json[0] as? Shelter {
-
-                DispatchQueue.main.async(execute: {
-                    self?.shelter = shelter
-                    self?.updateUI()
-                })
-            }
-        }) { (error) in
-            log.debug(error.localizedDescription)
-        }
+        super.viewDidLoad()
+        updateUI()
     }
 
     private func updateUI() {
@@ -45,7 +36,5 @@ class ShelterViewController: UIViewController {
             adoptionRules.text = shelter.adoptionRules
             phoneNumber.text = shelter.phoneNumber
         }
-        log.debug(self.scrollView.contentSize.height.description)
-        log.debug(self.containerView.bounds.height.description)
     }
 }
